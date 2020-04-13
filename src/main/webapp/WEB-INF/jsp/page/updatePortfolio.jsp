@@ -1,0 +1,47 @@
+<jsp:useBean id="THE_PORTFOLIO" scope="request" type="by.epam.investmentplatform.entity.Portfolio"/>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>UpdatePortfolio</title>
+
+    <link type="text/css" rel="stylesheet" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/addFormStyle.css">
+
+</head>
+
+<body>
+<button type="button" name="back" onclick="history.back()">back</button>
+<br/><br/>
+<div id="wrapper">
+    <div id="header">
+        <h2 align="center">Update portfolio</h2>
+    </div>
+</div>
+
+<div id="container">
+    <form action="updatePortfolio" method="POST">
+        <table>
+            <tbody>
+
+            <tr>
+                <td><input type="hidden" name="THE_PORTFOLIO_ID" value="${THE_PORTFOLIO.id}"></td>
+                <td><input type="hidden" name="THE_PORTFOLIO_USER_ID" value="${THE_PORTFOLIO.user_id}"></td>
+                <td><input type="hidden" name="THE_PORTFOLIO_NAME" value="${THE_PORTFOLIO.name}"></td>
+            </tr>
+
+            <tr>
+                <td><label>Name: </label></td>
+                <td><input type="text" name="name" value="${THE_PORTFOLIO.name}"></td>
+            </tr>
+
+            <tr>
+                <td><label></label></td>
+                <td><input type="submit" value="Update"
+                           class="save"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+</body>
+</html>
