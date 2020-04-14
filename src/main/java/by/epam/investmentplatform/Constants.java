@@ -9,6 +9,7 @@ public final class Constants {
     public static final String COMMAND_ATTRIBUTE = "command";
     public static final String ERROR_ATTRIBUTE = "error";
     public static final String REDIRECT_URL_AFTER_LOGIN = "redirectUrlAfterLogin";
+    public static final String CURRENT_PAGE = "currentPage";
     public static final String CURRENT_USER_ID = "id";
     public static final String CURRENT_USER_LOGIN = "login";
     public static final String CURRENT_USER_ROLE = "role";

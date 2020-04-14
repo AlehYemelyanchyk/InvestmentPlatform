@@ -4,19 +4,23 @@ import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.controller.command.RequestParameterName;
 import by.epam.investmentplatform.entity.Portfolio;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
+import by.epam.investmentplatform.util.RoutingUtils;
 
-import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class UpdatePortfolioPostCommandImpl extends AbstractCommandExecutor {
 
     @Override
-    protected RequestDispatcher getDispatcher(HttpServletRequest request) throws ServiceException {
-        String newName = request.getParameter(RequestParameterName.REQUEST_PORTFOLIO_PARAM_NAME);
+    protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        String newName = req.getParameter(RequestParameterName.REQUEST_PORTFOLIO_PARAM_NAME);
         Portfolio portfolio = new Portfolio(
-                Integer.parseInt(request.getParameter("THE_PORTFOLIO_ID")),
-                Integer.parseInt(request.getParameter("THE_PORTFOLIO_USER_ID")),
-                request.getParameter("THE_PORTFOLIO_NAME"));
+                Integer.parseInt(req.getParameter("THE_PORTFOLIO_ID")),
+                Integer.parseInt(req.getParameter("THE_PORTFOLIO_USER_ID")),
+                req.getParameter("THE_PORTFOLIO_NAME"));
         String[] parameters = {newName};
         try {
             PORTFOLIO_SERVICE.updatePortfolio(portfolio, parameters);
@@ -24,6 +28,6 @@ public class UpdatePortfolioPostCommandImpl extends AbstractCommandExecutor {
             LOGGER.error("Update portfolio error: ", e);
             throw new ServiceException("Incorrect values");
         }
-        return request.getRequestDispatcher(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE);
+        RoutingUtils.forwardToPage(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE, req, resp);
     }
 }

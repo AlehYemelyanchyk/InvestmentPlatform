@@ -19,7 +19,7 @@
 <br/><br/>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Sign up</h2>
+        <h3 align="center">Sign up</h3>
     </div>
 </div>
 <div id="container">

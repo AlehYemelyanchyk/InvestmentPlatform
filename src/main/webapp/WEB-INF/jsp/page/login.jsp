@@ -11,7 +11,7 @@
 <br/><br/>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Log In</h2>
+        <h3 align="center">Log In</h3>
     </div>
 </div>
 

@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.filter;
 
 import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.util.RoutingUtils;
 
 import javax.servlet.FilterChain;
@@ -21,7 +22,7 @@ public class ErrorHandlerFilter extends AbstractFilter {
             String requestUrl = req.getRequestURI();
             req.setAttribute(Constants.ERROR_ATTRIBUTE, th.getMessage());
             LOGGER.error("Request " + requestUrl + " error: " + th.getMessage(), th);
-            RoutingUtils.forwardToPage("error.jsp", req, resp);
+            RoutingUtils.forwardToPage(JspPageName.ERROR_PAGE, req, resp);
         }
     }
 }

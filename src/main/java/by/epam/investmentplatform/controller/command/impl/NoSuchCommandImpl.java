@@ -1,12 +1,18 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import javax.servlet.RequestDispatcher;
+import by.epam.investmentplatform.controller.command.JspPageName;
+import by.epam.investmentplatform.util.RoutingUtils;
+
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class NoSuchCommandImpl extends AbstractCommandExecutor {
-    private static final String JSP_PATH = "/WEB-INF/jsp/page/error.jsp";
+
     @Override
-    protected RequestDispatcher getDispatcher(HttpServletRequest request) {
-        return request.getRequestDispatcher(JSP_PATH);
+    protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        RoutingUtils.forwardToPage(JspPageName.ERROR_PAGE, req, resp);
     }
 }

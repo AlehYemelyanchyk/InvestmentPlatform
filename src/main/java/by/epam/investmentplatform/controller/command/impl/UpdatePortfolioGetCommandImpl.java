@@ -4,22 +4,26 @@ import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Portfolio;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
+import by.epam.investmentplatform.util.RoutingUtils;
 
-import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 public class UpdatePortfolioGetCommandImpl extends AbstractCommandExecutor {
 
     @Override
-    protected RequestDispatcher getDispatcher(HttpServletRequest request) throws ServiceException {
-        int portfolioId = Integer.parseInt(request.getParameter("portfolioId"));
+    protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+        int portfolioId = Integer.parseInt(req.getParameter("portfolioId"));
         try {
             Portfolio portfolio = PORTFOLIO_SERVICE.getPortfolio(portfolioId);
-            request.setAttribute(Constants.THE_PORTFOLIO, portfolio);
+            req.setAttribute(Constants.THE_PORTFOLIO, portfolio);
         } catch (ServiceException e) {
             LOGGER.error("Add portfolio error: ", e);
             throw new ServiceException("Incorrect values");
         }
-        return request.getRequestDispatcher(JspPageName.UPDATE_PORTFOLIO_PAGE);
+        RoutingUtils.forwardToPage(JspPageName.UPDATE_PORTFOLIO_PAGE, req, resp);
     }
 }
