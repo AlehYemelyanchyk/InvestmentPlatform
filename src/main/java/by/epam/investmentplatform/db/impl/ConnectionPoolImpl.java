@@ -39,7 +39,7 @@ public class ConnectionPoolImpl implements ConnectionPool {
                         applicationConfiguration.getDbUrl(),
                         applicationConfiguration.getDbUser(),
                         applicationConfiguration.getDbPassword()));
-//                connection.setAutoCommit(false);
+                connection.setAutoCommit(false);
                 availableConnections.add(connection);
             } catch (SQLException e) {
                 LOGGER.error("DriverManager.getConnection problem: " + e.getMessage());

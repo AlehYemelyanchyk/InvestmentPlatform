@@ -2,16 +2,12 @@
 <html>
 <head>
     <title>Log In</title>
-
-    <link type="text/css" rel="stylesheet" href="css/style.css">
     <link type="text/css" rel="stylesheet" href="css/login.css">
 </head>
 <body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
 <div id="wrapper">
     <div id="header">
-        <h3 align="center">Log In</h3>
+        <h2 align="center">Log In</h2>
     </div>
 </div>
 

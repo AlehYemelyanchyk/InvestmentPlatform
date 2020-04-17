@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.controller.command.RequestParameterName;
 import by.epam.investmentplatform.entity.Portfolio;
@@ -18,9 +19,9 @@ public class UpdatePortfolioPostCommandImpl extends AbstractCommandExecutor {
             throws ServletException, IOException {
         String newName = req.getParameter(RequestParameterName.REQUEST_PORTFOLIO_PARAM_NAME);
         Portfolio portfolio = new Portfolio(
-                Integer.parseInt(req.getParameter("THE_PORTFOLIO_ID")),
-                Integer.parseInt(req.getParameter("THE_PORTFOLIO_USER_ID")),
-                req.getParameter("THE_PORTFOLIO_NAME"));
+                Integer.parseInt(req.getParameter(Constants.THE_PORTFOLIO_ID)),
+                Integer.parseInt(req.getParameter(Constants.THE_PORTFOLIO_USER_ID)),
+                req.getParameter(Constants.THE_PORTFOLIO_NAME));
         String[] parameters = {newName};
         try {
             PORTFOLIO_SERVICE.updatePortfolio(portfolio, parameters);

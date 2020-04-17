@@ -4,6 +4,11 @@ public final class Constants {
     public static final String USERS_LIST = "USERS_LIST";
     public static final String PORTFOLIOS_LIST = "PORTFOLIOS_LIST";
     public static final String THE_PORTFOLIO = "THE_PORTFOLIO";
+    public static final String THE_PORTFOLIO_ID = "THE_PORTFOLIO_ID";
+    public static final String THE_PORTFOLIO_USER_ID = "THE_PORTFOLIO_USER_ID";
+    public static final String THE_PORTFOLIO_NAME = "THE_PORTFOLIO_NAME";
+    public static final String PORTFOLIO_SECURITIES = "PORTFOLIO_SECURITIES";
+    public static final String PORTFOLIO_TRANSACTIONS = "PORTFOLIO_TRANSACTIONS";
     public static final String COUNTRIES_LIST = "COUNTRIES_LIST";
     public static final String COMMON_SERVLET_PATH = "/controller";
     public static final String COMMAND_ATTRIBUTE = "command";

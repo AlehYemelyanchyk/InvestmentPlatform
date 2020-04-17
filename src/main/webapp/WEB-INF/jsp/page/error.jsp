@@ -10,13 +10,8 @@
 <html>
 <head>
     <title>Error</title>
-
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/login.css">
 </head>
 <body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
 <div id="wrapper">
     <div id="header">
         <h2>Error</h2>

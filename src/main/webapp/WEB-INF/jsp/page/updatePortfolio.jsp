@@ -3,15 +3,9 @@
 <html>
 <head>
     <title>UpdatePortfolio</title>
-
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/addFormStyle.css">
-
 </head>
 
 <body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
 <div id="wrapper">
     <div id="header">
         <h2 align="center">Update portfolio</h2>

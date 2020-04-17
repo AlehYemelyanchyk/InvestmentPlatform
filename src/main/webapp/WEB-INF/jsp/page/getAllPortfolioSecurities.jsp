@@ -5,29 +5,23 @@
     <title>Users List</title>
 </head>
 <body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">All users list</h2>
+        <h2 align="center">${portfolioName}</h2>
     </div>
 </div>
 
 <div id="container">
     <div id="content">
+
         <table>
-            <tr>
-                <th>Login</th>
-                <th>Email</th>
-            </tr>
 
-            <c:forEach var="tempUsers" items="${USERS_LIST}">
-
+            <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
                 <tr>
-                    <td>${tempUsers.login}</td>
-                    <td>${tempUsers.email} </td>
+                    <td>
+                    <a href="${portfolioLink}">${security.name}</a>
+                    </td>
                 </tr>
-
             </c:forEach>>
         </table>
     </div>

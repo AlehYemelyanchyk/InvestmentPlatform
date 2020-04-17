@@ -5,11 +5,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>&lt;/&gt;DevStudy.net - IShop layout</title>
-	<link href="/static/css/bootstrap.css" rel="stylesheet">
-	<link href="/static/css/bootstrap-theme.css" rel="stylesheet">
-	<link href="/static/css/font-awesome.css" rel="stylesheet">
-	<link href="/static/css/app.css" rel="stylesheet">
+	<title>&lt;/&gt;Investment Platform</title>
+<%--	<link href="/static/css/bootstrap.css" rel="stylesheet">--%>
+<%--	<link href="/static/css/bootstrap-theme.css" rel="stylesheet">--%>
+<%--	<link href="/static/css/font-awesome.css" rel="stylesheet">--%>
+<%--	<link href="/static/css/app.css" rel="stylesheet">--%>
+
 </head>
 <body>
 <header>
@@ -21,7 +22,7 @@
 			<jsp:include page="fragment/aside.jsp" />
 		</aside>
 		<main class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
-			<jsp:include page="${currentPage }" />
+			<jsp:include page="${currentPage}" />
 		</main>
 	</div>
 </div>

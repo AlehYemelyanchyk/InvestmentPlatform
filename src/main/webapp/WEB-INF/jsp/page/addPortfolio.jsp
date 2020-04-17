@@ -2,10 +2,7 @@
 <html>
 <head>
     <title>Create a New Portfolio</title>
-
-    <link type="text/css" rel="stylesheet" href="css/style.css">
     <link type="text/css" rel="stylesheet" href="css/addFormStyle.css">
-
 </head>
 
 <body>

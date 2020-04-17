@@ -11,6 +11,7 @@ public final class JspPageName {
     public static final String SIGN_UP_PAGE = "/WEB-INF/jsp/page/signup.jsp";
     public static final String LOG_IN_PAGE = "/WEB-INF/jsp/page/login.jsp";
     public static final String ADD_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/addPortfolio.jsp";
+    public static final String GET_ALL_PORTFOLIO_SECURITIES = "/WEB-INF/jsp/page/getAllPortfolioSecurities.jsp";
     public static final String REMOVE_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/removePortfolio.jsp";
 
     private JspPageName() {

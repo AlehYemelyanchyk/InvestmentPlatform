@@ -23,6 +23,8 @@ public final class CommandProvider {
         repository.put("updatePortfolioPOST", new UpdatePortfolioPostCommandImpl());
         repository.put("removePortfolio.jspGET", new RemovePortfolioGetCommandImpl());
         repository.put("getAllUserPortfoliosGET", new GetAllUserPortfoliosGetCommandImpl());
+        repository.put("addSecurityGET", new AddSecurityGetCommandImpl());
+        repository.put("getAllPortfolioSecurities.jspGET", new GetAllPortfolioSecuritiesGetCommandImpl());
         repository.put("", new NoSuchCommandImpl());
     }
 

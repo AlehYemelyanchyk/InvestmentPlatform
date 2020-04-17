@@ -1,6 +1,8 @@
 package by.epam.investmentplatform.util;
 
 import by.epam.investmentplatform.entity.Portfolio;
+import by.epam.investmentplatform.entity.Transaction;
+import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.User;
 
 import java.sql.Connection;
@@ -40,6 +42,38 @@ public final class DAOUtils {
             portfolios.add(tempPortfolio);
         }
         return portfolios;
+    }
+
+    public static List<Security> securitiesResultSetHandler(ResultSet resultSet) throws SQLException {
+        List<Security> securities = new ArrayList<>();
+        while (resultSet.next()) {
+            Security tempSecurity = new Security(
+                    resultSet.getString("symbol"),
+                    resultSet.getString("name"),
+                    resultSet.getString("exchange"),
+                    resultSet.getDouble("current_price"),
+                    resultSet.getDouble("year_change_percents"),
+                    resultSet.getDouble("dividends"),
+                    resultSet.getString("security_type"));
+            securities.add(tempSecurity);
+        }
+        return securities;
+    }
+
+    public static List<Transaction> transactionsResultSetHandler(ResultSet resultSet) throws SQLException {
+        List<Transaction> transactions = new ArrayList<>();
+        while (resultSet.next()) {
+            Transaction tempSecurity = new Transaction(
+                    resultSet.getInt("id"),
+                    resultSet.getInt("portfolio_id"),
+                    resultSet.getString("security_symbol"),
+                    resultSet.getInt("transaction_type"),
+                    resultSet.getInt("amount"),
+                    resultSet.getDouble("price"),
+                    resultSet.getDate("date"));
+            transactions.add(tempSecurity);
+        }
+        return transactions;
     }
 
     public static List<String> stringsResultSetHandler(ResultSet resultSet, String column) throws SQLException {

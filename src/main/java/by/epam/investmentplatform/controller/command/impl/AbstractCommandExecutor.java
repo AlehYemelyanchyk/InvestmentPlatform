@@ -2,6 +2,7 @@ package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.controller.command.Command;
 import by.epam.investmentplatform.service.PortfolioService;
+import by.epam.investmentplatform.service.SecurityService;
 import by.epam.investmentplatform.service.UserService;
 import by.epam.investmentplatform.service.factory.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
@@ -16,6 +17,7 @@ public abstract class AbstractCommandExecutor implements Command {
     public final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
     public static final UserService USER_SERVICE = ServiceFactory.getInstance().getUserService();
     public static final PortfolioService PORTFOLIO_SERVICE = ServiceFactory.getInstance().getPortfolioService();
+    public static final SecurityService SECURITY_SERVICE = ServiceFactory.getInstance().getSecurityService();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

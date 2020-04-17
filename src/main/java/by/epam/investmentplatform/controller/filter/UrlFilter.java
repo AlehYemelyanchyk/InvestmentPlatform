@@ -32,6 +32,8 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add("updatePortfolio.jsp");
         BUSINESS_URIS.add("updatePortfolio");
         BUSINESS_URIS.add("removePortfolio.jsp");
+        BUSINESS_URIS.add("addSecurity");
+        BUSINESS_URIS.add("getAllPortfolioSecurities.jsp");
         BUSINESS_URIS.add("logout");
     }
 

@@ -1,27 +1,31 @@
-package by.epam.investmentplatform.entity;
+package by.epam.investmentplatform.model;
+
+import by.epam.investmentplatform.entity.Security;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-public class Security implements Serializable {
-    private static final long serialVersionUID = 2590962254936183355L;
+public class PortfolioSecurity implements Serializable {
+    private static final long serialVersionUID = -8553017786840784033L;
 
     private String symbol;
     private String name;
     private String exchange;
-    private double currentPrice;
+    private int amount;
+    private double averagePrice;
     private double yearChangePercents;
     private double dividends;
     private String securityType;
 
-    protected Security() {
+    protected PortfolioSecurity() {
     }
 
-    public Security(String symbol, String name, String exchange, double currentPrice, double yearChangePercents, double dividends, String securityType) {
+    public PortfolioSecurity(String symbol, String name, String exchange, int amount, double averagePrice, double yearChangePercents, double dividends, String securityType) {
         this.symbol = symbol;
         this.name = name;
         this.exchange = exchange;
-        this.currentPrice = currentPrice;
+        this.amount = amount;
+        this.averagePrice = averagePrice;
         this.yearChangePercents = yearChangePercents;
         this.dividends = dividends;
         this.securityType = securityType;
@@ -51,12 +55,20 @@ public class Security implements Serializable {
         this.exchange = exchange;
     }
 
-    public double getCurrentPrice() {
-        return currentPrice;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setCurrentPrice(double currentPrice) {
-        this.currentPrice = currentPrice;
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
+
+    public double getAveragePrice() {
+        return averagePrice;
+    }
+
+    public void setAveragePrice(double averagePrice) {
+        this.averagePrice = averagePrice;
     }
 
     public double getYearChangePercents() {
@@ -106,10 +118,11 @@ public class Security implements Serializable {
                 " symbol='" + symbol + '\'' +
                 ", name='" + name + '\'' +
                 ", exchange='" + exchange + '\'' +
-                ", currentPrice='" + currentPrice + '\'' +
+                ", currentPrice='" + averagePrice + '\'' +
                 ", yearChangePercents='" + yearChangePercents + '\'' +
                 ", dividends='" + dividends + '\'' +
                 ", securityType='" + securityType + '\'' +
                 '}';
     }
 }
+

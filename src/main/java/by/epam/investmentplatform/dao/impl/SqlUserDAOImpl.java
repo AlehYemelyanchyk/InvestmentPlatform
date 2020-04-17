@@ -100,7 +100,6 @@ public class SqlUserDAOImpl implements UserDAO {
         return user;
     }
 
-
     @Override
     public void saveUser(User user) throws DAOException {
         Connection connection = null;
@@ -108,7 +107,8 @@ public class SqlUserDAOImpl implements UserDAO {
         try {
             connection = CONNECTION_POOL.takeConnection();
             String country = getCountry(user.getCountry());
-            String sqlQuery = "INSERT INTO invest.users (role, login, password, email, name, surname, country) VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sqlQuery = "INSERT INTO invest.users (role, login, password, email, name, surname, country) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, user.getRole());
             statement.setString(2, user.getLogin());
