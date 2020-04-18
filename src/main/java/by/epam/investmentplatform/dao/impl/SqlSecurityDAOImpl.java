@@ -30,7 +30,7 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
             String sqlQuery = "SELECT * FROM invest.securities";
             statement = connection.prepareStatement(sqlQuery);
             resultSet = statement.executeQuery();
-            securities = DAOUtils.securitiesResultSetHandler(resultSet);
+            securities = DAOUtils.securitiesResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -61,7 +61,7 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, userId);
             resultSet = statement.executeQuery();
-            securities = DAOUtils.securitiesResultSetHandler(resultSet);
+            securities = DAOUtils.securitiesResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("DAO: Get all user securities SQL error: " + e.getMessage());
             throw new DAOException(e);
@@ -92,7 +92,7 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, portfolioId);
             resultSet = statement.executeQuery();
-            securities = DAOUtils.securitiesResultSetHandler(resultSet);
+            securities = DAOUtils.securitiesResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("DAO: Get all user securities SQL error: " + e.getMessage());
             throw new DAOException(e);
@@ -133,7 +133,7 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
             String sqlQuery = "SELECT * FROM invest.transactions";
             statement = connection.prepareStatement(sqlQuery);
             resultSet = statement.executeQuery();
-            transactions = DAOUtils.transactionsResultSetHandler(resultSet);
+            transactions = DAOUtils.transactionsResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -162,7 +162,7 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, portfolioId);
             resultSet = statement.executeQuery();
-            transactions = DAOUtils.transactionsResultSetHandler(resultSet);
+            transactions = DAOUtils.transactionsResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -193,7 +193,7 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, userId);
             resultSet = statement.executeQuery();
-            transactions = DAOUtils.transactionsResultSetHandler(resultSet);
+            transactions = DAOUtils.transactionsResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);

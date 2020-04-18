@@ -22,10 +22,6 @@ public abstract class AbstractCommandExecutor implements Command {
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         forwardToPage(req, resp);
-//        dispatcher.forward(request, response);
-//        String
-//        RoutingUtils.forwardToPage("login.jsp", request, response);
-//        RoutingUtils.forwardDispatcherToPage(dispatcher, request, response);
     }
 
     protected abstract void forwardToPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;

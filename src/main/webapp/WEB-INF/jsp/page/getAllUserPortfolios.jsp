@@ -26,17 +26,17 @@
 
             <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
 
-                <c:url var="portfolioLink" value="getAllPortfolioSecurities.jsp">
-                    <c:param name="portfolioName" value="${portfolio.name}"/>
+                <c:url var="portfolioLink" value="getAllPortfolioSecurities">
+<%--                    <c:param name="THE_PORTFOLIO_NAME" value="${portfolio.name}"/>--%>
                     <c:param name="THE_PORTFOLIO_ID" value="${portfolio.id}"/>
                 </c:url>
 
-                <c:url var="updateLink" value="updatePortfolio.jsp">
-                    <c:param name="portfolioId" value="${portfolio.id}"/>
+                <c:url var="updateLink" value="updatePortfolio">
+                    <c:param name="THE_PORTFOLIO_ID" value="${portfolio.id}"/>
                 </c:url>
 
-                <c:url var="removeLink" value="removePortfolio.jsp" >
-                    <c:param name="portfolioId" value="${portfolio.id}"/>
+                <c:url var="removeLink" value="removePortfolio" >
+                    <c:param name="THE_PORTFOLIO_ID" value="${portfolio.id}"/>
                 </c:url>
 
                 <tr>

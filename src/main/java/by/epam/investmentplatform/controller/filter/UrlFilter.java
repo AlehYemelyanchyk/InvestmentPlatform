@@ -29,11 +29,10 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add("getAllUsers");
         BUSINESS_URIS.add("getAllUserPortfolios");
         BUSINESS_URIS.add("addPortfolio");
-        BUSINESS_URIS.add("updatePortfolio.jsp");
         BUSINESS_URIS.add("updatePortfolio");
-        BUSINESS_URIS.add("removePortfolio.jsp");
+        BUSINESS_URIS.add("removePortfolio");
         BUSINESS_URIS.add("addSecurity");
-        BUSINESS_URIS.add("getAllPortfolioSecurities.jsp");
+        BUSINESS_URIS.add("getAllPortfolioSecurities");
         BUSINESS_URIS.add("logout");
     }
 

@@ -19,12 +19,13 @@ public final class CommandProvider {
         repository.put("logoutGET", new LogOutCommandImpl());
         repository.put("addPortfolioGET", new AddPortfolioGetCommandImpl());
         repository.put("addPortfolioPOST", new AddPortfolioPostCommandImpl());
-        repository.put("updatePortfolio.jspGET", new UpdatePortfolioGetCommandImpl());
+        repository.put("updatePortfolioGET", new UpdatePortfolioGetCommandImpl());
         repository.put("updatePortfolioPOST", new UpdatePortfolioPostCommandImpl());
-        repository.put("removePortfolio.jspGET", new RemovePortfolioGetCommandImpl());
+        repository.put("removePortfolioGET", new RemovePortfolioGetCommandImpl());
+        repository.put("removePortfolioPOST", new RemovePortfolioPOSTCommandImpl());
         repository.put("getAllUserPortfoliosGET", new GetAllUserPortfoliosGetCommandImpl());
         repository.put("addSecurityGET", new AddSecurityGetCommandImpl());
-        repository.put("getAllPortfolioSecurities.jspGET", new GetAllPortfolioSecuritiesGetCommandImpl());
+        repository.put("getAllPortfolioSecuritiesGET", new GetAllPortfolioSecuritiesGetCommandImpl());
         repository.put("", new NoSuchCommandImpl());
     }
 

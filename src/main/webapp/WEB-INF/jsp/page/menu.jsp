@@ -5,8 +5,16 @@
     <title>Menu</title>
 </head>
 <body>
-<p>
-    <a href="${pageContext.request.contextPath}/getAllUserPortfolios">All Portfolios</a>
-</p>
+<div id="container">
+    <div id="content">
+        <table>
+            <tr>
+                <td>
+                    <a href="${pageContext.request.contextPath}/getAllUserPortfolios">All Portfolios</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 </body>
 </html>

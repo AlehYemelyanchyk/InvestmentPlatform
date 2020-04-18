@@ -10,8 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import static by.epam.investmentplatform.Constants.COMMAND_ATTRIBUTE;
+import static by.epam.investmentplatform.Constants.COMMON_SERVLET_PATH;
 
-@WebServlet(urlPatterns = "/controller")
+@WebServlet(urlPatterns = COMMON_SERVLET_PATH)
 public class Controller extends AbstractController {
     private static final long serialVersionUID = 3164262627368034557L;
     private static final CommandProvider commandProvider = CommandProvider.getInstance();

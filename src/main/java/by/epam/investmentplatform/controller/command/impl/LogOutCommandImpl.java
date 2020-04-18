@@ -1,7 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.controller.command.JspPageName;
-import by.epam.investmentplatform.util.RoutingUtils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +15,6 @@ public class LogOutCommandImpl extends AbstractCommandExecutor {
             throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.invalidate();
-        RoutingUtils.forwardToPage(JspPageName.MAIN_PAGE, req, resp);
+        req.getRequestDispatcher(JspPageName.MAIN_PAGE).forward(req, resp);
     }
 }

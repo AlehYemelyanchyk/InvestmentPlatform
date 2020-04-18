@@ -15,7 +15,7 @@ import java.util.Objects;
 
 public final class DAOUtils {
 
-    public static List<User> usersResultSetHandler(ResultSet resultSet) throws SQLException {
+    public static List<User> usersResultSetHandle(ResultSet resultSet) throws SQLException {
         List<User> users = new ArrayList<>();
         while (resultSet.next()) {
             User tempUser = new User(
@@ -32,7 +32,7 @@ public final class DAOUtils {
         return users;
     }
 
-    public static List<Portfolio> portfoliosResultSetHandler(ResultSet resultSet) throws SQLException {
+    public static List<Portfolio> portfoliosResultSetHandle(ResultSet resultSet) throws SQLException {
         List<Portfolio> portfolios = new ArrayList<>();
         while (resultSet.next()) {
             Portfolio tempPortfolio = new Portfolio(
@@ -44,7 +44,7 @@ public final class DAOUtils {
         return portfolios;
     }
 
-    public static List<Security> securitiesResultSetHandler(ResultSet resultSet) throws SQLException {
+    public static List<Security> securitiesResultSetHandle(ResultSet resultSet) throws SQLException {
         List<Security> securities = new ArrayList<>();
         while (resultSet.next()) {
             Security tempSecurity = new Security(
@@ -60,7 +60,7 @@ public final class DAOUtils {
         return securities;
     }
 
-    public static List<Transaction> transactionsResultSetHandler(ResultSet resultSet) throws SQLException {
+    public static List<Transaction> transactionsResultSetHandle(ResultSet resultSet) throws SQLException {
         List<Transaction> transactions = new ArrayList<>();
         while (resultSet.next()) {
             Transaction tempSecurity = new Transaction(
@@ -76,7 +76,7 @@ public final class DAOUtils {
         return transactions;
     }
 
-    public static List<String> stringsResultSetHandler(ResultSet resultSet, String column) throws SQLException {
+    public static List<String> stringsResultSetHandle(ResultSet resultSet, String column) throws SQLException {
         List<String> strings = new ArrayList<>();
         while (resultSet.next()) {
             String value = resultSet.getString(column);

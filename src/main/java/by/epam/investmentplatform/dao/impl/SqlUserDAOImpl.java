@@ -31,7 +31,7 @@ public class SqlUserDAOImpl implements UserDAO {
             String sqlQuery = "SELECT * FROM invest.users ORDER BY invest.users.id";
             statement = connection.prepareStatement(sqlQuery);
             resultSet = statement.executeQuery();
-            users = DAOUtils.usersResultSetHandler(resultSet);
+            users = DAOUtils.usersResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -58,7 +58,7 @@ public class SqlUserDAOImpl implements UserDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, String.valueOf(id));
             resultSet = statement.executeQuery();
-            user = DAOUtils.usersResultSetHandler(resultSet).get(Constants.ZERO_LIST_ELEMENT);
+            user = DAOUtils.usersResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -85,7 +85,7 @@ public class SqlUserDAOImpl implements UserDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, String.valueOf(login));
             resultSet = statement.executeQuery();
-            user = DAOUtils.usersResultSetHandler(resultSet).get(Constants.ZERO_LIST_ELEMENT);
+            user = DAOUtils.usersResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -190,7 +190,7 @@ public class SqlUserDAOImpl implements UserDAO {
             String sqlQuery = "SELECT name FROM invest.countries";
             statement = connection.prepareStatement(sqlQuery);
             resultSet = statement.executeQuery();
-            countries = DAOUtils.stringsResultSetHandler(resultSet, COUNTRIES_COLUMN_NAME);
+            countries = DAOUtils.stringsResultSetHandle(resultSet, COUNTRIES_COLUMN_NAME);
         } catch (Exception e) {
             LOGGER.error("DAO: Get all countries SQL error: " + e.getMessage());
             throw new DAOException(e);

@@ -10,7 +10,7 @@ public final class Constants {
     public static final String PORTFOLIO_SECURITIES = "PORTFOLIO_SECURITIES";
     public static final String PORTFOLIO_TRANSACTIONS = "PORTFOLIO_TRANSACTIONS";
     public static final String COUNTRIES_LIST = "COUNTRIES_LIST";
-    public static final String COMMON_SERVLET_PATH = "/controller";
+    public static final String COMMON_SERVLET_PATH = "/controllerServlet";
     public static final String COMMAND_ATTRIBUTE = "command";
     public static final String ERROR_ATTRIBUTE = "error";
     public static final String REDIRECT_URL_AFTER_LOGIN = "redirectUrlAfterLogin";

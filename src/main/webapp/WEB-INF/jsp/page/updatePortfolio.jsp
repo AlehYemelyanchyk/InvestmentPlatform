@@ -13,15 +13,15 @@
 </div>
 
 <div id="container">
-    <form action="updatePortfolio" method="POST">
+    <form action="${pageContext.request.contextPath}/updatePortfolio" method="POST">
         <table>
             <tbody>
 
-            <tr>
-                <td><input type="hidden" name="THE_PORTFOLIO_ID" value="${THE_PORTFOLIO.id}"></td>
-                <td><input type="hidden" name="THE_PORTFOLIO_USER_ID" value="${THE_PORTFOLIO.user_id}"></td>
-                <td><input type="hidden" name="THE_PORTFOLIO_NAME" value="${THE_PORTFOLIO.name}"></td>
-            </tr>
+<%--            <tr>--%>
+<%--                <td><input type="hidden" name="THE_PORTFOLIO_ID" value="${THE_PORTFOLIO.id}"></td>--%>
+<%--                <td><input type="hidden" name="THE_PORTFOLIO_USER_ID" value="${THE_PORTFOLIO.user_id}"></td>--%>
+<%--                <td><input type="hidden" name="THE_PORTFOLIO_NAME" value="${THE_PORTFOLIO.name}"></td>--%>
+<%--            </tr>--%>
 
             <tr>
                 <td><label>Name: </label></td>
@@ -30,8 +30,7 @@
 
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" value="Update"
-                           class="save"></td>
+                <td><input type="submit" value="Update" class="save"></td>
             </tr>
             </tbody>
         </table>
