@@ -1,9 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<head>
-    <title>Users List</title>
-</head>
 <body>
 <div id="wrapper">
     <div id="header">
@@ -27,7 +24,7 @@
             <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
 
                 <c:url var="portfolioLink" value="getAllPortfolioSecurities">
-<%--                    <c:param name="THE_PORTFOLIO_NAME" value="${portfolio.name}"/>--%>
+                    <c:param name="THE_PORTFOLIO_NAME" value="${portfolio.name}"/>
                     <c:param name="THE_PORTFOLIO_ID" value="${portfolio.id}"/>
                 </c:url>
 
@@ -35,7 +32,7 @@
                     <c:param name="THE_PORTFOLIO_ID" value="${portfolio.id}"/>
                 </c:url>
 
-                <c:url var="removeLink" value="removePortfolio" >
+                <c:url var="removeLink" value="removePortfolio">
                     <c:param name="THE_PORTFOLIO_ID" value="${portfolio.id}"/>
                 </c:url>
 
@@ -51,7 +48,6 @@
                             Delete</a>
                     </td>
                 </tr>
-
             </c:forEach>>
         </table>
     </div>

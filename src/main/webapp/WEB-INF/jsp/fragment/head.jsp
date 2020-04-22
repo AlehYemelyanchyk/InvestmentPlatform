@@ -10,9 +10,8 @@
     </div>
     <div>
         <p align="right">
-            <c:if test="${login != null}">
-                <c:out value="Welcome, ${login}! "/>
-                <a href="${pageContext.request.contextPath}/logout">Log out</a>
+            <c:if test="${CURRENT_USER_ID != null}">
+                <a href="${pageContext.request.contextPath}/userSettings">${CURRENT_USER_LOGIN}</a>
             </c:if>
         </p>
     </div>

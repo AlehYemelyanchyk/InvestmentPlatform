@@ -1,16 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Aleh
-  Date: 3/23/2020
-  Time: 8:52 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <html>
-<head>
-    <title>Error</title>
-</head>
 <body>
 <div id="wrapper">
     <div id="header">
@@ -20,7 +10,7 @@
 
 <div id="container">
     <table>
-            <c:out value="${error}"/>
+            <c:out value="${ERROR_ATTRIBUTE}"/>
         </table>
     </form>
 </div>

@@ -22,7 +22,7 @@
 			<jsp:include page="fragment/aside.jsp" />
 		</aside>
 		<main class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
-			<jsp:include page="${currentPage}" />
+			<jsp:include page="${CURRENT_PAGE}" />
 		</main>
 	</div>
 </div>

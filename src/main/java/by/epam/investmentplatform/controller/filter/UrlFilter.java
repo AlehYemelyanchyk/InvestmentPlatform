@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.controller.filter;
 
+import by.epam.investmentplatform.CommandsConstants;
 import by.epam.investmentplatform.Constants;
 
 import javax.servlet.FilterChain;
@@ -22,18 +23,21 @@ public class UrlFilter extends AbstractFilter {
     private static final Set<String> BUSINESS_URIS = new HashSet<>();
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        BUSINESS_URIS.add("signup");
-        BUSINESS_URIS.add("login");
-        BUSINESS_URIS.add("main");
-        BUSINESS_URIS.add("getAllUsers");
-        BUSINESS_URIS.add("getAllUserPortfolios");
-        BUSINESS_URIS.add("addPortfolio");
-        BUSINESS_URIS.add("updatePortfolio");
-        BUSINESS_URIS.add("removePortfolio");
-        BUSINESS_URIS.add("addSecurity");
-        BUSINESS_URIS.add("getAllPortfolioSecurities");
-        BUSINESS_URIS.add("logout");
+    public void init(FilterConfig filterConfig){
+        BUSINESS_URIS.add(CommandsConstants.ADD_PORTFOLIO_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_SECURITY_TRANSACTIONS_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_USERS_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.LOGIN_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.LOGOUT_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.MAIN_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.REMOVE_PORTFOLIO_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.SIGNUP_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_PORTFOLIO_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_USER_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.USER_SETTINGS_COMMAND);
     }
 
     @Override

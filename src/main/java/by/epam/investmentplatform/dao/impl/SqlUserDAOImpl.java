@@ -31,6 +31,7 @@ public class SqlUserDAOImpl implements UserDAO {
             String sqlQuery = "SELECT * FROM invest.users ORDER BY invest.users.id";
             statement = connection.prepareStatement(sqlQuery);
             resultSet = statement.executeQuery();
+            connection.commit();
             users = DAOUtils.usersResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
@@ -58,6 +59,7 @@ public class SqlUserDAOImpl implements UserDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, String.valueOf(id));
             resultSet = statement.executeQuery();
+            connection.commit();
             user = DAOUtils.usersResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
@@ -85,6 +87,7 @@ public class SqlUserDAOImpl implements UserDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, String.valueOf(login));
             resultSet = statement.executeQuery();
+            connection.commit();
             user = DAOUtils.usersResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
@@ -118,6 +121,7 @@ public class SqlUserDAOImpl implements UserDAO {
             statement.setString(6, user.getSurname());
             statement.setString(7, country);
             statement.executeUpdate();
+            connection.commit();
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -143,6 +147,7 @@ public class SqlUserDAOImpl implements UserDAO {
             statement.setString(2, params[1]);
             statement.setString(3, String.valueOf(user.getId()));
             statement.executeUpdate();
+            connection.commit();
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -166,6 +171,7 @@ public class SqlUserDAOImpl implements UserDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, String.valueOf(user.getId()));
             statement.executeUpdate();
+            connection.commit();
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -190,6 +196,7 @@ public class SqlUserDAOImpl implements UserDAO {
             String sqlQuery = "SELECT name FROM invest.countries";
             statement = connection.prepareStatement(sqlQuery);
             resultSet = statement.executeQuery();
+            connection.commit();
             countries = DAOUtils.stringsResultSetHandle(resultSet, COUNTRIES_COLUMN_NAME);
         } catch (Exception e) {
             LOGGER.error("DAO: Get all countries SQL error: " + e.getMessage());
@@ -216,6 +223,7 @@ public class SqlUserDAOImpl implements UserDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, countryName);
             resultSet = statement.executeQuery();
+            connection.commit();
             while (resultSet.next()) {
                 country = resultSet.getString("ISO_numeric");
             }

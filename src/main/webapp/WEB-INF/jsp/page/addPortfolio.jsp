@@ -1,11 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Create a New Portfolio</title>
-    <link type="text/css" rel="stylesheet" href="css/addFormStyle.css">
-</head>
-
 <body>
+<link type="text/css" rel="stylesheet" href="css/addFormStyle.css">
 <div id="wrapper">
     <div id="header">
         <h2 align="center">All users list</h2>

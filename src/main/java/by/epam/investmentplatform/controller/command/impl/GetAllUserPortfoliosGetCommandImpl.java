@@ -18,7 +18,7 @@ public class GetAllUserPortfoliosGetCommandImpl extends AbstractCommandExecutor 
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            int userId = (int) (req.getSession().getAttribute("id"));
+            int userId = (int) (req.getSession().getAttribute(Constants.CURRENT_USER_ID));
             List<Portfolio> allPortfolios = PORTFOLIO_SERVICE.getAllUserPortfolios(userId);
             req.setAttribute(Constants.PORTFOLIOS_LIST, allPortfolios);
         } catch (ServiceException e) {

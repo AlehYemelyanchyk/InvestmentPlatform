@@ -31,6 +31,7 @@ public class SqlPortfolioDAOImpl implements PortfolioDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, userId);
             resultSet = statement.executeQuery();
+            connection.commit();
             portfolios = DAOUtils.portfoliosResultSetHandle(resultSet);
         } catch (Exception e) {
             LOGGER.error("DAO: Get all portfolios SQL error: " + e.getMessage());
@@ -58,6 +59,7 @@ public class SqlPortfolioDAOImpl implements PortfolioDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, portfolioId);
             resultSet = statement.executeQuery();
+            connection.commit();
             portfolio = DAOUtils.portfoliosResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
             LOGGER.error("DAO: Get portfolio SQL error: " + e.getMessage());
@@ -84,6 +86,7 @@ public class SqlPortfolioDAOImpl implements PortfolioDAO {
             statement.setInt(1, portfolio.getUser_id());
             statement.setString(2, portfolio.getName());
             statement.executeUpdate();
+            connection.commit();
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -103,11 +106,12 @@ public class SqlPortfolioDAOImpl implements PortfolioDAO {
         PreparedStatement statement = null;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "UPDATE invest.portfolios SET name = 'MyBon' WHERE id = 20";
+            String sqlQuery = "UPDATE invest.portfolios SET name = ? WHERE id = ?";
             statement = connection.prepareStatement(sqlQuery);
-//            statement.setString(1, params[Constants.ZERO_LIST_ELEMENT]);
-//            statement.setString(2, String.valueOf(portfolio.getId()));
+            statement.setString(1, params[Constants.ZERO_LIST_ELEMENT]);
+            statement.setString(2, String.valueOf(portfolio.getId()));
             statement.executeUpdate();
+            connection.commit();
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);
@@ -131,6 +135,7 @@ public class SqlPortfolioDAOImpl implements PortfolioDAO {
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, portfolioId);
             statement.executeUpdate();
+            connection.commit();
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);

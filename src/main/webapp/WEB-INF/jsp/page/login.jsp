@@ -1,10 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>Log In</title>
-    <link type="text/css" rel="stylesheet" href="css/login.css">
-</head>
 <body>
+<link type="text/css" rel="stylesheet" href="css/login.css">
 <div id="wrapper">
     <div id="header">
         <h2 align="center">Log In</h2>
@@ -12,7 +9,7 @@
 </div>
 
 <div id="container">
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <form action="${pageContext.request.contextPath}/login" method="POST">
         <table>
             <tbody>
             <tr>

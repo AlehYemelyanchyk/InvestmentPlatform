@@ -1,14 +1,9 @@
-<jsp:useBean id="THE_PORTFOLIO" scope="request" type="by.epam.investmentplatform.entity.Portfolio"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head>
-    <title>UpdatePortfolio</title>
-</head>
-
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Update portfolio</h2>
+        <h2 align="center">Edit portfolio</h2>
     </div>
 </div>
 
@@ -17,11 +12,11 @@
         <table>
             <tbody>
 
-<%--            <tr>--%>
-<%--                <td><input type="hidden" name="THE_PORTFOLIO_ID" value="${THE_PORTFOLIO.id}"></td>--%>
-<%--                <td><input type="hidden" name="THE_PORTFOLIO_USER_ID" value="${THE_PORTFOLIO.user_id}"></td>--%>
-<%--                <td><input type="hidden" name="THE_PORTFOLIO_NAME" value="${THE_PORTFOLIO.name}"></td>--%>
-<%--            </tr>--%>
+            <tr>
+                <td><input type="hidden" name="THE_PORTFOLIO_ID" value="${THE_PORTFOLIO.id}"></td>
+                <td><input type="hidden" name="THE_PORTFOLIO_USER_ID" value="${THE_PORTFOLIO.user_id}"></td>
+                <td><input type="hidden" name="THE_PORTFOLIO_NAME" value="${THE_PORTFOLIO.name}"></td>
+            </tr>
 
             <tr>
                 <td><label>Name: </label></td>
