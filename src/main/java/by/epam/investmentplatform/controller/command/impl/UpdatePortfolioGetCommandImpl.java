@@ -16,10 +16,10 @@ public class UpdatePortfolioGetCommandImpl extends AbstractCommandExecutor {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int portfolioId = Integer.parseInt(req.getParameter(Constants.THE_PORTFOLIO_ID));
+        int portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
         try {
             Portfolio portfolio = PORTFOLIO_SERVICE.getPortfolio(portfolioId);
-            req.setAttribute(Constants.THE_PORTFOLIO, portfolio);
+            req.setAttribute(Constants.PORTFOLIO, portfolio);
         } catch (ServiceException e) {
             LOGGER.error("Get portfolio error: ", e);
             throw new ServiceException("Incorrect values");

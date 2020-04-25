@@ -7,13 +7,13 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Create a new portfolio</h2>
+        <h2 align="center">Add a security</h2>
     </div>
 </div>
 
 <div id="container">
     <div id="content">
-        <form action="addPortfolio" method="POST">
+        <form action="addSecurity" method="POST">
             <table>
                 <tbody>
                 <tr>

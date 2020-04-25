@@ -86,10 +86,14 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
         List<Security> securities;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.symbol, a.name, a.exchange, a.current_price, a.year_change_percents, a.dividends, a.security_type, b.transaction_type " +
+            String sqlQuery = "SELECT a.symbol, a.name, c.name as exchange, a.current_price, a.year_change_percents, a.dividends, d.type " +
                     "FROM invest.securities as a " +
                     "JOIN invest.transactions as b " +
                     "ON a.symbol = b.security_symbol " +
+                    "JOIN invest.exchanges as c " +
+                    "ON a.exchange = c.id " +
+                    "JOIN invest.security_types as d " +
+                    "ON a.security_type = d.id " +
                     "WHERE b.portfolio_id = ?";
             statement = connection.prepareStatement(sqlQuery);
             statement.setInt(1, portfolioId);

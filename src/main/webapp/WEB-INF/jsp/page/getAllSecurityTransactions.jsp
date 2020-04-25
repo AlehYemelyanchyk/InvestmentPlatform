@@ -4,7 +4,7 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">${THE_SECURITY_NAME}</h2>
+        <h2 align="center">${SECURITY_NAME}</h2>
     </div>
 </div>
 
@@ -23,8 +23,8 @@
             <c:forEach var="transaction" items="${SECURITY_TRANSACTIONS}">
 
                 <%--                <c:url var="transactionLink" value="getAllSecurityTransactions">--%>
-                <%--                    <c:param name="THE_SECURITY_NAME" value="${security.name}"/>--%>
-                <%--                    <c:param name="THE_SECURITY_ID" value="${security.id}"/>--%>
+                <%--                    <c:param name="SECURITY_NAME" value="${security.name}"/>--%>
+                <%--                    <c:param name="SECURITY_ID" value="${security.id}"/>--%>
                 <%--                </c:url>--%>
 
                 <tr>

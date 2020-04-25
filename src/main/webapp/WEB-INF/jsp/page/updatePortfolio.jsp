@@ -13,14 +13,14 @@
             <tbody>
 
             <tr>
-                <td><input type="hidden" name="THE_PORTFOLIO_ID" value="${THE_PORTFOLIO.id}"></td>
-                <td><input type="hidden" name="THE_PORTFOLIO_USER_ID" value="${THE_PORTFOLIO.user_id}"></td>
-                <td><input type="hidden" name="THE_PORTFOLIO_NAME" value="${THE_PORTFOLIO.name}"></td>
+                <td><input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO.id}"></td>
+                <td><input type="hidden" name="PORTFOLIO_USER_ID" value="${PORTFOLIO.user_id}"></td>
+                <td><input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO.name}"></td>
             </tr>
 
             <tr>
                 <td><label>Name: </label></td>
-                <td><input type="text" name="name" value="${THE_PORTFOLIO.name}"></td>
+                <td><input type="text" name="name" value="${PORTFOLIO.name}"></td>
             </tr>
 
             <tr>

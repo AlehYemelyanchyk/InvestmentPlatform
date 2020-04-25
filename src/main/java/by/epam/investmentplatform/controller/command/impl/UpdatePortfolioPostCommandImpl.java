@@ -19,9 +19,9 @@ public class UpdatePortfolioPostCommandImpl extends AbstractCommandExecutor {
             throws ServletException, IOException {
         String newName = req.getParameter(RequestParameterName.REQUEST_PORTFOLIO_PARAM_NAME);
         Portfolio portfolio = new Portfolio(
-                Integer.parseInt(req.getParameter(Constants.THE_PORTFOLIO_ID)),
-                Integer.parseInt(req.getParameter(Constants.THE_PORTFOLIO_USER_ID)),
-                req.getParameter(Constants.THE_PORTFOLIO_NAME));
+                Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID)),
+                Integer.parseInt(req.getParameter(Constants.PORTFOLIO_USER_ID)),
+                req.getParameter(Constants.PORTFOLIO_NAME));
         String[] parameters = {newName};
         try {
             PORTFOLIO_SERVICE.updatePortfolio(portfolio, parameters);

@@ -15,18 +15,18 @@ public final class Constants {
     public static final String CURRENT_USER_SURNAME = "CURRENT_USER_SURNAME";
     public static final String CURRENT_USER_COUNTRY = "CURRENT_USER_COUNTRY";
     public static final String ERROR_ATTRIBUTE = "ERROR_ATTRIBUTE";
-    public static final String PORTFOLIO_SECURITIES = "PORTFOLIO_SECURITIES";
-    public static final String PORTFOLIO_TRANSACTIONS = "PORTFOLIO_TRANSACTIONS";
-    public static final String PORTFOLIOS_LIST = "PORTFOLIOS_LIST";
     public static final String REDIRECT_LINK = "REDIRECT_LINK";
     public static final String REDIRECT_URL_AFTER_LOGIN = "REDIRECT_URL_AFTER_LOGIN";
     public static final String SECURITY_TRANSACTIONS = "SECURITY_TRANSACTIONS";
-    public static final String THE_PORTFOLIO = "THE_PORTFOLIO";
-    public static final String THE_PORTFOLIO_ID = "THE_PORTFOLIO_ID";
-    public static final String THE_PORTFOLIO_USER_ID = "THE_PORTFOLIO_USER_ID";
-    public static final String THE_PORTFOLIO_NAME = "THE_PORTFOLIO_NAME";
-    public static final String THE_SECURITY_NAME = "THE_SECURITY_NAME";
-    public static final String THE_SECURITY_SYMBOL = "THE_SECURITY_SYMBOL";
+    public static final String PORTFOLIO = "PORTFOLIO";
+    public static final String PORTFOLIO_ID = "PORTFOLIO_ID";
+    public static final String PORTFOLIOS_LIST = "PORTFOLIOS_LIST";
+    public static final String PORTFOLIO_NAME = "PORTFOLIO_NAME";
+    public static final String PORTFOLIO_SECURITIES = "PORTFOLIO_SECURITIES";
+    public static final String PORTFOLIO_TRANSACTIONS = "PORTFOLIO_TRANSACTIONS";
+    public static final String PORTFOLIO_USER_ID = "PORTFOLIO_USER_ID";
+    public static final String SECURITY_NAME = "SECURITY_NAME";
+    public static final String SECURITY_SYMBOL = "SECURITY_SYMBOL";
     public static final String USERS_LIST = "USERS_LIST";
     public static final int ZERO_LIST_ELEMENT = 0;
 
