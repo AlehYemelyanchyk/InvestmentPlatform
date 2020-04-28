@@ -25,6 +25,7 @@ public final class Constants {
     public static final String PORTFOLIO_SECURITIES = "PORTFOLIO_SECURITIES";
     public static final String PORTFOLIO_TRANSACTIONS = "PORTFOLIO_TRANSACTIONS";
     public static final String PORTFOLIO_USER_ID = "PORTFOLIO_USER_ID";
+    public static final String SECURITIES_LIST = "SECURITIES_LIST";
     public static final String SECURITY_NAME = "SECURITY_NAME";
     public static final String SECURITY_SYMBOL = "SECURITY_SYMBOL";
     public static final String USERS_LIST = "USERS_LIST";

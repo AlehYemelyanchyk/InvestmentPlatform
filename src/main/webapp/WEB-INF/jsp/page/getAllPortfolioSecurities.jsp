@@ -5,7 +5,8 @@
 <head>
     <link type="text/css" rel="stylesheet" href="css/tabsStyle.css">
     <link type="text/css" rel="stylesheet" href="css/autocompleteSearch.css">
-    <%--<script src="js/tabs.js"></script>--%>
+    <script type="text/javascript" src="jquery-3.5.0.min.js"></script>
+<%--    <script type="text/javascript" src="js/tabs.js"></script>--%>
 </head>
 
 <body>
@@ -14,25 +15,22 @@
         <h2 align="center">${PORTFOLIO_NAME}</h2>
     </div>
 </div>
+
 <div id="container">
     <div id="content">
 
         <div class="autocomplete">
-            <input type="text" placeholder="symbol">
+            <input type="text" placeholder="What is your favourite US state?">
             <span class="close">Cancel</span>
             <div class="dialog">
-
             </div>
         </div>
-<%--        <input type="button" value="Add Symbol"--%>
-<%--               onclick="window.location.href='addSecurity'; return false;"--%>
-<%--               class="add-button"--%>
-<%--        />--%>
 
         <div class="tabs_names">
             <li data-tab-target="#holdings" class="active tab">Holdings</li>
             <li data-tab-target="#transactions" class="tab">Transactions</li>
         </div>
+
         <div class="tabs_content">
             <div id="holdings" data-tab-content class="active">
                 <table>
@@ -151,6 +149,65 @@
             target.classList.add('active')
         })
     })
+</script>
+<script>
+    $(function () {
+        var alreadyFilled = false;
+        var symbols = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California',
+            'Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia',
+            'Wisconsin','Wyoming'];
+
+        function initDialog() {
+            clearDialog();
+            for (var i = 0; i < symbols.length; i++) {
+                $('.dialog').append('<div>' + symbols[i] + '</div>');
+            }
+        }
+
+        function clearDialog() {
+            $('.dialog').empty();
+        }
+
+        $('.autocomplete input').click(function () {
+            if (!alreadyFilled) {
+                $('.dialog').addClass('open');
+            }
+
+        });
+        $('body').on('click', '.dialog > div', function () {
+            $('.autocomplete input').val($(this).text()).focus();
+            $('.autocomplete .close').addClass('visible');
+            alreadyFilled = true;
+        });
+        $('.autocomplete .close').click(function () {
+            alreadyFilled = false;
+            $('.dialog').addClass('open');
+            $('.autocomplete input').val('').focus();
+            $(this).removeClass('visible');
+        });
+
+        function match(str) {
+            str = str.toLowerCase();
+            clearDialog();
+            for (var i = 0; i < symbols.length; i++) {
+                if (symbols[i].toLowerCase().startsWith(str)) {
+                    $('.dialog').append('<div>' + symbols[i] + '</div>');
+                }
+            }
+        }
+
+        $('.autocomplete input').on('input', function () {
+            $('.dialog').addClass('open');
+            alreadyFilled = false;
+            match($(this).val());
+        });
+        $('body').click(function (e) {
+            if (!$(e.target).is("input, .close")) {
+                $('.dialog').removeClass('open');
+            }
+        });
+        initDialog();
+    });
 </script>
 </body>
 </html>

@@ -4,6 +4,10 @@ html, body{
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 }
 
+footer {
+	font-size: 14px; padding: 10px 0;
+}
+
 table {
 	border-collapse:collapse;
 	border-bottom:1px solid gray;

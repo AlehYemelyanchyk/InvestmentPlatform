@@ -14,12 +14,12 @@
             <tbody>
             <tr>
                 <td><label>Login:</label></td>
-                <td><input type="text" name="login"></td>
+                <td><input type="text" name="login" placeholder="Login" autocomplete="off"></td>
             </tr>
 
             <tr>
                 <td><label>Password:</label></td>
-                <td><input type="password" name="password"></td>
+                <td><input type="password" name="password" placeholder="Password" autocomplete="off"></td>
             </tr>
 
             <tr>
