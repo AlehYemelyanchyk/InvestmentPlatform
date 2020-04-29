@@ -28,6 +28,7 @@ public final class CommandProvider {
         repository.put(CommandsConstants.SIGNUP_COMMAND + GET_METHOD, new SignUpGetCommandImpl());
         repository.put(CommandsConstants.SIGNUP_COMMAND + POST_METHOD, new SignUpPostCommandImpl());
         repository.put(CommandsConstants.REMOVE_PORTFOLIO_COMMAND + GET_METHOD, new RemovePortfolioGetCommandImpl());
+        repository.put(CommandsConstants.REMOVE_SECURITY_FROM_PORTFOLIO_COMMAND + POST_METHOD, new RemoveSecurityFromPortfolioPostCommandImpl());
         repository.put(CommandsConstants.UPDATE_PORTFOLIO_COMMAND + GET_METHOD, new UpdatePortfolioGetCommandImpl());
         repository.put(CommandsConstants.UPDATE_PORTFOLIO_COMMAND + POST_METHOD, new UpdatePortfolioPostCommandImpl());
         repository.put(CommandsConstants.UPDATE_USER_COMMAND + GET_METHOD, new UpdateUserGetCommandImpl());

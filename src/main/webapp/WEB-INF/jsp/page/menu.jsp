@@ -6,7 +6,10 @@
         <table>
             <tr>
                 <td>
-                    <a href="${pageContext.request.contextPath}/getAllUserPortfolios">All Portfolios</a>
+                    <a href="${pageContext.request.contextPath}/getAllUserPortfolios">Portfolios</a>
+                </td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/getAllSecurities">Securities</a>
                 </td>
             </tr>
         </table>

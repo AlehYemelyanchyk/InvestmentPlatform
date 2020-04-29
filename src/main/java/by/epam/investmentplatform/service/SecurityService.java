@@ -24,4 +24,8 @@ public interface SecurityService {
     List<Transaction> getAllUserTransactions(int userId) throws ServiceException;
 
     void saveSecurity(Security security) throws ServiceException;
+
+    void removeSecurity(String symbol) throws ServiceException;
+
+    void removeSecurityFromPortfolio(int portfolioId, String symbol) throws ServiceException;
 }

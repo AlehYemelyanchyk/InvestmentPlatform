@@ -12,6 +12,7 @@ public final class CommandsConstants {
     public static final String LOGOUT_COMMAND = "logout";
     public static final String MAIN_COMMAND = "main";
     public static final String REMOVE_PORTFOLIO_COMMAND = "removePortfolio";
+    public static final String REMOVE_SECURITY_FROM_PORTFOLIO_COMMAND = "removeSecurityFromPortfolio";
     public static final String SIGNUP_COMMAND = "signup";
     public static final String UPDATE_PORTFOLIO_COMMAND = "updatePortfolio";
     public static final String UPDATE_USER_COMMAND = "updateUser";

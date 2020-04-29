@@ -130,6 +130,32 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
     }
 
     @Override
+    public void removeSecurityFromPortfolio(int portfolioId, String symbol) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "DELETE FROM invest.transactions " +
+                    "WHERE portfolio_id = ? AND security_symbol = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setInt(1, portfolioId);
+            statement.setString(2, symbol);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("SQL connection error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
     public List<Transaction> getAllTransactions() throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -267,6 +293,25 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
 
     @Override
     public void removeSecurity(String symbol) throws DAOException {
-
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "DELETE FROM invest.securities WHERE symbol = ?;";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, symbol);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("SQL connection error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
     }
 }

@@ -6,7 +6,7 @@
     <link type="text/css" rel="stylesheet" href="css/tabsStyle.css">
     <link type="text/css" rel="stylesheet" href="css/autocompleteSearch.css">
     <script type="text/javascript" src="jquery-3.5.0.min.js"></script>
-<%--    <script type="text/javascript" src="js/tabs.js"></script>--%>
+    <%--    <script type="text/javascript" src="js/tabs.js"></script>--%>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
     <div id="content">
 
         <div class="autocomplete">
-            <input type="text" placeholder="What is your favourite US state?">
+            <input type="text" placeholder="Find a security">
             <span class="close">Cancel</span>
             <div class="dialog">
             </div>
@@ -42,6 +42,7 @@
                         <th>Average price</th>
                         <th>Year change, %</th>
                         <th>Type</th>
+                        <th></th>
                     </tr>
 
                     <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
@@ -83,6 +84,15 @@
                             <td>
                                 <c:out value="${security.value.securityType}"></c:out>
                             </td>
+
+                            <td>
+                                <form action="removeSecurityFromPortfolio" method="POST">
+                                    <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
+                                    <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                                    <input type="submit" name="submit" value="Delete">
+                                </form>
+                            </td>
+
                         </tr>
                     </c:forEach>>
                 </table>
@@ -95,6 +105,7 @@
                         <th>Amount</th>
                         <th>Price</th>
                         <th>Date</th>
+                        <th></th>
                     </tr>
 
                     <c:forEach var="transaction" items="${PORTFOLIO_TRANSACTIONS}">
@@ -125,6 +136,12 @@
                             <td>
                                 <c:out value="${transaction.date}"></c:out>
                             </td>
+
+                            <td>
+                                <a href="${removeLink}"
+                                   onclick="if (!(confirm('Are you sure you want to delete this security?'))) return false">
+                                    Delete</a>
+                            </td>
                         </tr>
                     </c:forEach>>
                 </table>
@@ -153,14 +170,22 @@
 <script>
     $(function () {
         var alreadyFilled = false;
-        var symbols = ['Alabama','Alaska','American Samoa','Arizona','Arkansas','California',
-            'Texas','Utah','Vermont','Virgin Island','Virginia','Washington','West Virginia',
-            'Wisconsin','Wyoming'];
+        var securities = new Array()
+
+        <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
+        <c:url var="securityLink" value="addSecurity">
+        <c:param name="SECURITY" value="${security}"/>
+        </c:url>
+        securities.push(
+            "${security.value.symbol}" + "   " +
+            "${security.value.name}" + "   " +
+            "${security.value.exchange}");
+        </c:forEach>
 
         function initDialog() {
             clearDialog();
-            for (var i = 0; i < symbols.length; i++) {
-                $('.dialog').append('<div>' + symbols[i] + '</div>');
+            for (var i = 0; i < securities.length; i++) {
+                $('.dialog').append('<div>' + securities[i] + '</div>');
             }
         }
 
@@ -189,9 +214,9 @@
         function match(str) {
             str = str.toLowerCase();
             clearDialog();
-            for (var i = 0; i < symbols.length; i++) {
-                if (symbols[i].toLowerCase().startsWith(str)) {
-                    $('.dialog').append('<div>' + symbols[i] + '</div>');
+            for (var i = 0; i < securities.length; i++) {
+                if (securities[i].toLowerCase().startsWith(str)) {
+                    $('.dialog').append('<div>' + securities[i] + '</div>');
                 }
             }
         }

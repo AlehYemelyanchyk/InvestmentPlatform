@@ -20,6 +20,8 @@ public interface SecurityDAO {
 
     List<Security> getAllSecuritiesWithDividends(int type) throws DAOException;
 
+    void removeSecurityFromPortfolio (int portfolioId, String symbol);
+
     List<Transaction> getAllTransactions() throws DAOException;
 
     List<Transaction> getAllPortfolioTransactions(int portfolioId) throws DAOException;

@@ -95,4 +95,24 @@ public class SecurityServiceImpl implements SecurityService {
             throw new ServiceException(e);
         }
     }
+
+    @Override
+    public void removeSecurity(String symbol) throws ServiceException {
+        try {
+            daoFactory.getSecurityDAO().removeSecurity(symbol);
+        } catch (DAOException e) {
+            LOGGER.error("Remove security error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void removeSecurityFromPortfolio(int portfolioId, String symbol) throws ServiceException {
+        try {
+            daoFactory.getSecurityDAO().removeSecurityFromPortfolio(portfolioId, symbol);
+        } catch (DAOException e) {
+            LOGGER.error("Remove security from portfolio error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
 }
