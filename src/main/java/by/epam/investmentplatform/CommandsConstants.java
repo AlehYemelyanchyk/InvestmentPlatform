@@ -5,6 +5,7 @@ public final class CommandsConstants {
     public static final String ADD_SECURITY_COMMAND = "addSecurity";
     public static final String GET_ALL_PORTFOLIO_SECURITIES_COMMAND = "getAllPortfolioSecurities";
     public static final String GET_ALL_PORTFOLIO_TRANSACTIONS_COMMAND = "getAllPortfolioTransactions";
+    public static final String GET_ALL_SECURITIES_COMMAND = "getAllSecurities";
     public static final String GET_ALL_SECURITY_TRANSACTIONS_COMMAND = "getAllSecurityTransactions";
     public static final String GET_ALL_USER_PORTFOLIOS_COMMAND = "getAllUserPortfolios";
     public static final String GET_ALL_USERS_COMMAND = "getAllUsers";

@@ -8,6 +8,8 @@
                 <td>
                     <a href="${pageContext.request.contextPath}/getAllUserPortfolios">Portfolios</a>
                 </td>
+            </tr>
+            <tr>
                 <td>
                     <a href="${pageContext.request.contextPath}/getAllSecurities">Securities</a>
                 </td>
