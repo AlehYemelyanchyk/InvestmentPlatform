@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.filter;
 
 import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.controller.command.JspPageName;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -15,10 +16,12 @@ public class CheckIdentificationFilter extends AbstractFilter {
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         if (req.getSession().getAttribute(Constants.CURRENT_USER_LOGIN) != null) {
             filterChain.doFilter(req, resp);
-        } else {
+        } else if (req.getSession().getAttribute(Constants.REDIRECT_URL_AFTER_LOGIN) != null) {
             String requestUrl = req.getRequestURI();
             req.getSession().setAttribute(Constants.REDIRECT_URL_AFTER_LOGIN, requestUrl);
-            resp.sendRedirect("main.jsp");
+            req.getRequestDispatcher(JspPageName.MAIN_PAGE).forward(req, resp);
+        } else {
+            filterChain.doFilter(req, resp);
         }
     }
 }

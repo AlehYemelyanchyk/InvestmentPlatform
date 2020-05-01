@@ -23,9 +23,10 @@ public class UrlFilter extends AbstractFilter {
     private static final Set<String> BUSINESS_URIS = new HashSet<>();
 
     @Override
-    public void init(FilterConfig filterConfig){
+    public void init(FilterConfig filterConfig) {
         BUSINESS_URIS.add(CommandsConstants.ADD_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.GET_ALL_SECURITIES_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.GET_ALL_SECURITY_TRANSACTIONS_COMMAND);
@@ -36,6 +37,7 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.MAIN_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.REMOVE_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.REMOVE_SECURITY_FROM_PORTFOLIO_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.REMOVE_TRANSACTION_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.SIGNUP_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_USER_COMMAND);

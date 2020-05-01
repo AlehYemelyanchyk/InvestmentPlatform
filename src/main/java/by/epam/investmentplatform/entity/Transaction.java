@@ -18,6 +18,15 @@ public class Transaction implements Serializable {
     public Transaction() {
     }
 
+    public Transaction(int portfolioId, String securitySymbol, int transactionType, int amount, double price, Date date) {
+        this.portfolioId = portfolioId;
+        this.securitySymbol = securitySymbol;
+        this.transactionType = transactionType;
+        this.amount = amount;
+        this.price = price;
+        this.date = date;
+    }
+
     public Transaction(int id, int portfolioId, String securitySymbol, int transactionType, int amount, double price, Date date) {
         this.id = id;
         this.portfolioId = portfolioId;

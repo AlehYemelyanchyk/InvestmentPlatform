@@ -11,15 +11,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RemoveSecurityFromPortfolioPostCommandImpl extends AbstractCommandExecutor {
+public class RemoveTransactionPostCommandImpl extends AbstractCommandExecutor {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
-        int portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
+        int id = Integer.parseInt(req.getParameter(Constants.TRANSACTION_ID));
         try {
-            SECURITY_SERVICE.removeSecurityFromPortfolio(portfolioId, securitySymbol);
+            SECURITY_SERVICE.removeTransaction(id);
         } catch (ServiceException e) {
             LOGGER.error("Remove portfolio error: ", e);
             throw new ServiceException("Incorrect values");

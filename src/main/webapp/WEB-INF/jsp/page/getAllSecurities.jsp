@@ -37,6 +37,7 @@
                         <th>Current price</th>
                         <th>Year change, %</th>
                         <th>Dividends</th>
+                        <th></th>
                     </tr>
 
                     <c:forEach var="security" items="${SECURITIES_LIST}">
@@ -65,6 +66,15 @@
                                 <td>
                                     <c:out value="${security.dividends}"></c:out>
                                 </td>
+
+                                <td>
+                                    <form action="addSecurityToPortfolio" method="GET">
+                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
+                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                                        <input type="submit" name="submit" value="Add">
+                                    </form>
+                                </td>
                             </tr>
                         </c:if>
                     </c:forEach>>
@@ -79,6 +89,7 @@
                         <th>Current price</th>
                         <th>Year change, %</th>
                         <th>Dividends</th>
+                        <th></th>
                     </tr>
 
                     <c:forEach var="security" items="${SECURITIES_LIST}">
@@ -107,6 +118,15 @@
                                 <td>
                                     <c:out value="${security.dividends}"></c:out>
                                 </td>
+
+                                <td>
+                                    <form action="addSecurityToPortfolio" method="GET">
+                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
+                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                                        <input type="submit" name="submit" value="Add">
+                                    </form>
+                                </td>
                             </tr>
                         </c:if>
                     </c:forEach>>
@@ -121,6 +141,7 @@
                         <th>Current price</th>
                         <th>Year change, %</th>
                         <th>Dividends</th>
+                        <th></th>
                     </tr>
 
                     <c:forEach var="security" items="${SECURITIES_LIST}">
@@ -149,6 +170,15 @@
                                 <td>
                                     <c:out value="${security.dividends}"></c:out>
                                 </td>
+
+                                <td>
+                                    <form action="addSecurityToPortfolio" method="GET">
+                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
+                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                                        <input type="submit" name="submit" value="Add">
+                                    </form>
+                                </td>
                             </tr>
                         </c:if>
                     </c:forEach>>
@@ -163,6 +193,7 @@
                         <th>Current price</th>
                         <th>Year change, %</th>
                         <th>Dividends</th>
+                        <th></th>
                     </tr>
 
                     <c:forEach var="security" items="${SECURITIES_LIST}">
@@ -191,6 +222,15 @@
                                 <td>
                                     <c:out value="${security.dividends}"></c:out>
                                 </td>
+
+                                <td>
+                                    <form action="addSecurityToPortfolio" method="GET">
+                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
+                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                                        <input type="submit" name="submit" value="Add">
+                                    </form>
+                                </td>
                             </tr>
                         </c:if>
                     </c:forEach>>
@@ -205,6 +245,7 @@
                         <th>Current price</th>
                         <th>Year change, %</th>
                         <th>Dividends</th>
+                        <th></th>
                     </tr>
 
                     <c:forEach var="security" items="${SECURITIES_LIST}">
@@ -232,6 +273,15 @@
 
                                 <td>
                                     <c:out value="${security.dividends}"></c:out>
+                                </td>
+
+                                <td>
+                                    <form action="addSecurityToPortfolio" method="GET">
+                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
+                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                                        <input type="submit" name="submit" value="Add">
+                                    </form>
                                 </td>
                             </tr>
                         </c:if>

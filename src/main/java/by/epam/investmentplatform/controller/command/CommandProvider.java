@@ -16,13 +16,15 @@ public final class CommandProvider {
     private CommandProvider() {
         repository.put(CommandsConstants.ADD_PORTFOLIO_COMMAND + GET_METHOD, new AddPortfolioGetCommandImpl());
         repository.put(CommandsConstants.ADD_PORTFOLIO_COMMAND + POST_METHOD, new AddPortfolioPostCommandImpl());
+        repository.put(CommandsConstants.ADD_SECURITY_COMMAND + GET_METHOD, new AddSecurityGetCommandImpl());
+        repository.put(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND + GET_METHOD, new AddSecurityToPortfolioGetCommandImpl());
+        repository.put(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND + POST_METHOD, new AddSecurityToPortfolioPostCommandImpl());
         repository.put(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND + GET_METHOD, new GetAllPortfolioSecuritiesGetCommandImpl());
         repository.put(CommandsConstants.GET_ALL_PORTFOLIO_TRANSACTIONS_COMMAND + GET_METHOD, new GetAllPortfolioTransactionsGetCommandImpl());
         repository.put(CommandsConstants.GET_ALL_SECURITIES_COMMAND + GET_METHOD, new GetAllSecuritiesGetCommandImpl());
         repository.put(CommandsConstants.GET_ALL_SECURITY_TRANSACTIONS_COMMAND + GET_METHOD, new GetAllSecurityTransactionsGetCommandImpl());
         repository.put(CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND + GET_METHOD, new GetAllUserPortfoliosGetCommandImpl());
         repository.put(CommandsConstants.GET_ALL_USERS_COMMAND + GET_METHOD, new GetAllUsersGetCommandImpl());
-        repository.put(CommandsConstants.ADD_SECURITY_COMMAND + GET_METHOD, new AddSecurityGetCommandImpl());
         repository.put(CommandsConstants.LOGIN_COMMAND + GET_METHOD, new LogInGetCommandImpl());
         repository.put(CommandsConstants.LOGIN_COMMAND + POST_METHOD, new LogInPostCommandImpl());
         repository.put(CommandsConstants.LOGOUT_COMMAND + GET_METHOD, new LogOutCommandImpl());
@@ -30,6 +32,7 @@ public final class CommandProvider {
         repository.put(CommandsConstants.SIGNUP_COMMAND + POST_METHOD, new SignUpPostCommandImpl());
         repository.put(CommandsConstants.REMOVE_PORTFOLIO_COMMAND + GET_METHOD, new RemovePortfolioGetCommandImpl());
         repository.put(CommandsConstants.REMOVE_SECURITY_FROM_PORTFOLIO_COMMAND + POST_METHOD, new RemoveSecurityFromPortfolioPostCommandImpl());
+        repository.put(CommandsConstants.REMOVE_TRANSACTION_COMMAND + POST_METHOD, new RemoveTransactionPostCommandImpl());
         repository.put(CommandsConstants.UPDATE_PORTFOLIO_COMMAND + GET_METHOD, new UpdatePortfolioGetCommandImpl());
         repository.put(CommandsConstants.UPDATE_PORTFOLIO_COMMAND + POST_METHOD, new UpdatePortfolioPostCommandImpl());
         repository.put(CommandsConstants.UPDATE_USER_COMMAND + GET_METHOD, new UpdateUserGetCommandImpl());

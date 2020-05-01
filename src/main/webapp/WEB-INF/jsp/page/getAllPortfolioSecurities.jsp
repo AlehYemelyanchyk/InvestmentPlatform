@@ -89,7 +89,7 @@
                                 <form action="removeSecurityFromPortfolio" method="POST">
                                     <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
                                     <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                    <input type="submit" name="submit" value="Delete">
+                                    <input type="submit" name="submit"  value="Delete">
                                 </form>
                             </td>
 
@@ -138,9 +138,10 @@
                             </td>
 
                             <td>
-                                <a href="${removeLink}"
-                                   onclick="if (!(confirm('Are you sure you want to delete this security?'))) return false">
-                                    Delete</a>
+                                <form action="removeTransaction" method="POST">
+                                    <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                                    <input type="submit" name="submit"  value="Delete">
+                                </form>
                             </td>
                         </tr>
                     </c:forEach>>

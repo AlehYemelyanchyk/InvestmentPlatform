@@ -91,7 +91,7 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
         List<Security> securities;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.symbol, a.name, c.name as exchange, a.current_price, a.year_change_percents, a.dividends, d.type " +
+            String sqlQuery = "SELECT a.symbol, a.name, c.name as exchange, a.current_price, a.year_change_percents, a.dividends, d.type as security_type " +
                     "FROM invest.securities as a " +
                     "JOIN invest.transactions as b " +
                     "ON a.symbol = b.security_symbol " +
@@ -292,6 +292,40 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
     }
 
     @Override
+    public void saveTransaction(Transaction transaction) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        String sqlQuery;
+
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            sqlQuery = "INSERT INTO invest.transactions (portfolio_id, security_symbol, transaction_type, amount, price, date) " +
+                    "VALUES (?, ?, ?, ?, ?, ?);";
+
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setInt(1, transaction.getPortfolioId());
+            statement.setString(2, transaction.getSecuritySymbol());
+            statement.setInt(3, transaction.getTransactionType());
+            statement.setDouble(4, transaction.getAmount());
+            statement.setDouble(5, transaction.getPrice());
+            statement.setDate(6, transaction.getDate());
+            statement.executeUpdate();
+            connection.commit();
+
+        } catch (Exception e) {
+            LOGGER.error("SQL connection error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
     public void updateSecurity(Security security, String[] params) throws DAOException {
 
     }
@@ -305,6 +339,30 @@ public class SqlSecurityDAOImpl implements SecurityDAO {
             String sqlQuery = "DELETE FROM invest.securities WHERE symbol = ?;";
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, symbol);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("SQL connection error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
+    public void removeTransaction(int id) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "DELETE FROM invest.transactions WHERE id = ?;";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setInt(1, id);
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
