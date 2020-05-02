@@ -43,6 +43,7 @@
                         <th>Year change, %</th>
                         <th>Type</th>
                         <th></th>
+                        <th></th>
                     </tr>
 
                     <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
@@ -89,7 +90,11 @@
                                 <form action="removeSecurityFromPortfolio" method="POST">
                                     <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
                                     <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                    <input type="submit" name="submit"  value="Delete">
+<%--                                    onclick="if (!(confirm('Are you sure you want to delete this portfolio?'))) return false">--%>
+                                    <input type="submit"
+                                           onclick="if (!(confirm('Are you sure you want to delete this portfolio? ' +
+                                            'That will also remove all the security\'s transactions.'))) return false"
+                                           name="submit" value="Delete">
                                 </form>
                             </td>
 
@@ -105,6 +110,7 @@
                         <th>Amount</th>
                         <th>Price</th>
                         <th>Date</th>
+                        <th></th>
                         <th></th>
                     </tr>
 
@@ -138,9 +144,18 @@
                             </td>
 
                             <td>
+                                <form action="updateTransaction" method="GET">
+                                    <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                                    <input type="submit" name="submit"  value="Edit">
+                                </form>
+                            </td>
+
+                            <td>
                                 <form action="removeTransaction" method="POST">
                                     <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
-                                    <input type="submit" name="submit"  value="Delete">
+                                    <input type="submit"
+                                           onclick="if (!(confirm('Are you sure you want to delete this transaction?'))) return false"
+                                           name="submit"  value="Delete">
                                 </form>
                             </td>
                         </tr>

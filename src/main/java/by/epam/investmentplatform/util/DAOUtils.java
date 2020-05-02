@@ -63,7 +63,7 @@ public final class DAOUtils {
     public static List<Transaction> transactionsResultSetHandle(ResultSet resultSet) throws SQLException {
         List<Transaction> transactions = new ArrayList<>();
         while (resultSet.next()) {
-            Transaction tempSecurity = new Transaction(
+            Transaction tempTransaction = new Transaction(
                     resultSet.getInt("id"),
                     resultSet.getInt("portfolio_id"),
                     resultSet.getString("security_symbol"),
@@ -71,9 +71,24 @@ public final class DAOUtils {
                     resultSet.getInt("amount"),
                     resultSet.getDouble("price"),
                     resultSet.getDate("date"));
-            transactions.add(tempSecurity);
+            transactions.add(tempTransaction);
         }
         return transactions;
+    }
+
+    public static Transaction transactionResultSetHandle(ResultSet resultSet) throws SQLException {
+        Transaction transaction = null;
+        while (resultSet.next()) {
+            transaction = new Transaction(
+                    resultSet.getInt("id"),
+                    resultSet.getInt("portfolio_id"),
+                    resultSet.getString("security_symbol"),
+                    resultSet.getInt("transaction_type"),
+                    resultSet.getInt("amount"),
+                    resultSet.getDouble("price"),
+                    resultSet.getDate("date"));
+        }
+        return transaction;
     }
 
     public static List<String> stringsResultSetHandle(ResultSet resultSet, String column) throws SQLException {

@@ -41,7 +41,7 @@
                         <a href="${portfolioLink}">${portfolio.name}</a>
                     </td>
                     <td>
-                        <a href="${updateLink}">Update</a>
+                        <a href="${updateLink}">Edit</a>
                         |
                         <a href="${removeLink}"
                            onclick="if (!(confirm('Are you sure you want to delete this portfolio?'))) return false">

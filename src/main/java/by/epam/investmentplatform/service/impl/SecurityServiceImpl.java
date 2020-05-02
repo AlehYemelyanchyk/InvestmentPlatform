@@ -2,7 +2,7 @@ package by.epam.investmentplatform.service.impl;
 
 import by.epam.investmentplatform.dao.SecurityDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
-import by.epam.investmentplatform.dao.factory.DAOFactory;
+import by.epam.investmentplatform.dao.impl.DAOFactory;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.service.SecurityService;
@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-public class SecurityServiceImpl implements SecurityService {
+class SecurityServiceImpl implements SecurityService {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private static final SecurityDAO SECURITY_DAO = DAOFactory.getInstance().getSecurityDAO();
@@ -88,6 +88,21 @@ public class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
+    public Security getSecurity(String symbol) throws ServiceException {
+        return null;
+    }
+
+    @Override
+    public Transaction getTransaction(int id) throws ServiceException {
+        try {
+            return SECURITY_DAO.getTransaction(id);
+        } catch (DAOException e) {
+            LOGGER.error("Get transaction error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void saveSecurity(Security security) throws ServiceException {
         try {
             SECURITY_DAO.saveSecurity(security);
@@ -113,6 +128,21 @@ public class SecurityServiceImpl implements SecurityService {
             SECURITY_DAO.removeSecurity(symbol);
         } catch (DAOException e) {
             LOGGER.error("Remove security error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void updateSecurity(Security security, String[] parameters) throws ServiceException {
+
+    }
+
+    @Override
+    public void updateTransaction(Transaction transaction, String[] parameters) throws ServiceException {
+        try {
+            SECURITY_DAO.updateTransaction(transaction, parameters);
+        } catch (DAOException e) {
+            LOGGER.error("Update transaction error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }

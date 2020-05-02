@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SqlUserDAOImpl implements UserDAO {
+class SqlUserDAOImpl implements UserDAO {
     private static final Logger LOGGER = LogManager.getLogger(SqlUserDAOImpl.class);
     private static final ConnectionPoolImpl CONNECTION_POOL = ConnectionPoolImpl.getConnectionPoolInstance();
     private static final String COUNTRIES_COLUMN_NAME = "name";

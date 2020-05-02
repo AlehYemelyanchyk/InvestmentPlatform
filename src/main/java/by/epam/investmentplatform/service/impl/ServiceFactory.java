@@ -1,11 +1,8 @@
-package by.epam.investmentplatform.service.factory;
+package by.epam.investmentplatform.service.impl;
 
 import by.epam.investmentplatform.service.PortfolioService;
 import by.epam.investmentplatform.service.SecurityService;
 import by.epam.investmentplatform.service.UserService;
-import by.epam.investmentplatform.service.impl.PortfolioServiceImpl;
-import by.epam.investmentplatform.service.impl.SecurityServiceImpl;
-import by.epam.investmentplatform.service.impl.UserServiceImpl;
 
 public final class ServiceFactory {
     private static final ServiceFactory INSTANCE = new ServiceFactory();

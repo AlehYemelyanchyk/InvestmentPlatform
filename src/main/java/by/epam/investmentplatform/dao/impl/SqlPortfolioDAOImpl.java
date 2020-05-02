@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-public class SqlPortfolioDAOImpl implements PortfolioDAO {
+class SqlPortfolioDAOImpl implements PortfolioDAO {
     private static final Logger LOGGER = LogManager.getLogger(SqlPortfolioDAOImpl.class);
     private static final ConnectionPoolImpl CONNECTION_POOL = ConnectionPoolImpl.getConnectionPoolInstance();
 

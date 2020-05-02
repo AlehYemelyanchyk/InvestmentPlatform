@@ -2,7 +2,7 @@ package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
-import by.epam.investmentplatform.service.factory.ServiceFactory;
+import by.epam.investmentplatform.service.impl.ServiceFactory;
 import by.epam.investmentplatform.util.RoutingUtils;
 
 import javax.servlet.ServletException;

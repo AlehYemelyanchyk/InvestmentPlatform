@@ -1,11 +1,8 @@
-package by.epam.investmentplatform.dao.factory;
+package by.epam.investmentplatform.dao.impl;
 
 import by.epam.investmentplatform.dao.PortfolioDAO;
 import by.epam.investmentplatform.dao.SecurityDAO;
 import by.epam.investmentplatform.dao.UserDAO;
-import by.epam.investmentplatform.dao.impl.SqlPortfolioDAOImpl;
-import by.epam.investmentplatform.dao.impl.SqlSecurityDAOImpl;
-import by.epam.investmentplatform.dao.impl.SqlUserDAOImpl;
 
 public final class DAOFactory {
     private static final DAOFactory INSTANCE = new DAOFactory();

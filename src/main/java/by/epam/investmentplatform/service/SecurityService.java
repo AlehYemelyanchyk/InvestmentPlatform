@@ -23,11 +23,19 @@ public interface SecurityService {
 
     List<Transaction> getAllUserTransactions(int userId) throws ServiceException;
 
+    Security getSecurity(String symbol) throws ServiceException;
+
+    Transaction getTransaction(int id) throws ServiceException;
+
     void saveSecurity(Security security) throws ServiceException;
 
     void saveTransaction(Transaction transaction) throws ServiceException;
 
     void removeSecurity(String symbol) throws ServiceException;
+
+    void updateSecurity(Security security, String[] parameters) throws ServiceException;
+
+    void updateTransaction(Transaction transaction, String[] parameters) throws ServiceException;
 
     void removeTransaction(int id) throws ServiceException;
 

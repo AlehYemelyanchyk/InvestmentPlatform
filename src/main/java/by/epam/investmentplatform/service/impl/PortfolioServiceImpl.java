@@ -1,7 +1,7 @@
 package by.epam.investmentplatform.service.impl;
 
 import by.epam.investmentplatform.dao.exceptions.DAOException;
-import by.epam.investmentplatform.dao.factory.DAOFactory;
+import by.epam.investmentplatform.dao.impl.DAOFactory;
 import by.epam.investmentplatform.entity.Portfolio;
 import by.epam.investmentplatform.service.PortfolioService;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
-public class PortfolioServiceImpl implements PortfolioService {
+class PortfolioServiceImpl implements PortfolioService {
     private static final Logger LOGGER = LogManager.getLogger();
     private DAOFactory daoFactory = DAOFactory.getInstance();
 

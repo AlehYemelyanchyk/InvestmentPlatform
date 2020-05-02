@@ -1,7 +1,7 @@
 package by.epam.investmentplatform.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 import java.util.Objects;
 
 public class Transaction implements Serializable {
@@ -18,23 +18,23 @@ public class Transaction implements Serializable {
     public Transaction() {
     }
 
-    public Transaction(int portfolioId, String securitySymbol, int transactionType, int amount, double price, Date date) {
+    public Transaction(int portfolioId, String securitySymbol, int transactionType, int amount, double price, Date Date) {
         this.portfolioId = portfolioId;
         this.securitySymbol = securitySymbol;
         this.transactionType = transactionType;
         this.amount = amount;
         this.price = price;
-        this.date = date;
+        this.date = Date;
     }
 
-    public Transaction(int id, int portfolioId, String securitySymbol, int transactionType, int amount, double price, Date date) {
+    public Transaction(int id, int portfolioId, String securitySymbol, int transactionType, int amount, double price, Date Date) {
         this.id = id;
         this.portfolioId = portfolioId;
         this.securitySymbol = securitySymbol;
         this.transactionType = transactionType;
         this.amount = amount;
         this.price = price;
-        this.date = date;
+        this.date = Date;
     }
 
     public int getId() {
@@ -89,8 +89,8 @@ public class Transaction implements Serializable {
         return date;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDate(Date Date) {
+        this.date = Date;
     }
 
     @Override

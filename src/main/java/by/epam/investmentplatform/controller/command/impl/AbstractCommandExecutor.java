@@ -4,7 +4,7 @@ import by.epam.investmentplatform.controller.command.Command;
 import by.epam.investmentplatform.service.PortfolioService;
 import by.epam.investmentplatform.service.SecurityService;
 import by.epam.investmentplatform.service.UserService;
-import by.epam.investmentplatform.service.factory.ServiceFactory;
+import by.epam.investmentplatform.service.impl.ServiceFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

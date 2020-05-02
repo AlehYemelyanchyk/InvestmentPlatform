@@ -16,6 +16,10 @@ public final class Constants {
     public static final String CURRENT_USER_SURNAME = "CURRENT_USER_SURNAME";
     public static final String CURRENT_USER_COUNTRY = "CURRENT_USER_COUNTRY";
     public static final String DATE = "DATE";
+    public static final String DATE_DELIMITER = "-";
+    public static final int DATE_SPLIT_ARRAY_YEAR = 0;
+    public static final int DATE_SPLIT_ARRAY_MONTH = 1;
+    public static final int DATE_SPLIT_ARRAY_DAY = 2;
     public static final String ERROR_ATTRIBUTE = "ERROR_ATTRIBUTE";
     public static final String REDIRECT_LINK = "REDIRECT_LINK";
     public static final String REDIRECT_URL_AFTER_LOGIN = "REDIRECT_URL_AFTER_LOGIN";
@@ -32,8 +36,11 @@ public final class Constants {
     public static final String SECURITY_NAME = "SECURITY_NAME";
     public static final String SECURITY_PRICE = "SECURITY_PRICE";
     public static final String SECURITY_SYMBOL = "SECURITY_SYMBOL";
-    public static final String TRANSACTION_TYPE = "TRANSACTION_TYPE";
+    public static final String TRANSACTION = "TRANSACTION";
     public static final String TRANSACTION_ID = "TRANSACTION_ID";
+    public static final String TRANSACTION_PORTFOLIO_ID = "TRANSACTION_PORTFOLIO_ID";
+    public static final String TRANSACTION_SECURITY_SYMBOL = "TRANSACTION_SECURITY_SYMBOL";
+    public static final String TRANSACTION_TYPE = "TRANSACTION_TYPE";
     public static final String USERS_LIST = "USERS_LIST";
     public static final int ZERO_LIST_ELEMENT = 0;
 

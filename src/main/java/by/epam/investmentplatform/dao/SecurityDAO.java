@@ -20,13 +20,15 @@ public interface SecurityDAO {
 
     List<Security> getAllSecuritiesWithDividends(int type) throws DAOException;
 
-    void removeSecurityFromPortfolio(int portfolioId, String symbol);
-
     List<Transaction> getAllTransactions() throws DAOException;
 
     List<Transaction> getAllPortfolioTransactions(int portfolioId) throws DAOException;
 
     List<Transaction> getAllUserTransactions(int userId) throws DAOException;
+
+    Security getSecurity(String symbol) throws DAOException;
+
+    Transaction getTransaction(int id) throws DAOException;
 
     void saveSecurity(Security security) throws DAOException;
 
@@ -34,7 +36,11 @@ public interface SecurityDAO {
 
     void updateSecurity(Security security, String[] params) throws DAOException;
 
+    void updateTransaction(Transaction transaction, String[] parameters) throws DAOException;
+
     void removeSecurity(String symbol) throws DAOException;
+
+    void removeSecurityFromPortfolio(int portfolioId, String symbol);
 
     void removeTransaction(int id) throws DAOException;
 }
