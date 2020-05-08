@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<head>
+    <title>Update portfolio</title>
+</head>
 <body>
 <div id="wrapper">
     <div id="header">

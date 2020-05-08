@@ -3,9 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="css/tabsStyle.css">
-    <link type="text/css" rel="stylesheet" href="css/autocompleteSearch.css">
-    <script type="text/javascript" src="jquery-3.5.0.min.js"></script>
+    <title>Portfolio securities</title>
+<%--    <link type="text/css" rel="stylesheet" href="static/css/tabsStyle.css">--%>
+<%--    <link type="text/css" rel="stylesheet" href="static/css/autocompleteSearch.css">--%>
+<%--    <script type="text/javascript" src="jquery-3.5.0.min.js"></script>--%>
     <%--    <script type="text/javascript" src="js/tabs.js"></script>--%>
 </head>
 

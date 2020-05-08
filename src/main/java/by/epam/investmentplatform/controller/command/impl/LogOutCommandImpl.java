@@ -15,6 +15,6 @@ public class LogOutCommandImpl extends AbstractCommandExecutor {
             throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.invalidate();
-        req.getRequestDispatcher(JspPageName.MAIN_PAGE).forward(req, resp);
+        req.getRequestDispatcher(JspPageName.PAGE_TEMPLATE).forward(req, resp);
     }
 }

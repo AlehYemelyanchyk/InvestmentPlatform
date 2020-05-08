@@ -1,0 +1,25 @@
+header {
+    background-color: #eaeaea;
+    color: #000000;
+}
+
+footer {
+    padding-top: 20px;
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    background-color: rgb(212, 212, 206);
+    margin-top: 20px;
+}
+
+aside {
+    background-color: #fffeff;
+}
+
+main {
+    background-color: #fffefc;
+}
+
+.fa-user-alt {
+    padding-right: 10px;
+}

@@ -4,7 +4,7 @@
 <jsp:useBean id="currentDate" class="java.util.Date" />
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="css/addFormStyle.css">
+    <title>Add security to portfolio</title>
 </head>
 
 <body>

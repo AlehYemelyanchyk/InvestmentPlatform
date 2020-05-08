@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
+<head>
+    <title>Portfolios</title>
+</head>
 <body>
 <div id="wrapper">
     <div id="header">
@@ -12,7 +15,7 @@
     <div id="content">
         <input type="button" value="Create a New Portfolio"
                onclick="window.location.href='addPortfolio'; return false;"
-               class="add-button"
+               class="btn btn-primary"
         />
         <table>
 

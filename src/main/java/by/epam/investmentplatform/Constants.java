@@ -21,9 +21,9 @@ public final class Constants {
     public static final int DATE_SPLIT_ARRAY_MONTH = 1;
     public static final int DATE_SPLIT_ARRAY_DAY = 2;
     public static final String ERROR_ATTRIBUTE = "ERROR_ATTRIBUTE";
-    public static final String REDIRECT_LINK = "REDIRECT_LINK";
-    public static final String REDIRECT_URL_AFTER_LOGIN = "REDIRECT_URL_AFTER_LOGIN";
-    public static final String SECURITY_TRANSACTIONS = "SECURITY_TRANSACTIONS";
+    public static final int ITEMS_PER_PAGE = 20;
+    public static final String MAX_ITEMS_PER_PAGE = "MAX_ITEMS_PER_PAGE";
+    public static final String PAGES_AMOUNT = "PAGES_AMOUNT";
     public static final String PORTFOLIO = "PORTFOLIO";
     public static final String PORTFOLIO_ID = "PORTFOLIO_ID";
     public static final String PORTFOLIOS_LIST = "PORTFOLIOS_LIST";
@@ -32,10 +32,13 @@ public final class Constants {
     public static final String PORTFOLIO_TRANSACTIONS = "PORTFOLIO_TRANSACTIONS";
     public static final String PORTFOLIO_USER_ID = "PORTFOLIO_USER_ID";
     public static final String PRICE = "PRICE";
+    public static final String REDIRECT_LINK = "REDIRECT_LINK";
+    public static final String REDIRECT_URL_AFTER_LOGIN = "REDIRECT_URL_AFTER_LOGIN";
     public static final String SECURITIES_LIST = "SECURITIES_LIST";
     public static final String SECURITY_NAME = "SECURITY_NAME";
     public static final String SECURITY_PRICE = "SECURITY_PRICE";
     public static final String SECURITY_SYMBOL = "SECURITY_SYMBOL";
+    public static final String SECURITY_TRANSACTIONS = "SECURITY_TRANSACTIONS";
     public static final String TRANSACTION = "TRANSACTION";
     public static final String TRANSACTION_ID = "TRANSACTION_ID";
     public static final String TRANSACTION_PORTFOLIO_ID = "TRANSACTION_PORTFOLIO_ID";

@@ -25,4 +25,9 @@ public abstract class AbstractCommandExecutor implements Command {
     }
 
     protected abstract void forwardToPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
+
+    protected final int getPagesAmount(int totalItemsAmount, int itemsPerPage) {
+        double result = (double) totalItemsAmount / itemsPerPage;
+        return (int) Math.ceil(result);
+    }
 }

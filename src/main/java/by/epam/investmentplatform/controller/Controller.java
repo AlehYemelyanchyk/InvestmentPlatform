@@ -5,6 +5,7 @@ import by.epam.investmentplatform.controller.command.CommandProvider;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import static by.epam.investmentplatform.Constants.COMMAND_ATTRIBUTE;
 
 @WebServlet("/controllerServlet")
-public class Controller extends AbstractController {
+public class Controller extends HttpServlet {
     private static final long serialVersionUID = 3164262627368034557L;
     private static final CommandProvider commandProvider = CommandProvider.getInstance();
 

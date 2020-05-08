@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="css/addFormStyle.css">
+    <title>Add portfolio</title>
 </head>
 
 <body>
@@ -23,7 +23,7 @@
 
                 <tr>
                     <td><label></label></td>
-                    <td><input type="submit" value="Add" class="save"></td>
+                    <td><input type="submit" class="btn btn-primary" value="Add" class="save"></td>
                 </tr>
                 </tbody>
             </table>

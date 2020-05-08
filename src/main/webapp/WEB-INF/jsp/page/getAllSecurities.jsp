@@ -3,10 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
-    <link type="text/css" rel="stylesheet" href="css/tabsStyle.css">
-    <link type="text/css" rel="stylesheet" href="css/autocompleteSearch.css">
-    <script type="text/javascript" src="jquery-3.5.0.min.js"></script>
-    <%--    <script type="text/javascript" src="js/tabs.js"></script>--%>
+    <title>All securities</title>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 
 <body>
@@ -16,281 +14,98 @@
     </div>
 </div>
 
-<div id="container">
-    <div id="content">
+<div class="container">
+    <div class="form-group">
+        <select name="state" id="maxRows" class="form-control" style="width:150px;">
+            <option value="5000">Show All</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+    </div>
+    <div class="tabs_names">
+        <li data-tab-target="#Bond" class="active tab">Bonds</li>
+        <li data-tab-target="#Cryptocurrency" class="tab">Crypto</li>
+        <li data-tab-target="#ETF" class="tab">ETFs</li>
+        <li data-tab-target="#Fund" class="tab">Funds</li>
+        <li data-tab-target="#Stock" class="tab">Stocks</li>
+    </div>
+    <div class="tabs_content">
+        <c:forEach var="type" items="${SECURITIES_LIST}">
 
-        <div class="tabs_names">
-            <li data-tab-target="#bonds" class="active tab">Bonds</li>
-            <li data-tab-target="#crypto" class="tab">Crypto</li>
-            <li data-tab-target="#etfs" class="tab">ETFs</li>
-            <li data-tab-target="#funds" class="tab">Funds</li>
-            <li data-tab-target="#stocks" class="tab">Stocks</li>
+        <table id="mytable" class="tabs_content table-bordered table-striped">
+
+                <div id="${type.key}" data-tab-content class="active">
+<%--                    <table>--%>
+                        <thead>
+                        <tr>
+                            <th>Symbol</th>
+                            <th>Name</th>
+                            <th>Exchange</th>
+                            <th>Current price</th>
+                            <th>Year change, %</th>
+                            <th>Dividends</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach var="security" items="${type.value}">
+                            <tr>
+                                <td>
+                                    <c:out value="${security.symbol}"></c:out>
+                                </td>
+
+                                <td>
+                                    <c:out value="${security.name}"></c:out>
+                                </td>
+
+                                <td>
+                                    <c:out value="${security.exchange}"></c:out>
+                                </td>
+
+                                <td>
+                                    <c:out value="${security.currentPrice}"></c:out>
+                                </td>
+
+                                <td>
+                                    <c:out value="${security.yearChangePercents}"></c:out>
+                                </td>
+
+                                <td>
+                                    <c:out value="${security.dividends}"></c:out>
+                                </td>
+
+                                <td>
+                                    <form action="addSecurityToPortfolio" method="GET">
+                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
+                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                                        <input type="submit" name="submit" value="Add">
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>>
+                        </tbody>
+<%--                    </table>--%>
+                </div>
+        </table>
+        </c:forEach>
+
+        <div class="pagination-container">
+            <nav>
+                <ul class="pagination"></ul>
+            </nav>
         </div>
 
-        <div class="tabs_content">
-            <div id="bonds" data-tab-content class="active">
-                <table>
-                    <tr>
-                        <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Exchange</th>
-                        <th>Current price</th>
-                        <th>Year change, %</th>
-                        <th>Dividends</th>
-                        <th></th>
-                    </tr>
-
-                    <c:forEach var="security" items="${SECURITIES_LIST}">
-                        <c:if test="${security.securityType == 'Bond'}">
-                            <tr>
-                                <td>
-                                    <c:out value="${security.symbol}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.name}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.exchange}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.currentPrice}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.yearChangePercents}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.dividends}"></c:out>
-                                </td>
-
-                                <td>
-                                    <form action="addSecurityToPortfolio" method="GET">
-                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
-                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
-                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                        <input type="submit" name="submit" value="Add">
-                                    </form>
-                                </td>
-                            </tr>
-                        </c:if>
-                    </c:forEach>>
-                </table>
-            </div>
-            <div id="crypto" data-tab-content class="active">
-                <table>
-                    <tr>
-                        <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Exchange</th>
-                        <th>Current price</th>
-                        <th>Year change, %</th>
-                        <th>Dividends</th>
-                        <th></th>
-                    </tr>
-
-                    <c:forEach var="security" items="${SECURITIES_LIST}">
-                        <c:if test="${security.securityType == 'Cryptocurrency'}">
-                            <tr>
-                                <td>
-                                    <c:out value="${security.symbol}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.name}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.exchange}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.currentPrice}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.yearChangePercents}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.dividends}"></c:out>
-                                </td>
-
-                                <td>
-                                    <form action="addSecurityToPortfolio" method="GET">
-                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
-                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
-                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                        <input type="submit" name="submit" value="Add">
-                                    </form>
-                                </td>
-                            </tr>
-                        </c:if>
-                    </c:forEach>>
-                </table>
-            </div>
-            <div id="etfs" data-tab-content class="active">
-                <table>
-                    <tr>
-                        <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Exchange</th>
-                        <th>Current price</th>
-                        <th>Year change, %</th>
-                        <th>Dividends</th>
-                        <th></th>
-                    </tr>
-
-                    <c:forEach var="security" items="${SECURITIES_LIST}">
-                        <c:if test="${security.securityType == 'ETF'}">
-                            <tr>
-                                <td>
-                                    <c:out value="${security.symbol}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.name}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.exchange}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.currentPrice}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.yearChangePercents}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.dividends}"></c:out>
-                                </td>
-
-                                <td>
-                                    <form action="addSecurityToPortfolio" method="GET">
-                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
-                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
-                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                        <input type="submit" name="submit" value="Add">
-                                    </form>
-                                </td>
-                            </tr>
-                        </c:if>
-                    </c:forEach>>
-                </table>
-            </div>
-            <div id="funds" data-tab-content class="active">
-                <table>
-                    <tr>
-                        <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Exchange</th>
-                        <th>Current price</th>
-                        <th>Year change, %</th>
-                        <th>Dividends</th>
-                        <th></th>
-                    </tr>
-
-                    <c:forEach var="security" items="${SECURITIES_LIST}">
-                        <c:if test="${security.securityType == 'Fund'}">
-                            <tr>
-                                <td>
-                                    <c:out value="${security.symbol}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.name}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.exchange}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.currentPrice}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.yearChangePercents}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.dividends}"></c:out>
-                                </td>
-
-                                <td>
-                                    <form action="addSecurityToPortfolio" method="GET">
-                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
-                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
-                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                        <input type="submit" name="submit" value="Add">
-                                    </form>
-                                </td>
-                            </tr>
-                        </c:if>
-                    </c:forEach>>
-                </table>
-            </div>
-            <div id="stocks" data-tab-content class="active">
-                <table>
-                    <tr>
-                        <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Exchange</th>
-                        <th>Current price</th>
-                        <th>Year change, %</th>
-                        <th>Dividends</th>
-                        <th></th>
-                    </tr>
-
-                    <c:forEach var="security" items="${SECURITIES_LIST}">
-                        <c:if test="${security.securityType == 'Stock'}">
-                            <tr>
-                                <td>
-                                    <c:out value="${security.symbol}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.name}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.exchange}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.currentPrice}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.yearChangePercents}"></c:out>
-                                </td>
-
-                                <td>
-                                    <c:out value="${security.dividends}"></c:out>
-                                </td>
-
-                                <td>
-                                    <form action="addSecurityToPortfolio" method="GET">
-                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
-                                        <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
-                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                        <input type="submit" name="submit" value="Add">
-                                    </form>
-                                </td>
-                            </tr>
-                        </c:if>
-                    </c:forEach>>
-                </table>
-            </div>
-        </div>
     </div>
 </div>
+</div>
+
+<script src="jquery-3.5.1.min.js"></script>
+<script src="static/css/bootstrap.min.css"></script>
 <script>
     const tabs = document.querySelectorAll('[data-tab-target]')
     const tabContent = document.querySelectorAll('[data-tab-content]')
@@ -308,6 +123,54 @@
             target.classList.add('active')
         })
     })
+</script>
+<script>
+    var table = '#mytable'
+    $('#maxRows').on('change', function () {
+        $('.pagination').html('')
+        var trnum = 0
+        var maxRows = parseInt($(this).val())
+        var totalRows = $(table + ' tbody tr').length
+        $(table + ' tr:gt(0)').each(function () {
+            trnum++
+            if (trnum > maxRows) {
+                $(this).hide()
+            }
+            if (trnum <= maxRows) {
+                $(this).show()
+            }
+        })
+        if (totalRows > maxRows) {
+            var pagenum = Math.ceil(totalRows / maxRows)
+            for (var i = 1; i <= pagenum;) {
+                $('.pagination').append('<li data-page="' + i + '">\<span>' + i++ + '' +
+                    '<span class="sr-only">(current)</span></span>\</li>').show()
+            }
+        }
+        $('.pagination li:first-child').addClass('active')
+        $('.pagination li').on('click', function () {
+            var pageNum = $(this).attr('data-page')
+            var trIndex = 0;
+            $('.pagination li').removeClass('active')
+            $(this).addClass('active')
+            $(table + ' tr:gt(0)').each(function () {
+                trIndex++
+                if (trIndex > (maxRows * pageNum) || trIndex <= ((maxRows * pageNum) - maxRows)) {
+                    $(this).hide()
+                } else {
+                    $(this).show()
+                }
+            })
+        })
+    })
+    // $(function () {
+    //     $('table tr:eq(0)').prepend('<th>ID</th>')
+    //     var id = 0;
+    //     $('table tr:gt(0)').each(function () {
+    //         id++
+    //         $(this).prepend('<td>' + id + '</td>')
+    //     })
+    // })
 </script>
 </body>
 </html>

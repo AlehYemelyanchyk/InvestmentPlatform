@@ -19,7 +19,7 @@ public class CheckIdentificationFilter extends AbstractFilter {
         } else if (req.getSession().getAttribute(Constants.REDIRECT_URL_AFTER_LOGIN) != null) {
             String requestUrl = req.getRequestURI();
             req.getSession().setAttribute(Constants.REDIRECT_URL_AFTER_LOGIN, requestUrl);
-            req.getRequestDispatcher(JspPageName.MAIN_PAGE).forward(req, resp);
+            req.getRequestDispatcher(JspPageName.PAGE_TEMPLATE).forward(req, resp);
         } else {
             filterChain.doFilter(req, resp);
         }

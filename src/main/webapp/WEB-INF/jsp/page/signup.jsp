@@ -1,8 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <html>
+<head>
+    <title>Signup</title>
+</head>
 <body>
-<link type="text/css" rel="stylesheet" href="css/login.css">
 <div id="wrapper">
     <div id="header">
         <h2 align="center">Sign up</h2>

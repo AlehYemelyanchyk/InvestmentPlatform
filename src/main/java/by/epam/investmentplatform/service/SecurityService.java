@@ -7,6 +7,7 @@ import by.epam.investmentplatform.service.exceptions.ServiceException;
 import java.util.List;
 
 public interface SecurityService {
+
     List<Security> getAllSecurities() throws ServiceException;
 
     List<Security> getAllUserSecurities(int userId) throws ServiceException;
