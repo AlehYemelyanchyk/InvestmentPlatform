@@ -32,7 +32,7 @@
             <li data-tab-target="#transactions" class="tab">Transactions</li>
         </div>
 
-        <div class="tabs_content">
+        <div class="tabs_content table-bordered table-striped">
             <div id="holdings" data-tab-content class="active">
                 <table>
                     <tr>
