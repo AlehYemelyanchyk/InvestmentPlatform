@@ -52,7 +52,7 @@ class SqlPortfolioDAOImpl implements PortfolioDAO {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        Portfolio portfolio = null;
+        Portfolio portfolio;
         try {
             connection = CONNECTION_POOL.takeConnection();
             String sqlQuery = "SELECT * FROM invest.portfolios WHERE id = ?";

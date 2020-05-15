@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.service.impl;
 
+import by.epam.investmentplatform.dao.PortfolioDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
 import by.epam.investmentplatform.dao.impl.DAOFactory;
 import by.epam.investmentplatform.entity.Portfolio;
@@ -12,12 +13,15 @@ import java.util.List;
 
 class PortfolioServiceImpl implements PortfolioService {
     private static final Logger LOGGER = LogManager.getLogger();
-    private DAOFactory daoFactory = DAOFactory.getInstance();
+    private static final DAOFactory DAO_FACTORY = DAOFactory.getInstance();
 
     @Override
     public List<Portfolio> getAllUserPortfolios(int userId) throws ServiceException {
         try {
-            return daoFactory.getPortfolioDAO().getAllUserPortfolios(userId);
+            return getPortfolioDAO().getAllUserPortfolios(userId);
+        } catch (IndexOutOfBoundsException e) {
+            LOGGER.error("The portfolio does not found: " + e.getMessage());
+            throw new ServiceException(e);
         } catch (DAOException e) {
             LOGGER.error("Get all user portfolios error: " + e.getMessage());
             throw new ServiceException(e);
@@ -27,9 +31,9 @@ class PortfolioServiceImpl implements PortfolioService {
     @Override
     public Portfolio getPortfolio(int portfolioId) throws ServiceException {
         try {
-            return daoFactory.getPortfolioDAO().getPortfolio(portfolioId);
+            return getPortfolioDAO().getPortfolio(portfolioId);
         } catch (DAOException e) {
-            LOGGER.error("Get all user portfolios error: " + e.getMessage());
+            LOGGER.error("Get portfolio error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -37,7 +41,7 @@ class PortfolioServiceImpl implements PortfolioService {
     @Override
     public void addPortfolio(Portfolio portfolio) throws ServiceException {
         try {
-            daoFactory.getPortfolioDAO().savePortfolio(portfolio);
+            getPortfolioDAO().savePortfolio(portfolio);
         } catch (DAOException e) {
             LOGGER.error("Add portfolio error: " + e.getMessage());
             throw new ServiceException(e);
@@ -47,7 +51,7 @@ class PortfolioServiceImpl implements PortfolioService {
     @Override
     public void updatePortfolio(Portfolio portfolio, String[] params) throws ServiceException {
         try {
-            daoFactory.getPortfolioDAO().updatePortfolio(portfolio, params);
+            getPortfolioDAO().updatePortfolio(portfolio, params);
         } catch (DAOException e) {
             LOGGER.error("Update portfolio error: " + e.getMessage());
             throw new ServiceException(e);
@@ -57,11 +61,14 @@ class PortfolioServiceImpl implements PortfolioService {
     @Override
     public void removePortfolio(int portfolioId) throws ServiceException {
         try {
-            daoFactory.getPortfolioDAO().removePortfolio(portfolioId);
+            getPortfolioDAO().removePortfolio(portfolioId);
         } catch (DAOException e) {
             LOGGER.error("Remove portfolio error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
 
+    PortfolioDAO getPortfolioDAO() {
+        return DAO_FACTORY.getPortfolioDAO();
+    }
 }

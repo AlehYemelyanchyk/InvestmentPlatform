@@ -39,7 +39,7 @@
         <c:forEach var="type" items="${SECURITIES_LIST}">
 
             <div id="${type.key}" data-tab-content class="active">
-                <table>
+                p<table>
                     <thead>
                     <tr>
                         <th>Symbol</th>

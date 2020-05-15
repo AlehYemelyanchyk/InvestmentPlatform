@@ -15,12 +15,12 @@ import java.util.List;
 class SecurityServiceImpl implements SecurityService {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final SecurityDAO SECURITY_DAO = DAOFactory.getInstance().getSecurityDAO();
+    private static final DAOFactory DAO_FACTORY = DAOFactory.getInstance();
 
     @Override
     public List<Security> getAllSecurities() throws ServiceException {
         try {
-            return SECURITY_DAO.getAllSecurities();
+            return getSecurityDAO().getAllSecurities();
         } catch (DAOException e) {
             LOGGER.error("Get all securities error: " + e.getMessage());
             throw new ServiceException(e);
@@ -30,7 +30,7 @@ class SecurityServiceImpl implements SecurityService {
     @Override
     public List<Security> getAllUserSecurities(int userId) throws ServiceException {
         try {
-            return SECURITY_DAO.getAllUserSecurities(userId);
+            return getSecurityDAO().getAllUserSecurities(userId);
         } catch (DAOException e) {
             LOGGER.error("Get all user securities error: " + e.getMessage());
             throw new ServiceException(e);
@@ -40,7 +40,7 @@ class SecurityServiceImpl implements SecurityService {
     @Override
     public List<Security> getAllPortfolioSecurities(int portfolioId) throws ServiceException {
         try {
-            return SECURITY_DAO.getAllPortfolioSecurities(portfolioId);
+            return getSecurityDAO().getAllPortfolioSecurities(portfolioId);
         } catch (DAOException e) {
             LOGGER.error("Get all portfolio securities error: " + e.getMessage());
             throw new ServiceException(e);
@@ -48,19 +48,9 @@ class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public List<Security> getSecuritiesByExchange() throws ServiceException {
-        return null;
-    }
-
-    @Override
-    public List<Security> getSecuritiesByType() throws ServiceException {
-        return null;
-    }
-
-    @Override
     public List<Transaction> getAllTransactions() throws ServiceException {
         try {
-            return SECURITY_DAO.getAllTransactions();
+            return getSecurityDAO().getAllTransactions();
         } catch (DAOException e) {
             LOGGER.error("Get all transactions error: " + e.getMessage());
             throw new ServiceException(e);
@@ -68,21 +58,21 @@ class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public List<Transaction> getAllPortfolioTransactions(int portfolioId) throws ServiceException {
+    public List<Transaction> getAllUserTransactions(int userId) throws ServiceException {
         try {
-            return SECURITY_DAO.getAllPortfolioTransactions(portfolioId);
+            return getSecurityDAO().getAllUserTransactions(userId);
         } catch (DAOException e) {
-            LOGGER.error("Get all portfolio transactions error: " + e.getMessage());
+            LOGGER.error("Get all user transactions error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
 
     @Override
-    public List<Transaction> getAllUserTransactions(int userId) throws ServiceException {
+    public List<Transaction> getAllPortfolioTransactions(int portfolioId) throws ServiceException {
         try {
-            return SECURITY_DAO.getAllUserTransactions(userId);
+            return getSecurityDAO().getAllPortfolioTransactions(portfolioId);
         } catch (DAOException e) {
-            LOGGER.error("Get all user transactions error: " + e.getMessage());
+            LOGGER.error("Get all portfolio transactions error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -95,7 +85,7 @@ class SecurityServiceImpl implements SecurityService {
     @Override
     public Transaction getTransaction(int id) throws ServiceException {
         try {
-            return SECURITY_DAO.getTransaction(id);
+            return getSecurityDAO().getTransaction(id);
         } catch (DAOException e) {
             LOGGER.error("Get transaction error: " + e.getMessage());
             throw new ServiceException(e);
@@ -105,7 +95,7 @@ class SecurityServiceImpl implements SecurityService {
     @Override
     public void saveSecurity(Security security) throws ServiceException {
         try {
-            SECURITY_DAO.saveSecurity(security);
+            getSecurityDAO().saveSecurity(security);
         } catch (DAOException e) {
             LOGGER.error("Add security error: " + e.getMessage());
             throw new ServiceException(e);
@@ -115,7 +105,7 @@ class SecurityServiceImpl implements SecurityService {
     @Override
     public void saveTransaction(Transaction transaction) throws ServiceException {
         try {
-            SECURITY_DAO.saveTransaction(transaction);
+            getSecurityDAO().saveTransaction(transaction);
         } catch (DAOException e) {
             LOGGER.error("Add transaction error: " + e.getMessage());
             throw new ServiceException(e);
@@ -123,24 +113,13 @@ class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public void removeSecurity(String symbol) throws ServiceException {
-        try {
-            SECURITY_DAO.removeSecurity(symbol);
-        } catch (DAOException e) {
-            LOGGER.error("Remove security error: " + e.getMessage());
-            throw new ServiceException(e);
-        }
-    }
-
-    @Override
     public void updateSecurity(Security security, String[] parameters) throws ServiceException {
-
     }
 
     @Override
     public void updateTransaction(Transaction transaction, String[] parameters) throws ServiceException {
         try {
-            SECURITY_DAO.updateTransaction(transaction, parameters);
+            getSecurityDAO().updateTransaction(transaction, parameters);
         } catch (DAOException e) {
             LOGGER.error("Update transaction error: " + e.getMessage());
             throw new ServiceException(e);
@@ -148,11 +127,11 @@ class SecurityServiceImpl implements SecurityService {
     }
 
     @Override
-    public void removeTransaction(int id) throws ServiceException {
+    public void removeSecurity(String symbol) throws ServiceException {
         try {
-            SECURITY_DAO.removeTransaction(id);
+            getSecurityDAO().removeSecurity(symbol);
         } catch (DAOException e) {
-            LOGGER.error("Remove transaction error: " + e.getMessage());
+            LOGGER.error("Remove security error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -160,10 +139,24 @@ class SecurityServiceImpl implements SecurityService {
     @Override
     public void removeSecurityFromPortfolio(int portfolioId, String symbol) throws ServiceException {
         try {
-            SECURITY_DAO.removeSecurityFromPortfolio(portfolioId, symbol);
+            getSecurityDAO().removeSecurityFromPortfolio(portfolioId, symbol);
         } catch (DAOException e) {
             LOGGER.error("Remove security from portfolio error: " + e.getMessage());
             throw new ServiceException(e);
         }
+    }
+
+    @Override
+    public void removeTransaction(int id) throws ServiceException {
+        try {
+            getSecurityDAO().removeTransaction(id);
+        } catch (DAOException e) {
+            LOGGER.error("Remove transaction error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    SecurityDAO getSecurityDAO() {
+        return DAO_FACTORY.getSecurityDAO();
     }
 }

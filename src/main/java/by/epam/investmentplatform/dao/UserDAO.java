@@ -19,5 +19,5 @@ public interface UserDAO {
 
     void deleteUser(User user) throws DAOException;
 
-    public List<String> getAllCountries() throws DAOException;
+    List<String> getAllCountries() throws DAOException;
 }

@@ -118,21 +118,6 @@ class SqlSecurityDAOImpl implements SecurityDAO {
     }
 
     @Override
-    public List<Security> getAllSecuritiesByExchange(int exchange) throws DAOException {
-        return null;
-    }
-
-    @Override
-    public List<Security> getAllSecuritiesByType(int type) throws DAOException {
-        return null;
-    }
-
-    @Override
-    public List<Security> getAllSecuritiesWithDividends(int type) throws DAOException {
-        return null;
-    }
-
-    @Override
     public List<Transaction> getAllTransactions() throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -142,36 +127,6 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection = CONNECTION_POOL.takeConnection();
             String sqlQuery = "SELECT * FROM invest.transactions";
             statement = connection.prepareStatement(sqlQuery);
-            resultSet = statement.executeQuery();
-            connection.commit();
-            transactions = DAOUtils.transactionsResultSetHandle(resultSet);
-        } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
-            throw new DAOException(e);
-        } finally {
-            try {
-                DAOUtils.closeResources(connection, statement, resultSet);
-            } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
-                throw new DAOException(e);
-            }
-        }
-        return transactions;
-    }
-
-    @Override
-    public List<Transaction> getAllPortfolioTransactions(int portfolioId) throws DAOException {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        List<Transaction> transactions;
-        try {
-            connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT * " +
-                    "FROM invest.transactions " +
-                    "WHERE portfolio_id = ?";
-            statement = connection.prepareStatement(sqlQuery);
-            statement.setInt(1, portfolioId);
             resultSet = statement.executeQuery();
             connection.commit();
             transactions = DAOUtils.transactionsResultSetHandle(resultSet);
@@ -222,6 +177,36 @@ class SqlSecurityDAOImpl implements SecurityDAO {
     }
 
     @Override
+    public List<Transaction> getAllPortfolioTransactions(int portfolioId) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Transaction> transactions;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT * " +
+                    "FROM invest.transactions " +
+                    "WHERE portfolio_id = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setInt(1, portfolioId);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            transactions = DAOUtils.transactionsResultSetHandle(resultSet);
+        } catch (Exception e) {
+            LOGGER.error("SQL connection error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return transactions;
+    }
+
+    @Override
     public Security getSecurity(String symbol) throws DAOException {
         return null;
     }
@@ -241,7 +226,7 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             statement.setInt(1, id);
             resultSet = statement.executeQuery();
             connection.commit();
-            transaction = DAOUtils.transactionResultSetHandle(resultSet);
+            transaction = DAOUtils.transactionsResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
             LOGGER.error("SQL connection error: " + e.getMessage());
             throw new DAOException(e);

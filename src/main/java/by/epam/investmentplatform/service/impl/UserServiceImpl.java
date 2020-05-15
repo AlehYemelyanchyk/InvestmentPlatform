@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.service.impl;
 
+import by.epam.investmentplatform.dao.UserDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
 import by.epam.investmentplatform.dao.impl.DAOFactory;
 import by.epam.investmentplatform.entity.User;
@@ -13,12 +14,12 @@ import java.util.List;
 
 class UserServiceImpl implements UserService {
     private static final Logger LOGGER = LogManager.getLogger();
-    private DAOFactory daoFactory = DAOFactory.getInstance();
+    private static final DAOFactory DAO_FACTORY = DAOFactory.getInstance();
 
     @Override
     public List<User> getAllUsers() throws ServiceException {
         try {
-            return daoFactory.getUserDAO().getAllUsers();
+            return getUserDAO().getAllUsers();
         } catch (DAOException e) {
             LOGGER.error("Get all users error: " + e.getMessage());
             throw new ServiceException(e);
@@ -28,7 +29,7 @@ class UserServiceImpl implements UserService {
     @Override
     public User getUser(int id) throws ServiceException {
         try {
-            return daoFactory.getUserDAO().getUser(id);
+            return getUserDAO().getUser(id);
         } catch (DAOException e) {
             LOGGER.error("Get user error: " + e.getMessage());
             throw new ServiceException(e);
@@ -37,13 +38,14 @@ class UserServiceImpl implements UserService {
 
     @Override
     public void signUp(User user) throws ServiceException {
+        UserValidationUtils.userValidation(user);
         UserValidationUtils.loginValidation(user.getLogin());
         UserValidationUtils.passwordValidation(user.getPassword());
         UserValidationUtils.emailValidation(user.getEmail());
         String hashedPassword = hashPassword(user.getPassword());
         user.setPassword(hashedPassword);
         try {
-            daoFactory.getUserDAO().saveUser(user);
+            getUserDAO().saveUser(user);
         } catch (DAOException e) {
             LOGGER.error("Create user error: " + e.getMessage());
             throw new ServiceException(e);
@@ -56,7 +58,7 @@ class UserServiceImpl implements UserService {
         UserValidationUtils.passwordValidation(password);
         User user = null;
         try {
-            User newUser = daoFactory.getUserDAO().getUser(login);
+            User newUser = getUserDAO().getUser(login);
             if (newUser != null && hashPassword(password).equals(newUser.getPassword())) {
                 user = newUser;
             }
@@ -69,10 +71,14 @@ class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(User user, String[] params) throws ServiceException {
+        UserValidationUtils.userValidation(user);
         UserValidationUtils.loginValidation(user.getLogin());
         UserValidationUtils.passwordValidation(user.getPassword());
+
+        String hashedPassword = hashPassword(user.getPassword());
+        user.setPassword(hashedPassword);
         try {
-            daoFactory.getUserDAO().updateUser(user, params);
+            getUserDAO().updateUser(user, params);
         } catch (DAOException e) {
             LOGGER.error("Update user error: " + e.getMessage());
             throw new ServiceException(e);
@@ -81,9 +87,10 @@ class UserServiceImpl implements UserService {
 
     @Override
     public void deleteUser(User user) throws ServiceException {
+        UserValidationUtils.userValidation(user);
         UserValidationUtils.loginValidation(user.getLogin());
         try {
-            daoFactory.getUserDAO().deleteUser(user);
+            getUserDAO().deleteUser(user);
         } catch (DAOException e) {
             LOGGER.error("Update user error: " + e.getMessage());
             throw new ServiceException(e);
@@ -93,11 +100,15 @@ class UserServiceImpl implements UserService {
     @Override
     public List<String> getAllCountries() throws ServiceException {
         try {
-            return daoFactory.getUserDAO().getAllCountries();
+            return getUserDAO().getAllCountries();
         } catch (DAOException e) {
             LOGGER.error("Service: " + e.getMessage());
-            throw new ServiceException("Data source connection error.");
+            throw new ServiceException("Data source connection error.", e);
         }
+    }
+
+    UserDAO getUserDAO() {
+        return DAO_FACTORY.getUserDAO();
     }
 
     private String hashPassword(String password) {

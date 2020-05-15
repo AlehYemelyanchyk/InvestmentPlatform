@@ -14,17 +14,11 @@ public interface SecurityDAO {
 
     List<Security> getAllPortfolioSecurities(int portfolioId) throws DAOException;
 
-    List<Security> getAllSecuritiesByExchange(int exchange) throws DAOException;
-
-    List<Security> getAllSecuritiesByType(int type) throws DAOException;
-
-    List<Security> getAllSecuritiesWithDividends(int type) throws DAOException;
-
     List<Transaction> getAllTransactions() throws DAOException;
 
-    List<Transaction> getAllPortfolioTransactions(int portfolioId) throws DAOException;
-
     List<Transaction> getAllUserTransactions(int userId) throws DAOException;
+
+    List<Transaction> getAllPortfolioTransactions(int portfolioId) throws DAOException;
 
     Security getSecurity(String symbol) throws DAOException;
 

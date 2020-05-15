@@ -139,13 +139,16 @@ class SqlUserDAOImpl implements UserDAO {
     public void updateUser(User user, String[] params) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
+        String country = getCountry(user.getCountry());
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "UPDATE invest.users SET ? = ? WHERE id = ?";
+            String sqlQuery = "UPDATE invest.users SET email = ?, name = ?, surname = ?, country = ? WHERE id = ?";
             statement = connection.prepareStatement(sqlQuery);
-            statement.setString(1, params[0]);
-            statement.setString(2, params[1]);
-            statement.setString(3, String.valueOf(user.getId()));
+            statement.setString(1, user.getEmail());
+            statement.setString(2, user.getName());
+            statement.setString(3, user.getSurname());
+            statement.setString(4, country);
+            statement.setInt(5, user.getId());
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {

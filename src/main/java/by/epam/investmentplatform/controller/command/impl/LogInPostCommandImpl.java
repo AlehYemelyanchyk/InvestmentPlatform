@@ -35,6 +35,7 @@ public class LogInPostCommandImpl extends AbstractCommandExecutor {
             LOGGER.error("Sign up error: ", e);
             throw e;
         }
+        LOGGER.error("Logger works");
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE, req, resp);
     }
 }

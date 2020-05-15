@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.controller.command.RequestParameterName;
 import by.epam.investmentplatform.entity.Portfolio;
@@ -16,7 +17,7 @@ public class AddPortfolioPostCommandImpl extends AbstractCommandExecutor {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int userId = (int) req.getSession().getAttribute("id");
+        int userId = (int) req.getSession().getAttribute(Constants.CURRENT_USER_ID);
 
         Portfolio portfolio = new Portfolio(
                 userId,

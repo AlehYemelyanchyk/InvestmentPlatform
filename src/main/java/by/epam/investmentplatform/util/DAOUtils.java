@@ -76,21 +76,6 @@ public final class DAOUtils {
         return transactions;
     }
 
-    public static Transaction transactionResultSetHandle(ResultSet resultSet) throws SQLException {
-        Transaction transaction = null;
-        while (resultSet.next()) {
-            transaction = new Transaction(
-                    resultSet.getInt("id"),
-                    resultSet.getInt("portfolio_id"),
-                    resultSet.getString("security_symbol"),
-                    resultSet.getInt("transaction_type"),
-                    resultSet.getInt("amount"),
-                    resultSet.getDouble("price"),
-                    resultSet.getDate("date"));
-        }
-        return transaction;
-    }
-
     public static List<String> stringsResultSetHandle(ResultSet resultSet, String column) throws SQLException {
         List<String> strings = new ArrayList<>();
         while (resultSet.next()) {

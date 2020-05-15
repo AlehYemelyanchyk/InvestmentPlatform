@@ -14,15 +14,11 @@ public interface SecurityService {
 
     List<Security> getAllPortfolioSecurities(int portfolioId) throws ServiceException;
 
-    List<Security> getSecuritiesByExchange() throws ServiceException;
-
-    List<Security> getSecuritiesByType() throws ServiceException;
-
     List<Transaction> getAllTransactions() throws ServiceException;
 
-    List<Transaction> getAllPortfolioTransactions(int portfolioId) throws ServiceException;
-
     List<Transaction> getAllUserTransactions(int userId) throws ServiceException;
+
+    List<Transaction> getAllPortfolioTransactions(int portfolioId) throws ServiceException;
 
     Security getSecurity(String symbol) throws ServiceException;
 
@@ -32,13 +28,13 @@ public interface SecurityService {
 
     void saveTransaction(Transaction transaction) throws ServiceException;
 
-    void removeSecurity(String symbol) throws ServiceException;
-
     void updateSecurity(Security security, String[] parameters) throws ServiceException;
 
     void updateTransaction(Transaction transaction, String[] parameters) throws ServiceException;
 
-    void removeTransaction(int id) throws ServiceException;
+    void removeSecurity(String symbol) throws ServiceException;
 
     void removeSecurityFromPortfolio(int portfolioId, String symbol) throws ServiceException;
+
+    void removeTransaction(int id) throws ServiceException;
 }
