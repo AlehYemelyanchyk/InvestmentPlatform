@@ -13,9 +13,6 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-import static by.epam.investmentplatform.Constants.COMMAND_ATTRIBUTE;
-import static by.epam.investmentplatform.Constants.COMMON_SERVLET_PATH;
-
 @WebFilter(filterName = "UrlFilter")
 public class UrlFilter extends AbstractFilter {
 
@@ -51,9 +48,9 @@ public class UrlFilter extends AbstractFilter {
         String requestStr = req.getRequestURI();
         String[] splitRequest = requestStr.split("/");
         String commandName = splitRequest[splitRequest.length - 1];
-        req.setAttribute(COMMAND_ATTRIBUTE, commandName);
+        req.setAttribute(Constants.COMMAND_ATTRIBUTE, commandName);
         if (BUSINESS_URIS.contains(commandName)) {
-            req.getRequestDispatcher(COMMON_SERVLET_PATH).forward(req, resp);
+            req.getRequestDispatcher(Constants.COMMON_SERVLET_PATH).forward(req, resp);
         } else {
             req.setAttribute(Constants.ERROR_ATTRIBUTE, "Such command does not exist.");
             filterChain.doFilter(req, resp);
