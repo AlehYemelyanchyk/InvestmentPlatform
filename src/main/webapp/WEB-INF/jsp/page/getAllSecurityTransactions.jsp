@@ -25,11 +25,6 @@
 
             <c:forEach var="transaction" items="${SECURITY_TRANSACTIONS}">
 
-                <%--                <c:url var="transactionLink" value="getAllSecurityTransactions">--%>
-                <%--                    <c:param name="SECURITY_NAME" value="${security.name}"/>--%>
-                <%--                    <c:param name="SECURITY_ID" value="${security.id}"/>--%>
-                <%--                </c:url>--%>
-
                 <tr>
                     <td>
                         <c:choose>

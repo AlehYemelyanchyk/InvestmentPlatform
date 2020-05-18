@@ -4,9 +4,6 @@
 <head>
     <title>Users</title>
 </head>
-<body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
 <div id="wrapper">
     <div id="header">
         <h2 align="center">All users list</h2>

@@ -14,6 +14,9 @@
         <filter-mapping>
             <filter-name>CheckIdentificationFilter</filter-name>
             <url-pattern>/getAllUserPortfolios</url-pattern>
+            <url-pattern>/userSettings</url-pattern>
+            <url-pattern>/updateUser</url-pattern>
+            <url-pattern>/getBalance</url-pattern>
         </filter-mapping>
 
     <filter-mapping>

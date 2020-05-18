@@ -1,5 +1,0 @@
-[ERROR] 2020-05-13 18:32:22.855 [main] PortfolioServiceImpl - Get all user portfolios error: Test message
-[ERROR] 2020-05-13 18:32:22.882 [main] PortfolioServiceImpl - Remove portfolio error: Test message
-[ERROR] 2020-05-13 18:32:22.887 [main] PortfolioServiceImpl - Update portfolio error: Test message
-[ERROR] 2020-05-13 18:32:22.896 [main] PortfolioServiceImpl - Get portfolio error: Test message
-[ERROR] 2020-05-13 18:32:22.898 [main] PortfolioServiceImpl - Add portfolio error: Test message

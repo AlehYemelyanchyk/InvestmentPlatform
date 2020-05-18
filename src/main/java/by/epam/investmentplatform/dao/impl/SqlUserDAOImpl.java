@@ -4,6 +4,7 @@ import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.dao.UserDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
 import by.epam.investmentplatform.db.impl.ConnectionPoolImpl;
+import by.epam.investmentplatform.entity.BalanceTransaction;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.util.DAOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -186,6 +187,45 @@ class SqlUserDAOImpl implements UserDAO {
                 throw new DAOException(e);
             }
         }
+    }
+
+    @Override
+    public List<BalanceTransaction> getUserBalanceTransactions(int id) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<BalanceTransaction> balanceTransactions;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT b.id, a.user_id, b.transaction_type as type, b.amount * b.price as amount, b.date " +
+                    "FROM invest.portfolios as a " +
+                    "JOIN invest.transactions as b " +
+                    "ON a.id = b.portfolio_id " +
+                    "WHERE a.user_id = ? " +
+                    "UNION " +
+                    "SELECT b.id, b.user_id, b.type, b.amount, b.date " +
+                    "FROM invest.portfolios as a " +
+                    "JOIN invest.balance_transactions as b " +
+                    "ON a.user_id = b.user_id " +
+                    "WHERE a.user_id = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setInt(1, id);
+            statement.setInt(2, id);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            balanceTransactions = DAOUtils.balanceResultSetHandle(resultSet);
+        } catch (Exception e) {
+            LOGGER.error("SQL connection error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return balanceTransactions;
     }
 
     @Override

@@ -3,6 +3,7 @@ package by.epam.investmentplatform.service.impl;
 import by.epam.investmentplatform.dao.UserDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
 import by.epam.investmentplatform.dao.impl.DAOFactory;
+import by.epam.investmentplatform.entity.BalanceTransaction;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.UserService;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -93,6 +94,16 @@ class UserServiceImpl implements UserService {
             getUserDAO().deleteUser(user);
         } catch (DAOException e) {
             LOGGER.error("Update user error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<BalanceTransaction> getUserBalanceTransactions(int id) throws ServiceException {
+        try {
+            return getUserDAO().getUserBalanceTransactions(id);
+        } catch (DAOException e) {
+            LOGGER.error("Get user's balance error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }

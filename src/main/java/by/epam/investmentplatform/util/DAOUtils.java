@@ -1,9 +1,6 @@
 package by.epam.investmentplatform.util;
 
-import by.epam.investmentplatform.entity.Portfolio;
-import by.epam.investmentplatform.entity.Transaction;
-import by.epam.investmentplatform.entity.Security;
-import by.epam.investmentplatform.entity.User;
+import by.epam.investmentplatform.entity.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -83,6 +80,20 @@ public final class DAOUtils {
             strings.add(value);
         }
         return strings;
+    }
+
+    public static List<BalanceTransaction> balanceResultSetHandle(ResultSet resultSet) throws SQLException {
+        List<BalanceTransaction> balanceTransactions = new ArrayList<>();
+        while (resultSet.next()) {
+            BalanceTransaction tempTransaction = new BalanceTransaction(
+                    resultSet.getInt("id"),
+                    resultSet.getInt("user_id"),
+                    resultSet.getInt("type"),
+                    resultSet.getDouble("amount"),
+                    resultSet.getDate("date"));
+            balanceTransactions.add(tempTransaction);
+        }
+        return balanceTransactions;
     }
 
     public static void closeResources(Connection connection, PreparedStatement statement, ResultSet resultSet)

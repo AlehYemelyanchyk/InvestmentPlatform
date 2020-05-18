@@ -37,19 +37,25 @@ public class UserServiceImplTest {
     @Before
     public void setUp() {
         Mockito.when(userService.getUserDAO()).thenReturn(userDAO);
-        user = new User("1", "user", "1234qwer", "email@mail", "name", "surname", "5");
-        expectedUser = new User("1", "user", "1234qwer", "email@mail", "name", "surname", "5");
+        user = new User("1", "user", Integer.toString("1234qwer".hashCode()), "email@mail", "name", "surname", "5");
+        expectedUser = new User("1", "user", Integer.toString("1234qwer".hashCode()), "email@mail", "name", "surname", "5");
         actualException = null;
     }
 
     @Test
-    public void getAllUsersReturnCollectionTest() {
+    public void getAllUsersReturnListTest() {
         List<User> expectedList = new ArrayList<>();
         expectedList.add(user);
 
         Mockito.when(userDAO.getAllUsers()).thenReturn(expectedList);
         List<User> actualList = userDAO.getAllUsers();
         Assert.assertEquals(expectedList, actualList);
+    }
+
+    @Test
+    public void getAllUsersReturnEmptyListTest() {
+        List<User> actualList = userDAO.getAllUsers();
+        Assert.assertTrue(actualList.isEmpty());
     }
 
     @Test
@@ -67,6 +73,13 @@ public class UserServiceImplTest {
         Mockito.when(userDAO.getUser(USER_ID)).thenReturn(expectedUser);
         User actualUser = userService.getUser(USER_ID);
         Assert.assertEquals(expectedUser, actualUser);
+    }
+
+    @Test
+    public void getUserReturnNullUserTest() {
+        int wrongId = 45;
+        User actualUser = userService.getUser(wrongId);
+        Assert.assertNull(actualUser);
     }
 
     @Test
@@ -310,7 +323,7 @@ public class UserServiceImplTest {
     }
 
     @Test
-    public void getAllCountriesReturnCollectionTest() {
+    public void getAllCountriesReturnListTest() {
         List<String> expectedList = new ArrayList<>();
         expectedList.add("Country");
 

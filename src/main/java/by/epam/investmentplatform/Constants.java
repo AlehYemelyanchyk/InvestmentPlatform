@@ -7,6 +7,8 @@ public final class Constants {
     public static final String COUNTRIES_LIST = "COUNTRIES_LIST";
     public static final String CURRENT_PAGE = "CURRENT_PAGE";
     public static final String CURRENT_USER = "CURRENT_USER";
+    public static final String CURRENT_USER_BALANCE = "CURRENT_USER_BALANCE";
+    public static final String CURRENT_USER_BALANCE_TRANSACTIONS = "CURRENT_USER_BALANCE_TRANSACTIONS";
     public static final String CURRENT_USER_ID = "CURRENT_USER_ID";
     public static final String CURRENT_USER_LOGIN = "CURRENT_USER_LOGIN";
     public static final String CURRENT_USER_ROLE = "CURRENT_USER_ROLE";
