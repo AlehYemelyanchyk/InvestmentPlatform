@@ -2,9 +2,6 @@ package by.epam.investmentplatform.controller.filter;
 
 import by.epam.investmentplatform.CommandsConstants;
 import by.epam.investmentplatform.Constants;
-import by.epam.investmentplatform.db.impl.ConnectionPoolImpl;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -18,8 +15,6 @@ import java.util.Set;
 
 @WebFilter(filterName = "UrlFilter")
 public class UrlFilter extends AbstractFilter {
-
-    private static final Logger LOGGER = LogManager.getLogger(ConnectionPoolImpl.class);
 
     // need to protect this collection from modifications somehow
     private static final Set<String> BUSINESS_URIS = new HashSet<>();
@@ -51,7 +46,6 @@ public class UrlFilter extends AbstractFilter {
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         // saving url of the initial request, because we override it on the line 29 with "/app".
-        LOGGER.error("APPLICATION STARTED!!! APPLICATION STARTED!!! APPLICATION STARTED!!!");
         String requestStr = req.getRequestURI();
         String[] splitRequest = requestStr.split("/");
         String commandName = splitRequest[splitRequest.length - 1];

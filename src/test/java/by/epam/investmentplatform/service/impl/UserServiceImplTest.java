@@ -2,6 +2,7 @@ package by.epam.investmentplatform.service.impl;
 
 import by.epam.investmentplatform.dao.UserDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
+import by.epam.investmentplatform.entity.BalanceTransaction;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 import org.junit.Assert;
@@ -14,6 +15,7 @@ import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -26,6 +28,7 @@ public class UserServiceImplTest {
     private static final String[] PARAMS = {"param1", "param2", "param3"};
     private User user;
     private User expectedUser;
+    private BalanceTransaction balanceTransaction;
 
     @Spy
     private UserServiceImpl userService;
@@ -39,6 +42,8 @@ public class UserServiceImplTest {
         Mockito.when(userService.getUserDAO()).thenReturn(userDAO);
         user = new User("1", "user", Integer.toString("1234qwer".hashCode()), "email@mail", "name", "surname", "5");
         expectedUser = new User("1", "user", Integer.toString("1234qwer".hashCode()), "email@mail", "name", "surname", "5");
+        user = new User("1", "user", Integer.toString("1234qwer".hashCode()), "email@mail", "name", "surname", "5");
+        balanceTransaction = new BalanceTransaction(1,3,20.2,new Date(12, 12, 2020));
         actualException = null;
     }
 
@@ -319,6 +324,35 @@ public class UserServiceImplTest {
         } finally {
             Assert.assertNotNull(actualException);
             Assert.assertEquals(EXPECTED_SERVICE_EXCEPTION.getClass(), actualException.getClass());
+        }
+    }
+
+    @Test
+    public void getUserBalanceTransactionsReturnListTest() {
+        List<BalanceTransaction> expectedList = new ArrayList<>();
+        expectedList.add(balanceTransaction);
+
+        Mockito.when(userDAO.getUserBalanceTransactions(USER_ID)).thenReturn(expectedList);
+        List<BalanceTransaction> actualList = userService.getUserBalanceTransactions(USER_ID);
+        Assert.assertEquals(expectedList, actualList);
+    }
+
+    @Test
+    public void getUserBalanceTransactionsReturnEmptyListTest() {
+        List<BalanceTransaction> actualList = userDAO.getUserBalanceTransactions(USER_ID);
+        Assert.assertTrue(actualList.isEmpty());
+    }
+
+    @Test
+    public void getUserBalanceTransactionsDAOExceptionTest() {
+        Mockito.doThrow(EXPECTED_DAO_EXCEPTION).when(userDAO).getUserBalanceTransactions(USER_ID);
+        try {
+            userService.getUserBalanceTransactions(USER_ID);
+        } catch (ServiceException e) {
+            actualException = e;
+        } finally {
+            Assert.assertNotNull(actualException);
+            Assert.assertEquals(EXPECTED_DAO_EXCEPTION, actualException.getCause());
         }
     }
 
