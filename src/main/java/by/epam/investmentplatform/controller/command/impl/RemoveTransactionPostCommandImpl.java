@@ -23,7 +23,7 @@ public class RemoveTransactionPostCommandImpl extends AbstractCommandExecutor {
             LOGGER.error("Remove portfolio error: ", e);
             throw new ServiceException("Incorrect values");
         }
-        req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
+        req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

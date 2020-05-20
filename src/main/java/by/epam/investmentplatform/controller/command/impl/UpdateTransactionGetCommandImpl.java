@@ -17,6 +17,7 @@ public class UpdateTransactionGetCommandImpl extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter(Constants.TRANSACTION_ID));
+        String portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
         try {
             Transaction transaction = SECURITY_SERVICE.getTransaction(id);
             req.setAttribute(Constants.TRANSACTION, transaction);
@@ -24,6 +25,7 @@ public class UpdateTransactionGetCommandImpl extends AbstractCommandExecutor {
             LOGGER.error("Get portfolio error: ", e);
             throw new ServiceException("Incorrect values");
         }
+        req.setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
         RoutingUtils.forwardToPage(JspPageName.UPDATE_TRANSACTION_PAGE, req, resp);
     }
 }

@@ -147,6 +147,7 @@
                             <td>
                                 <form action="updateTransaction" method="GET">
                                     <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                                    <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                                     <input type="submit" name="submit"  value="Edit">
                                 </form>
                             </td>
@@ -154,6 +155,7 @@
                             <td>
                                 <form action="removeTransaction" method="POST">
                                     <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                                    <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                                     <input type="submit"
                                            onclick="if (!(confirm('Are you sure you want to delete this transaction?'))) return false"
                                            name="submit"  value="Delete">

@@ -23,8 +23,17 @@ public class GetAllPortfolioSecuritiesGetCommandImpl extends AbstractCommandExec
 
         Map<String, PortfolioSecurity> securities = new HashMap<>();
 
-        int portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
-        String portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
+        int portfolioId;
+        String portfolioName;
+        if (req.getParameterMap().isEmpty()) {
+            portfolioId = (int) req.getSession().getAttribute(Constants.PORTFOLIO_ID);
+            portfolioName = (String) req.getSession().getAttribute(Constants.PORTFOLIO_NAME);
+        } else {
+            portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
+            portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
+        }
+        req.getSession().setAttribute(Constants.PORTFOLIO_ID, portfolioId);
+        req.getSession().setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
         List<Security> allPortfolioSecurities = SECURITY_SERVICE.getAllPortfolioSecurities(portfolioId);
         List<Transaction> allPortfolioTransactions = SECURITY_SERVICE.getAllPortfolioTransactions(portfolioId);
 
@@ -75,10 +84,4 @@ public class GetAllPortfolioSecuritiesGetCommandImpl extends AbstractCommandExec
         }
         return fullAmount;
     }
-
-//    private void fillSecuritiesMap(Map<String, ArrayList<Security>> securities, List<Security> allPortfolioSecurities) {
-//        for (Security security : allPortfolioSecurities) {
-//            securities.put(security.getSymbol(), security.)
-//        }
-//    }
 }

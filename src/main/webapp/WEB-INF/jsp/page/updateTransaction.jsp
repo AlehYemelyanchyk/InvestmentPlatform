@@ -16,6 +16,7 @@
         <tr>
             <td><input type="hidden" name="TRANSACTION_ID" value="${TRANSACTION.id}"></td>
             <td><input type="hidden" name="PORTFOLIO_ID" value="${TRANSACTION.portfolioId}"></td>
+            <td><input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}"></td>
             <td><input type="hidden" name="SECURITY_SYMBOL" value="${TRANSACTION.securitySymbol}"></td>
         </tr>
         <table>

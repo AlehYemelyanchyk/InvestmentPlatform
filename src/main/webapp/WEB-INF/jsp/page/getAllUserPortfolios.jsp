@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="ex" uri="/WEB-INF/tags.tld" %>
 <html>
 <head>
     <title>Portfolios</title>
@@ -9,7 +8,6 @@
 <div id="wrapper">
     <div id="header">
         <h2 align="center">All portfolios</h2>
-        <ex:static/>
     </div>
 </div>
 

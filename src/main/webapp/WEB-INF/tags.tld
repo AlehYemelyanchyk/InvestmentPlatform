@@ -5,7 +5,7 @@
     <short-name>tags</short-name>
     <tag>
         <name>static</name>
-        <tag-class>by.epam.investmentplatform.controller.tag.Tag</tag-class>
+        <tag-class>by.epam.investmentplatform.controller.tag.CurrentDateTag</tag-class>
         <body-content>empty</body-content>
     </tag>
 </taglib>

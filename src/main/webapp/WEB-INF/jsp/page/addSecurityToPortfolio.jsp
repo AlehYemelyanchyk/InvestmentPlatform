@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="date" uri="/WEB-INF/tags.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="currentDate" class="java.util.Date" />
 <html>
@@ -60,6 +61,7 @@
 
                 <tr>
                     <td><label>Date: </label></td>
+<%--                    <date:static var="currentDate">--%>
                     <td><input type="date" name="DATE"
 <%--                               value="currentDate"--%>
                                min="1970-01-01" max="2099-12-31">

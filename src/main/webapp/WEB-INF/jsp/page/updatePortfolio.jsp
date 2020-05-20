@@ -18,7 +18,6 @@
             <tr>
                 <td><input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO.id}"></td>
                 <td><input type="hidden" name="PORTFOLIO_USER_ID" value="${PORTFOLIO.user_id}"></td>
-                <td><input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO.name}"></td>
             </tr>
 
             <tr>

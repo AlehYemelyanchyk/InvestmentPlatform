@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Tag extends TagSupport {
+public class CurrentDateTag extends TagSupport {
     private static final long serialVersionUID = -3464982113309963974L;
 
     @Override

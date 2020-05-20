@@ -28,6 +28,7 @@ public class AddPortfolioPostCommandImpl extends AbstractCommandExecutor {
             LOGGER.error("Add portfolio error: ", e);
             throw new ServiceException("Incorrect values");
         }
-        RoutingUtils.forwardToPage(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE, req, resp);
+        req.setAttribute(Constants.REDIRECT_LINK, "getAllUserPortfolios");
+        RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }
