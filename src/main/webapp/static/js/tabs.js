@@ -1,9 +1,12 @@
 const tabs = document.querySelectorAll('[data-tab-target]')
 const tabContent = document.querySelectorAll('[data-tab-content]')
+let table
 
 tabs.forEach(tab => {
     tab.addEventListener('click', () => {
         const target = document.querySelector(tab.dataset.tabTarget)
+        table = target.getAttribute("id")
+        table = "#" + table
         tabContent.forEach(tabContent => {
             tabContent.classList.remove('active')
         })
