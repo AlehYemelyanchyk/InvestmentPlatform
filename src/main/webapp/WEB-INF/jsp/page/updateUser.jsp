@@ -1,13 +1,19 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
     <title>Update user</title>
 </head>
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Edit Personal Details</h2>
+        <h2 align="center"><fmt:message key="label.editPersonalDetails"/></h2>
     </div>
 </div>
 
@@ -23,37 +29,37 @@
             </tr>
 
             <tr>
-                <td><label>Old password: </label></td>
+                <td><label><fmt:message key="label.oldPassword"/>: </label></td>
                 <td><input type="password" name="oldPassword" value="${CURRENT_USER.password}"></td>
             </tr>
 
             <tr>
-                <td><label>New password: </label></td>
+                <td><label><fmt:message key="label.newPassword"/>: </label></td>
                 <td><input type="password" name="newPassword"></td>
             </tr>
 
             <tr>
-                <td><label>Repeat new password: </label></td>
+                <td><label><fmt:message key="label.repeatNewPassword"/>: </label></td>
                 <td><input type="password" name="CURRENT_USER_PASSWORD"></td>
             </tr>
 
             <tr>
-                <td><label>Email: </label></td>
+                <td><label><fmt:message key="label.email"/>: </label></td>
                 <td><input type="text" name="CURRENT_USER_EMAIL" value="${CURRENT_USER.email}"></td>
             </tr>
 
             <tr>
-                <td><label>Name: </label></td>
+                <td><label><fmt:message key="label.name"/>: </label></td>
                 <td><input type="text" name="CURRENT_USER_NAME" value="${CURRENT_USER.name}"></td>
             </tr>
 
             <tr>
-                <td><label>Surname: </label></td>
+                <td><label><fmt:message key="label.surname"/>: </label></td>
                 <td><input type="text" name="CURRENT_USER_SURNAME" value="${CURRENT_USER.surname}"></td>
             </tr>
 
             <tr>
-                <td><label>Country: </label></td>
+                <td><label><fmt:message key="label.country"/>: </label></td>
                 <td>
                     <select name="CURRENT_USER_COUNTRY">
                         <c:forEach var="country" items="${sessionScope.COUNTRIES_LIST}">
@@ -65,10 +71,7 @@
 
             <tr>
                 <td><label></label></td>
-                <%--                <c:if test="${CURRENT_USER.password} Eq ${oldPassword}">--%>
-                <%--                    --%>
-                <%--                </c:if>--%>
-                <td><input type="submit" value="Update" class="save"></td>
+                <td><input type="submit" value="<fmt:message key="label.submit"/>" class="save"></td>
             </tr>
             </tbody>
         </table>

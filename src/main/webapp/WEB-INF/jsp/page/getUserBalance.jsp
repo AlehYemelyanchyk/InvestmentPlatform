@@ -1,7 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
     <title>All securities</title>
     <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
@@ -10,7 +15,7 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Balance</h2>
+        <h2 align="center"><fmt:message key="label.balance"/></h2>
     </div>
 </div>
 
@@ -21,13 +26,13 @@
                           maxFractionDigits="2" value="${balance}"/>
     </p>
     <a href="${pageContext.request.contextPath}/deposite">
-        Deposite
+        <fmt:message key="label.deposit"/>
     </a>
     <a href="${pageContext.request.contextPath}/withdraw">
-        Withdraw
+        <fmt:message key="label.withdraw"/>
     </a>
     <a href="${pageContext.request.contextPath}/loan">
-        Loan
+        <fmt:message key="label.loan"/>
     </a>
 </div>
 </body>

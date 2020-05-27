@@ -1,9 +1,14 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
 <%@ taglib prefix="date" uri="/WEB-INF/tags.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="currentDate" class="java.util.Date" />
-<html>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
     <title>Add security to portfolio</title>
 </head>
@@ -11,7 +16,7 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Add security</h2>
+        <h2 align="center"><fmt:message key="label.addSecurity"/></h2>
     </div>
 </div>
 
@@ -27,7 +32,7 @@
                 </tr>
 
                 <tr>
-                    <td>Portfolio:</td>
+                    <td><fmt:message key="label.portfolio"/>:</td>
                     <td>
                         <select name="PORTFOLIO_ID">
                             <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
@@ -38,29 +43,29 @@
                 </tr>
 
                 <tr>
-                    <td>Type:</td>
+                    <td><fmt:message key="label.type"/>:</td>
                     <td>
                         <select name="TRANSACTION_TYPE">
-                            <option value="1">Buy</option>
-                            <option value="2">Sell</option>
+                            <option value="1"><fmt:message key="label.buy"/></option>
+                            <option value="2"><fmt:message key="label.sell"/></option>
                         </select>
                     </td>
                 </tr>
 
                 <tr>
-                    <td><label>Amount: </label></td>
+                    <td><label><fmt:message key="label.amount"/>: </label></td>
                     <td><input type="text" name="AMOUNT" onkeypress="return isNumber(event)"></td>
                 </tr>
 
                 <tr>
-                    <td><label>Price: </label></td>
+                    <td><label><fmt:message key="label.price"/>: </label></td>
                     <td><input type="text" name="PRICE"
                                value="${SECURITY_PRICE}"
                                onkeypress="return isDecimalNumber(event)"></td>
                 </tr>
 
                 <tr>
-                    <td><label>Date: </label></td>
+                    <td><label><fmt:message key="label.date"/>: </label></td>
 <%--                    <date:static var="currentDate">--%>
                     <td><input type="date" name="DATE"
 <%--                               value="currentDate"--%>
@@ -70,7 +75,7 @@
 
                 <tr>
                     <td><label></label></td>
-                    <td><input type="submit" value="Add" class="save"></td>
+                    <td><input type="submit" value="<fmt:message key="label.add"/>" class="save"></td>
                 </tr>
                 </tbody>
             </table>

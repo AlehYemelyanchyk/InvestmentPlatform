@@ -1,7 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
     <title>All securities</title>
 </head>
@@ -16,7 +21,7 @@
 <div class="container">
     <div class="form-group">
         <select name="state" id="maxRows" class="form-control" style="width:150px;">
-            <option value="5000">Show All</option>
+            <option value="5000"><fmt:message key="label.showAll"/></option>
             <option value="5">5</option>
             <option value="10">10</option>
             <option value="15">15</option>
@@ -41,12 +46,12 @@
                 p<table>
                     <thead>
                     <tr>
-                        <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Exchange</th>
-                        <th>Current price</th>
-                        <th>Year change, %</th>
-                        <th>Dividends</th>
+                        <th><fmt:message key="label.symbol"/></th>
+                        <th><fmt:message key="label.name"/></th>
+                        <th><fmt:message key="label.exchange"/></th>
+                        <th><fmt:message key="label.currentPrice"/></th>
+                        <th><fmt:message key="label.yearChange"/>, %</th>
+                        <th><fmt:message key="label.dividends"/></th>
                         <th></th>
                     </tr>
                     </thead>
@@ -82,7 +87,7 @@
                                     <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
                                     <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
                                     <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                    <input type="submit" name="submit" value="Add">
+                                    <input type="submit" name="submit" value="<fmt:message key="label.add"/>">
                                 </form>
                             </td>
                         </tr>

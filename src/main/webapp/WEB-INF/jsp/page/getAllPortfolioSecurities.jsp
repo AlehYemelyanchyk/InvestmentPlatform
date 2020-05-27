@@ -1,13 +1,14 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<html>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
     <title>Portfolio securities</title>
-<%--    <link type="text/css" rel="stylesheet" href="static/css/tabsStyle.css">--%>
-<%--    <link type="text/css" rel="stylesheet" href="static/css/autocompleteSearch.css">--%>
-<%--    <script type="text/javascript" src="jquery-3.5.0.min.js"></script>--%>
-    <%--    <script type="text/javascript" src="js/tabs.js"></script>--%>
 </head>
 
 <body>
@@ -21,28 +22,28 @@
     <div id="content">
 
         <div class="autocomplete">
-            <input type="text" placeholder="Find a security">
-            <span class="close">Cancel</span>
+            <input type="text" placeholder="<fmt:message key="label.findSecurity"/>">
+            <span class="close"><fmt:message key="label.cancel"/></span>
             <div class="dialog">
             </div>
         </div>
 
         <div class="tabs_names">
-            <li data-tab-target="#holdings" class="active tab">Holdings</li>
-            <li data-tab-target="#transactions" class="tab">Transactions</li>
+            <li data-tab-target="#holdings" class="active tab"><fmt:message key="label.holdings"/></li>
+            <li data-tab-target="#transactions" class="tab"><fmt:message key="label.transactions"/></li>
         </div>
 
         <div class="tabs_content table-bordered table-striped">
             <div id="holdings" data-tab-content class="active">
                 <table>
                     <tr>
-                        <th>Symbol</th>
-                        <th>Name</th>
-                        <th>Exchange</th>
-                        <th>Amount</th>
-                        <th>Average price</th>
-                        <th>Year change, %</th>
-                        <th>Type</th>
+                        <th><fmt:message key="label.symbol"/></th>
+                        <th><fmt:message key="label.name"/></th>
+                        <th><fmt:message key="label.exchange"/></th>
+                        <th><fmt:message key="label.amount"/></th>
+                        <th><fmt:message key="label.averagePrice"/></th>
+                        <th><fmt:message key="label.yearChange"/>, %</th>
+                        <th><fmt:message key="label.type"/></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -91,11 +92,10 @@
                                 <form action="removeSecurityFromPortfolio" method="POST">
                                     <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
                                     <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-<%--                                    onclick="if (!(confirm('Are you sure you want to delete this portfolio?'))) return false">--%>
                                     <input type="submit"
-                                           onclick="if (!(confirm('Are you sure you want to delete this portfolio? ' +
-                                            'That will also remove all the security\'s transactions.'))) return false"
-                                           name="submit" value="Delete">
+                                           onclick="if (!(confirm('<fmt:message
+                                                   key="label.deleteSecurityWarning"/>'))) return false"
+                                           name="submit" value="<fmt:message key="label.delete"/>">
                                 </form>
                             </td>
 
@@ -106,11 +106,11 @@
             <div id="transactions" data-tab-content>
                 <table>
                     <tr>
-                        <th>Symbol</th>
-                        <th>Type</th>
-                        <th>Amount</th>
-                        <th>Price</th>
-                        <th>Date</th>
+                        <th><fmt:message key="label.symbol"/></th>
+                        <th><fmt:message key="label.type"/></th>
+                        <th><fmt:message key="label.amount"/></th>
+                        <th><fmt:message key="label.price"/></th>
+                        <th><fmt:message key="label.date"/></th>
                         <th></th>
                         <th></th>
                     </tr>
@@ -124,10 +124,10 @@
                             <td>
                                 <c:choose>
                                     <c:when test="${transaction.transactionType == 1}">
-                                        Buy
+                                        <fmt:message key="label.buy"/>
                                     </c:when>
                                     <c:when test="${transaction.transactionType == 2}">
-                                        Sell
+                                        <fmt:message key="label.sell"/>
                                     </c:when>
                                 </c:choose>
                             </td>
@@ -148,7 +148,7 @@
                                 <form action="updateTransaction" method="GET">
                                     <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                     <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                    <input type="submit" name="submit"  value="Edit">
+                                    <input type="submit" name="submit" value="<fmt:message key="label.edit"/>">
                                 </form>
                             </td>
 
@@ -157,8 +157,9 @@
                                     <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                     <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                                     <input type="submit"
-                                           onclick="if (!(confirm('Are you sure you want to delete this transaction?'))) return false"
-                                           name="submit"  value="Delete">
+                                           onclick="if (!(confirm('<fmt:message
+                                                   key="label.deleteTransactionWarning"/>'))) return false"
+                                           name="submit" value="<fmt:message key="label.delete"/>">
                                 </form>
                             </td>
                         </tr>

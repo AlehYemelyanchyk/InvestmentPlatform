@@ -1,13 +1,19 @@
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
     <title>Update transaction</title>
 </head>
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Edit transaction</h2>
+        <h2 align="center"><fmt:message key="label.editTransaction"/></h2>
     </div>
 </div>
 
@@ -22,7 +28,7 @@
         <table>
             <tbody>
             <tr>
-                <td><label>Type: </label></td>
+                <td><label><fmt:message key="label.type"/>: </label></td>
                 <td>
                     <select name="TRANSACTION_TYPE">
                         <c:choose>
@@ -40,23 +46,23 @@
             </tr>
 
             <tr>
-                <td><label>Amount: </label></td>
+                <td><label><fmt:message key="label.amount"/>: </label></td>
                 <td><input type="text" name="AMOUNT" value="${TRANSACTION.amount}"></td>
             </tr>
 
             <tr>
-                <td><label>Price: </label></td>
+                <td><label><fmt:message key="label.price"/>: </label></td>
                 <td><input type="text" name="PRICE" value="${TRANSACTION.price}"></td>
             </tr>
 
             <tr>
-                <td><label>Date: </label></td>
+                <td><label><fmt:message key="label.date"/>: </label></td>
                 <td><input type="text" name="DATE" value="${TRANSACTION.date}"></td>
             </tr>
 
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" value="Save" class="save"></td>
+                <td><input type="submit" value="<fmt:message key="label.save"/>" class="save"></td>
             </tr>
             </tbody>
         </table>

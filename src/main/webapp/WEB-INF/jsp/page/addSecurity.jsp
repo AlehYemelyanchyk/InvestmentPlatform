@@ -1,5 +1,12 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
     <title>Add security</title>
 </head>
@@ -7,7 +14,7 @@
 <body>
 <div id="wrapper">
     <div id="header">
-        <h2 align="center">Add a security</h2>
+        <h2 align="center"><fmt:message key="label.addSecurity"/></h2>
     </div>
 </div>
 
@@ -17,13 +24,13 @@
             <table>
                 <tbody>
                 <tr>
-                    <td><label>Name: </label></td>
+                    <td><label><fmt:message key="label.name"/>: </label></td>
                     <td><input type="text" name="name"></td>
                 </tr>
 
                 <tr>
                     <td><label></label></td>
-                    <td><input type="submit" value="Add" class="save"></td>
+                    <td><input type="submit" value="<fmt:message key="label.add"/>" class="save"></td>
                 </tr>
                 </tbody>
             </table>
