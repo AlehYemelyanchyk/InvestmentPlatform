@@ -25,12 +25,12 @@
                 <tbody>
                 <tr>
                     <td><label><fmt:message key="label.name"/>: </label></td>
-                    <td><input type="text" name="name"></td>
+                    <td><input type="text" id="userText" name="name"></td>
                 </tr>
-
                 <tr>
                     <td><label></label></td>
-                    <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.add"/>" class="save"></td>
+                    <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.add"/>"
+                               class="save" onclick="XSSPrevent()"></td>
                 </tr>
                 </tbody>
             </table>

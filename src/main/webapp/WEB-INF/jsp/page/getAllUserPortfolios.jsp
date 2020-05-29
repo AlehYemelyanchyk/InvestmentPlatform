@@ -31,7 +31,6 @@
                 <th><fmt:message key="label.name"/></th>
                 <th><fmt:message key="label.action"/></th>
             </tr>
-
             <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
 
                 <c:url var="portfolioLink" value="getAllPortfolioSecurities">
@@ -55,11 +54,11 @@
                         <a href="${updateLink}"><fmt:message key="label.edit"/></a>
                         |
                         <a href="${removeLink}"
-                           onclick="if (!(confirm('Are you sure you want to delete this portfolio?'))) return false">
+                           onclick="if (!(confirm('<fmt:message key="label.deletePortfolio"/>'))) return false">
                             <fmt:message key="label.delete"/></a>
                     </td>
                 </tr>
-            </c:forEach>>
+            </c:forEach>
         </table>
     </div>
 </div>

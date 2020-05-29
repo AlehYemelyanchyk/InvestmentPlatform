@@ -40,10 +40,22 @@
 
     <div class="tabs_content table-bordered table-striped">
 
-        <c:forEach var="type" items="${SECURITIES_LIST}">
+        <c:forEach var="type" items="${SECURITIES_LIST}" varStatus="loop">
 
-            <div id="${type.key}" data-tab-content class="active">
-                p<table>
+        <c:choose>
+
+        <c:when test="${loop.index == 0}">
+        <div id="${type.key}" data-tab-content class="active">
+            </c:when>
+
+            <c:otherwise>
+            <div id="${type.key}" data-tab-content>
+                </c:otherwise>
+
+                </c:choose>
+
+                <p>
+                <table>
                     <thead>
                     <tr>
                         <th><fmt:message key="label.symbol"/></th>
@@ -91,20 +103,21 @@
                                 </form>
                             </td>
                         </tr>
-                    </c:forEach>>
+                    </c:forEach>
                     </tbody>
                 </table>
+                </p>
             </div>
 
-        </c:forEach>
+            </c:forEach>
 
-        <div class="pagination-container">
-            <nav>
-                <ul class="pagination"></ul>
-            </nav>
+            <div class="pagination-container">
+                <nav>
+                    <ul class="pagination"></ul>
+                </nav>
+            </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

@@ -45,5 +45,6 @@
 <script src="static/js/app.js"></script>
 <script src="static/js/tabs.js"></script>
 <script src="static/js/pagination.js"></script>
+<script src="static/js/XSSPrevent.js"></script>
 </body>
 </html>

@@ -9,7 +9,6 @@
 <html lang="${sessionScope.lang}">
 <head>
     <title>All securities</title>
-    <link href="static/css/bootstrap.min.css" rel="stylesheet"/>
 </head>
 
 <body>

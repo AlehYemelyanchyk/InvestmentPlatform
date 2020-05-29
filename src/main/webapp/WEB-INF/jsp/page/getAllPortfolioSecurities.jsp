@@ -48,59 +48,61 @@
                         <th></th>
                     </tr>
 
-                    <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
-                        <c:url var="securityLink" value="getAllSecurityTransactions">
-                            <c:param name="PORTFOLIO_ID" value="${PORTFOLIO_ID}"/>
-                            <c:param name="SECURITY_NAME" value="${security.value.name}"/>
-                            <c:param name="SECURITY_SYMBOL" value="${security.key}"/>
-                        </c:url>
+                    <p>
+                        <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
+                            <c:url var="securityLink" value="getAllSecurityTransactions">
+                                <c:param name="PORTFOLIO_ID" value="${PORTFOLIO_ID}"/>
+                                <c:param name="SECURITY_NAME" value="${security.value.name}"/>
+                                <c:param name="SECURITY_SYMBOL" value="${security.key}"/>
+                            </c:url>
 
-                        <tr>
-                            <td>
-                                <c:out value="${security.key}"></c:out>
-                            </td>
+                            <tr>
+                                <td>
+                                    <c:out value="${security.key}"></c:out>
+                                </td>
 
-                            <td>
-                                <c:out value="${security.value.name}"></c:out>
-                            </td>
+                                <td>
+                                    <c:out value="${security.value.name}"></c:out>
+                                </td>
 
-                            <td>
-                                <c:out value="${security.value.exchange}"></c:out>
-                            </td>
+                                <td>
+                                    <c:out value="${security.value.exchange}"></c:out>
+                                </td>
 
-                            <td>
-                                <c:out value="${security.value.amount}"></c:out>
-                            </td>
+                                <td>
+                                    <c:out value="${security.value.amount}"></c:out>
+                                </td>
 
-                            <td>
-                                <c:set var="averagePrice" value="${security.value.averagePrice}"/>
-                                <fmt:formatNumber type="number" minFractionDigits="2"
-                                                  maxFractionDigits="2" value="${averagePrice}"/>
-                            </td>
+                                <td>
+                                    <c:set var="averagePrice" value="${security.value.averagePrice}"/>
+                                    <fmt:formatNumber type="number" minFractionDigits="2"
+                                                      maxFractionDigits="2" value="${averagePrice}"/>
+                                </td>
 
-                            <td>
-                                <c:set var="yearChangePercents" value="${security.value.yearChangePercents}"/>
-                                <fmt:formatNumber type="number" minFractionDigits="2"
-                                                  maxFractionDigits="2" value="${yearChangePercents}"/>
-                            </td>
+                                <td>
+                                    <c:set var="yearChangePercents" value="${security.value.yearChangePercents}"/>
+                                    <fmt:formatNumber type="number" minFractionDigits="2"
+                                                      maxFractionDigits="2" value="${yearChangePercents}"/>
+                                </td>
 
-                            <td>
-                                <c:out value="${security.value.securityType}"></c:out>
-                            </td>
+                                <td>
+                                    <c:out value="${security.value.securityType}"></c:out>
+                                </td>
 
-                            <td>
-                                <form action="removeSecurityFromPortfolio" method="POST">
-                                    <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
-                                    <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                    <input type="submit"
-                                           onclick="if (!(confirm('<fmt:message
-                                                   key="label.deleteSecurityWarning"/>'))) return false"
-                                           name="submit" value="<fmt:message key="label.delete"/>">
-                                </form>
-                            </td>
+                                <td>
+                                    <form action="removeSecurityFromPortfolio" method="POST">
+                                        <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
+                                        <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                                        <input type="submit"
+                                               onclick="if (!(confirm('<fmt:message
+                                                       key="label.deleteSecurityWarning"/>'))) return false"
+                                               name="submit" value="<fmt:message key="label.delete"/>">
+                                    </form>
+                                </td>
 
-                        </tr>
-                    </c:forEach>>
+                            </tr>
+                        </c:forEach>
+                    </p>
                 </table>
             </div>
             <div id="transactions" data-tab-content>
@@ -115,55 +117,57 @@
                         <th></th>
                     </tr>
 
-                    <c:forEach var="transaction" items="${PORTFOLIO_TRANSACTIONS}">
-                        <tr>
-                            <td>
-                                <c:out value="${transaction.securitySymbol}"></c:out>
-                            </td>
+                    <p>
+                        <c:forEach var="transaction" items="${PORTFOLIO_TRANSACTIONS}">
+                            <tr>
+                                <td>
+                                    <c:out value="${transaction.securitySymbol}"></c:out>
+                                </td>
 
-                            <td>
-                                <c:choose>
-                                    <c:when test="${transaction.transactionType == 1}">
-                                        <fmt:message key="label.buy"/>
-                                    </c:when>
-                                    <c:when test="${transaction.transactionType == 2}">
-                                        <fmt:message key="label.sell"/>
-                                    </c:when>
-                                </c:choose>
-                            </td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${transaction.transactionType == 1}">
+                                            <fmt:message key="label.buy"/>
+                                        </c:when>
+                                        <c:when test="${transaction.transactionType == 2}">
+                                            <fmt:message key="label.sell"/>
+                                        </c:when>
+                                    </c:choose>
+                                </td>
 
-                            <td>
-                                <c:out value="${transaction.amount}"></c:out>
-                            </td>
+                                <td>
+                                    <c:out value="${transaction.amount}"></c:out>
+                                </td>
 
-                            <td>
-                                <c:out value="${transaction.price}"></c:out>
-                            </td>
+                                <td>
+                                    <c:out value="${transaction.price}"></c:out>
+                                </td>
 
-                            <td>
-                                <c:out value="${transaction.date}"></c:out>
-                            </td>
+                                <td>
+                                    <c:out value="${transaction.date}"></c:out>
+                                </td>
 
-                            <td>
-                                <form action="updateTransaction" method="GET">
-                                    <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
-                                    <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                    <input type="submit" name="submit" value="<fmt:message key="label.edit"/>">
-                                </form>
-                            </td>
+                                <td>
+                                    <form action="updateTransaction" method="GET">
+                                        <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                                        <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
+                                        <input type="submit" name="submit" value="<fmt:message key="label.edit"/>">
+                                    </form>
+                                </td>
 
-                            <td>
-                                <form action="removeTransaction" method="POST">
-                                    <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
-                                    <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                    <input type="submit"
-                                           onclick="if (!(confirm('<fmt:message
-                                                   key="label.deleteTransactionWarning"/>'))) return false"
-                                           name="submit" value="<fmt:message key="label.delete"/>">
-                                </form>
-                            </td>
-                        </tr>
-                    </c:forEach>>
+                                <td>
+                                    <form action="removeTransaction" method="POST">
+                                        <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                                        <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
+                                        <input type="submit"
+                                               onclick="if (!(confirm('<fmt:message
+                                                       key="label.deleteTransactionWarning"/>'))) return false"
+                                               name="submit" value="<fmt:message key="label.delete"/>">
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </p>
                 </table>
             </div>
         </div>

@@ -16,7 +16,7 @@ $('#maxRows').on('change', function () {
         if (totalRows > maxRows) {
             var pagenum = Math.ceil(totalRows / maxRows)
             for (var i = 1; i <= pagenum;) {
-                $('.pagination').append('<li data-page="' + i + '">\<span>' + i++ + '' +
+                $('.pagination').append('<li data-page="' + i + '">\<span class="current">' + i++ + '' +
                     '<span class="sr-only">(current)</span></span>\</li>').show()
             }
         }
