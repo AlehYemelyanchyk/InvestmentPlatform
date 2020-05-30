@@ -18,10 +18,11 @@ public class AddPortfolioPostCommandImpl extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         int userId = (int) req.getSession().getAttribute(Constants.CURRENT_USER_ID);
+        String portfolioName = preventXSSAttach(req.getParameter(RequestParameterName.REQUEST_PORTFOLIO_PARAM_NAME));
 
         Portfolio portfolio = new Portfolio(
                 userId,
-                req.getParameter(RequestParameterName.REQUEST_PORTFOLIO_PARAM_NAME));
+                portfolioName);
         try {
             PORTFOLIO_SERVICE.addPortfolio(portfolio);
         } catch (ServiceException e) {

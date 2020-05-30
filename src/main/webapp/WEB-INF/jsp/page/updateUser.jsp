@@ -50,12 +50,12 @@
 
             <tr>
                 <td><label><fmt:message key="label.name"/>: </label></td>
-                <td><input type="text" name="CURRENT_USER_NAME" value="${CURRENT_USER.name}"></td>
+                <td><input type="text" id="input" name="CURRENT_USER_NAME" value="${CURRENT_USER.name}"></td>
             </tr>
 
             <tr>
                 <td><label><fmt:message key="label.surname"/>: </label></td>
-                <td><input type="text" name="CURRENT_USER_SURNAME" value="${CURRENT_USER.surname}"></td>
+                <td><input type="text" id="input2" name="CURRENT_USER_SURNAME" value="${CURRENT_USER.surname}"></td>
             </tr>
 
             <tr>

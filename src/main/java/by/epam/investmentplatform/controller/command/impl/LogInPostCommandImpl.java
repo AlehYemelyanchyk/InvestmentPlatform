@@ -32,7 +32,7 @@ public class LogInPostCommandImpl extends AbstractCommandExecutor {
             session.setAttribute(Constants.CURRENT_USER_LOGIN, user.getLogin());
             session.setAttribute(Constants.CURRENT_USER_ROLE, user.getRole());
         } catch (ServiceException e) {
-            LOGGER.error("Sign up error: ", e);
+            LOGGER.error("Log in error: ", e);
             throw e;
         }
         if (req.getSession().getAttribute(Constants.REDIRECT_LINK) != null) {

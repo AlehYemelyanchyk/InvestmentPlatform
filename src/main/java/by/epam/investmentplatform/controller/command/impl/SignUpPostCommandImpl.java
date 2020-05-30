@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.controller.command.RequestParameterName;
 import by.epam.investmentplatform.entity.User;
@@ -19,18 +20,18 @@ public class SignUpPostCommandImpl extends AbstractCommandExecutor {
             throws ServletException, IOException {
         User user = new User(
                 req.getParameter(RequestParameterName.REQUEST_USER_PARAM_ROLE),
-                req.getParameter(RequestParameterName.REQUEST_USER_PARAM_LOGIN),
-                req.getParameter(RequestParameterName.REQUEST_USER_PARAM_PASSWORD),
-                req.getParameter(RequestParameterName.REQUEST_USER_PARAM_EMAIL),
-                req.getParameter(RequestParameterName.REQUEST_USER_PARAM_NAME),
-                req.getParameter(RequestParameterName.REQUEST_USER_PARAM_SURNAME),
+                req.getParameter(preventXSSAttach(RequestParameterName.REQUEST_USER_PARAM_LOGIN)),
+                req.getParameter(preventXSSAttach(RequestParameterName.REQUEST_USER_PARAM_PASSWORD)),
+                req.getParameter(preventXSSAttach(RequestParameterName.REQUEST_USER_PARAM_EMAIL)),
+                req.getParameter(preventXSSAttach(RequestParameterName.REQUEST_USER_PARAM_NAME)),
+                req.getParameter(preventXSSAttach(RequestParameterName.REQUEST_USER_PARAM_SURNAME)),
                 req.getParameter(RequestParameterName.REQUEST_USER_PARAM_COUNTRY));
         try {
             USER_SERVICE.signUp(user);
             HttpSession session = req.getSession(true);
-            session.setAttribute("id", user.getId());
-            session.setAttribute("login", user.getLogin());
-            session.setAttribute("role", user.getRole());
+            session.setAttribute(Constants.CURRENT_USER_ID, user.getId());
+            session.setAttribute(Constants.CURRENT_USER_LOGIN, user.getLogin());
+            session.setAttribute(Constants.CURRENT_USER_ROLE, user.getRole());
         } catch (ServiceException e) {
             LOGGER.error("Sign up error: ", e);
             throw new ServiceException("Incorrect registration values");

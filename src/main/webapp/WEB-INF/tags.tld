@@ -5,7 +5,19 @@
     <short-name>tags</short-name>
     <tag>
         <name>static</name>
-        <tag-class>by.epam.investmentplatform.controller.tag.CurrentDateTag</tag-class>
+        <tag-class>by.epam.investmentplatform.controller.tag.StaticTag</tag-class>
         <body-content>empty</body-content>
+    </tag>
+
+    <tag>
+        <name>attr</name>
+        <tag-class>by.epam.investmentplatform.controller.tag.XSSPreventTag</tag-class>
+        <body-content>empty</body-content>
+        <attribute>
+            <name>inputText</name>
+            <required>true</required>
+            <type>java.lang.String</type>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
     </tag>
 </taglib>

@@ -21,12 +21,12 @@
 <div id="container">
     <div id="content">
 
-        <div class="autocomplete">
-            <input type="text" placeholder="<fmt:message key="label.findSecurity"/>">
-            <span class="close"><fmt:message key="label.cancel"/></span>
-            <div class="dialog">
-            </div>
-        </div>
+<%--        <div class="autocomplete">--%>
+<%--            <input type="text" placeholder="<fmt:message key="label.findSecurity"/>">--%>
+<%--            <span class="close"><fmt:message key="label.cancel"/></span>--%>
+<%--            <div class="dialog">--%>
+<%--            </div>--%>
+<%--        </div>--%>
 
         <div class="tabs_names">
             <li data-tab-target="#holdings" class="active tab"><fmt:message key="label.holdings"/></li>

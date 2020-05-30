@@ -23,9 +23,9 @@ public class UpdateUserPostCommandImpl extends AbstractCommandExecutor {
                 req.getParameter(Constants.CURRENT_USER_ROLE),
                 req.getParameter(Constants.CURRENT_USER_LOGIN),
                 req.getParameter(Constants.CURRENT_USER_PASSWORD),
-                req.getParameter(Constants.CURRENT_USER_EMAIL),
-                req.getParameter(Constants.CURRENT_USER_NAME),
-                req.getParameter(Constants.CURRENT_USER_SURNAME),
+                req.getParameter(preventXSSAttach(Constants.CURRENT_USER_EMAIL)),
+                req.getParameter(preventXSSAttach(Constants.CURRENT_USER_NAME)),
+                req.getParameter(preventXSSAttach(Constants.CURRENT_USER_SURNAME)),
                 req.getParameter(Constants.CURRENT_USER_COUNTRY));
         String[] params = {newName};
         try {

@@ -31,10 +31,10 @@
         </select>
     </div>
     <div class="tabs_names">
-        <li data-tab-target="#Bond" class="active tab">Bonds</li>
+        <li data-tab-target="#Fund" class="active tab">Funds</li>
+        <li data-tab-target="#Bond" class="tab">Bonds</li>
         <li data-tab-target="#Cryptocurrency" class="tab">Crypto</li>
         <li data-tab-target="#ETF" class="tab">ETFs</li>
-        <li data-tab-target="#Fund" class="tab">Funds</li>
         <li data-tab-target="#Stock" class="tab">Stocks</li>
     </div>
 
@@ -53,7 +53,6 @@
                 </c:otherwise>
 
                 </c:choose>
-
                 <p>
                 <table>
                     <thead>

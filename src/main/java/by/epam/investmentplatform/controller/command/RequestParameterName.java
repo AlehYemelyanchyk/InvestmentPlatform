@@ -3,6 +3,7 @@ package by.epam.investmentplatform.controller.command;
 public final class RequestParameterName {
 
     public static final String REQUEST_USER_PARAM_ROLE = "role";
+    public static final String REQUEST_USER_PARAM_ID = "id";
     public static final String REQUEST_USER_PARAM_LOGIN = "login";
     public static final String REQUEST_USER_PARAM_PASSWORD = "password";
     public static final String REQUEST_USER_PARAM_EMAIL = "email";

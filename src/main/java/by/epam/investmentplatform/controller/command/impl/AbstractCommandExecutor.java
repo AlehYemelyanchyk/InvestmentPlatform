@@ -30,4 +30,12 @@ public abstract class AbstractCommandExecutor implements Command {
         double result = (double) totalItemsAmount / itemsPerPage;
         return (int) Math.ceil(result);
     }
+
+    protected String preventXSSAttach (String str){
+        String newStr;
+        if (str.contains("<")) {
+            return newStr = str.replace("<", "&lt");
+        }
+        return str;
+    }
 }
