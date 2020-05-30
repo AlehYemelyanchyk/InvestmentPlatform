@@ -45,7 +45,6 @@
                         <th><fmt:message key="label.yearChange"/>, %</th>
                         <th><fmt:message key="label.type"/></th>
                         <th></th>
-                        <th></th>
                     </tr>
 
                     <p>
@@ -173,90 +172,73 @@
         </div>
     </div>
 </div>
-<script>
-    const tabs = document.querySelectorAll('[data-tab-target]')
-    const tabContent = document.querySelectorAll('[data-tab-content]')
+<%--<script>--%>
+<%--    // search form script--%>
+<%--    $(function () {--%>
+<%--        var alreadyFilled = false;--%>
+<%--        var securities = new Array()--%>
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            const target = document.querySelector(tab.dataset.tabTarget)
-            tabContent.forEach(tabContent => {
-                tabContent.classList.remove('active')
-            })
-            tabs.forEach(tab => {
-                tab.classList.remove('active')
-            })
-            tab.classList.add('active')
-            target.classList.add('active')
-        })
-    })
-</script>
-<script>
-    $(function () {
-        var alreadyFilled = false;
-        var securities = new Array()
+<%--        <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">--%>
+<%--        <c:url var="securityLink" value="addSecurity">--%>
+<%--        <c:param name="SECURITY" value="${security}"/>--%>
+<%--        </c:url>--%>
+<%--        securities.push(--%>
+<%--            "${security.value.symbol}" + "   " +--%>
+<%--            "${security.value.name}" + "   " +--%>
+<%--            "${security.value.exchange}");--%>
+<%--        </c:forEach>--%>
 
-        <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
-        <c:url var="securityLink" value="addSecurity">
-        <c:param name="SECURITY" value="${security}"/>
-        </c:url>
-        securities.push(
-            "${security.value.symbol}" + "   " +
-            "${security.value.name}" + "   " +
-            "${security.value.exchange}");
-        </c:forEach>
+<%--        function initDialog() {--%>
+<%--            clearDialog();--%>
+<%--            for (var i = 0; i < securities.length; i++) {--%>
+<%--                $('.dialog').append('<div>' + securities[i] + '</div>');--%>
+<%--            }--%>
+<%--        }--%>
 
-        function initDialog() {
-            clearDialog();
-            for (var i = 0; i < securities.length; i++) {
-                $('.dialog').append('<div>' + securities[i] + '</div>');
-            }
-        }
+<%--        function clearDialog() {--%>
+<%--            $('.dialog').empty();--%>
+<%--        }--%>
 
-        function clearDialog() {
-            $('.dialog').empty();
-        }
+<%--        $('.autocomplete input').click(function () {--%>
+<%--            if (!alreadyFilled) {--%>
+<%--                $('.dialog').addClass('open');--%>
+<%--            }--%>
 
-        $('.autocomplete input').click(function () {
-            if (!alreadyFilled) {
-                $('.dialog').addClass('open');
-            }
+<%--        });--%>
+<%--        $('body').on('click', '.dialog > div', function () {--%>
+<%--            $('.autocomplete input').val($(this).text()).focus();--%>
+<%--            $('.autocomplete .close').addClass('visible');--%>
+<%--            alreadyFilled = true;--%>
+<%--        });--%>
+<%--        $('.autocomplete .close').click(function () {--%>
+<%--            alreadyFilled = false;--%>
+<%--            $('.dialog').addClass('open');--%>
+<%--            $('.autocomplete input').val('').focus();--%>
+<%--            $(this).removeClass('visible');--%>
+<%--        });--%>
 
-        });
-        $('body').on('click', '.dialog > div', function () {
-            $('.autocomplete input').val($(this).text()).focus();
-            $('.autocomplete .close').addClass('visible');
-            alreadyFilled = true;
-        });
-        $('.autocomplete .close').click(function () {
-            alreadyFilled = false;
-            $('.dialog').addClass('open');
-            $('.autocomplete input').val('').focus();
-            $(this).removeClass('visible');
-        });
+<%--        function match(str) {--%>
+<%--            str = str.toLowerCase();--%>
+<%--            clearDialog();--%>
+<%--            for (var i = 0; i < securities.length; i++) {--%>
+<%--                if (securities[i].toLowerCase().startsWith(str)) {--%>
+<%--                    $('.dialog').append('<div>' + securities[i] + '</div>');--%>
+<%--                }--%>
+<%--            }--%>
+<%--        }--%>
 
-        function match(str) {
-            str = str.toLowerCase();
-            clearDialog();
-            for (var i = 0; i < securities.length; i++) {
-                if (securities[i].toLowerCase().startsWith(str)) {
-                    $('.dialog').append('<div>' + securities[i] + '</div>');
-                }
-            }
-        }
-
-        $('.autocomplete input').on('input', function () {
-            $('.dialog').addClass('open');
-            alreadyFilled = false;
-            match($(this).val());
-        });
-        $('body').click(function (e) {
-            if (!$(e.target).is("input, .close")) {
-                $('.dialog').removeClass('open');
-            }
-        });
-        initDialog();
-    });
-</script>
+<%--        $('.autocomplete input').on('input', function () {--%>
+<%--            $('.dialog').addClass('open');--%>
+<%--            alreadyFilled = false;--%>
+<%--            match($(this).val());--%>
+<%--        });--%>
+<%--        $('body').click(function (e) {--%>
+<%--            if (!$(e.target).is("input, .close")) {--%>
+<%--                $('.dialog').removeClass('open');--%>
+<%--            }--%>
+<%--        });--%>
+<%--        initDialog();--%>
+<%--    });--%>
+<%--</script>--%>
 </body>
 </html>

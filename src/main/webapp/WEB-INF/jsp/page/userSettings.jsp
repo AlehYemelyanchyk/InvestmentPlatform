@@ -17,17 +17,11 @@
     </div>
 </div>
 
-<div id="container">
-    <div id="content">
-        <p>
-            <a href="${pageContext.request.contextPath}/updateUser"><fmt:message key="label.editPersonalDetails"/></a>
-        </p>
-        <p>
-            <a href="${pageContext.request.contextPath}/getBalance"><fmt:message key="label.balance"/></a>
-        </p>
-        <p>
-            <a href="${pageContext.request.contextPath}/logout"><fmt:message key="label.logOut"/></a>
-        </p>
+<div class="panel-body">
+    <div class="list-group">
+            <a href="${pageContext.request.contextPath}/updateUser" class="list-group-item"><fmt:message key="label.editPersonalDetails"/></a>
+            <a href="${pageContext.request.contextPath}/getBalance" class="list-group-item"><fmt:message key="label.balance"/></a>
+            <a href="${pageContext.request.contextPath}/logout" class="list-group-item"><fmt:message key="label.logOut"/></a>
     </div>
 </div>
 </body>

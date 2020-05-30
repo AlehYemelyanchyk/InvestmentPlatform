@@ -24,15 +24,25 @@
         <fmt:formatNumber type="number" minFractionDigits="2"
                           maxFractionDigits="2" value="${balance}"/>
     </p>
-    <a href="${pageContext.request.contextPath}/deposite">
+    <a href="${pageContext.request.contextPath}/deposit">
         <fmt:message key="label.deposit"/>
     </a>
-    <a href="${pageContext.request.contextPath}/withdraw">
-        <fmt:message key="label.withdraw"/>
-    </a>
-    <a href="${pageContext.request.contextPath}/loan">
-        <fmt:message key="label.loan"/>
-    </a>
+
+    <c:choose>
+    <c:when test="${CURRENT_USER_BALANCE <= 0}">
+    <a hidden href="${pageContext.request.contextPath}/withdraw">
+        </c:when>
+
+        <c:otherwise>
+        <a href="${pageContext.request.contextPath}/withdraw">
+            <fmt:message key="label.withdraw"/>
+        </a>
+        </c:otherwise>
+        </c:choose>
+
+        <a href="${pageContext.request.contextPath}/loan">
+            <fmt:message key="label.loan"/>
+        </a>
 </div>
 </body>
 </html>

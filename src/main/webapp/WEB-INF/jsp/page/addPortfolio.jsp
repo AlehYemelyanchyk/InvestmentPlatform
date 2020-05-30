@@ -1,7 +1,6 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="project-tag" uri="/WEB-INF/tags.tld" %>
 <%@ page isELIgnored="false" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
@@ -16,8 +15,6 @@
 <div id="wrapper">
     <div id="header">
         <h2 align="center"><fmt:message key="label.createNewPortfolio"/></h2>
-        <%--        <project-tag:attr inputText=""/>--%>
-<%--        <project-tag:attr inputText="hello"/>--%>
     </div>
 </div>
 
