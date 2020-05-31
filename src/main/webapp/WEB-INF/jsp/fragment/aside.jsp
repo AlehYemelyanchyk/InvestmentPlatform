@@ -19,12 +19,12 @@
                     <a href="getAllUserPortfolios" class="list-group-item"><fmt:message key="label.portfolios"/></a>
                     <a href="getAllSecurities" class="list-group-item"><fmt:message key="label.securities"/></a>
                 </div>
-                <div class="panel-footer">
-                    <button type="button" name="back"
-                            onclick="history.back()"
-                            class="btn btn-secondaryu"><fmt:message key="label.back"/>
-                    </button>
-                </div>
+<%--                <div class="panel-footer">--%>
+<%--                    <button type="button" name="back"--%>
+<%--                            onclick="history.back()"--%>
+<%--                            class="btn btn-light"><fmt:message key="label.back"/>--%>
+<%--                    </button>--%>
+<%--                </div>--%>
             </div>
         </div>
     </div>

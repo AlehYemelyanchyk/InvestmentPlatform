@@ -30,6 +30,7 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.GET_ALL_USERS_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.GET_BALANCE_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.GET_SECURITY_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.LOGIN_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.LOGOUT_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.MAIN_COMMAND);

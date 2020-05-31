@@ -23,6 +23,7 @@ public class GetAllSecurityTransactionsGetCommandImpl extends AbstractCommandExe
         String securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
         List<Transaction> allPortfolioTransactions = SECURITY_SERVICE.getAllPortfolioTransactions(portfolioId);
         List<Transaction> filteredTransactions = filterTransactionsBySecurity(allPortfolioTransactions, securitySymbol);
+        req.setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
         req.setAttribute(Constants.SECURITY_NAME, securityName);
         req.setAttribute(Constants.SECURITY_TRANSACTIONS, filteredTransactions);
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS, req, resp);

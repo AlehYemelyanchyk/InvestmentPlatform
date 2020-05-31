@@ -208,7 +208,36 @@ class SqlSecurityDAOImpl implements SecurityDAO {
 
     @Override
     public Security getSecurity(String symbol) throws DAOException {
-        return null;
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Security security;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT a.symbol, a.name, c.name as exchange, a.current_price, a.year_change_percents, a.dividends, d.type as security_type " +
+                    "FROM invest.securities as a " +
+                    "JOIN invest.exchanges as c " +
+                    "ON a.exchange = c.id " +
+                    "JOIN invest.security_types as d " +
+                    "ON a.security_type = d.id " +
+                    "WHERE a.symbol = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, symbol);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            security = DAOUtils.securitiesResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
+        } catch (Exception e) {
+            LOGGER.error("Get security SQL error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return security;
     }
 
     @Override

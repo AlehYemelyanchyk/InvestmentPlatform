@@ -57,11 +57,11 @@
 
                             <tr>
                                 <td>
-                                    <c:out value="${security.key}"></c:out>
+                                    <a href="${securityLink}">${security.key}</a>
                                 </td>
 
                                 <td>
-                                    <c:out value="${security.value.name}"></c:out>
+                                    <a href="${securityLink}">${security.value.name}</a>
                                 </td>
 
                                 <td>

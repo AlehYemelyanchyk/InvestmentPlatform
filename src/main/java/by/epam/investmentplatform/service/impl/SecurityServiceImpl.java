@@ -79,7 +79,12 @@ class SecurityServiceImpl implements SecurityService {
 
     @Override
     public Security getSecurity(String symbol) throws ServiceException {
-        return null;
+        try {
+            return getSecurityDAO().getSecurity(symbol);
+        } catch (DAOException e) {
+            LOGGER.error("Get security error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
     }
 
     @Override

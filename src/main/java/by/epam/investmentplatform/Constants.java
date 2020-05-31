@@ -36,6 +36,7 @@ public final class Constants {
     public static final String PRICE = "PRICE";
     public static final String REDIRECT_LINK = "REDIRECT_LINK";
     public static final String SECURITIES_LIST = "SECURITIES_LIST";
+    public static final String SECURITY = "SECURITY";
     public static final String SECURITY_NAME = "SECURITY_NAME";
     public static final String SECURITY_PRICE = "SECURITY_PRICE";
     public static final String SECURITY_SYMBOL = "SECURITY_SYMBOL";

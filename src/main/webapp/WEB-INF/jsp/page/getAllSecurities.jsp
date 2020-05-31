@@ -68,13 +68,18 @@
                     </thead>
                     <tbody>
                     <c:forEach var="security" items="${type.value}">
+
+                        <c:url var="securityLink" value="getSecurity">
+                            <c:param name="SECURITY_SYMBOL" value="${security.symbol}"/>
+                        </c:url>
+
                         <tr>
                             <td>
-                                <c:out value="${security.symbol}"></c:out>
+                                <a href="${securityLink}">${security.symbol}</a>
                             </td>
 
                             <td>
-                                <c:out value="${security.name}"></c:out>
+                                <a href="${securityLink}">${security.name}</a>
                             </td>
 
                             <td>
