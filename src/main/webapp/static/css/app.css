@@ -24,12 +24,15 @@ main {
 }
 
 p{
-    text-align: right;
     padding-right: 5px;
 }
 
 .fa-user-alt {
     padding-right: 10px;
+}
+
+ul{
+    padding-inline-start: 20px
 }
 
 li {

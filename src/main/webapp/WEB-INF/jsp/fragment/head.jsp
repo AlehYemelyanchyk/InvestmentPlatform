@@ -14,7 +14,7 @@
         <%--                <project-tag:static/>--%>
     </div>
     <div>
-        <p>
+        <p align="right">
             <a href="?sessionLocale=en"><fmt:message key="label.lang.en"/></a>
             <a href="?sessionLocale=ru"><fmt:message key="label.lang.ru"/></a>
             <a href="?sessionLocale=by"><fmt:message key="label.lang.by"/></a>

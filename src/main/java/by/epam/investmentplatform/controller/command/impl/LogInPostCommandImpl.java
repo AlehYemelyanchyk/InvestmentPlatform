@@ -3,6 +3,7 @@ package by.epam.investmentplatform.controller.command.impl;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.controller.command.RequestParameterName;
+import by.epam.investmentplatform.controller.exception.AccessDeniedException;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
@@ -24,8 +25,9 @@ public class LogInPostCommandImpl extends AbstractCommandExecutor {
                     req.getParameter(RequestParameterName.REQUEST_USER_PARAM_PASSWORD)
             );
             if (user == null) {
-                req.setAttribute(Constants.ERROR_ATTRIBUTE, "Login or password is not correct.");
-                RoutingUtils.forwardToPage(JspPageName.ERROR_PAGE, req, resp);
+                RuntimeException e = new AccessDeniedException("Login or password is not correct.");
+                LOGGER.error(e.getMessage());
+                throw e;
             }
             HttpSession session = req.getSession(true);
             session.setAttribute(Constants.CURRENT_USER_ID, user.getId());
@@ -33,7 +35,7 @@ public class LogInPostCommandImpl extends AbstractCommandExecutor {
             session.setAttribute(Constants.CURRENT_USER_ROLE, user.getRole());
         } catch (ServiceException e) {
             LOGGER.error("Log in error: ", e);
-            throw e;
+            throw new AccessDeniedException(e.getMessage());
         }
         if (req.getSession().getAttribute(Constants.REDIRECT_LINK) != null) {
             RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 
 <!doctype html>
@@ -10,7 +11,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<%--    <link rel="stylesheet" href="static/css/fontawesome.css">--%>
+    <%--    <link rel="stylesheet" href="static/css/fontawesome.css">--%>
     <link rel="stylesheet" href="static/css/app.css">
     <link rel="stylesheet" href="static/css/tabsStyle.css">
 </head>
@@ -25,7 +26,16 @@
         </aside>
         <main class="col-lg-10">
             <div class="panel-body">
-                <jsp:include page="${CURRENT_PAGE}"/>
+                <c:choose>
+
+                    <c:when test="${CURRENT_PAGE != null}">
+                        <jsp:include page="${CURRENT_PAGE}"/>
+                    </c:when>
+                    <c:otherwise>
+                        <jsp:include page="/WEB-INF/jsp/page/news.jsp"/>
+                    </c:otherwise>
+
+                </c:choose>
             </div>
         </main>
     </div>

@@ -5,17 +5,18 @@
     <title>Error</title>
 </head>
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2>Error</h2>
-    </div>
-</div>
-
-<div id="container">
-    <table>
-            <c:out value="${ERROR_ATTRIBUTE}"/>
-        </table>
-    </form>
+<div>
+    <p>
+    <h2>Code: ${STATUS_CODE}</h2>
+    </p>
+    <p>
+        <c:out value="${ERROR_ATTRIBUTE}"/>
+    </p>
+    <c:choose>
+        <c:when test="${STATUS_CODE == 403}">You don't have permission to view this resource.</c:when>
+        <c:when test="${STATUS_CODE == 404}">Requested resource not found.</c:when>
+        <c:otherwise>Can't process this request. Please, try later...</c:otherwise>
+    </c:choose>
 </div>
 </body>
 </html>
