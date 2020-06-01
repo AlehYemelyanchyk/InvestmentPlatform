@@ -25,7 +25,7 @@
                 <tbody>
                 <tr>
                     <td><label><fmt:message key="label.name"/>: </label></td>
-                    <td><input type="text" id="input" name="name"></td>
+                    <td><input type="text" name="name"></td>
                 </tr>
                 <tr>
                     <td><label></label></td>

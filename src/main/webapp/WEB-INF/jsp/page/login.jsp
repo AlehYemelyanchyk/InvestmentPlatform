@@ -27,7 +27,8 @@
 
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.login"/>" class="save"></td>
+                <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.login"/>"
+                           class="save" onclick="XSSPrevent()"></td>
             </tr>
             </tbody>
         </table>

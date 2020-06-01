@@ -75,7 +75,8 @@
 
                 <tr>
                     <td><label></label></td>
-                    <td><input type="submit" value="<fmt:message key="label.add"/>" class="save"></td>
+                    <td><input type="submit" value="<fmt:message key="label.add"/>"
+                               class="save" onclick="XSSPrevent()"></td>
                 </tr>
                 </tbody>
             </table>

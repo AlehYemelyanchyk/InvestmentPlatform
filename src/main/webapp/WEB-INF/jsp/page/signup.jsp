@@ -18,7 +18,7 @@
 </div>
 <div id="container">
     <form action="${pageContext.request.contextPath}/signup" method="post">
-        <table style="with: 50%">
+        <table>
             <tbody>
             <tr>
                 <td><fmt:message key="label.role"/></td>
@@ -56,12 +56,11 @@
             </tr>
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" value="<fmt:message key="label.submit"/>" class="save"/></td>
+                <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.submit"/>" class="save"/></td>
             </tr>
             </tbody>
         </table>
     </form>
 </div>
 </body>
-
 </html>

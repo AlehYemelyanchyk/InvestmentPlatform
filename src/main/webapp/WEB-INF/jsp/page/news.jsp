@@ -7,7 +7,7 @@
     <h1>Economic Calendar - Top 5 Things to Watch This Week</h1>
     </p>
     <div align="center">
-        <img src="${pageContext.request.contextPath}/media/news.jpg">
+        <img src="${pageContext.request.contextPath}/media/news.jpg" width="800" height="535">
         <p>
             By Noreen Burke
 

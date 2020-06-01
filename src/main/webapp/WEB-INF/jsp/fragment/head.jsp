@@ -10,7 +10,9 @@
 <html lang="${sessionScope.lang}">
 <div id="wrapper">
     <div id="header">
-        <h1 align="center">Investment Platform</h1>
+        <h1 align="center">
+            <a href="http://localhost:8080/investmentplatform/">Investment Platform</a>
+        </h1>
         <%--                <project-tag:static/>--%>
     </div>
     <div>

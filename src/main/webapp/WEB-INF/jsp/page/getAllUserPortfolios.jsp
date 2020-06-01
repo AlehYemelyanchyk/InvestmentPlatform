@@ -20,47 +20,39 @@
 </div>
 
 <div id="container">
-    <div id="content">
-        <input type="button" value="<fmt:message key="label.createNewPortfolio"/>"
-               onclick="window.location.href='addPortfolio'; return false;"
-               class="btn btn-primary"
-        />
-        <table>
+    <input type="button" value="<fmt:message key="label.createNewPortfolio"/>"
+           onclick="window.location.href='addPortfolio'; return false;"
+           class="btn btn-primary"/>
+    <table>
+        <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
+
+            <c:url var="portfolioLink" value="getAllPortfolioSecurities">
+                <c:param name="PORTFOLIO_NAME" value="${portfolio.name}"/>
+                <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
+            </c:url>
+
+            <c:url var="updateLink" value="updatePortfolio">
+                <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
+            </c:url>
+
+            <c:url var="removeLink" value="removePortfolio">
+                <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
+            </c:url>
 
             <tr>
-                <th><fmt:message key="label.name"/></th>
-                <th><fmt:message key="label.action"/></th>
+                <td>
+                    <a href="${portfolioLink}">${portfolio.name}</a>
+                </td>
+                <td>
+                    <a href="${updateLink}"><fmt:message key="label.edit"/></a>
+                    |
+                    <a href="${removeLink}"
+                       onclick="if (!(confirm('<fmt:message key="label.deletePortfolio"/>'))) return false">
+                        <fmt:message key="label.delete"/></a>
+                </td>
             </tr>
-            <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
-
-                <c:url var="portfolioLink" value="getAllPortfolioSecurities">
-                    <c:param name="PORTFOLIO_NAME" value="${portfolio.name}"/>
-                    <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
-                </c:url>
-
-                <c:url var="updateLink" value="updatePortfolio">
-                    <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
-                </c:url>
-
-                <c:url var="removeLink" value="removePortfolio">
-                    <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
-                </c:url>
-
-                <tr>
-                    <td>
-                        <a href="${portfolioLink}">${portfolio.name}</a>
-                    </td>
-                    <td>
-                        <a href="${updateLink}"><fmt:message key="label.edit"/></a>
-                        |
-                        <a href="${removeLink}"
-                           onclick="if (!(confirm('<fmt:message key="label.deletePortfolio"/>'))) return false">
-                            <fmt:message key="label.delete"/></a>
-                    </td>
-                </tr>
-            </c:forEach>
-        </table>
-    </div>
+        </c:forEach>
+    </table>
 </div>
 </body>
 </html>

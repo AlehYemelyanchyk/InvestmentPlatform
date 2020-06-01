@@ -1,5 +1,6 @@
 $('#maxRows').on('change', function () {
     document.activeElement.addEventListener('click', () => {
+        console.log("Called")
         $('.pagination').html('')
         var trnum = 0
         var maxRows = parseInt($(this).val())
