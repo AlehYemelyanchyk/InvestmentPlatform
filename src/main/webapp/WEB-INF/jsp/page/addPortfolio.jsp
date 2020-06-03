@@ -12,16 +12,9 @@
 </head>
 
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center"><fmt:message key="label.createNewPortfolio"/></h2>
-    </div>
-</div>
-
 <div id="container">
-    <div id="content">
         <form action="addPortfolio" method="POST">
-            <table>
+            <table class="login">
                 <tbody>
                 <tr>
                     <td><label><fmt:message key="label.name"/>: </label></td>
@@ -35,7 +28,6 @@
                 </tbody>
             </table>
         </form>
-    </div>
 </div>
 </body>
 </html>

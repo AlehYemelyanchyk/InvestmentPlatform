@@ -11,41 +11,36 @@
     <title>Signup</title>
 </head>
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center"><fmt:message key="label.signup2"/></h2>
-    </div>
-</div>
 <div id="container">
     <form action="${pageContext.request.contextPath}/signup" method="post">
-        <table>
+        <table class="login">
             <tbody>
             <tr>
-                <td><fmt:message key="label.role"/></td>
+                <td><label><fmt:message key="label.role"/></label></td>
                 <td><input type="text" name="role"/></td>
             </tr>
             <tr>
-                <td><fmt:message key="label.login2"/></td>
+                <td><label><fmt:message key="label.login2"/></label></td>
                 <td><input type="text" name="login"/></td>
             </tr>
             <tr>
-                <td><fmt:message key="label.password"/></td>
+                <td><label><fmt:message key="label.password"/></label></td>
                 <td><input type="password" name="password"/></td>
             </tr>
             <tr>
-                <td><fmt:message key="label.email"/></td>
+                <td><label><fmt:message key="label.email"/></label></td>
                 <td><input type="text" name="email"/></td>
             </tr>
             <tr>
-                <td><fmt:message key="label.name"/></td>
+                <td><label><fmt:message key="label.name"/></label></td>
                 <td><input type="text" name="name"/></td>
             </tr>
             <tr>
-                <td><fmt:message key="label.surname"/></td>
+                <td><label><fmt:message key="label.surname"/></label></td>
                 <td><input type="text" name="surname"/></td>
             </tr>
             <tr>
-                <td><fmt:message key="label.country"/></td>
+                <td><label><fmt:message key="label.country"/></label></td>
                 <td>
                     <select name="country">
                         <c:forEach var="country" items="${sessionScope.COUNTRIES_LIST}">

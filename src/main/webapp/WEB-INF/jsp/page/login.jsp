@@ -13,7 +13,7 @@
 <body>
 <div id="container">
     <form action="${pageContext.request.contextPath}/login" method="POST">
-        <table>
+        <table class="login">
             <tbody>
             <tr>
                 <td><label><fmt:message key="label.login2"/>:</label></td>

@@ -11,17 +11,10 @@
     <title>Update portfolio</title>
 </head>
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center"><fmt:message key="label.editPortfolio"/></h2>
-    </div>
-</div>
-
 <div id="container">
     <form action="${pageContext.request.contextPath}/updatePortfolio" method="POST">
-        <table>
+        <table class="login">
             <tbody>
-
             <tr>
                 <td><input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO.id}"></td>
                 <td><input type="hidden" name="PORTFOLIO_USER_ID" value="${PORTFOLIO.user_id}"></td>
@@ -34,7 +27,7 @@
 
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" value="<fmt:message key="label.submit"/>"
+                <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.submit"/>"
                            class="save" onclick="XSSPrevent()"></td>
             </tr>
             </tbody>

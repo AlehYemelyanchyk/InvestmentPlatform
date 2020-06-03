@@ -41,7 +41,7 @@
 
             <tr>
                 <td>
-                    <a href="${portfolioLink}">${portfolio.name}</a>
+                    <h4><a href="${portfolioLink}">${portfolio.name}</a></h4>
                 </td>
                 <td>
                     <a href="${updateLink}"><fmt:message key="label.edit"/></a>

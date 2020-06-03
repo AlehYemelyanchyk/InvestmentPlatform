@@ -11,15 +11,9 @@
     <title>Update user</title>
 </head>
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center"><fmt:message key="label.editPersonalDetails"/></h2>
-    </div>
-</div>
-
 <div id="container">
     <form action="${pageContext.request.contextPath}/updateUser" method="POST">
-        <table>
+        <table class="login">
             <tbody>
 
             <tr>
@@ -71,7 +65,7 @@
 
             <tr>
                 <td><label></label></td>
-                <td><input type="submit" value="<fmt:message key="label.submit"/>"
+                <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.submit"/>"
                            class="save" onclick="XSSPrevent()"></td>
             </tr>
             </tbody>

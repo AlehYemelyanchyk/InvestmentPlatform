@@ -4,6 +4,16 @@ header {
     height: 120px;
 }
 
+#header-link {
+    color: #000000;
+    text-decoration-line: none;
+}
+
+#header-link:hover {
+    color: #555555;
+    text-decoration-line: none;
+}
+
 footer {
     background-color: #f6f6f6;
     position: absolute;
@@ -36,7 +46,7 @@ ul{
 }
 
 li {
-    background: #dae3ff;
+    background: #fffff9;
     display: inline-block;
     padding: 4px 8px;
     margin-bottom: 0;
@@ -55,13 +65,13 @@ li {
 }
 
 li:hover {
-    background-color: #a4d5e9;
+    background: #97b4e9;
     -moz-transition: background-color 200ms ease-in;
     -webkit-transition: background-color 200ms ease-in;
 }
 
 li.active {
-    background: #fffff9;
+    background: #d0dcff;
 }
 
 table {
@@ -79,4 +89,31 @@ th {
 tr {
     border-top: 1px solid gray;
     text-align: center;
+}
+
+table.login tr {
+    border: none;
+    text-align: left;
+}
+
+input.short-button{
+    width: 50px;
+}
+
+td label{
+    width: 150px;
+    text-align: left;
+    margin-left: 70%;
+}
+
+td input{
+    width: 200px;
+}
+
+td select{
+    width: 200px;
+}
+
+.lang_icons {
+    /*background-color: #bed3e6;*/
 }

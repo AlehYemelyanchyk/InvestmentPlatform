@@ -11,15 +11,15 @@
 <div id="wrapper">
     <div id="header">
         <h1 align="center">
-            <a href="http://localhost:8080/investmentplatform/">Investment Platform</a>
+            <a id="header-link" href="http://localhost:8080/investmentplatform/">Investment Platform</a>
         </h1>
         <%--                <project-tag:static/>--%>
     </div>
     <div>
         <p align="right">
-            <a href="?sessionLocale=en"><fmt:message key="label.lang.en"/></a>
-            <a href="?sessionLocale=ru"><fmt:message key="label.lang.ru"/></a>
-            <a href="?sessionLocale=by"><fmt:message key="label.lang.by"/></a>
+            <a class="lang_icons" href="?sessionLocale=en"><fmt:message key="label.lang.en"/></a>
+            <a class="lang_icons" href="?sessionLocale=ru"><fmt:message key="label.lang.ru"/></a>
+            <a class="lang_icons" href="?sessionLocale=by"><fmt:message key="label.lang.by"/></a>
         </p>
         <ul>
             <c:choose>

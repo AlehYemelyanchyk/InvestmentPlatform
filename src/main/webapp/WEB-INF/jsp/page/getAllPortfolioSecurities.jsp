@@ -92,7 +92,7 @@
                                     <form action="removeSecurityFromPortfolio" method="POST">
                                         <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
                                         <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                        <input type="submit"
+                                        <input type="submit" class="short-button"
                                                onclick="if (!(confirm('<fmt:message
                                                        key="label.deleteSecurityWarning"/>'))) return false"
                                                name="submit" value="<fmt:message key="label.delete"/>">
@@ -150,7 +150,8 @@
                                     <form action="updateTransaction" method="GET">
                                         <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                         <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                        <input type="submit" name="submit" value="<fmt:message key="label.edit"/>">
+                                        <input type="submit" class="short-button"
+                                               name="submit" value="<fmt:message key="label.edit"/>">
                                     </form>
                                 </td>
 
@@ -158,7 +159,7 @@
                                     <form action="removeTransaction" method="POST">
                                         <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                         <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                        <input type="submit"
+                                        <input type="submit" class="short-button"
                                                onclick="if (!(confirm('<fmt:message
                                                        key="label.deleteTransactionWarning"/>'))) return false"
                                                name="submit" value="<fmt:message key="label.delete"/>">
