@@ -35,13 +35,13 @@ class SqlUserDAOImpl implements UserDAO {
             connection.commit();
             users = DAOUtils.usersResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getAllUsers error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllUsers close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -63,13 +63,13 @@ class SqlUserDAOImpl implements UserDAO {
             connection.commit();
             user = DAOUtils.usersResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getUser error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getUser close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -91,13 +91,13 @@ class SqlUserDAOImpl implements UserDAO {
             connection.commit();
             user = DAOUtils.usersResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getUser error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getUser close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -124,13 +124,13 @@ class SqlUserDAOImpl implements UserDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("saveUser error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("saveUser close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -153,13 +153,13 @@ class SqlUserDAOImpl implements UserDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("updateUser error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("updateUser close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -177,13 +177,13 @@ class SqlUserDAOImpl implements UserDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("deleteUser error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("deleteUser close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -215,13 +215,13 @@ class SqlUserDAOImpl implements UserDAO {
             connection.commit();
             balanceTransactions = DAOUtils.balanceResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getUserBalanceTransactions error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getUserBalanceTransactions close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -242,13 +242,13 @@ class SqlUserDAOImpl implements UserDAO {
             connection.commit();
             countries = DAOUtils.stringsResultSetHandle(resultSet, COUNTRIES_COLUMN_NAME);
         } catch (Exception e) {
-            LOGGER.error("DAO: Get all countries SQL error: " + e.getMessage());
+            LOGGER.error("getAllCountries error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllCountries close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -271,13 +271,13 @@ class SqlUserDAOImpl implements UserDAO {
                 country = resultSet.getString("ISO_numeric");
             }
         } catch (Exception e) {
-            LOGGER.error("DAO: Get country error: " + e.getMessage());
+            LOGGER.error("getCountry error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getCountry close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
 

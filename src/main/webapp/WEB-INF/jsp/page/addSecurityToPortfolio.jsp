@@ -3,7 +3,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="date" uri="/WEB-INF/tags.tld" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<jsp:useBean id="currentDate" class="java.util.Date" />
+<jsp:useBean id="currentDate" class="java.util.Date"/>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="content"/>
@@ -14,10 +14,8 @@
 </head>
 
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center"><fmt:message key="label.addSecurity"/></h2>
-    </div>
+<div id="header">
+    <h4 align="center"><fmt:message key="label.addSecurity"/></h4>
 </div>
 
 <div id="container">
@@ -26,10 +24,8 @@
             <table>
                 <tbody>
 
-                <tr>
-                    <td><input type="hidden" name="SECURITY_SYMBOL" value="${SECURITY_SYMBOL}"></td>
-                    <td><input type="hidden" name="SECURITY_PRICE" value="${SECURITY_PRICE}"></td>
-                </tr>
+                <input type="hidden" name="SECURITY_SYMBOL" value="${SECURITY_SYMBOL}">
+                <input type="hidden" name="SECURITY_PRICE" value="${SECURITY_PRICE}">
 
                 <tr>
                     <td><fmt:message key="label.portfolio"/>:</td>
@@ -66,9 +62,9 @@
 
                 <tr>
                     <td><label><fmt:message key="label.date"/>: </label></td>
-<%--                    <date:static var="currentDate">--%>
+                    <%--                    <date:static var="currentDate">--%>
                     <td><input type="date" name="DATE"
-<%--                               value="currentDate"--%>
+                    <%--                               value="currentDate"--%>
                                min="1970-01-01" max="2099-12-31">
                     </td>
                 </tr>

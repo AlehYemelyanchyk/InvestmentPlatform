@@ -11,15 +11,13 @@
     <title><fmt:message key="label.transactions"/></title>
 </head>
 <body>
-<div id="wrapper">
-    <div id="header">
+<div id="header">
 
-        <c:url var="securityLink" value="getSecurity">
-            <c:param name="SECURITY_SYMBOL" value="${SECURITY_SYMBOL}"/>
-        </c:url>
+    <c:url var="securityLink" value="getSecurity">
+        <c:param name="SECURITY_SYMBOL" value="${SECURITY_SYMBOL}"/>
+    </c:url>
 
-        <h2 align="center"><a href="${securityLink}">${SECURITY_NAME}</a></h2>
-    </div>
+    <h4 align="center"><a href="${securityLink}">${SECURITY_NAME}</a></h4>
 </div>
 
 <div id="container">

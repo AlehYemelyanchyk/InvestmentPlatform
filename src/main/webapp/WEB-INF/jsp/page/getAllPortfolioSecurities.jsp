@@ -12,21 +12,19 @@
 </head>
 
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center">${PORTFOLIO_NAME}</h2>
-    </div>
+<div id="header">
+    <h4 align="center">${PORTFOLIO_NAME}</h4>
 </div>
 
 <div id="container">
     <div id="content">
 
-<%--        <div class="autocomplete">--%>
-<%--            <input type="text" placeholder="<fmt:message key="label.findSecurity"/>">--%>
-<%--            <span class="close"><fmt:message key="label.cancel"/></span>--%>
-<%--            <div class="dialog">--%>
-<%--            </div>--%>
-<%--        </div>--%>
+        <%--        <div class="autocomplete">--%>
+            <%--            <input type="text" placeholder="<fmt:message key="label.findSecurity"/>">--%>
+            <%--            <span class="close"><fmt:message key="label.cancel"/></span>--%>
+            <%--            <div class="dialog">--%>
+            <%--            </div>--%>
+            <%--        </div>--%>
 
         <div class="tabs_names">
             <li data-tab-target="#holdings" class="active tab"><fmt:message key="label.holdings"/></li>
@@ -118,9 +116,14 @@
 
                     <p>
                         <c:forEach var="transaction" items="${PORTFOLIO_TRANSACTIONS}">
+
+                            <c:url var="securityLink" value="getSecurity">
+                                <c:param name="SECURITY_SYMBOL" value="${transaction.securitySymbol}"/>
+                            </c:url>
+
                             <tr>
                                 <td>
-                                    <c:out value="${transaction.securitySymbol}"></c:out>
+                                    <a href="${securityLink}">${transaction.securitySymbol}</a>
                                 </td>
 
                                 <td>

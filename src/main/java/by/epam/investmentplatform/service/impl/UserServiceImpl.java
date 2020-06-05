@@ -22,7 +22,7 @@ class UserServiceImpl implements UserService {
         try {
             return getUserDAO().getAllUsers();
         } catch (DAOException e) {
-            LOGGER.error("Get all users error: " + e.getMessage());
+            LOGGER.error("getAllUsers error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -32,7 +32,7 @@ class UserServiceImpl implements UserService {
         try {
             return getUserDAO().getUser(id);
         } catch (DAOException e) {
-            LOGGER.error("Get user error: " + e.getMessage());
+            LOGGER.error("getUser error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -48,7 +48,7 @@ class UserServiceImpl implements UserService {
         try {
             getUserDAO().saveUser(user);
         } catch (DAOException e) {
-            LOGGER.error("Create user error: " + e.getMessage());
+            LOGGER.error("signUp error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -64,7 +64,7 @@ class UserServiceImpl implements UserService {
                 user = newUser;
             }
         } catch (DAOException e) {
-            LOGGER.error("Create user error: " + e.getMessage());
+            LOGGER.error("logIn error: " + e.getMessage());
             throw new ServiceException(e);
         }
         return user;
@@ -81,7 +81,7 @@ class UserServiceImpl implements UserService {
         try {
             getUserDAO().updateUser(user, params);
         } catch (DAOException e) {
-            LOGGER.error("Update user error: " + e.getMessage());
+            LOGGER.error("updateUser error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -93,7 +93,7 @@ class UserServiceImpl implements UserService {
         try {
             getUserDAO().deleteUser(user);
         } catch (DAOException e) {
-            LOGGER.error("Update user error: " + e.getMessage());
+            LOGGER.error("deleteUser error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -103,7 +103,7 @@ class UserServiceImpl implements UserService {
         try {
             return getUserDAO().getUserBalanceTransactions(id);
         } catch (DAOException e) {
-            LOGGER.error("Get user's balance error: " + e.getMessage());
+            LOGGER.error("getUserBalanceTransactions error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -113,7 +113,7 @@ class UserServiceImpl implements UserService {
         try {
             return getUserDAO().getAllCountries();
         } catch (DAOException e) {
-            LOGGER.error("Service: " + e.getMessage());
+            LOGGER.error("getAllCountries error: " + e.getMessage());
             throw new ServiceException("Data source connection error.", e);
         }
     }

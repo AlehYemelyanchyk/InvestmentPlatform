@@ -11,10 +11,8 @@
     <title>Security</title>
 </head>
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center">${SECURITY.name}</h2>
-    </div>
+<div id="header">
+    <h4 align="center">${SECURITY.name}</h4>
 </div>
 <div id="container">
     <form action="${pageContext.request.contextPath}/signup" method="post">

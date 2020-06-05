@@ -34,13 +34,13 @@ class SqlPortfolioDAOImpl implements PortfolioDAO {
             connection.commit();
             portfolios = DAOUtils.portfoliosResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("DAO: Get all portfolios SQL error: " + e.getMessage());
+            LOGGER.error("getAllUserPortfolios error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllUserPortfolios close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -62,13 +62,13 @@ class SqlPortfolioDAOImpl implements PortfolioDAO {
             connection.commit();
             portfolio = DAOUtils.portfoliosResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
-            LOGGER.error("DAO: Get portfolio SQL error: " + e.getMessage());
+            LOGGER.error("getPortfolio error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getPortfolio close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -88,13 +88,13 @@ class SqlPortfolioDAOImpl implements PortfolioDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("savePortfolio error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("savePortfolio close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -113,13 +113,13 @@ class SqlPortfolioDAOImpl implements PortfolioDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("updatePortfolio error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("updatePortfolio close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -137,13 +137,13 @@ class SqlPortfolioDAOImpl implements PortfolioDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("removePortfolio error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("removePortfolio close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }

@@ -12,6 +12,12 @@
 </head>
 
 <body>
+<div id="header">
+    <h4 align="center">
+        <fmt:message key="label.createNewPortfolio"/>
+    </h4>
+</div>
+
 <div id="container">
         <form action="addPortfolio" method="POST">
             <table class="login">

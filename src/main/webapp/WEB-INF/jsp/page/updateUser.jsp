@@ -11,6 +11,9 @@
     <title>Update user</title>
 </head>
 <body>
+<div id="header">
+    <h4 align="center"><fmt:message key="label.editPersonalDetails"/></h4>
+</div>
 <div id="container">
     <form action="${pageContext.request.contextPath}/updateUser" method="POST">
         <table class="login">

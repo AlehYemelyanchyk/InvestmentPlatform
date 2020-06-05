@@ -36,13 +36,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
             securities = DAOUtils.securitiesResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getAllSecurities error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllSecurities close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -68,13 +68,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
             securities = DAOUtils.securitiesResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("DAO: Get all user securities SQL error: " + e.getMessage());
+            LOGGER.error("getAllUserSecurities error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllUserSecurities close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -104,13 +104,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
             securities = DAOUtils.securitiesResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("DAO: Get all user securities SQL error: " + e.getMessage());
+            LOGGER.error("getAllPortfolioSecurities error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllPortfolioSecurities close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -131,13 +131,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
             transactions = DAOUtils.transactionsResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getAllTransactions error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllTransactions close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -163,13 +163,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
             transactions = DAOUtils.transactionsResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getAllUserTransactions error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllUserTransactions close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -193,13 +193,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
             transactions = DAOUtils.transactionsResultSetHandle(resultSet);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getAllPortfolioTransactions error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getAllPortfolioTransactions close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -227,13 +227,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
             security = DAOUtils.securitiesResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
-            LOGGER.error("Get security SQL error: " + e.getMessage());
+            LOGGER.error("getSecurity error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getSecurity close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -257,13 +257,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
             transaction = DAOUtils.transactionsResultSetHandle(resultSet).get(Constants.ZERO_LIST_ELEMENT);
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("getTransaction error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement, resultSet);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("getTransaction close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -300,13 +300,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
 
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("saveSecurity error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("saveSecurity close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -334,13 +334,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             connection.commit();
 
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("saveTransaction error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("saveTransaction close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -369,13 +369,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("updateSecurity error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("updateSecurity close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -393,13 +393,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("removeSecurity error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("removeSecurity close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -419,13 +419,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("removeSecurityFromPortfolio error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("removeSecurityFromPortfolio close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }
@@ -443,13 +443,13 @@ class SqlSecurityDAOImpl implements SecurityDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("SQL connection error: " + e.getMessage());
+            LOGGER.error("removeTransaction error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("SQL disconnection error: " + e.getMessage());
+                LOGGER.error("removeTransaction close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }

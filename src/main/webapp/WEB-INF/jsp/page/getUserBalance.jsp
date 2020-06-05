@@ -12,10 +12,8 @@
 </head>
 
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center"><fmt:message key="label.balance"/></h2>
-    </div>
+<div id="header">
+    <h4 align="center"><fmt:message key="label.balance"/></h4>
 </div>
 
 <div class="container">

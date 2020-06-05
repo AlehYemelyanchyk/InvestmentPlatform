@@ -40,7 +40,7 @@ public class LogInPostCommandImpl extends AbstractCommandExecutor {
         if (req.getSession().getAttribute(Constants.REDIRECT_LINK) != null) {
             RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
         } else {
-            RoutingUtils.forwardToPage(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE, req, resp);
+            RoutingUtils.forwardToPage(JspPageName.NEWS_PAGE, req, resp);
         }
     }
 }

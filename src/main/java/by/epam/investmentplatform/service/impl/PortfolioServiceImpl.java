@@ -20,10 +20,10 @@ class PortfolioServiceImpl implements PortfolioService {
         try {
             return getPortfolioDAO().getAllUserPortfolios(userId);
         } catch (IndexOutOfBoundsException e) {
-            LOGGER.error("The portfolio does not found: " + e.getMessage());
+            LOGGER.error("getAllUserPortfolios - The portfolio does not found: " + e.getMessage());
             throw new ServiceException(e);
         } catch (DAOException e) {
-            LOGGER.error("Get all user portfolios error: " + e.getMessage());
+            LOGGER.error("getAllUserPortfolios error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -33,7 +33,7 @@ class PortfolioServiceImpl implements PortfolioService {
         try {
             return getPortfolioDAO().getPortfolio(portfolioId);
         } catch (DAOException e) {
-            LOGGER.error("Get portfolio error: " + e.getMessage());
+            LOGGER.error("getPortfolio error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -43,7 +43,7 @@ class PortfolioServiceImpl implements PortfolioService {
         try {
             getPortfolioDAO().savePortfolio(portfolio);
         } catch (DAOException e) {
-            LOGGER.error("Add portfolio error: " + e.getMessage());
+            LOGGER.error("addPortfolio error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -53,7 +53,7 @@ class PortfolioServiceImpl implements PortfolioService {
         try {
             getPortfolioDAO().updatePortfolio(portfolio, params);
         } catch (DAOException e) {
-            LOGGER.error("Update portfolio error: " + e.getMessage());
+            LOGGER.error("updatePortfolio error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -63,7 +63,7 @@ class PortfolioServiceImpl implements PortfolioService {
         try {
             getPortfolioDAO().removePortfolio(portfolioId);
         } catch (DAOException e) {
-            LOGGER.error("Remove portfolio error: " + e.getMessage());
+            LOGGER.error("removePortfolio error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }

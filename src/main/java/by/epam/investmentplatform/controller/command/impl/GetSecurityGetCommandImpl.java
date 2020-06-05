@@ -17,7 +17,7 @@ public class GetSecurityGetCommandImpl extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
-        Security security = null;
+        Security security;
         try {
             security = SECURITY_SERVICE.getSecurity(securitySymbol);
         } catch (ServiceException e) {
@@ -25,6 +25,6 @@ public class GetSecurityGetCommandImpl extends AbstractCommandExecutor {
             throw e;
         }
         req.setAttribute(Constants.SECURITY, security);
-        RoutingUtils.forwardToPage(JspPageName.SECURITY_PAGE, req, resp);
+        RoutingUtils.forwardToPage(JspPageName.GET_SECURITY_PAGE, req, resp);
     }
 }

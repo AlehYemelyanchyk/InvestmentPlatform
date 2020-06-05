@@ -28,7 +28,7 @@ public class AddSecurityToPortfolioPostCommandImpl extends AbstractCommandExecut
         try {
             SECURITY_SERVICE.saveTransaction(transaction);
         } catch (ServiceException e) {
-            LOGGER.error("Add portfolio error: ", e);
+            LOGGER.error(e.getMessage());
             throw new ServiceException("Incorrect values");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_SECURITIES_COMMAND);

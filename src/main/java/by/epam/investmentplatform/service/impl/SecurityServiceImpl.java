@@ -22,7 +22,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             return getSecurityDAO().getAllSecurities();
         } catch (DAOException e) {
-            LOGGER.error("Get all securities error: " + e.getMessage());
+            LOGGER.error("getAllSecurities error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -32,7 +32,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             return getSecurityDAO().getAllUserSecurities(userId);
         } catch (DAOException e) {
-            LOGGER.error("Get all user securities error: " + e.getMessage());
+            LOGGER.error("getAllUserSecurities error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -42,7 +42,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             return getSecurityDAO().getAllPortfolioSecurities(portfolioId);
         } catch (DAOException e) {
-            LOGGER.error("Get all portfolio securities error: " + e.getMessage());
+            LOGGER.error("getAllPortfolioSecurities error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -52,7 +52,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             return getSecurityDAO().getAllTransactions();
         } catch (DAOException e) {
-            LOGGER.error("Get all transactions error: " + e.getMessage());
+            LOGGER.error("getAllTransactions error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -62,7 +62,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             return getSecurityDAO().getAllUserTransactions(userId);
         } catch (DAOException e) {
-            LOGGER.error("Get all user transactions error: " + e.getMessage());
+            LOGGER.error("getAllUserTransactions error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -72,7 +72,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             return getSecurityDAO().getAllPortfolioTransactions(portfolioId);
         } catch (DAOException e) {
-            LOGGER.error("Get all portfolio transactions error: " + e.getMessage());
+            LOGGER.error("getAllPortfolioTransactions error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -82,7 +82,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             return getSecurityDAO().getSecurity(symbol);
         } catch (DAOException e) {
-            LOGGER.error("Get security error: " + e.getMessage());
+            LOGGER.error("getSecurity error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -92,7 +92,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             return getSecurityDAO().getTransaction(id);
         } catch (DAOException e) {
-            LOGGER.error("Get transaction error: " + e.getMessage());
+            LOGGER.error("getTransaction error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -102,7 +102,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             getSecurityDAO().saveSecurity(security);
         } catch (DAOException e) {
-            LOGGER.error("Add security error: " + e.getMessage());
+            LOGGER.error("saveSecurity error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -112,7 +112,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             getSecurityDAO().saveTransaction(transaction);
         } catch (DAOException e) {
-            LOGGER.error("Add transaction error: " + e.getMessage());
+            LOGGER.error("saveTransaction error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -126,7 +126,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             getSecurityDAO().updateTransaction(transaction, parameters);
         } catch (DAOException e) {
-            LOGGER.error("Update transaction error: " + e.getMessage());
+            LOGGER.error("updateTransaction error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -136,7 +136,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             getSecurityDAO().removeSecurity(symbol);
         } catch (DAOException e) {
-            LOGGER.error("Remove security error: " + e.getMessage());
+            LOGGER.error("removeSecurity error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -146,7 +146,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             getSecurityDAO().removeSecurityFromPortfolio(portfolioId, symbol);
         } catch (DAOException e) {
-            LOGGER.error("Remove security from portfolio error: " + e.getMessage());
+            LOGGER.error("removeSecurityFromPortfolio error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }
@@ -156,7 +156,7 @@ class SecurityServiceImpl implements SecurityService {
         try {
             getSecurityDAO().removeTransaction(id);
         } catch (DAOException e) {
-            LOGGER.error("Remove transaction error: " + e.getMessage());
+            LOGGER.error("removeTransaction error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }

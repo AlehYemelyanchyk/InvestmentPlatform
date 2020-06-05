@@ -28,6 +28,7 @@ public class GetAllSecuritiesGetCommandImpl extends AbstractCommandExecutor {
         }
         req.setAttribute(Constants.SECURITIES_LIST, securitiesByType);
         req.setAttribute(Constants.MAX_ITEMS_PER_PAGE, Constants.ITEMS_PER_PAGE);
+        req.setAttribute(Constants.COMMAND_ATTRIBUTE, req.getAttribute(Constants.COMMAND_ATTRIBUTE));
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITIES, req, resp);
     }
 

@@ -24,6 +24,7 @@ public class UpdatePortfolioGetCommandImpl extends AbstractCommandExecutor {
             LOGGER.error("Get portfolio error: ", e);
             throw new ServiceException("Incorrect values");
         }
+        req.setAttribute(Constants.PORTFOLIO_ID, portfolioId);
         RoutingUtils.forwardToPage(JspPageName.UPDATE_PORTFOLIO_PAGE, req, resp);
     }
 }
