@@ -101,7 +101,9 @@
                                     <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
                                     <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
                                     <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                    <input type="submit" class="short-button" name="submit" value="<fmt:message key="label.add"/>">
+                                    <input ${CURRENT_USER_ID == null?'disabled="disabled"':''}
+                                            type="submit" class="short-button" name="submit"
+                                            value="<fmt:message key="label.add"/>">
                                 </form>
                             </td>
                         </tr>

@@ -16,29 +16,10 @@
         <%--                <project-tag:static/>--%>
     </div>
     <div>
-        <c:url var="link_en" value="${COMMAND_ATTRIBUTE}">
-            <c:param name="SECURITY_SYMBOL" value="${SECURITY.symbol}"/>
-            <c:param name="PORTFOLIO_ID" value="${PORTFOLIO_ID}"/>
-<%--            <c:param name="SECURITY_NAME" value="${SECURITY_NAME}"/>--%>
-            <c:param name="sessionLocale" value="en"/>
-        </c:url>
-        <c:url var="link_ru" value="${COMMAND_ATTRIBUTE}">
-            <c:param name="SECURITY_SYMBOL" value="${SECURITY.symbol}"/>
-            <c:param name="PORTFOLIO_ID" value="${PORTFOLIO_ID}"/>
-<%--            <c:param name="SECURITY_NAME" value="${SECURITY_NAME}"/>--%>
-            <c:param name="sessionLocale" value="ru"/>
-        </c:url>
-        <c:url var="link_by" value="${COMMAND_ATTRIBUTE}">
-            <c:param name="SECURITY_SYMBOL" value="${SECURITY.symbol}"/>
-            <c:param name="PORTFOLIO_ID" value="${PORTFOLIO_ID}"/>
-<%--            <c:param name="SECURITY_NAME" value="${SECURITY_NAME}"/>--%>
-            <c:param name="sessionLocale" value="by"/>
-        </c:url>
-
         <p align="right">
-            <a class="lang_icons" href=${link_en}><fmt:message key="label.lang.en"/></a>
-            <a class="lang_icons" href=${link_ru}><fmt:message key="label.lang.ru"/></a>
-            <a class="lang_icons" href=${link_by}><fmt:message key="label.lang.by"/></a>
+            <a href="?sessionLocale=en"><fmt:message key="label.lang.en"/></a>
+            <a href="?sessionLocale=ru"><fmt:message key="label.lang.ru"/></a>
+            <a href="?sessionLocale=by"><fmt:message key="label.lang.by"/></a>
         </p>
         <ul>
             <c:choose>

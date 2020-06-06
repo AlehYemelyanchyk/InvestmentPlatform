@@ -17,18 +17,32 @@ public class AddSecurityToPortfolioGetCommandImpl extends AbstractCommandExecuto
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
-        double securityPrice = Double.parseDouble(req.getParameter(Constants.SECURITY_PRICE));
-        int userId = (int) (req.getSession().getAttribute(Constants.CURRENT_USER_ID));
+        String securitySymbol;
+        if (req.getParameter(Constants.SECURITY_SYMBOL) != null) {
+            securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
+        } else {
+            securitySymbol = (String) req.getSession().getAttribute(Constants.SECURITY_SYMBOL);
+        }
+        double securityPrice;
+        if (req.getParameter(Constants.SECURITY_PRICE) != null) {
+            securityPrice = Double.parseDouble(req.getParameter(Constants.SECURITY_PRICE));
+        } else {
+            securityPrice = (double) req.getSession().getAttribute(Constants.SECURITY_PRICE);
+        }
+        int userId = (int) req.getSession().getAttribute(Constants.CURRENT_USER_ID);
         try {
             List<Portfolio> portfolios = PORTFOLIO_SERVICE.getAllUserPortfolios(userId);
             req.setAttribute(Constants.PORTFOLIOS_LIST, portfolios);
-            req.setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
-            req.setAttribute(Constants.SECURITY_PRICE, securityPrice);
         } catch (ServiceException e) {
             LOGGER.error("Get portfolios error: ", e);
             throw new ServiceException("Incorrect values");
         }
+
+        req.getSession().setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
+        req.getSession().setAttribute(Constants.SECURITY_PRICE, securityPrice);
+
+        req.setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
+        req.setAttribute(Constants.SECURITY_PRICE, securityPrice);
         RoutingUtils.forwardToPage(JspPageName.ADD_SECURITY_TO_PORTFOLIO_PAGE, req, resp);
     }
 }

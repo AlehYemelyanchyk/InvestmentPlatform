@@ -21,15 +21,15 @@
             </tr>
             <tr>
                 <td><label><fmt:message key="label.login2"/></label></td>
-                <td><input type="text" name="login"/></td>
+                <td><input required type="text" name="login"/></td>
             </tr>
             <tr>
                 <td><label><fmt:message key="label.password"/></label></td>
-                <td><input type="password" name="password"/></td>
+                <td><input required type="password" name="password"/></td>
             </tr>
             <tr>
                 <td><label><fmt:message key="label.email"/></label></td>
-                <td><input type="text" name="email"/></td>
+                <td><input required type="text" name="email"/></td>
             </tr>
             <tr>
                 <td><label><fmt:message key="label.name"/></label></td>

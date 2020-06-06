@@ -18,14 +18,37 @@ public class GetAllSecurityTransactionsGetCommandImpl extends AbstractCommandExe
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        int portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
-        String securityName = req.getParameter(Constants.SECURITY_NAME);
-        String securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
+        int portfolioId;
+        if (req.getParameter(Constants.PORTFOLIO_ID) != null) {
+            portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
+        } else {
+            portfolioId = (int) req.getSession().getAttribute(Constants.PORTFOLIO_ID);
+        }
+
+        String securityName;
+        if (req.getParameter(Constants.SECURITY_NAME) != null) {
+            securityName = req.getParameter(Constants.SECURITY_NAME);
+        } else {
+            securityName = (String) req.getSession().getAttribute(Constants.SECURITY_NAME);
+        }
+
+        String securitySymbol;
+        if (req.getParameter(Constants.SECURITY_SYMBOL) != null) {
+            securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
+        } else {
+            securitySymbol = (String) req.getSession().getAttribute(Constants.SECURITY_SYMBOL);
+        }
+
         List<Transaction> allPortfolioTransactions = SECURITY_SERVICE.getAllPortfolioTransactions(portfolioId);
         List<Transaction> filteredTransactions = filterTransactionsBySecurity(allPortfolioTransactions, securitySymbol);
+
         req.setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
         req.setAttribute(Constants.SECURITY_NAME, securityName);
         req.setAttribute(Constants.SECURITY_TRANSACTIONS, filteredTransactions);
+
+        req.getSession().setAttribute(Constants.SECURITY_NAME, securityName);
+        req.getSession().setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
+
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS, req, resp);
     }
 

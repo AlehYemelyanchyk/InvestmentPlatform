@@ -21,14 +21,14 @@
 <div id="container">
     <div id="content">
         <form action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="post">
-            <table>
+            <table class="login">
                 <tbody>
 
                 <input type="hidden" name="SECURITY_SYMBOL" value="${SECURITY_SYMBOL}">
                 <input type="hidden" name="SECURITY_PRICE" value="${SECURITY_PRICE}">
 
                 <tr>
-                    <td><fmt:message key="label.portfolio"/>:</td>
+                    <td><label><fmt:message key="label.portfolio"/>:</label></td>
                     <td>
                         <select name="PORTFOLIO_ID">
                             <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
@@ -39,7 +39,12 @@
                 </tr>
 
                 <tr>
-                    <td><fmt:message key="label.type"/>:</td>
+                    <td><label><fmt:message key="label.symbol"/>: </label></td>
+                    <td><input disabled type="text" name="SYMBOL" value="${SECURITY_SYMBOL}"></td>
+                </tr>
+
+                <tr>
+                    <td><label><fmt:message key="label.type"/>:</label></td>
                     <td>
                         <select name="TRANSACTION_TYPE">
                             <option value="1"><fmt:message key="label.buy"/></option>
@@ -50,28 +55,28 @@
 
                 <tr>
                     <td><label><fmt:message key="label.amount"/>: </label></td>
-                    <td><input type="text" name="AMOUNT" onkeypress="return isNumber(event)"></td>
+                    <td><input required type="text" name="AMOUNT"
+                               onkeypress="return isNumber(event)"></td>
                 </tr>
 
                 <tr>
                     <td><label><fmt:message key="label.price"/>: </label></td>
-                    <td><input type="text" name="PRICE"
+                    <td><input required type="text" name="PRICE"
                                value="${SECURITY_PRICE}"
                                onkeypress="return isDecimalNumber(event)"></td>
                 </tr>
 
                 <tr>
                     <td><label><fmt:message key="label.date"/>: </label></td>
-                    <%--                    <date:static var="currentDate">--%>
                     <td><input type="date" name="DATE"
-                    <%--                               value="currentDate"--%>
                                min="1970-01-01" max="2099-12-31">
                     </td>
                 </tr>
 
                 <tr>
                     <td><label></label></td>
-                    <td><input type="submit" value="<fmt:message key="label.add"/>"
+                    <td><input type="submit" class="btn btn-primary"
+                               value="<fmt:message key="label.add"/>"
                                class="save" onclick="XSSPrevent()"></td>
                 </tr>
                 </tbody>

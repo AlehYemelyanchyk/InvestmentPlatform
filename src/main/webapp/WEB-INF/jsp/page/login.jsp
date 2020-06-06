@@ -17,12 +17,12 @@
             <tbody>
             <tr>
                 <td><label><fmt:message key="label.login2"/>:</label></td>
-                <td><input type="text" name="login" placeholder="Login" autocomplete="off"></td>
+                <td><input required type="text" name="login" placeholder="Login" autocomplete="off"></td>
             </tr>
 
             <tr>
                 <td><label><fmt:message key="label.password"/>:</label></td>
-                <td><input type="password" name="password" placeholder="Password" autocomplete="off"></td>
+                <td><input required type="password" name="password" placeholder="Password" autocomplete="off"></td>
             </tr>
 
             <tr>

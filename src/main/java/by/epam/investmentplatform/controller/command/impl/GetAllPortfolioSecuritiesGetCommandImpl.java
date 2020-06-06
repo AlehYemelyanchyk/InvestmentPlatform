@@ -24,14 +24,19 @@ public class GetAllPortfolioSecuritiesGetCommandImpl extends AbstractCommandExec
         Map<String, PortfolioSecurity> securities = new HashMap<>();
 
         int portfolioId;
-        String portfolioName;
-        if (req.getParameterMap().isEmpty()) {
-            portfolioId = (int) req.getSession().getAttribute(Constants.PORTFOLIO_ID);
-            portfolioName = (String) req.getSession().getAttribute(Constants.PORTFOLIO_NAME);
-        } else {
+        if(req.getParameter(Constants.PORTFOLIO_ID) != null) {
             portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
-            portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
+        } else {
+            portfolioId = (int) req.getSession().getAttribute(Constants.PORTFOLIO_ID);
         }
+
+        String portfolioName;
+        if(req.getParameter(Constants.PORTFOLIO_ID) != null) {
+            portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
+        } else {
+            portfolioName = (String) req.getSession().getAttribute(Constants.PORTFOLIO_NAME);
+        }
+
         req.getSession().setAttribute(Constants.PORTFOLIO_ID, portfolioId);
         req.getSession().setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
         List<Security> allPortfolioSecurities = SECURITY_SERVICE.getAllPortfolioSecurities(portfolioId);
@@ -39,8 +44,6 @@ public class GetAllPortfolioSecuritiesGetCommandImpl extends AbstractCommandExec
 
         fillPortfolioSecuritiesMap(securities, allPortfolioSecurities, allPortfolioTransactions);
 
-        req.setAttribute(Constants.PORTFOLIO_ID, portfolioId);
-        req.setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
         req.setAttribute(Constants.PORTFOLIO_SECURITIES, securities);
         req.setAttribute(Constants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_PORTFOLIO_SECURITIES, req, resp);
