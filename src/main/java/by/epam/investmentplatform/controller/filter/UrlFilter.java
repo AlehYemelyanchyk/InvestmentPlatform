@@ -43,6 +43,7 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.UPDATE_TRANSACTION_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_USER_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.USER_SETTINGS_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.WITHDRAW_COMMAND);
     }
 
     @Override

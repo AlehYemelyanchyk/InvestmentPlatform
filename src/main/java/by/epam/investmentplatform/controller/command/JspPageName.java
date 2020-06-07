@@ -21,6 +21,7 @@ public final class JspPageName {
     public static final String UPDATE_TRANSACTION_PAGE = "/WEB-INF/jsp/page/updateTransaction.jsp";
     public static final String UPDATE_USER_PAGE = "/WEB-INF/jsp/page/updateUser.jsp";
     public static final String USER_SETTINGS_PAGE = "/WEB-INF/jsp/page/userSettings.jsp";
+    public static final String WITHDRAW_PAYMENT_PAGE = "/WEB-INF/jsp/page/withdrawPayment.jsp";
 
     private JspPageName() {
         throw new UnsupportedOperationException();

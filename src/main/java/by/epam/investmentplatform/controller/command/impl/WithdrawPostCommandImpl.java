@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-public class DepositPostCommandImpl extends AbstractCommandExecutor {
+public class WithdrawPostCommandImpl extends AbstractCommandExecutor {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
@@ -28,7 +28,7 @@ public class DepositPostCommandImpl extends AbstractCommandExecutor {
             USER_SERVICE.addBalanceTransaction(userId, balanceTransaction);
         } catch (ServiceException e) {
             LOGGER.error(e);
-            throw new ServiceException("Deposit payment error.");
+            throw new ServiceException("Withdraw payment error.");
         }
         req.getSession().setAttribute(Constants.AMOUNT, amount);
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_BALANCE_COMMAND);

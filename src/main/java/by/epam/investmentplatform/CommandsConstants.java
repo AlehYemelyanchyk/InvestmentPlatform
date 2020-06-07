@@ -24,4 +24,5 @@ public final class CommandsConstants {
     public static final String UPDATE_TRANSACTION_COMMAND = "updateTransaction";
     public static final String UPDATE_USER_COMMAND = "updateUser";
     public static final String USER_SETTINGS_COMMAND = "userSettings";
+    public static final String WITHDRAW_COMMAND = "withdraw";
 }

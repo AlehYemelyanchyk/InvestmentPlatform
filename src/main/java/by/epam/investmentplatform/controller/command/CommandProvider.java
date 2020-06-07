@@ -44,6 +44,8 @@ public final class CommandProvider {
         repository.put(CommandsConstants.UPDATE_USER_COMMAND + GET_METHOD, new UpdateUserGetCommandImpl());
         repository.put(CommandsConstants.UPDATE_USER_COMMAND + POST_METHOD, new UpdateUserPostCommandImpl());
         repository.put(CommandsConstants.USER_SETTINGS_COMMAND + GET_METHOD, new UserSettingsGetCommandImpl());
+        repository.put(CommandsConstants.WITHDRAW_COMMAND + GET_METHOD, new WithdrawGetCommandImpl());
+        repository.put(CommandsConstants.WITHDRAW_COMMAND + POST_METHOD, new WithdrawPostCommandImpl());
         repository.put("", new NoSuchCommandImpl());
         repository.put(null, new NoSuchCommandImpl());
     }
