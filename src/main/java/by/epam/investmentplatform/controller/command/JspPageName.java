@@ -3,6 +3,7 @@ package by.epam.investmentplatform.controller.command;
 public final class JspPageName {
     public static final String ADD_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/addPortfolio.jsp";
     public static final String ADD_SECURITY_TO_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/addSecurityToPortfolio.jsp";
+    public static final String DEPOSIT_PAYMENT_PAGE = "/WEB-INF/jsp/page/depositPayment.jsp";
     public static final String GET_ALL_PORTFOLIO_SECURITIES = "/WEB-INF/jsp/page/getAllPortfolioSecurities.jsp";
     public static final String GET_ALL_SECURITIES = "/WEB-INF/jsp/page/getAllSecurities.jsp";
     public static final String GET_ALL_SECURITY_TRANSACTIONS = "/WEB-INF/jsp/page/getAllSecurityTransactions.jsp";

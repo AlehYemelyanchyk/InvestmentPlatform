@@ -22,5 +22,7 @@ public interface UserDAO {
 
     List<BalanceTransaction> getUserBalanceTransactions (int id) throws DAOException;
 
+    void addBalanceTransaction (int id, BalanceTransaction balanceTransaction) throws DAOException;
+
     List<String> getAllCountries() throws DAOException;
 }

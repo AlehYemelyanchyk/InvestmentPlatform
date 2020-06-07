@@ -10,10 +10,7 @@ import by.epam.investmentplatform.util.DAOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 class SqlUserDAOImpl implements UserDAO {
@@ -226,6 +223,35 @@ class SqlUserDAOImpl implements UserDAO {
             }
         }
         return balanceTransactions;
+    }
+
+    @Override
+    public void addBalanceTransaction(int id, BalanceTransaction balanceTransaction) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "INSERT INTO invest.balance_transactions (user_id, type, amount, date) " +
+                    "VALUES (?, ?, ?, ?)";
+
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setInt(1, id);
+            statement.setInt(2, balanceTransaction.getType());
+            statement.setDouble(3, balanceTransaction.getAmount());
+            statement.setDate(4, new Date(balanceTransaction.getDate().getTime()));
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("addBalanceTransaction error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("addBalanceTransaction close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
     }
 
     @Override

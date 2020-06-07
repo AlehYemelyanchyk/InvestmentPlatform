@@ -109,6 +109,16 @@ class UserServiceImpl implements UserService {
     }
 
     @Override
+    public void addBalanceTransaction(int id, BalanceTransaction balanceTransaction) throws ServiceException {
+        try {
+           getUserDAO().addBalanceTransaction(id, balanceTransaction);
+        } catch (DAOException e) {
+            LOGGER.error("addBalanceTransaction error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public List<String> getAllCountries() throws ServiceException {
         try {
             return getUserDAO().getAllCountries();

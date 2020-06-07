@@ -80,6 +80,14 @@ public interface UserService {
     List<BalanceTransaction> getUserBalanceTransactions(int id) throws ServiceException;
 
     /**
+     * Adds a new transaction for the user.
+     *
+     * @param id is a user's id in a data source.
+     * @param balanceTransaction a new transaction.
+     */
+    void addBalanceTransaction(int id, BalanceTransaction balanceTransaction) throws ServiceException;
+
+    /**
      * Retrieves all countries from a data source.
      *
      * @return list of users, which can't be null, but can be empty if there is no countries

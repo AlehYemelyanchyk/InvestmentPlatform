@@ -117,3 +117,19 @@ td select{
 .lang_icons {
     /*background-color: #bed3e6;*/
 }
+
+div.col-xs-12{
+    width: 380px
+}
+
+div.col-xs-4{
+    width: 120px
+}
+
+.card{
+    border: none;
+}
+
+.submit-button {
+    margin-top: 10px;
+}
