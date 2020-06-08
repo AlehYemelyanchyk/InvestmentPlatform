@@ -13,7 +13,6 @@
         <h1 align="center">
             <a id="header-link" href="http://localhost:8080/investmentplatform/">Investment Platform</a>
         </h1>
-        <%--                <project-tag:static/>--%>
     </div>
     <div>
         <p align="right">

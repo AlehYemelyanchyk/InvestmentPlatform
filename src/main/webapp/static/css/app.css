@@ -4,6 +4,10 @@ header {
     height: 120px;
 }
 
+a {
+    margin: 0;
+}
+
 #header-link {
     color: #000000;
     text-decoration-line: none;
@@ -34,7 +38,7 @@ main {
 }
 
 p{
-    padding-right: 5px;
+    padding-right: 10px;
 }
 
 .fa-user-alt {
@@ -132,4 +136,8 @@ div.col-xs-4{
 
 .submit-button {
     margin-top: 10px;
+}
+
+.panel-header {
+    padding-inline-start: 10px;
 }

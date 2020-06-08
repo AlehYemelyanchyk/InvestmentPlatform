@@ -13,6 +13,7 @@ public final class CommandsConstants {
     public static final String GET_ALL_USERS_COMMAND = "getAllUsers";
     public static final String GET_BALANCE_COMMAND = "getBalance";
     public static final String GET_SECURITY_COMMAND = "getSecurity";
+    public static final String LOAN_COMMAND = "loan";
     public static final String LOGIN_COMMAND = "login";
     public static final String LOGOUT_COMMAND = "logout";
     public static final String MAIN_COMMAND = "main";

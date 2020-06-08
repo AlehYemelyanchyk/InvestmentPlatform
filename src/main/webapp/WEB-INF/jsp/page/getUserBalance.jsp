@@ -12,9 +12,9 @@
 </head>
 
 <body>
-<div id="header">
-    <h4 align="center"><fmt:message key="label.balance"/></h4>
-</div>
+<%--<div id="header">--%>
+<%--    <h4 align="center"><fmt:message key="label.balance"/></h4>--%>
+<%--</div>--%>
 
 <div class="container">
     <p>

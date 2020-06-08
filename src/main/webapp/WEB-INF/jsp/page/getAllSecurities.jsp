@@ -12,9 +12,9 @@
 </head>
 
 <body>
-    <div id="header">
-        <h4 align="center"><fmt:message key="label.securities"/></h4>
-    </div>
+<%--    <div id="header">--%>
+<%--        <h4 align="center"><fmt:message key="label.securities"/></h4>--%>
+<%--    </div>--%>
 
 <div class="container">
     <div class="form-group">

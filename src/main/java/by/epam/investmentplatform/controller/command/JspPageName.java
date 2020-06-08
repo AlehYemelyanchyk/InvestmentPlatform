@@ -11,6 +11,7 @@ public final class JspPageName {
     public static final String GET_ALL_USERS_PAGE = "/WEB-INF/jsp/page/getAllUsers.jsp";
     public static final String GET_USER_BALANCE_PAGE = "/WEB-INF/jsp/page/getUserBalance.jsp";
     public static final String ERROR_PAGE = "/WEB-INF/jsp/page/error.jsp";
+    public static final String LOAN_PAYMENT_PAGE = "/WEB-INF/jsp/page/loanPayment.jsp";
     public static final String LOG_IN_PAGE = "/WEB-INF/jsp/page/login.jsp";
     public static final String NEWS_PAGE = "/WEB-INF/jsp/page/news.jsp";
     public static final String PAGE_TEMPLATE = "/WEB-INF/jsp/page-template.jsp";

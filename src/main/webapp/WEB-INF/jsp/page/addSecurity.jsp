@@ -12,9 +12,9 @@
 </head>
 
 <body>
-<div id="header">
-    <h4 align="center"><fmt:message key="label.addSecurity"/></h4>
-</div>
+<%--<div id="header">--%>
+<%--    <h4 align="center"><fmt:message key="label.addSecurity"/></h4>--%>
+<%--</div>--%>
 
 <div id="container">
     <div id="content">

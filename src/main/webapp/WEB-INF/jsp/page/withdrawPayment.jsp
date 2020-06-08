@@ -12,9 +12,9 @@
     <title>Withdraw</title>
 </head>
 <body>
-<div id="header">
-    <h4 align="center"><fmt:message key="label.withdraw"/></h4>
-</div>
+<%--<div id="header">--%>
+<%--    <h4 align="center"><fmt:message key="label.withdraw"/></h4>--%>
+<%--</div>--%>
 
 <div class="container">
     <div class='row'>
@@ -27,12 +27,13 @@
 
                 <input type="hidden" name="TRANSACTION_TYPE" value="4">
 
-                <div class='form-row'>
+                <hdiv class='form-row'>
                     <div class='col-xs-12 form-group required'>
+<%--                        CURRENT_USER_BALANCE - should not be more than thath--%>
                         <label><fmt:message key="label.amount"/></label>
                         <input class='form-control' size='4' type='text' name="AMOUNT">
                     </div>
-                </div>
+                </hdiv>
                 <div class='form-row'>
                     <div class='col-xs-12 form-group card required'>
                         <label><fmt:message key="label.cardNumber"/></label>

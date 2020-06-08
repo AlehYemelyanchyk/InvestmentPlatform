@@ -11,11 +11,11 @@
     <title>Update portfolio</title>
 </head>
 <body>
-<div id="header">
-    <h4 align="center">
-        <fmt:message key="label.editPortfolio"/>
-    </h4>
-</div>
+<%--<div id="header">--%>
+<%--    <h4 align="center">--%>
+<%--        <fmt:message key="label.editPortfolio"/>--%>
+<%--    </h4>--%>
+<%--</div>--%>
 
 <div id="container">
     <form action="${pageContext.request.contextPath}/updatePortfolio" method="POST">

@@ -11,9 +11,9 @@
     <title>Settings</title>
 </head>
 <body>
-<div id="header">
-    <h4 align="center"><fmt:message key="label.settings"/></h4>
-</div>
+<%--<div id="header">--%>
+<%--    <h4 align="center"><fmt:message key="label.settings"/></h4>--%>
+<%--</div>--%>
 
 <div class="panel-body">
     <div class="list-group">

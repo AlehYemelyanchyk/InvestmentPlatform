@@ -11,11 +11,9 @@
     <title>Update transaction</title>
 </head>
 <body>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center"><fmt:message key="label.editTransaction"/></h2>
-    </div>
-</div>
+<%--    <div id="header">--%>
+<%--        <h2 align="center"><fmt:message key="label.editTransaction"/></h2>--%>
+<%--    </div>--%>
 
 <div id="container">
     <form action="${pageContext.request.contextPath}/updateTransaction" method="POST">

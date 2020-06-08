@@ -22,7 +22,7 @@ public class GetBalanceGetCommandImpl extends AbstractCommandExecutor {
             List<BalanceTransaction> userBalanceTransactions = USER_SERVICE.getUserBalanceTransactions(userId);
             double balance = countBalance(userBalanceTransactions);
             req.setAttribute(Constants.CURRENT_USER_BALANCE_TRANSACTIONS, userBalanceTransactions);
-            req.setAttribute(Constants.CURRENT_USER_BALANCE, balance);
+            req.getSession().setAttribute(Constants.CURRENT_USER_BALANCE, balance);
         } catch (ServiceException e) {
             LOGGER.error("Get user's balance transactions error", e);
         }
