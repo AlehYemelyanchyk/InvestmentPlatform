@@ -40,9 +40,6 @@
         </main>
     </div>
 </div>
-<footer>
-    <jsp:include page="fragment/footer.jsp"/>
-</footer>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="static/js/jquery.js"></script>
@@ -57,4 +54,9 @@
 <script src="static/js/pagination.js"></script>
 <script src="static/js/XSSPrevent.js"></script>
 </body>
+<footer class="fixed-bottom">
+    <div class="footer-text">
+        <jsp:include page="fragment/footer.jsp"/>
+    </div>
+</footer>
 </html>

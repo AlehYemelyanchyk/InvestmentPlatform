@@ -1,25 +1,35 @@
 header {
-    background-color: #f6f6f6;
+    background-color: #4b5870;
     color: #000000;
     height: 120px;
 }
 
 a {
+    color: #ffffff;
     margin: 0;
 }
 
-#header-link {
+td a {
     color: #000000;
+}
+
+a:hover {
+    color: #151e89;
+    text-decoration: underline;
+}
+
+#header-link {
+    color: #ffffff;
     text-decoration-line: none;
 }
 
 #header-link:hover {
-    color: #555555;
+    color: #e8e8e8;
     text-decoration-line: none;
 }
 
 footer {
-    background-color: #f6f6f6;
+    background-color: #616b7e;
     position: absolute;
     left: 0;
     bottom: 0;
@@ -27,6 +37,11 @@ footer {
     width: 100%;
     text-align: center;
     overflow: hidden;
+    padding-top: 7px;
+}
+
+.footer-text {
+    color: #ffffff;
 }
 
 aside {
@@ -123,11 +138,11 @@ td select{
 }
 
 div.col-xs-12{
-    width: 380px
+    width: 380px;
 }
 
 div.col-xs-4{
-    width: 120px
+    width: 120px;
 }
 
 .card{
@@ -140,4 +155,12 @@ div.col-xs-4{
 
 .panel-header {
     padding-inline-start: 10px;
+}
+
+.col-lg-2 {
+    background-color: #eceff1;
+}
+
+.list-group-item {
+    background-color: #89909d;
 }
