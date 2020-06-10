@@ -58,7 +58,7 @@ public class ConnectionPool$Proxy implements Connection {
     @Override
     public void close(){
         try {
-            ConnectionPoolImpl.getConnectionPoolInstance().releaseConnection(this);
+            ConnectionPool.getConnectionPoolInstance().releaseConnection(this);
         } catch (ConnectionPoolException e) {
             //log
         }

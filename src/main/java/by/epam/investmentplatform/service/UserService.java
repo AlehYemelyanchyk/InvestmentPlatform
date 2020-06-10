@@ -7,7 +7,7 @@ import by.epam.investmentplatform.service.exceptions.ServiceException;
 import java.util.List;
 
 /**
- * The interface provides methods to work with users' information in a data source.
+ * The interface provides methods to work with users information in a data source.
  *
  * @author Aleh Yemelyanchyk
  */
@@ -25,16 +25,16 @@ public interface UserService {
     /**
      * Retrieves a specified used from a data source based on its id.
      *
-     * @param id is a user's id in a data source.
+     * @param id is a user's unique identifier in a data source.
      * @return a user if there is an id match in a data source, null if there is no id match.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
     User getUser(int id) throws ServiceException;
 
     /**
-     * Creates a new user and stores it in a data source.
+     * Stores a new user in a data source.
      *
-     * @param user is a new user object created with provided parameters.
+     * @param user is a new transaction object which should be stored in a date source.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
     void signUp(User user) throws ServiceException;
@@ -54,7 +54,7 @@ public interface UserService {
     /**
      * Updates the user's parameters in a data source.
      *
-     * @param user   is a user for which the parameters are need to be updated.
+     * @param user   is a user object for which the parameters are have to be updated.
      * @param params an array of parameters with new values for the update.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
