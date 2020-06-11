@@ -19,7 +19,7 @@ public class SignUpPostCommand extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         User user = new User(
-                req.getParameter(RequestParameterName.REQUEST_USER_PARAM_ROLE),
+                Constants.ROLE_USER,
                 req.getParameter(preventXSSAttach(RequestParameterName.REQUEST_USER_PARAM_LOGIN)),
                 req.getParameter(preventXSSAttach(RequestParameterName.REQUEST_USER_PARAM_PASSWORD)),
                 req.getParameter(preventXSSAttach(RequestParameterName.REQUEST_USER_PARAM_EMAIL)),

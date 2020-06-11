@@ -1,0 +1,6 @@
+2020-06-10 20:52:18.867 ERROR by.epam.investmentplatform.service.impl.DefaultUserService - getAllUsers error: Test message
+2020-06-10 20:52:18.893 ERROR by.epam.investmentplatform.service.impl.DefaultUserService - getAllCountries error: Test message
+2020-06-10 20:52:18.895 ERROR by.epam.investmentplatform.service.impl.DefaultUserService - deleteUser error: Test message
+2020-06-10 20:52:18.897 ERROR by.epam.investmentplatform.service.impl.DefaultUserService - logIn error: Test message
+2020-06-10 20:52:18.909 ERROR by.epam.investmentplatform.service.impl.DefaultUserService - getUser error: Test message
+2020-06-10 20:52:18.931 ERROR by.epam.investmentplatform.service.impl.DefaultUserService - getUserBalanceTransactions error: Test message
