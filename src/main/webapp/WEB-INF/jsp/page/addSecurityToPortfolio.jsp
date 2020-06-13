@@ -14,12 +14,9 @@
 </head>
 
 <body>
-<%--<div id="header">--%>
-<%--    <h4 align="center"><fmt:message key="label.addSecurity"/></h4>--%>
-<%--</div>--%>
-
 <div id="container">
-    <div id="content">
+    <br/>
+
         <form action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="post">
             <table class="login">
                 <tbody>
@@ -82,7 +79,6 @@
                 </tbody>
             </table>
         </form>
-    </div>
 </div>
 <script>
     function isNumber(event) {

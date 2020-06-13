@@ -1,21 +1,18 @@
-header {
-    background-color: #4b5870;
-    color: #000000;
-    height: 120px;
+body {
+    padding-top: 70px;
+    padding-bottom: 50px;
 }
 
-a {
-    color: #ffffff;
-    margin: 0;
+.navbar-brand {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-weight: 600;
+    font-size: 2em;
 }
 
-td a {
-    color: #000000;
-}
-
-a:hover {
-    color: #151e89;
-    text-decoration: underline;
+#langs{
+    background-color: #343a40;
+    border: none;
 }
 
 #header-link {
@@ -52,7 +49,7 @@ main {
     background-color: #fffefc;
 }
 
-p{
+p {
     padding-right: 10px;
 }
 
@@ -60,38 +57,10 @@ p{
     padding-right: 10px;
 }
 
-ul{
+ul {
     padding-inline-start: 20px
 }
 
-li {
-    background: #fffff9;
-    display: inline-block;
-    padding: 4px 8px;
-    margin-bottom: 0;
-    margin-right: 2px;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    user-select: none;
-    border: 1px solid #000000;
-    border-radius: 4px;
-}
-
-li:hover {
-    background: #97b4e9;
-    -moz-transition: background-color 200ms ease-in;
-    -webkit-transition: background-color 200ms ease-in;
-}
-
-li.active {
-    background: #d0dcff;
-}
 
 table {
     border-collapse: collapse;
@@ -100,7 +69,7 @@ table {
 
 th {
     border-bottom: 1px solid gray;
-    background: none repeat scroll 0 0 #007bff;
+    background: none repeat scroll 0 0 #26425b;
     padding: 10px;
     color: #FFFFFF;
 }
@@ -115,21 +84,21 @@ table.login tr {
     text-align: left;
 }
 
-input.short-button{
+input.short-button {
     width: 50px;
 }
 
-td label{
+td label {
     width: 150px;
     text-align: left;
     margin-left: 70%;
 }
 
-td input{
+td input {
     width: 200px;
 }
 
-td select{
+td select {
     width: 200px;
 }
 
@@ -137,15 +106,15 @@ td select{
     /*background-color: #bed3e6;*/
 }
 
-div.col-xs-12{
+div.col-xs-12 {
     width: 380px;
 }
 
-div.col-xs-4{
+div.col-xs-4 {
     width: 120px;
 }
 
-.card{
+.card {
     border: none;
 }
 

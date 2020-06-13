@@ -12,11 +12,9 @@
     <title>Payment</title>
 </head>
 <body>
-<%--<div id="header">--%>
-<%--    <h4 align="center"><fmt:message key="label.deposit"/></h4>--%>
-<%--</div>--%>
-
 <div class="container">
+    <br/>
+
     <div class='row'>
         <div class='col-md-4'></div>
         <div class='col-md-4'>

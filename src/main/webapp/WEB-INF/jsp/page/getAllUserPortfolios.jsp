@@ -11,46 +11,62 @@
     <title>Portfolios</title>
 </head>
 <body>
-<%--<div id="header">--%>
-<%--    <h4 align="center">--%>
-<%--        <fmt:message key="label.allPortfolios"/>--%>
-<%--    </h4>--%>
-<%--</div>--%>
-
 <div id="container">
-    <input type="button" value="<fmt:message key="label.createNewPortfolio"/>"
-           onclick="window.location.href='addPortfolio'; return false;"
-           class="btn btn-primary"/>
-    <table>
+    <br/>
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <a class="btn btn-dark" href="${pageContext.request.contextPath}/addPortfolio"
+               data-tooltip title="<fmt:message key="label.createNewPortfolio"/>">
+                <i class="icon-plus-sign-alt"></i>
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+    </div>
+
+    <br/>
+
+    <div class="row">
         <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <c:url var="portfolioLink" value="getAllPortfolioSecurities">
+                    <c:param name="PORTFOLIO_NAME" value="${portfolio.name}"/>
+                    <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
+                </c:url>
 
-            <c:url var="portfolioLink" value="getAllPortfolioSecurities">
-                <c:param name="PORTFOLIO_NAME" value="${portfolio.name}"/>
-                <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
-            </c:url>
+                <c:url var="updateLink" value="updatePortfolio">
+                    <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
+                </c:url>
 
-            <c:url var="updateLink" value="updatePortfolio">
-                <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
-            </c:url>
+                <c:url var="removeLink" value="removePortfolio">
+                    <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
+                </c:url>
 
-            <c:url var="removeLink" value="removePortfolio">
-                <c:param name="PORTFOLIO_ID" value="${portfolio.id}"/>
-            </c:url>
-
-            <tr>
-                <td>
-                    <h4><a href="${portfolioLink}">${portfolio.name}</a></h4>
-                </td>
-                <td>
-                    <a href="${updateLink}"><fmt:message key="label.edit"/></a>
-                    |
-                    <a href="${removeLink}"
-                       onclick="if (!(confirm('<fmt:message key="label.deletePortfolio"/>'))) return false">
-                        <fmt:message key="label.delete"/></a>
-                </td>
-            </tr>
+                <h4><a href="${portfolioLink}">${portfolio.name}</a></h4>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a href="${updateLink}" data-tooltip title="<fmt:message key="label.edit"/>">
+                            <i class="icon-edit"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a href="${removeLink}" data-tooltip title="<fmt:message key="label.delete"/>"
+                           onclick="if (!(confirm('<fmt:message key="label.deletePortfolio"/>'))) return false">
+                            <i class="icon-trash"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
         </c:forEach>
-    </table>
+    </div>
 </div>
 </body>
 </html>

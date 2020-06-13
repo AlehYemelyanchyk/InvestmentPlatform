@@ -12,10 +12,6 @@
 </head>
 
 <body>
-<%--    <div id="header">--%>
-<%--        <h4 align="center"><fmt:message key="label.securities"/></h4>--%>
-<%--    </div>--%>
-
 <div class="container">
     <div class="form-group">
         <select name="state" id="maxRows" class="form-control" style="width:150px;">
@@ -101,9 +97,11 @@
                                     <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
                                     <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
                                     <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                    <input ${CURRENT_USER_ID == null?'disabled="disabled"':''}
-                                            type="submit" class="short-button" name="submit"
-                                            value="<fmt:message key="label.add"/>">
+                                    <button ${CURRENT_USER_ID == null?'disabled="disabled"':''}
+                                            class="btn btn-dark" type="submit"
+                                            data-tooltip title="<fmt:message key="label.add"/>">
+                                        <i class="icon-plus"></i>
+                                    </button>
                                 </form>
                             </td>
                         </tr>

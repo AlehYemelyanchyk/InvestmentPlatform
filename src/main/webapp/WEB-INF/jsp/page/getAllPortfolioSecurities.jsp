@@ -12,13 +12,12 @@
 </head>
 
 <body>
-<div id="header">
-    <h4 align="center">${PORTFOLIO_NAME}</h4>
-</div>
-
 <div id="container">
-    <div id="content">
+    <br/>
 
+    <div id="header">
+        <h4 align="center">${PORTFOLIO_NAME}</h4>
+    </div>
         <%--        <div class="autocomplete">--%>
             <%--            <input type="text" placeholder="<fmt:message key="label.findSecurity"/>">--%>
             <%--            <span class="close"><fmt:message key="label.cancel"/></span>--%>
@@ -90,10 +89,12 @@
                                     <form action="removeSecurityFromPortfolio" method="POST">
                                         <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
                                         <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                        <input type="submit" class="short-button"
-                                               onclick="if (!(confirm('<fmt:message
-                                                       key="label.deleteSecurityWarning"/>'))) return false"
-                                               name="submit" value="<fmt:message key="label.delete"/>">
+                                        <button class="btn btn-dark" type="submit"
+                                                data-tooltip title="<fmt:message key="label.delete"/>"
+                                                onclick="if (!(confirm('<fmt:message
+                                                        key="label.deleteSecurityWarning"/>'))) return false">
+                                            <i class="icon-trash"></i>
+                                        </button>
                                     </form>
                                 </td>
 
@@ -153,8 +154,10 @@
                                     <form action="updateTransaction" method="GET">
                                         <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                         <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                        <input type="submit" class="short-button"
-                                               name="submit" value="<fmt:message key="label.edit"/>">
+                                        <button class="btn btn-dark" type="submit"
+                                                data-tooltip title="<fmt:message key="label.edit"/>">
+                                            <i class="icon-edit"></i>
+                                        </button>
                                     </form>
                                 </td>
 
@@ -162,10 +165,12 @@
                                     <form action="removeTransaction" method="POST">
                                         <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                         <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                        <input type="submit" class="short-button"
-                                               onclick="if (!(confirm('<fmt:message
-                                                       key="label.deleteTransactionWarning"/>'))) return false"
-                                               name="submit" value="<fmt:message key="label.delete"/>">
+                                        <button class="btn btn-dark" type="submit"
+                                                data-tooltip title="<fmt:message key="label.delete"/>"
+                                                onclick="if (!(confirm('<fmt:message
+                                                        key="label.deleteSecurityWarning"/>'))) return false">
+                                            <i class="icon-trash"></i>
+                                        </button>
                                     </form>
                                 </td>
                             </tr>
@@ -174,7 +179,6 @@
                 </table>
             </div>
         </div>
-    </div>
 </div>
 <%--<script>--%>
 <%--    // search form script--%>

@@ -11,69 +11,91 @@
     <title>Update user</title>
 </head>
 <body>
-<%--<div id="header">--%>
-<%--    <h4 align="center"><fmt:message key="label.editPersonalDetails"/></h4>--%>
-<%--</div>--%>
 <div id="container">
-    <form action="${pageContext.request.contextPath}/updateUser" method="POST">
-        <table class="login">
-            <tbody>
+    <br/>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form action="${pageContext.request.contextPath}/updateUser" method="POST">
 
-            <tr>
-                <td><input type="hidden" name="CURRENT_USER_ID" value="${CURRENT_USER.id}"></td>
-                <td><input type="hidden" name="CURRENT_USER_LOGIN" value="${CURRENT_USER.login}"></td>
-                <td><input type="hidden" name="CURRENT_USER_ROLE" value="${CURRENT_USER.role}"></td>
-            </tr>
+                <input type="hidden" name="CURRENT_USER_ID" value="${CURRENT_USER.id}">
+                <input type="hidden" name="CURRENT_USER_LOGIN" value="${CURRENT_USER.login}">
+                <input type="hidden" name="CURRENT_USER_ROLE" value="${CURRENT_USER.role}">
 
-            <tr>
-                <td><label><fmt:message key="label.oldPassword"/>: </label></td>
-                <td><input type="password" name="oldPassword" value="${CURRENT_USER.password}"></td>
-            </tr>
+                <div class="form-group">
+                    <label for="validationServer01"><fmt:message key="label.oldPassword"/>:</label>
+                    <input type="password" name="password" class="form-control is-valid" id="validationServer01"
+                           placeholder="<fmt:message key="label.oldPassword"/>" required>
+                    <div class="valid-feedback">
+                        Good!
+                    </div>
+                </div>
 
-            <tr>
-                <td><label><fmt:message key="label.newPassword"/>: </label></td>
-                <td><input type="password" name="newPassword"></td>
-            </tr>
+                <div class="form-group">
+                    <label for="validationServer02"><fmt:message key="label.newPassword"/>:</label>
+                    <input type="password" name="password" class="form-control is-valid" id="validationServer02"
+                           placeholder="<fmt:message key="label.newPassword"/>" required>
+                    <div class="valid-feedback">
+                        Good!
+                    </div>
+                </div>
 
-            <tr>
-                <td><label><fmt:message key="label.repeatNewPassword"/>: </label></td>
-                <td><input type="password" name="CURRENT_USER_PASSWORD"></td>
-            </tr>
+                <div class="form-group">
+                    <label for="validationServer03"><fmt:message key="label.repeatNewPassword"/>:</label>
+                    <input type="password" name="password" class="form-control is-valid" id="validationServer03"
+                           placeholder="<fmt:message key="label.repeatNewPassword"/>" required>
+                    <div class="valid-feedback">
+                        Good!
+                    </div>
+                </div>
 
-            <tr>
-                <td><label><fmt:message key="label.email"/>: </label></td>
-                <td><input type="text" name="CURRENT_USER_EMAIL" value="${CURRENT_USER.email}"></td>
-            </tr>
+                <div class="form-group">
+                    <label for="validationServer04"><fmt:message key="label.email"/></label>
+                    <input type="email" name="email" class="form-control is-valid" id="validationServer04"
+                           placeholder="<fmt:message key="label.email"/>" required>
+                    <div class="valid-feedback">
+                        Good!
+                    </div>
+                </div>
 
-            <tr>
-                <td><label><fmt:message key="label.name"/>: </label></td>
-                <td><input type="text" id="input" name="CURRENT_USER_NAME" value="${CURRENT_USER.name}"></td>
-            </tr>
+                <div class="form-group">
+                    <label for="validationServer05"><fmt:message key="label.name"/></label>
+                    <input type="text" name="name" class="form-control is-valid" id="validationServer05"
+                           placeholder="<fmt:message key="label.name"/>" required>
+                    <div class="valid-feedback">
+                        Good!
+                    </div>
+                </div>
 
-            <tr>
-                <td><label><fmt:message key="label.surname"/>: </label></td>
-                <td><input type="text" id="input2" name="CURRENT_USER_SURNAME" value="${CURRENT_USER.surname}"></td>
-            </tr>
+                <div class="form-group">
+                    <label for="validationServer06"><fmt:message key="label.surname"/></label>
+                    <input type="text" name="surname" class="form-control is-valid" id="validationServer06"
+                           placeholder="<fmt:message key="label.surname"/>" required>
+                    <div class="valid-feedback">
+                        Good!
+                    </div>
+                </div>
 
-            <tr>
-                <td><label><fmt:message key="label.country"/>: </label></td>
-                <td>
-                    <select name="CURRENT_USER_COUNTRY">
+                <div class="form-group">
+                    <label for="inputCountry"><fmt:message key="label.country"/></label>
+                    <select id="inputCountry" name="country" class="form-control">
                         <c:forEach var="country" items="${sessionScope.COUNTRIES_LIST}">
                             <option value="${country}">${country}</option>
-                        </c:forEach>
+                        </c:forEach>Co
                     </select>
-                </td>
-            </tr>
+                </div>
 
-            <tr>
-                <td><label></label></td>
-                <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.submit"/>"
-                           class="save" onclick="XSSPrevent()"></td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
+                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
+                        key="label.submit"/>
+                </button>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
 </div>
 </body>
 </html>
