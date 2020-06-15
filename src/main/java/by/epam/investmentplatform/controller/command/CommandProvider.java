@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class CommandProvider {
-    private static final CommandProvider instance = new CommandProvider();
+    private static final CommandProvider INSTANCE = new CommandProvider();
 
     private final Map<String, Command> repository = new HashMap<>();
     private final String GET_METHOD = "GET";
@@ -57,6 +57,6 @@ public final class CommandProvider {
     }
 
     public static CommandProvider getInstance() {
-        return instance;
+        return INSTANCE;
     }
 }

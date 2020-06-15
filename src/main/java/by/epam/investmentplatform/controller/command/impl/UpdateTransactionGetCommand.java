@@ -19,11 +19,11 @@ public class UpdateTransactionGetCommand extends AbstractCommandExecutor {
         int id = Integer.parseInt(req.getParameter(Constants.TRANSACTION_ID));
         String portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
         try {
-            Transaction transaction = SECURITY_SERVICE.getTransaction(id);
+            Transaction transaction = securityService.getTransaction(id);
             req.setAttribute(Constants.TRANSACTION, transaction);
         } catch (ServiceException e) {
-            LOGGER.error("Get portfolio error: ", e);
-            throw new ServiceException("Incorrect values");
+            LOGGER.error("UpdateTransactionGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
         req.setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
         RoutingUtils.forwardToPage(JspPageName.UPDATE_TRANSACTION_PAGE, req, resp);

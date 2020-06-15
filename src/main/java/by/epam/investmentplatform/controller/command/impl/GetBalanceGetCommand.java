@@ -19,12 +19,13 @@ public class GetBalanceGetCommand extends AbstractCommandExecutor {
             throws ServletException, IOException {
         try {
             int userId = (int) (req.getSession().getAttribute(Constants.CURRENT_USER_ID));
-            List<BalanceTransaction> userBalanceTransactions = USER_SERVICE.getUserBalanceTransactions(userId);
+            List<BalanceTransaction> userBalanceTransactions = userService.getUserBalanceTransactions(userId);
             double balance = countBalance(userBalanceTransactions);
             req.setAttribute(Constants.CURRENT_USER_BALANCE_TRANSACTIONS, userBalanceTransactions);
             req.getSession().setAttribute(Constants.CURRENT_USER_BALANCE, balance);
-        } catch (ServiceException e) {
-            LOGGER.error("Get user's balance transactions error", e);
+        }  catch (ServiceException e) {
+            LOGGER.error("GetBalanceGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
         RoutingUtils.forwardToPage(JspPageName.GET_USER_BALANCE_PAGE, req, resp);
     }

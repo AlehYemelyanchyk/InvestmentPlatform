@@ -12,6 +12,6 @@ public final class RoutingUtils {
     public static void forwardToPage(String jspPage, HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         req.setAttribute(Constants.CURRENT_PAGE, jspPage);
-        req.getRequestDispatcher(JspPageName.PAGE_TEMPLATE).forward(req, resp);
+        req.getRequestDispatcher(JspPageName.PAGE_TEMPLATE_PAGE).forward(req, resp);
     }
 }

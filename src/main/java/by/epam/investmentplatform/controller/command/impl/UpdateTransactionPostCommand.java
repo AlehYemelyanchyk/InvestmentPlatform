@@ -19,8 +19,6 @@ public class UpdateTransactionPostCommand extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         String date = req.getParameter(Constants.DATE);
-        String portfolioID = req.getParameter(Constants.PORTFOLIO_ID);
-        String portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
         Transaction transaction = new Transaction(
                 (Integer.parseInt(req.getParameter(Constants.TRANSACTION_ID))),
                 (Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID))),
@@ -31,10 +29,10 @@ public class UpdateTransactionPostCommand extends AbstractCommandExecutor {
                 new Date());
         String[] parameters = {date};
         try {
-            SECURITY_SERVICE.updateTransaction(transaction, parameters);
+            securityService.updateTransaction(transaction, parameters);
         } catch (ServiceException e) {
-            LOGGER.error("Update transaction error: ", e);
-            throw new ServiceException("Incorrect values");
+            LOGGER.error("UpdateTransactionPostCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

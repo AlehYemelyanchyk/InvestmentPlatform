@@ -1,6 +1,8 @@
 package by.epam.investmentplatform.db.impl;
 
 import by.epam.investmentplatform.db.exceptions.ConnectionPoolException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.Map;
@@ -9,6 +11,7 @@ import java.util.concurrent.Executor;
 
 public class ConnectionPool$Proxy implements Connection {
 
+    private static final Logger LOGGER = LogManager.getLogger();
     private Connection connection;
 
     public ConnectionPool$Proxy(Connection connection) {
@@ -60,7 +63,7 @@ public class ConnectionPool$Proxy implements Connection {
         try {
             ConnectionPool.getConnectionPoolInstance().releaseConnection(this);
         } catch (ConnectionPoolException e) {
-            //log
+                LOGGER.error("close error: " + e);
         }
     }
 

@@ -18,9 +18,9 @@ public class RemovePortfolioGetCommand extends AbstractCommandExecutor {
             throws ServletException, IOException {
         int portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
         try {
-            PORTFOLIO_SERVICE.removePortfolio(portfolioId);
+            portfolioService.removePortfolio(portfolioId);
         } catch (ServiceException e) {
-            LOGGER.error("Remove portfolio error: ", e);
+            LOGGER.error("RemovePortfolioGetCommand error: ", e);
             throw new ServiceException("Incorrect values");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);

@@ -18,10 +18,11 @@ public class GetAllUsersGetCommand extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            List<User> allUsers = USER_SERVICE.getAllUsers();
+            List<User> allUsers = userService.getAllUsers();
             req.setAttribute(Constants.USERS_LIST, allUsers);
-        } catch (ServiceException e) {
-            LOGGER.error("Get all users error", e);
+        }  catch (ServiceException e) {
+            LOGGER.error("GetAllUsersGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_USERS_PAGE, req, resp);
     }

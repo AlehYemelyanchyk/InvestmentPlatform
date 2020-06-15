@@ -31,11 +31,11 @@ public class AddSecurityToPortfolioGetCommand extends AbstractCommandExecutor {
         }
         int userId = (int) req.getSession().getAttribute(Constants.CURRENT_USER_ID);
         try {
-            List<Portfolio> portfolios = PORTFOLIO_SERVICE.getAllUserPortfolios(userId);
+            List<Portfolio> portfolios = portfolioService.getAllUserPortfolios(userId);
             req.setAttribute(Constants.PORTFOLIOS_LIST, portfolios);
         } catch (ServiceException e) {
-            LOGGER.error("Get portfolios error: ", e);
-            throw new ServiceException("Incorrect values");
+            LOGGER.error("AddSecurityToPortfolioGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
 
         req.getSession().setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);

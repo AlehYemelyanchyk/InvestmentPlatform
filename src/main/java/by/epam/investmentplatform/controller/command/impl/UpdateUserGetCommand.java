@@ -4,7 +4,6 @@ import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
-import by.epam.investmentplatform.service.impl.ServiceFactory;
 import by.epam.investmentplatform.util.RoutingUtils;
 
 import javax.servlet.ServletException;
@@ -19,15 +18,15 @@ public class UpdateUserGetCommand extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            List<String> countries = ServiceFactory.getInstance().getUserService().getAllCountries();
+            List<String> countries = userService.getAllCountries();
             req.getSession().setAttribute(Constants.COUNTRIES_LIST, countries);
 
             int userId = (int) (req.getSession().getAttribute(Constants.CURRENT_USER_ID));
-            User user = USER_SERVICE.getUser(userId);
+            User user = userService.getUser(userId);
             req.setAttribute(Constants.CURRENT_USER, user);
         } catch (ServiceException e) {
-            LOGGER.error("Get portfolio error: ", e);
-            throw new ServiceException("Incorrect values");
+            LOGGER.error("UpdateUserGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
         RoutingUtils.forwardToPage(JspPageName.UPDATE_USER_PAGE, req, resp);
     }

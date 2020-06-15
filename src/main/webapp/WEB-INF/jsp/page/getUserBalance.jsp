@@ -12,37 +12,47 @@
 </head>
 
 <body>
-<%--<div id="header">--%>
-<%--    <h4 align="center"><fmt:message key="label.balance"/></h4>--%>
-<%--</div>--%>
-<div class="panel-body">
-    <div class="list-group">
-        <p class="list-group-item">
-            <c:set var="balance" value="${CURRENT_USER_BALANCE}"/>$
-            <fmt:formatNumber type="number" minFractionDigits="2"
-                              maxFractionDigits="2" value="${balance}"/>
-        </p>
+<div id="container">
+    <br/>
 
-        <a href="${pageContext.request.contextPath}/deposit" class="list-group-item">
-            <fmt:message key="label.deposit"/>
-        </a>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div>
+                <c:set var="balance" value="${CURRENT_USER_BALANCE}"/>
+                <h4>$<fmt:formatNumber type="number" minFractionDigits="2"
+                                  maxFractionDigits="2" value="${balance}"/></h4>
+            </div>
+            <div>
+                <h4><a href="${pageContext.request.contextPath}/deposit">
+                    <fmt:message key="label.deposit"/>
+                </a></h4>
+            </div>
+            <div>
+                <c:choose>
+                <c:when test="${CURRENT_USER_BALANCE <= 0}">
+                    <h4><a hidden href="${pageContext.request.contextPath}/withdraw">
+                    </c:when>
 
-        <c:choose>
-        <c:when test="${CURRENT_USER_BALANCE <= 0}">
-        <a hidden href="${pageContext.request.contextPath}/withdraw" class="list-group-item">
-            </c:when>
-
-            <c:otherwise>
-            <a href="${pageContext.request.contextPath}/withdraw" class="list-group-item">
-                <fmt:message key="label.withdraw"/>
-            </a>
-            </c:otherwise>
-            </c:choose>
-
-            <a href="${pageContext.request.contextPath}/loan" class="list-group-item">
-                <fmt:message key="label.loan"/>
-            </a>
+                    <c:otherwise>
+                        <h4><a href="${pageContext.request.contextPath}/withdraw">
+                        <fmt:message key="label.withdraw"/>
+                    </a></h4>
+                    </c:otherwise>
+                    </c:choose>
+            </div>
+            <div>
+                <h4><a href="${pageContext.request.contextPath}/loan">
+                    <fmt:message key="label.loan"/>
+                </a></h4>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
+
+
+
+
 </body>
 </html>

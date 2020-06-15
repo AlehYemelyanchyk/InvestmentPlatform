@@ -22,10 +22,10 @@ public class GetSecurityGetCommand extends AbstractCommandExecutor {
         }
         Security security;
         try {
-            security = SECURITY_SERVICE.getSecurity(securitySymbol);
-        } catch (ServiceException e) {
-            LOGGER.error("Get security error: ", e);
-            throw e;
+            security = securityService.getSecurity(securitySymbol);
+        }  catch (ServiceException e) {
+            LOGGER.error("GetSecurityGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
         req.getSession().setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
         req.setAttribute(Constants.SECURITY, security);

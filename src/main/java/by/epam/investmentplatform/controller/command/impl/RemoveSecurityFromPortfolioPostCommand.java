@@ -19,9 +19,9 @@ public class RemoveSecurityFromPortfolioPostCommand extends AbstractCommandExecu
         String securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
         int portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
         try {
-            SECURITY_SERVICE.removeSecurityFromPortfolio(portfolioId, securitySymbol);
+            securityService.removeSecurityFromPortfolio(portfolioId, securitySymbol);
         } catch (ServiceException e) {
-            LOGGER.error("Remove portfolio error: ", e);
+            LOGGER.error("RemoveSecurityFromPortfolioPostCommand error: ", e);
             throw new ServiceException("Incorrect values");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);

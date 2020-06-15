@@ -2,7 +2,6 @@ package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
-import by.epam.investmentplatform.controller.command.RequestParameterName;
 import by.epam.investmentplatform.controller.exception.AccessDeniedException;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -20,9 +19,9 @@ public class LogInPostCommand extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            User user = USER_SERVICE.logIn(
-                    req.getParameter(RequestParameterName.REQUEST_USER_PARAM_LOGIN),
-                    req.getParameter(RequestParameterName.REQUEST_USER_PARAM_PASSWORD)
+            User user = userService.logIn(
+                    req.getParameter(Constants.REQUEST_USER_PARAM_LOGIN),
+                    req.getParameter(Constants.REQUEST_USER_PARAM_PASSWORD)
             );
             if (user == null) {
                 RuntimeException e = new AccessDeniedException("Login or password is not correct.");
@@ -34,7 +33,7 @@ public class LogInPostCommand extends AbstractCommandExecutor {
             session.setAttribute(Constants.CURRENT_USER_LOGIN, user.getLogin());
             session.setAttribute(Constants.CURRENT_USER_ROLE, user.getRole());
         } catch (ServiceException e) {
-            LOGGER.error("Log in error: ", e);
+            LOGGER.error("LogInPostCommand error: ", e);
             throw new AccessDeniedException(e.getMessage());
         }
         if (req.getSession().getAttribute(Constants.REDIRECT_LINK) != null) {

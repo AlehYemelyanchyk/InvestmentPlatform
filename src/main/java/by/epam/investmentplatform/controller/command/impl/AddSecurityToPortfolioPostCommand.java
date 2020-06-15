@@ -26,10 +26,10 @@ public class AddSecurityToPortfolioPostCommand extends AbstractCommandExecutor {
                 Double.parseDouble(req.getParameter(Constants.PRICE)),
                 Date.valueOf(req.getParameter(Constants.DATE)));
         try {
-            SECURITY_SERVICE.saveTransaction(transaction);
+            securityService.saveTransaction(transaction);
         } catch (ServiceException e) {
-            LOGGER.error(e.getMessage());
-            throw new ServiceException("Incorrect values");
+            LOGGER.error("AddSecurityToPortfolioPostCommand error", e);
+            throw new ServiceException("Incorrect values.");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_SECURITIES_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

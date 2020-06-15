@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.Command;
 import by.epam.investmentplatform.service.PortfolioService;
 import by.epam.investmentplatform.service.SecurityService;
@@ -14,10 +15,10 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public abstract class AbstractCommandExecutor implements Command {
-    public final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
-    public static final UserService USER_SERVICE = ServiceFactory.getInstance().getUserService();
-    public static final PortfolioService PORTFOLIO_SERVICE = ServiceFactory.getInstance().getPortfolioService();
-    public static final SecurityService SECURITY_SERVICE = ServiceFactory.getInstance().getSecurityService();
+    public static final Logger LOGGER = LogManager.getLogger();
+    public final UserService userService = ServiceFactory.getInstance().getUserService();
+    public final PortfolioService portfolioService = ServiceFactory.getInstance().getPortfolioService();
+    public final SecurityService securityService = ServiceFactory.getInstance().getSecurityService();
 
     @Override
     public void execute(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -26,16 +27,8 @@ public abstract class AbstractCommandExecutor implements Command {
 
     protected abstract void forwardToPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException;
 
-    protected final int getPagesAmount(int totalItemsAmount, int itemsPerPage) {
-        double result = (double) totalItemsAmount / itemsPerPage;
+    protected final int getPagesAmount(int totalItemsAmount) {
+        double result = (double) totalItemsAmount / Constants.ITEMS_PER_PAGE;
         return (int) Math.ceil(result);
-    }
-
-    protected String preventXSSAttach (String str){
-        String newStr;
-        if (str.contains("<")) {
-            return newStr = str.replace("<", "&lt");
-        }
-        return str;
     }
 }

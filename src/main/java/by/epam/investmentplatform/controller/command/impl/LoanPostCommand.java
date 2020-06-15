@@ -25,10 +25,10 @@ public class LoanPostCommand extends AbstractCommandExecutor {
 
         BalanceTransaction balanceTransaction = new BalanceTransaction(userId, type, amount, date);
         try {
-            USER_SERVICE.addBalanceTransaction(userId, balanceTransaction);
-        } catch (ServiceException e) {
-            LOGGER.error(e);
-            throw new ServiceException("Loan payment error.");
+            userService.addBalanceTransaction(userId, balanceTransaction);
+        }  catch (ServiceException e) {
+            LOGGER.error("LoanPostCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
         req.getSession().setAttribute(Constants.AMOUNT, amount);
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_BALANCE_COMMAND);

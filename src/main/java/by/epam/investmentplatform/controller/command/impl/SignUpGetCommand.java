@@ -2,7 +2,7 @@ package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
-import by.epam.investmentplatform.service.impl.ServiceFactory;
+import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
 
 import javax.servlet.ServletException;
@@ -16,7 +16,13 @@ public class SignUpGetCommand extends AbstractCommandExecutor {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        List<String> countries = ServiceFactory.getInstance().getUserService().getAllCountries();
+        List<String> countries;
+        try {
+            countries = userService.getAllCountries();
+        } catch (ServiceException e) {
+            LOGGER.error("SignUpGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
+        }
         req.getSession().setAttribute(Constants.COUNTRIES_LIST, countries);
         RoutingUtils.forwardToPage(JspPageName.SIGN_UP_PAGE, req, resp);
     }

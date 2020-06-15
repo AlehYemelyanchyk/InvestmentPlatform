@@ -18,9 +18,9 @@ public class RemoveTransactionPostCommand extends AbstractCommandExecutor {
             throws ServletException, IOException {
         int id = Integer.parseInt(req.getParameter(Constants.TRANSACTION_ID));
         try {
-            SECURITY_SERVICE.removeTransaction(id);
+            securityService.removeTransaction(id);
         } catch (ServiceException e) {
-            LOGGER.error("Remove portfolio error: ", e);
+            LOGGER.error("RemoveTransactionPostCommand error: ", e);
             throw new ServiceException("Incorrect values");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);

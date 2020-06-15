@@ -11,18 +11,26 @@
     <title>Settings</title>
 </head>
 <body>
-<%--<div id="header">--%>
-<%--    <h4 align="center"><fmt:message key="label.settings"/></h4>--%>
-<%--</div>--%>
+<div id="container">
+    <br/>
 
-<div class="panel-body">
-    <div class="list-group">
-        <a href="${pageContext.request.contextPath}/updateUser" class="list-group-item"><fmt:message
-                key="label.editPersonalDetails"/></a>
-        <a href="${pageContext.request.contextPath}/getBalance" class="list-group-item"><fmt:message
-                key="label.balance"/></a>
-        <a href="${pageContext.request.contextPath}/logout" class="list-group-item"><fmt:message
-                key="label.logOut"/></a>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <div>
+                <h4><a href="${pageContext.request.contextPath}/updateUser"><fmt:message
+                        key="label.editPersonalDetails"/></a></h4>
+            </div>
+            <div>
+                <h4><a href="${pageContext.request.contextPath}/getBalance"><fmt:message
+                        key="label.balance"/></a></h4>
+            </div>
+            <div>
+                <h4><a href="${pageContext.request.contextPath}/logout"><fmt:message
+                        key="label.logOut"/></a></h4>
+            </div>
+        </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
 </body>

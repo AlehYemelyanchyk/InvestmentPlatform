@@ -3,6 +3,7 @@ package by.epam.investmentplatform.controller.command.impl;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Transaction;
+import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
 
 import javax.servlet.ServletException;
@@ -39,7 +40,13 @@ public class GetAllSecurityTransactionsGetCommand extends AbstractCommandExecuto
             securitySymbol = (String) req.getSession().getAttribute(Constants.SECURITY_SYMBOL);
         }
 
-        List<Transaction> allPortfolioTransactions = SECURITY_SERVICE.getAllPortfolioTransactions(portfolioId);
+        List<Transaction> allPortfolioTransactions;
+        try {
+            allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
+        } catch (ServiceException e) {
+            LOGGER.error("GetAllSecurityTransactionsGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
+        }
         List<Transaction> filteredTransactions = filterTransactionsBySecurity(allPortfolioTransactions, securitySymbol);
 
         req.setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
@@ -49,7 +56,7 @@ public class GetAllSecurityTransactionsGetCommand extends AbstractCommandExecuto
         req.getSession().setAttribute(Constants.SECURITY_NAME, securityName);
         req.getSession().setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
 
-        RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS, req, resp);
+        RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS_PAGE, req, resp);
     }
 
     private List<Transaction> filterTransactionsBySecurity(List<Transaction> transactions, String securitySymbol) {

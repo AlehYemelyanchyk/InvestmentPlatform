@@ -21,7 +21,6 @@
 </header>
 <div class="container">
     <div class="row">
-        <%--        <div class="col-md-1"></div>--%>
         <div class="col-md-12">
             <div class="panel-body">
                 <c:choose>
@@ -36,7 +35,6 @@
                 </c:choose>
             </div>
         </div>
-        <%--        <div class="col-md-1"></div>--%>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

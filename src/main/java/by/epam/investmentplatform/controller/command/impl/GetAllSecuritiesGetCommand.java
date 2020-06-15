@@ -3,6 +3,7 @@ package by.epam.investmentplatform.controller.command.impl;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Security;
+import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
 
 import javax.servlet.ServletException;
@@ -16,19 +17,27 @@ public class GetAllSecuritiesGetCommand extends AbstractCommandExecutor {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        List<Security> securities = SECURITY_SERVICE.getAllSecurities();
+
+        List<Security> securities;
+
+        try {
+            securities = securityService.getAllSecurities();
+        }  catch (ServiceException e) {
+            LOGGER.error("GetAllSecuritiesGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
+        }
         List<String> types = listOfTypes(securities);
         Map<String, List<Security>> securitiesByType = getSecuritiesByType(securities, types);
         for (Map.Entry<String, List<Security>> entry : securitiesByType.entrySet()) {
             String type = entry.getKey();
             List<Security> securityList = entry.getValue();
             req.setAttribute(type, securityList);
-            int pagesAmount = getPagesAmount(securityList.size(), Constants.ITEMS_PER_PAGE);
+            int pagesAmount = getPagesAmount(securityList.size());
             req.setAttribute(type + "_" + Constants.PAGES_AMOUNT, pagesAmount);
         }
         req.setAttribute(Constants.SECURITIES_LIST, securitiesByType);
         req.setAttribute(Constants.MAX_ITEMS_PER_PAGE, Constants.ITEMS_PER_PAGE);
-        RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITIES, req, resp);
+        RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITIES_PAGE, req, resp);
     }
 
     private List<String> listOfTypes(List<Security> securities) {

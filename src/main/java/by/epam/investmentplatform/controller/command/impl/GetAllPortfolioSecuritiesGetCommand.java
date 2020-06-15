@@ -5,6 +5,7 @@ import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.model.PortfolioSecurity;
+import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
 
 import javax.servlet.ServletException;
@@ -39,14 +40,22 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommandExecutor
 
         req.getSession().setAttribute(Constants.PORTFOLIO_ID, portfolioId);
         req.getSession().setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
-        List<Security> allPortfolioSecurities = SECURITY_SERVICE.getAllPortfolioSecurities(portfolioId);
-        List<Transaction> allPortfolioTransactions = SECURITY_SERVICE.getAllPortfolioTransactions(portfolioId);
+
+        List<Security> allPortfolioSecurities;
+        List<Transaction> allPortfolioTransactions;
+        try {
+            allPortfolioSecurities = securityService.getAllPortfolioSecurities(portfolioId);
+            allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
+        } catch (ServiceException e){
+            LOGGER.error("GetAllPortfolioSecuritiesGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
+        }
 
         fillPortfolioSecuritiesMap(securities, allPortfolioSecurities, allPortfolioTransactions);
 
         req.setAttribute(Constants.PORTFOLIO_SECURITIES, securities);
         req.setAttribute(Constants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
-        RoutingUtils.forwardToPage(JspPageName.GET_ALL_PORTFOLIO_SECURITIES, req, resp);
+        RoutingUtils.forwardToPage(JspPageName.GET_ALL_PORTFOLIO_SECURITIES_PAGE, req, resp);
     }
 
     private void fillPortfolioSecuritiesMap(Map<String, PortfolioSecurity> securities, List<Security> allPortfolioSecurities, List<Transaction> allPortfolioTransactions) {

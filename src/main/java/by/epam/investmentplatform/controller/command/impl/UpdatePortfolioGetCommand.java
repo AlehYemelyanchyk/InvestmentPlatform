@@ -18,11 +18,11 @@ public class UpdatePortfolioGetCommand extends AbstractCommandExecutor {
             throws ServletException, IOException {
         int portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
         try {
-            Portfolio portfolio = PORTFOLIO_SERVICE.getPortfolio(portfolioId);
+            Portfolio portfolio = portfolioService.getPortfolio(portfolioId);
             req.setAttribute(Constants.PORTFOLIO, portfolio);
         } catch (ServiceException e) {
-            LOGGER.error("Get portfolio error: ", e);
-            throw new ServiceException("Incorrect values");
+            LOGGER.error("UpdatePortfolioGetCommand error: ", e);
+            throw new ServiceException("Incorrect values.");
         }
         req.setAttribute(Constants.PORTFOLIO_ID, portfolioId);
         RoutingUtils.forwardToPage(JspPageName.UPDATE_PORTFOLIO_PAGE, req, resp);

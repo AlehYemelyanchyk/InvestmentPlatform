@@ -36,6 +36,15 @@ public final class Constants {
     public static final String PORTFOLIO_TRANSACTIONS = "PORTFOLIO_TRANSACTIONS";
     public static final String PORTFOLIO_USER_ID = "PORTFOLIO_USER_ID";
     public static final String PRICE = "PRICE";
+    public static final String REQUEST_USER_PARAM_ROLE = "role";
+    public static final String REQUEST_USER_PARAM_ID = "id";
+    public static final String REQUEST_USER_PARAM_LOGIN = "login";
+    public static final String REQUEST_USER_PARAM_PASSWORD = "password";
+    public static final String REQUEST_USER_PARAM_EMAIL = "email";
+    public static final String REQUEST_USER_PARAM_NAME = "name";
+    public static final String REQUEST_USER_PARAM_SURNAME = "surname";
+    public static final String REQUEST_USER_PARAM_COUNTRY = "country";
+    public static final String REQUEST_PORTFOLIO_PARAM_NAME = "name";
     public static final String REDIRECT_LINK = "REDIRECT_LINK";
     public static final String ROLE_ADMIN = "1";
     public static final String ROLE_GUEST = "2";
@@ -55,24 +64,7 @@ public final class Constants {
     public static final String USERS_LIST = "USERS_LIST";
     public static final int ZERO_LIST_ELEMENT = 0;
 
-    public enum Cookie {
-
-        SHOPPING_CART("iSCC", 60 * 60 * 24 * 365);
-
-        private final String name;
-        private final int lifeTime;
-
-        private Cookie(String name, int lifeTime) {
-            this.name = name;
-            this.lifeTime = lifeTime;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getLifeTime() {
-            return lifeTime;
-        }
+    public Constants() {
+        throw new UnsupportedOperationException();
     }
 }

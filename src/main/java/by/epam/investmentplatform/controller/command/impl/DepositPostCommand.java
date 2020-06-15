@@ -24,10 +24,11 @@ public class DepositPostCommand extends AbstractCommandExecutor {
         Date date = Date.valueOf(String.valueOf(req.getSession().getAttribute(Constants.DATE)));
 
         BalanceTransaction balanceTransaction = new BalanceTransaction(userId, type, amount, date);
+
         try {
-            USER_SERVICE.addBalanceTransaction(userId, balanceTransaction);
+            userService.addBalanceTransaction(userId, balanceTransaction);
         } catch (ServiceException e) {
-            LOGGER.error(e);
+            LOGGER.error("DepositPostCommand error: ", e);
             throw new ServiceException("Deposit payment error.");
         }
         req.getSession().setAttribute(Constants.AMOUNT, amount);

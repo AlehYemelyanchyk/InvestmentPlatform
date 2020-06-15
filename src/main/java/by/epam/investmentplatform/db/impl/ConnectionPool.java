@@ -14,7 +14,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class ConnectionPool implements by.epam.investmentplatform.db.ConnectionPool {
 
     private static final String DRIVER_NAME = "com.mysql.cj.jdbc.Driver";
-    private static final Logger LOGGER = LogManager.getLogger(ConnectionPool.class);
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final ConnectionPool instance = new ConnectionPool();
     private final ApplicationConfiguration applicationConfiguration = ApplicationConfiguration.getInstance();
     private final int connectionsAmount = applicationConfiguration.getInitPoolSize();
@@ -41,7 +41,7 @@ public class ConnectionPool implements by.epam.investmentplatform.db.ConnectionP
                 connection.setAutoCommit(false);
                 availableConnections.add(connection);
             } catch (SQLException e) {
-                LOGGER.error("DriverManager.getConnection problem: " + e.getMessage());
+                LOGGER.error("getConnection error: " + e);
             }
         }
     }
@@ -53,7 +53,7 @@ public class ConnectionPool implements by.epam.investmentplatform.db.ConnectionP
             connection = availableConnections.take();
             takenConnections.put(connection);
         } catch (InterruptedException e) {
-            LOGGER.error("Connection pool problem: " + e.getMessage());
+            LOGGER.error("takeConnection error: " + e);
             throw new ConnectionPoolException(e);
         }
         return connection;
@@ -65,7 +65,7 @@ public class ConnectionPool implements by.epam.investmentplatform.db.ConnectionP
             takenConnections.remove(connection);
             availableConnections.put(connection);
         } catch (InterruptedException e) {
-            LOGGER.error("Connection pool problem: " + e.getMessage());
+            LOGGER.error("releaseConnection error: " + e);
             throw new ConnectionPoolException(e);
         }
         return true;
