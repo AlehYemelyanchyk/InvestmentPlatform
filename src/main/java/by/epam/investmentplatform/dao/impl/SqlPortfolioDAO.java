@@ -3,7 +3,7 @@ package by.epam.investmentplatform.dao.impl;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.dao.PortfolioDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
-import by.epam.investmentplatform.db.impl.ConnectionPool;
+import by.epam.investmentplatform.db.impl.DefaultConnectionPool;
 import by.epam.investmentplatform.entity.Portfolio;
 import by.epam.investmentplatform.util.DAOUtils;
 import org.apache.logging.log4j.LogManager;
@@ -17,7 +17,7 @@ import java.util.List;
 
 class SqlPortfolioDAO implements PortfolioDAO {
     private static final Logger LOGGER = LogManager.getLogger(SqlPortfolioDAO.class);
-    private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getConnectionPoolInstance();
+    private static final DefaultConnectionPool CONNECTION_POOL = DefaultConnectionPool.getConnectionPoolInstance();
 
     @Override
     public List<Portfolio> getAllUserPortfolios(int userId) throws DAOException {

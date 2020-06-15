@@ -7,10 +7,6 @@ import by.epam.investmentplatform.service.UserService;
 public final class ServiceFactory {
     private static final ServiceFactory INSTANCE = new ServiceFactory();
 
-    private final UserService userService = new DefaultUserService();
-    private final PortfolioService portfolioService = new DefaultPortfolioService();
-    private final SecurityService securityService = new DefaultSecurityService();
-
     private ServiceFactory() {
     }
 
@@ -19,14 +15,14 @@ public final class ServiceFactory {
     }
 
     public UserService getUserService() {
-        return userService;
+        return new DefaultUserService();
     }
 
     public PortfolioService getPortfolioService() {
-        return portfolioService;
+        return new DefaultPortfolioService();
     }
 
     public SecurityService getSecurityService() {
-        return securityService;
+        return new DefaultSecurityService();
     }
 }

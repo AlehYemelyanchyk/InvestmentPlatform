@@ -27,6 +27,7 @@ public class SignUpPostCommand extends AbstractCommandExecutor {
                 req.getParameter(Constants.REQUEST_USER_PARAM_COUNTRY));
         try {
             userService.signUp(user);
+            user = userService.getUser(user.getLogin());
             HttpSession session = req.getSession(true);
             session.setAttribute(Constants.CURRENT_USER_ID, user.getId());
             session.setAttribute(Constants.CURRENT_USER_LOGIN, user.getLogin());

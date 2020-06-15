@@ -7,10 +7,6 @@ import by.epam.investmentplatform.dao.UserDAO;
 public final class DAOFactory {
     private static final DAOFactory INSTANCE = new DAOFactory();
 
-    private UserDAO userDAO = new SqlUserDAO();
-    private PortfolioDAO portfolioDAO = new SqlPortfolioDAO();
-    private SecurityDAO securityDAO = new SqlSecurityDAO();
-
     private DAOFactory() {
     }
 
@@ -19,14 +15,14 @@ public final class DAOFactory {
     }
 
     public UserDAO getUserDAO() {
-        return userDAO;
+        return new SqlUserDAO();
     }
 
     public PortfolioDAO getPortfolioDAO() {
-        return portfolioDAO;
+        return new SqlPortfolioDAO();
     }
 
     public SecurityDAO getSecurityDAO() {
-        return securityDAO;
+        return new SqlSecurityDAO();
     }
 }

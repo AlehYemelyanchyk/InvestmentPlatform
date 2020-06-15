@@ -31,6 +31,8 @@ public interface UserService {
      */
     User getUser(int id) throws ServiceException;
 
+    User getUser(String login) throws ServiceException;
+
     /**
      * Stores a new user in a data source.
      *

@@ -16,7 +16,6 @@ import java.util.Set;
 @WebFilter(filterName = "UrlFilter")
 public class UrlFilter extends AbstractFilter {
 
-    // need to protect this collection from modifications somehow
     private static final Set<String> BUSINESS_URIS = new HashSet<>();
 
     @Override

@@ -1,5 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!doctype html>
 <html>
@@ -22,18 +22,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel-body">
-                <c:choose>
+            <c:choose>
 
-                    <c:when test="${CURRENT_PAGE != null}">
-                        <jsp:include page="${CURRENT_PAGE}"/>
-                    </c:when>
-                    <c:otherwise>
-                        <jsp:include page="/WEB-INF/jsp/page/news.jsp"/>
-                    </c:otherwise>
+                <c:when test="${CURRENT_PAGE != null}">
+                    <jsp:include page="${CURRENT_PAGE}"/>
+                </c:when>
+                <c:otherwise>
+                    <jsp:include page="/WEB-INF/jsp/page/news.jsp"/>
+                </c:otherwise>
 
-                </c:choose>
-            </div>
+            </c:choose>
         </div>
     </div>
     <!-- Optional JavaScript -->

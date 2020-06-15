@@ -9,12 +9,12 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-public class ConnectionPool$Proxy implements Connection {
+public class DefaultConnectionPool$Proxy implements Connection {
 
     private static final Logger LOGGER = LogManager.getLogger();
     private Connection connection;
 
-    public ConnectionPool$Proxy(Connection connection) {
+    public DefaultConnectionPool$Proxy(Connection connection) {
         this.connection = connection;
     }
 
@@ -61,7 +61,7 @@ public class ConnectionPool$Proxy implements Connection {
     @Override
     public void close(){
         try {
-            ConnectionPool.getConnectionPoolInstance().releaseConnection(this);
+            DefaultConnectionPool.getConnectionPoolInstance().releaseConnection(this);
         } catch (ConnectionPoolException e) {
                 LOGGER.error("close error: " + e);
         }

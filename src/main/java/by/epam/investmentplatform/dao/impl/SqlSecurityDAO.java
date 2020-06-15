@@ -3,7 +3,7 @@ package by.epam.investmentplatform.dao.impl;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.dao.SecurityDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
-import by.epam.investmentplatform.db.impl.ConnectionPool;
+import by.epam.investmentplatform.db.impl.DefaultConnectionPool;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.util.DAOUtils;
@@ -15,7 +15,7 @@ import java.util.List;
 
 class SqlSecurityDAO implements SecurityDAO {
     private static final Logger LOGGER = LogManager.getLogger(SqlSecurityDAO.class);
-    private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getConnectionPoolInstance();
+    private static final DefaultConnectionPool CONNECTION_POOL = DefaultConnectionPool.getConnectionPoolInstance();
 
     @Override
     public List<Security> getAllSecurities() throws DAOException {

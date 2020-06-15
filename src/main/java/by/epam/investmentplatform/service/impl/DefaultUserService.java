@@ -38,6 +38,16 @@ class DefaultUserService implements UserService {
     }
 
     @Override
+    public User getUser(String login) throws ServiceException {
+        try {
+            return getUserDAO().getUser(login);
+        } catch (DAOException e) {
+            LOGGER.error("getUser error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void signUp(User user) throws ServiceException {
         UserValidationUtils.userValidation(user);
         UserValidationUtils.loginValidation(user.getLogin());

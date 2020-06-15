@@ -34,7 +34,7 @@ public class LogInPostCommand extends AbstractCommandExecutor {
             session.setAttribute(Constants.CURRENT_USER_ROLE, user.getRole());
         } catch (ServiceException e) {
             LOGGER.error("LogInPostCommand error: ", e);
-            throw new AccessDeniedException(e.getMessage());
+            throw new AccessDeniedException("Can not login. Wrong login or password.");
         }
         if (req.getSession().getAttribute(Constants.REDIRECT_LINK) != null) {
             RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

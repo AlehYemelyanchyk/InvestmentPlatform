@@ -3,7 +3,7 @@ package by.epam.investmentplatform.dao.impl;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.dao.UserDAO;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
-import by.epam.investmentplatform.db.impl.ConnectionPool;
+import by.epam.investmentplatform.db.impl.DefaultConnectionPool;
 import by.epam.investmentplatform.entity.BalanceTransaction;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.util.DAOUtils;
@@ -15,7 +15,7 @@ import java.util.List;
 
 class SqlUserDAO implements UserDAO {
     private static final Logger LOGGER = LogManager.getLogger(SqlUserDAO.class);
-    private static final ConnectionPool CONNECTION_POOL = ConnectionPool.getConnectionPoolInstance();
+    private static final DefaultConnectionPool CONNECTION_POOL = DefaultConnectionPool.getConnectionPoolInstance();
     private static final String COUNTRIES_COLUMN_NAME = "name";
 
     @Override
