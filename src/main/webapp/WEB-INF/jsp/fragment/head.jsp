@@ -21,10 +21,10 @@
                     <fmt:message key="label.news"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="getAllUserPortfolios"><fmt:message key="label.portfolios"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/getAllUserPortfolios"><fmt:message key="label.portfolios"/></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="getAllSecurities"><fmt:message key="label.securities"/></a>
+                <a class="nav-link" href="${pageContext.request.contextPath}/getAllSecurities"><fmt:message key="label.securities"/></a>
             </li>
         </ul>
     </div>
