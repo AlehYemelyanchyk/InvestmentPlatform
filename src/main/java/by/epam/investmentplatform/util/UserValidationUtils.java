@@ -35,4 +35,10 @@ public final class UserValidationUtils {
             throw new ServiceException("The e-mail address is not correct.");
         }
     }
+
+    public static void adminValidation(int userRole) throws ServiceException {
+        if (userRole != 1) {
+            throw new ServiceException("Access denied.");
+        }
+    }
 }

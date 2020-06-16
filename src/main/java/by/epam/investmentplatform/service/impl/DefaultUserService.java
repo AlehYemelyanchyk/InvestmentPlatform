@@ -18,7 +18,8 @@ class DefaultUserService implements UserService {
     private static final DAOFactory DAO_FACTORY = DAOFactory.getInstance();
 
     @Override
-    public List<User> getAllUsers() throws ServiceException {
+    public List<User> getAllUsers(int userRole) throws ServiceException {
+        UserValidationUtils.adminValidation(userRole);
         try {
             return getUserDAO().getAllUsers();
         } catch (DAOException e) {

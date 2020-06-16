@@ -47,8 +47,8 @@ public final class Constants {
     public static final String REQUEST_PORTFOLIO_PARAM_NAME = "name";
     public static final String REDIRECT_LINK = "REDIRECT_LINK";
     public static final String ROLE_ADMIN = "1";
-    public static final String ROLE_GUEST = "2";
-    public static final String ROLE_USER = "3";
+    public static final String ROLE_GUEST = "3";
+    public static final String ROLE_USER = "2";
     public static final String SECURITIES_LIST = "SECURITIES_LIST";
     public static final String SECURITY = "SECURITY";
     public static final String SECURITY_NAME = "SECURITY_NAME";

@@ -9,27 +9,11 @@
 
 <html lang="${sessionScope.lang}">
 <body>
-
-<input type="hidden" id="userRole" value="${CURRENT_USER_ROLE}"/>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
                 <a class="navbar-brand" href="http://localhost:8080/investmentplatform/"><h4>iUj</h4></a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="http://localhost:8080/investmentplatform/">
-                    <fmt:message key="label.news"/></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link guest-hidden" href="${pageContext.request.contextPath}/getAllUserPortfolios">
-                    <fmt:message key="label.portfolios"/>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link guest-hidden" href="${pageContext.request.contextPath}/getAllSecurities">
-                    <fmt:message key="label.securities"/></a>
             </li>
         </ul>
     </div>
@@ -84,7 +68,7 @@
                 </c:when>
                 <c:when test="${CURRENT_USER_ID != null}">
                     <li class="nav-item active">
-                        <a class="nav-link" href="${pageContext.request.contextPath}/userSettings">
+                        <a class="nav-link" href="${pageContext.request.contextPath}/adminSettings">
                                 ${CURRENT_USER_LOGIN}</a>
                     </li>
                 </c:when>

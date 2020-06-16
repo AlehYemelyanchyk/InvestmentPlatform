@@ -17,7 +17,14 @@
 </head>
 <body>
 <header>
-    <jsp:include page="fragment/head.jsp"/>
+    <c:choose>
+        <c:when test="${CURRENT_USER_ROLE == 1}">
+            <jsp:include page="fragment/headAdmin.jsp"/>
+        </c:when>
+        <c:otherwise>
+            <jsp:include page="fragment/head.jsp"/>
+        </c:otherwise>
+    </c:choose>
 </header>
 <div class="container">
     <div class="row">
@@ -44,10 +51,12 @@
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
     <script src="static/js/app.js"></script>
+    <script src="static/js/hideElement.js"></script>
     <script src="static/js/pagination.js"></script>
     <script src="static/js/tabs.js"></script>
     <script src="static/js/tooltip.js"></script>
     <script src="static/js/XSSPrevent.js"></script>
+</div>
 </body>
 <footer class="fixed-bottom">
     <div class="footer-text">

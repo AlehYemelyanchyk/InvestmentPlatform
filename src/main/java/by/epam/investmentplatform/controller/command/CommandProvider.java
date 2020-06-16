@@ -19,6 +19,7 @@ public final class CommandProvider {
         repository.put(CommandsConstants.ADD_SECURITY_COMMAND + GET_METHOD, new AddSecurityGetCommand());
         repository.put(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND + GET_METHOD, new AddSecurityToPortfolioGetCommand());
         repository.put(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND + POST_METHOD, new AddSecurityToPortfolioPostCommand());
+        repository.put(CommandsConstants.ADMIN_SETTINGS_COMMAND + GET_METHOD, new AdminSettingsGetCommand());
         repository.put(CommandsConstants.DEPOSIT_COMMAND + GET_METHOD, new DepositGetCommand());
         repository.put(CommandsConstants.DEPOSIT_COMMAND + POST_METHOD, new DepositPostCommand());
         repository.put(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND + GET_METHOD, new GetAllPortfolioSecuritiesGetCommand());
@@ -26,6 +27,7 @@ public final class CommandProvider {
         repository.put(CommandsConstants.GET_ALL_SECURITIES_COMMAND + GET_METHOD, new GetAllSecuritiesGetCommand());
         repository.put(CommandsConstants.GET_ALL_SECURITY_TRANSACTIONS_COMMAND + GET_METHOD, new GetAllSecurityTransactionsGetCommand());
         repository.put(CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND + GET_METHOD, new GetAllUserPortfoliosGetCommand());
+        repository.put(CommandsConstants.GET_ALL_USER_PORTFOLIOS_ADMIN_COMMAND + GET_METHOD, new GetAllUserPortfoliosAdminGetCommand());
         repository.put(CommandsConstants.GET_ALL_USERS_COMMAND + GET_METHOD, new GetAllUsersGetCommand());
         repository.put(CommandsConstants.GET_BALANCE_COMMAND + GET_METHOD, new GetBalanceGetCommand());
         repository.put(CommandsConstants.GET_SECURITY_COMMAND + GET_METHOD, new GetSecurityGetCommand());

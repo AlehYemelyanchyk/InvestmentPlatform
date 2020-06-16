@@ -20,7 +20,7 @@ public interface UserService {
      * in the data source.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
-    List<User> getAllUsers() throws ServiceException;
+    List<User> getAllUsers(int userRole) throws ServiceException;
 
     /**
      * Retrieves a specified used from a data source based on its id.

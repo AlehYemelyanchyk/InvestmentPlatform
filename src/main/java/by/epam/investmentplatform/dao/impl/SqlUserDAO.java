@@ -26,7 +26,11 @@ class SqlUserDAO implements UserDAO {
         List<User> users;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT * FROM invest.users ORDER BY invest.users.id";
+            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country " +
+                    "FROM invest.users as a " +
+                    "JOIN invest.countries as b " +
+                    "ON a.country = b.ISO_numeric " +
+                    "ORDER BY a.id";
             statement = connection.prepareStatement(sqlQuery);
             resultSet = statement.executeQuery();
             connection.commit();

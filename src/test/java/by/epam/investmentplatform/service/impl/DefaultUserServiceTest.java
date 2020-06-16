@@ -65,9 +65,10 @@ public class DefaultUserServiceTest {
 
     @Test
     public void getAllUsersDAOExceptionTest() {
+        int userRole;
         Mockito.when(userDAO.getAllUsers()).thenThrow(EXPECTED_DAO_EXCEPTION);
         try {
-            userService.getAllUsers();
+            userService.getAllUsers(1);
         } catch (ServiceException e) {
             Assert.assertEquals(EXPECTED_DAO_EXCEPTION, e.getCause());
         }
