@@ -30,7 +30,7 @@ public class ErrorHandlerFilter extends AbstractFilter {
             int statusCode = getStatusCode(th);
             resp.setStatus(statusCode);
             req.setAttribute(Constants.STATUS_CODE, statusCode);
-            if(th instanceof AbstractApplicationException) {
+            if (th instanceof AbstractApplicationException) {
                 req.setAttribute(Constants.ERROR_ATTRIBUTE, th.getMessage());
             }
             RoutingUtils.forwardToPage(JspPageName.ERROR_PAGE, req, resp);

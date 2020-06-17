@@ -57,7 +57,11 @@ class SqlUserDAO implements UserDAO {
         User user;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT * FROM invest.users WHERE invest.users.id = ?";
+            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country " +
+                    "FROM invest.users as a " +
+                    "JOIN invest.countries as b " +
+                    "ON a.country = b.ISO_numeric " +
+                    "WHERE a.id = ?";
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, String.valueOf(id));
             resultSet = statement.executeQuery();
@@ -85,7 +89,11 @@ class SqlUserDAO implements UserDAO {
         User user;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT * FROM invest.users WHERE invest.users.login = ?";
+            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country " +
+                    "FROM invest.users as a " +
+                    "JOIN invest.countries as b " +
+                    "ON a.country = b.ISO_numeric " +
+                    "WHERE a.login = ?";
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, String.valueOf(login));
             resultSet = statement.executeQuery();

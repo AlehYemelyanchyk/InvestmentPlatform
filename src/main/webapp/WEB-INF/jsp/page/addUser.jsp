@@ -8,7 +8,7 @@
 
 <html lang="${sessionScope.lang}">
 <head>
-    <title>Signup</title>
+    <title>Add user</title>
 </head>
 <body>
 <div id="container">
@@ -17,7 +17,14 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form action="${pageContext.request.contextPath}/signup" method="POST">
+            <form action="${pageContext.request.contextPath}/addUserAdmin" method="POST">
+                <div class="form-group">
+                    <label for="inputRole"><fmt:message key="label.role"/></label>
+                    <select id="inputRole" name="role" class="form-control">
+                            <option value="1">Admin</option>
+                            <option value="2">User</option>
+                    </select>
+                </div>
                 <div class="form-group">
                     <label for="validationServer01"><fmt:message key="label.login2"/></label>
                     <input type="text" name="login" class="form-control is-valid" id="validationServer01"
@@ -63,7 +70,7 @@
                     <select id="inputCountry" name="country" class="form-control">
                         <c:forEach var="country" items="${sessionScope.COUNTRIES_LIST}">
                             <option value="${country}">${country}</option>
-                        </c:forEach>
+                        </c:forEach>Co
                     </select>
                 </div>
                 <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message

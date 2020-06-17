@@ -19,6 +19,8 @@ public final class CommandProvider {
         repository.put(CommandsConstants.ADD_SECURITY_COMMAND + GET_METHOD, new AddSecurityGetCommand());
         repository.put(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND + GET_METHOD, new AddSecurityToPortfolioGetCommand());
         repository.put(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND + POST_METHOD, new AddSecurityToPortfolioPostCommand());
+        repository.put(CommandsConstants.ADD_USER_ADMIN_COMMAND + GET_METHOD, new AddUserAdminGetCommand());
+        repository.put(CommandsConstants.ADD_USER_ADMIN_COMMAND + POST_METHOD, new AddUserAdminPostCommand());
         repository.put(CommandsConstants.ADMIN_SETTINGS_COMMAND + GET_METHOD, new AdminSettingsGetCommand());
         repository.put(CommandsConstants.DEPOSIT_COMMAND + GET_METHOD, new DepositGetCommand());
         repository.put(CommandsConstants.DEPOSIT_COMMAND + POST_METHOD, new DepositPostCommand());
@@ -41,10 +43,13 @@ public final class CommandProvider {
         repository.put(CommandsConstants.REMOVE_PORTFOLIO_COMMAND + GET_METHOD, new RemovePortfolioGetCommand());
         repository.put(CommandsConstants.REMOVE_SECURITY_FROM_PORTFOLIO_COMMAND + POST_METHOD, new RemoveSecurityFromPortfolioPostCommand());
         repository.put(CommandsConstants.REMOVE_TRANSACTION_COMMAND + POST_METHOD, new RemoveTransactionPostCommand());
+        repository.put(CommandsConstants.REMOVE_USER_ADMIN_COMMAND + POST_METHOD, new RemoveUserPostCommand());
         repository.put(CommandsConstants.UPDATE_PORTFOLIO_COMMAND + GET_METHOD, new UpdatePortfolioGetCommand());
         repository.put(CommandsConstants.UPDATE_PORTFOLIO_COMMAND + POST_METHOD, new UpdatePortfolioPostCommand());
         repository.put(CommandsConstants.UPDATE_TRANSACTION_COMMAND + GET_METHOD, new UpdateTransactionGetCommand());
         repository.put(CommandsConstants.UPDATE_TRANSACTION_COMMAND + POST_METHOD, new UpdateTransactionPostCommand());
+        repository.put(CommandsConstants.UPDATE_USER_ADMIN_COMMAND + GET_METHOD, new UpdateUserAdminGetCommand());
+        repository.put(CommandsConstants.UPDATE_USER_ADMIN_COMMAND + POST_METHOD, new UpdateUserAdminPostCommand());
         repository.put(CommandsConstants.UPDATE_USER_COMMAND + GET_METHOD, new UpdateUserGetCommand());
         repository.put(CommandsConstants.UPDATE_USER_COMMAND + POST_METHOD, new UpdateUserPostCommand());
         repository.put(CommandsConstants.USER_SETTINGS_COMMAND + GET_METHOD, new UserSettingsGetCommand());

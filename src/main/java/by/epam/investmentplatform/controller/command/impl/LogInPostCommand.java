@@ -38,6 +38,8 @@ public class LogInPostCommand extends AbstractCommandExecutor {
         }
         if (req.getSession().getAttribute(Constants.REDIRECT_LINK) != null) {
             RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
+        } else if (Constants.ROLE_ADMIN.equals(req.getSession().getAttribute(Constants.CURRENT_USER_ROLE))) {
+            RoutingUtils.forwardToPage(JspPageName.ADMIN_SETTINGS_PAGE, req, resp);
         } else {
             RoutingUtils.forwardToPage(JspPageName.NEWS_PAGE, req, resp);
         }

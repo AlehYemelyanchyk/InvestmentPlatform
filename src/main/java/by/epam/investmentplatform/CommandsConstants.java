@@ -4,6 +4,7 @@ public final class CommandsConstants {
     public static final String ADD_PORTFOLIO_COMMAND = "addPortfolio";
     public static final String ADD_SECURITY_COMMAND = "addSecurity";
     public static final String ADD_SECURITY_TO_PORTFOLIO_COMMAND = "addSecurityToPortfolio";
+    public static final String ADD_USER_ADMIN_COMMAND = "addUserAdmin";
     public static final String ADMIN_SETTINGS_COMMAND = "adminSettings";
     public static final String DEPOSIT_COMMAND = "deposit";
     public static final String GET_ALL_PORTFOLIO_SECURITIES_COMMAND = "getAllPortfolioSecurities";
@@ -22,10 +23,12 @@ public final class CommandsConstants {
     public static final String REMOVE_PORTFOLIO_COMMAND = "removePortfolio";
     public static final String REMOVE_SECURITY_FROM_PORTFOLIO_COMMAND = "removeSecurityFromPortfolio";
     public static final String REMOVE_TRANSACTION_COMMAND = "removeTransaction";
+    public static final String REMOVE_USER_ADMIN_COMMAND = "removeUserAdmin";
     public static final String SIGNUP_COMMAND = "signup";
     public static final String UPDATE_PORTFOLIO_COMMAND = "updatePortfolio";
     public static final String UPDATE_TRANSACTION_COMMAND = "updateTransaction";
     public static final String UPDATE_USER_COMMAND = "updateUser";
+    public static final String UPDATE_USER_ADMIN_COMMAND = "updateUserAdmin";
     public static final String USER_SETTINGS_COMMAND = "userSettings";
     public static final String WITHDRAW_COMMAND = "withdraw";
 }

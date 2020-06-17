@@ -31,6 +31,13 @@ public interface UserService {
      */
     User getUser(int id) throws ServiceException;
 
+    /**
+     * Retrieves a specified used from a data source based on its login.
+     *
+     * @param login is a user's unique identifier in a data source.
+     * @return a user if there is a login match in a data source, null if there is no login match.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
     User getUser(String login) throws ServiceException;
 
     /**

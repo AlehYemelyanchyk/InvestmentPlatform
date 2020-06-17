@@ -25,6 +25,7 @@ public class DefaultUserServiceTest {
     private static final DAOException EXPECTED_DAO_EXCEPTION = new DAOException("Test message", new Exception());
     private static final ServiceException EXPECTED_SERVICE_EXCEPTION = new ServiceException(new Exception());
     private static final int USER_ID = 1;
+    private static final String USER_LOGIN = "slon";
     private static final String[] PARAMS = {"param1", "param2", "param3"};
     private User user;
     private User expectedUser;
@@ -65,31 +66,55 @@ public class DefaultUserServiceTest {
 
     @Test
     public void getAllUsersDAOExceptionTest() {
-        int userRole;
+        int userRole = 1;
         Mockito.when(userDAO.getAllUsers()).thenThrow(EXPECTED_DAO_EXCEPTION);
         try {
-            userService.getAllUsers(1);
+            userService.getAllUsers(userRole);
         } catch (ServiceException e) {
             Assert.assertEquals(EXPECTED_DAO_EXCEPTION, e.getCause());
         }
     }
 
     @Test
-    public void getUserReturnUserTest() {
+    public void getUserByIdReturnUserTest() {
         Mockito.when(userDAO.getUser(USER_ID)).thenReturn(expectedUser);
         User actualUser = userService.getUser(USER_ID);
         Assert.assertEquals(expectedUser, actualUser);
     }
 
     @Test
-    public void getUserReturnNullUserTest() {
+    public void getUserByIdReturnNullUserTest() {
         int wrongId = 45;
         User actualUser = userService.getUser(wrongId);
         Assert.assertNull(actualUser);
     }
 
     @Test
-    public void getUserDAOExceptionTest() {
+    public void getUserByLoginDAOExceptionTest() {
+        Mockito.when(userDAO.getUser(USER_LOGIN)).thenThrow(EXPECTED_DAO_EXCEPTION);
+        try {
+            userService.getUser(USER_LOGIN);
+        } catch (ServiceException e) {
+            Assert.assertEquals(EXPECTED_DAO_EXCEPTION, e.getCause());
+        }
+    }
+
+    @Test
+    public void getUserByLoginReturnUserTest() {
+        Mockito.when(userDAO.getUser(USER_LOGIN)).thenReturn(expectedUser);
+        User actualUser = userService.getUser(USER_LOGIN);
+        Assert.assertEquals(expectedUser, actualUser);
+    }
+
+    @Test
+    public void getUserByLoginReturnNullUserTest() {
+        String wrongLogin = "wrongLogin";
+        User actualUser = userService.getUser(wrongLogin);
+        Assert.assertNull(actualUser);
+    }
+
+    @Test
+    public void getUserByIdDAOExceptionTest() {
         Mockito.when(userDAO.getUser(USER_ID)).thenThrow(EXPECTED_DAO_EXCEPTION);
         try {
             userService.getUser(USER_ID);

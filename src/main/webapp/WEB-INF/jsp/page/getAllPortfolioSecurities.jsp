@@ -168,7 +168,7 @@
                                         <button class="btn btn-dark" type="submit"
                                                 data-tooltip title="<fmt:message key="label.delete"/>"
                                                 onclick="if (!(confirm('<fmt:message
-                                                        key="label.deleteSecurityWarning"/>'))) return false">
+                                                        key="label.deleteTransactionWarning"/>'))) return false">
                                             <i class="icon-trash"></i>
                                         </button>
                                     </form>

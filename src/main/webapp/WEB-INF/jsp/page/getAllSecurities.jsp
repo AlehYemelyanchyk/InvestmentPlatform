@@ -47,7 +47,8 @@
                 </c:otherwise>
 
                 </c:choose>
-                <p>
+                <br/>
+
                 <table>
                     <thead>
                     <tr>
@@ -108,7 +109,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
-                </p>
+
             </div>
 
             </c:forEach>

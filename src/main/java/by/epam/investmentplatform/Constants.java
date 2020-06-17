@@ -62,6 +62,8 @@ public final class Constants {
     public static final String TRANSACTION_SECURITY_SYMBOL = "TRANSACTION_SECURITY_SYMBOL";
     public static final String TRANSACTION_TYPE = "TRANSACTION_TYPE";
     public static final String USERS_LIST = "USERS_LIST";
+    public static final String USER = "USER";
+    public static final String USER_ID = "USER_ID";
     public static final int ZERO_LIST_ELEMENT = 0;
 
     public Constants() {

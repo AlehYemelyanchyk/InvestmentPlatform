@@ -28,7 +28,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link guest-hidden" href="${pageContext.request.contextPath}/getAllSecurities">
+                <a class="nav-link" href="${pageContext.request.contextPath}/getAllSecurities">
                     <fmt:message key="label.securities"/></a>
             </li>
         </ul>

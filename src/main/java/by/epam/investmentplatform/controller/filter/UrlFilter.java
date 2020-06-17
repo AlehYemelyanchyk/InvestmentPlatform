@@ -23,6 +23,7 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.ADD_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.ADD_USER_ADMIN_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADMIN_SETTINGS_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.DEPOSIT_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
@@ -40,10 +41,12 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.REMOVE_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.REMOVE_SECURITY_FROM_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.REMOVE_TRANSACTION_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.REMOVE_USER_ADMIN_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.SIGNUP_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_TRANSACTION_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_USER_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_USER_ADMIN_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.USER_SETTINGS_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.WITHDRAW_COMMAND);
     }
@@ -58,7 +61,7 @@ public class UrlFilter extends AbstractFilter {
         if (BUSINESS_URIS.contains(commandName)) {
             req.getRequestDispatcher(Constants.COMMON_SERVLET_PATH).forward(req, resp);
         } else {
-            req.setAttribute(Constants.ERROR_ATTRIBUTE, "Such command does not exist.");
+            LOGGER.error("Command \"" + commandName + "\" does not exist");
             filterChain.doFilter(req, resp);
         }
     }

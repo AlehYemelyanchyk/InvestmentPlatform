@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-md-2">
-            <a class="btn btn-dark" href="${pageContext.request.contextPath}/addUser"
+            <a class="btn btn-dark" href="${pageContext.request.contextPath}/addUserAdmin"
                data-tooltip title="Add User">
                 <i class="icon-plus-sign-alt"></i>
             </a>
@@ -27,30 +27,79 @@
         <div class="col-md-2"></div>
         <div class="col-md-2"></div>
     </div>
+    <div>
+        <br/>
 
-    <br/>
+        <table>
+            <thead>
+            <tr>
+                <th><fmt:message key="label.login2"/></th>
+                <th><fmt:message key="label.password"/></th>
+                <th><fmt:message key="label.email"/></th>
+                <th><fmt:message key="label.name"/></th>
+                <th><fmt:message key="label.surname"/></th>
+                <th><fmt:message key="label.country"/></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="user" items="${USERS_LIST}">
 
-    <div class="row">
-        <div class="col-md-2"><h4>Login</h4></div>
-        <div class="col-md-2"><h4>Password</h4></div>
-        <div class="col-md-2"><h4>Email</h4></div>
-        <div class="col-md-2"><h4>Name</h4></div>
-        <div class="col-md-2"><h4>Surname</h4></div>
-        <div class="col-md-2"><h4>Country</h4></div>
-        <c:forEach var="user" items="${USERS_LIST}">
-            <div class="col-md-2">
                 <c:url var="userLink" value="getAllUserPortfoliosAdmin">
                     <c:param name="PORTFOLIO_USER_ID" value="${user.id}"/>
                 </c:url>
 
-                <h6><a href="${userLink}">${user.login}</a></h6>
-            </div>
-            <div class="col-md-2"><h6><a>${user.password}</a></h6></div>
-            <div class="col-md-2"><h6><a>${user.email}</a></h6></div>
-            <div class="col-md-2"><h6><a>${user.name}</a></h6></div>
-            <div class="col-md-2"><h6><a>${user.surname}</a></h6></div>
-            <div class="col-md-2"><h6><a>${user.country}</a></h6></div>
-        </c:forEach>
+                <tr>
+                    <td>
+                        <a href="${userLink}">${user.login}</a>
+                    </td>
+
+                    <td>
+                        <c:out value="${user.password}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${user.email}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${user.name}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${user.surname}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${user.country}"></c:out>
+                    </td>
+
+                    <td>
+                        <form action="updateUserAdmin" method="GET">
+                            <input type="hidden" name="USER_ID" value="${user.id}">
+                            <button class="btn btn-dark" type="submit"
+                                    data-tooltip title="<fmt:message key="label.edit"/>">
+                                <i class="icon-edit"></i>
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="removeUserAdmin" method="POST">
+                            <input type="hidden" name="USER_ID" value="${user.id}">
+                            <button class="btn btn-dark" type="submit"
+                                    data-tooltip title="<fmt:message key="label.delete"/>"
+                                    onclick="if (!(confirm('<fmt:message
+                                            key="label.deleteUserWarning"/>'))) return false">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 </div>
 </body>
