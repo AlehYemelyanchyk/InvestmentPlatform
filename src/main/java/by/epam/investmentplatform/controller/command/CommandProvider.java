@@ -27,6 +27,7 @@ public final class CommandProvider {
         repository.put(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND + GET_METHOD, new GetAllPortfolioSecuritiesGetCommand());
         repository.put(CommandsConstants.GET_ALL_PORTFOLIO_TRANSACTIONS_COMMAND + GET_METHOD, new GetAllPortfolioTransactionsGetCommand());
         repository.put(CommandsConstants.GET_ALL_SECURITIES_COMMAND + GET_METHOD, new GetAllSecuritiesGetCommand());
+        repository.put(CommandsConstants.GET_ALL_SECURITIES_ADMIN_COMMAND + GET_METHOD, new GetAllSecuritiesAdminGetCommand());
         repository.put(CommandsConstants.GET_ALL_SECURITY_TRANSACTIONS_COMMAND + GET_METHOD, new GetAllSecurityTransactionsGetCommand());
         repository.put(CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND + GET_METHOD, new GetAllUserPortfoliosGetCommand());
         repository.put(CommandsConstants.GET_ALL_USER_PORTFOLIOS_ADMIN_COMMAND + GET_METHOD, new GetAllUserPortfoliosAdminGetCommand());

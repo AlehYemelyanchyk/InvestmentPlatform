@@ -8,6 +8,7 @@ public final class JspPageName {
     public static final String DEPOSIT_PAYMENT_PAGE = "/WEB-INF/jsp/page/depositPayment.jsp";
     public static final String GET_ALL_PORTFOLIO_SECURITIES_PAGE = "/WEB-INF/jsp/page/getAllPortfolioSecurities.jsp";
     public static final String GET_ALL_SECURITIES_PAGE = "/WEB-INF/jsp/page/getAllSecurities.jsp";
+    public static final String GET_ALL_SECURITIES_ADMIN_PAGE = "/WEB-INF/jsp/page/getAllSecuritiesAdmin.jsp";
     public static final String GET_ALL_SECURITY_TRANSACTIONS_PAGE = "/WEB-INF/jsp/page/getAllSecurityTransactions.jsp";
     public static final String GET_ALL_USER_PORTFOLIOS_PAGE = "/WEB-INF/jsp/page/getAllUserPortfolios.jsp";
     public static final String GET_ALL_USERS_PAGE = "/WEB-INF/jsp/page/getAllUsers.jsp";

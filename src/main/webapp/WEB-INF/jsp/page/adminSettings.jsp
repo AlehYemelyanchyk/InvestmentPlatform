@@ -21,7 +21,7 @@
                 <h4><a href="${pageContext.request.contextPath}/getAllUsers">Users</a></h4>
             </div>
             <div>
-                <h4><a href="${pageContext.request.contextPath}/getAllSecurities">Securities Manager</a></h4>
+                <h4><a href="${pageContext.request.contextPath}/getAllSecuritiesAdmin">Securities Manager</a></h4>
             </div>
             <div>
                 <h4><a href="${pageContext.request.contextPath}/logout"><fmt:message
