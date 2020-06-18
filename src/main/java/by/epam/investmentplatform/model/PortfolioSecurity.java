@@ -2,11 +2,9 @@ package by.epam.investmentplatform.model;
 
 import by.epam.investmentplatform.entity.Security;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class PortfolioSecurity implements Serializable {
-    private static final long serialVersionUID = -8553017786840784033L;
+public class PortfolioSecurity {
 
     private String symbol;
     private String name;

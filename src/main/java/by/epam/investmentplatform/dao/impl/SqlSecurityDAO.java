@@ -6,6 +6,7 @@ import by.epam.investmentplatform.dao.exceptions.DAOException;
 import by.epam.investmentplatform.db.impl.DefaultConnectionPool;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
+import by.epam.investmentplatform.model.SecurityPrice;
 import by.epam.investmentplatform.util.DAOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -238,6 +239,36 @@ class SqlSecurityDAO implements SecurityDAO {
             }
         }
         return security;
+    }
+
+    @Override
+    public List<SecurityPrice> getSecurityPrices(String symbol) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<SecurityPrice> prices;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT * FROM invest.price_history " +
+                    "WHERE symbol = ? " +
+                    "ORDER BY date";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, symbol);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            prices = DAOUtils.pricesResultSetHandle(resultSet);
+        } catch (Exception e) {
+            LOGGER.error("getSecurityPrices error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("getSecurityPrices close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return prices;
     }
 
     @Override

@@ -3,6 +3,7 @@ package by.epam.investmentplatform.dao;
 import by.epam.investmentplatform.dao.exceptions.DAOException;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
+import by.epam.investmentplatform.model.SecurityPrice;
 
 import java.util.List;
 
@@ -21,6 +22,8 @@ public interface SecurityDAO {
     List<Transaction> getAllPortfolioTransactions(int portfolioId) throws DAOException;
 
     Security getSecurity(String symbol) throws DAOException;
+
+    List<SecurityPrice> getSecurityPrices(String symbol) throws DAOException;
 
     Transaction getTransaction(int id) throws DAOException;
 

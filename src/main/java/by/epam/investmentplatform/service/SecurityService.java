@@ -2,6 +2,7 @@ package by.epam.investmentplatform.service;
 
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
+import by.epam.investmentplatform.model.SecurityPrice;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 
 import java.util.List;
@@ -76,6 +77,15 @@ public interface SecurityService {
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
     Security getSecurity(String symbol) throws ServiceException;
+
+    /**
+     * Retrieves all prices by security stored in a data source based on the provided security symbol.
+     *
+     * @return list of prices, which can't be null, but can be empty if there is no price history
+     * in the data source.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    List<SecurityPrice> getSecurityPrices(String symbol) throws ServiceException;
 
     /**
      * Retrieves a specified transaction from a data source based on its id.

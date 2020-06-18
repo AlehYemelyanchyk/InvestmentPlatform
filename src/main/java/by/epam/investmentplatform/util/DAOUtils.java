@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.util;
 
 import by.epam.investmentplatform.entity.*;
+import by.epam.investmentplatform.model.SecurityPrice;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,6 +56,18 @@ public final class DAOUtils {
             securities.add(tempSecurity);
         }
         return securities;
+    }
+
+    public static List<SecurityPrice> pricesResultSetHandle(ResultSet resultSet) throws SQLException {
+        List<SecurityPrice> prices = new ArrayList<>();
+        while (resultSet.next()) {
+            SecurityPrice tempSecurity = new SecurityPrice(
+                    resultSet.getDate("date"),
+                    resultSet.getString("symbol"),
+                    resultSet.getDouble("price"));
+            prices.add(tempSecurity);
+        }
+        return prices;
     }
 
     public static List<Transaction> transactionsResultSetHandle(ResultSet resultSet) throws SQLException {

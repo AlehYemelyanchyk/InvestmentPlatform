@@ -5,6 +5,7 @@ import by.epam.investmentplatform.dao.exceptions.DAOException;
 import by.epam.investmentplatform.dao.impl.DAOFactory;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
+import by.epam.investmentplatform.model.SecurityPrice;
 import by.epam.investmentplatform.service.SecurityService;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 import org.apache.logging.log4j.LogManager;
@@ -83,6 +84,16 @@ class DefaultSecurityService implements SecurityService {
             return getSecurityDAO().getSecurity(symbol);
         } catch (DAOException e) {
             LOGGER.error("getSecurity error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<SecurityPrice> getSecurityPrices(String symbol) throws ServiceException {
+        try {
+            return getSecurityDAO().getSecurityPrices(symbol);
+        } catch (DAOException e) {
+            LOGGER.error("getSecurityPrices error: " + e.getMessage());
             throw new ServiceException(e);
         }
     }

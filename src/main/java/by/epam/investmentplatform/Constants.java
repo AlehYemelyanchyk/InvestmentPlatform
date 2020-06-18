@@ -54,6 +54,7 @@ public final class Constants {
     public static final String SECURITY_NAME = "SECURITY_NAME";
     public static final String SECURITY_PRICE = "SECURITY_PRICE";
     public static final String SECURITY_SYMBOL = "SECURITY_SYMBOL";
+    public static final String SECURITY_PRICES_LIST = "SECURITY_PRICES_LIST";
     public static final String SECURITY_TRANSACTIONS = "SECURITY_TRANSACTIONS";
     public static final String STATUS_CODE = "STATUS_CODE";
     public static final String TRANSACTION = "TRANSACTION";

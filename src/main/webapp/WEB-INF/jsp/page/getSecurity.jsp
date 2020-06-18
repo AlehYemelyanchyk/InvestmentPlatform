@@ -8,12 +8,18 @@
 
 <html lang="${sessionScope.lang}">
 <head>
+    <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
+    <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+    <link rel="stylesheet" href="static/css/chart.min.css">
     <title>Security</title>
 </head>
 <body>
-<div id="header">
-    <h4 align="center">${SECURITY.name}</h4>
-</div>
+
+<input type="hidden" id="dates" value="${DATES}"/>
+<input type="hidden" id="prices" value="${PRICES}"/>
+<input type="hidden" id="securityName" value="${SECURITY.name}"/>
+
+
 <div id="container">
     <form action="${pageContext.request.contextPath}/signup" method="post">
         <table style="with: 50%">
@@ -62,10 +68,72 @@
             </tbody>
         </table>
         <div align="center">
-            <img src="${pageContext.request.contextPath}/media/chart01.jpg">
+            <br/>
+            <canvas id="canvas"></canvas>
         </div>
     </form>
 </div>
+<script>
+    let randomScalingFactor = function () {
+        return Math.round(Math.random() * 100);
+    };
+
+    let dates = document.getElementById("dates").getAttribute("value");
+    let prices = document.getElementById("prices").getAttribute("value");
+    let securityname = document.getElementById("securityName").getAttribute("value");
+    let datestrimmed = dates.substring(1, dates.length - 1);
+    let pricepoints = Array.from((prices.split(", ")));
+    let datelabels = Array.from((datestrimmed.split(", ")));
+
+    let config = {
+        type: 'line',
+        data: {
+            labels: datelabels,
+            datasets: [{
+                label: securityname,
+                data: pricepoints,
+                borderColor: window.chartColors.green,
+                backgroundColor: 'rgba(0, 0, 0, 0)',
+                fill: false,
+                lineTension: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Nasdaq Delayed Price. Currency in USD'
+            },
+            tooltips: {
+                mode: 'index'
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value'
+                    },
+                    ticks: {
+                        suggestedMin: 0,
+                        suggestedMax: 200,
+                    }
+                }]
+            }
+        }
+    };
+
+    window.onload = function () {
+        var ctx = document.getElementById('canvas').getContext('2d');
+        window.myLine = new Chart(ctx, config);
+    };
+</script>
 </body>
 
 </html>
