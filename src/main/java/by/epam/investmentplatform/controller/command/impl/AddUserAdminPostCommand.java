@@ -29,7 +29,7 @@ public class AddUserAdminPostCommand extends AbstractCommandExecutor {
             userService.signUp(user);
         } catch (ServiceException e) {
             LOGGER.error("AddUserAdminPostCommand error: ", e);
-            throw new ServiceException("Incorrect registration values.");
+            throw new ServletException("Incorrect registration values.");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

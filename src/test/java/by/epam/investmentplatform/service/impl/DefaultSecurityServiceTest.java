@@ -42,7 +42,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllSecuritiesReturnCollectionTest() {
+    public void getAllSecuritiesReturnCollectionTest() throws DAOException, ServiceException {
         List<Security> expectedList = new ArrayList<>();
         expectedList.add(SECURITY);
 
@@ -52,7 +52,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllSecuritiesDAOExceptionTest() {
+    public void getAllSecuritiesDAOExceptionTest() throws DAOException {
         Mockito.when(securityDAO.getAllSecurities()).thenThrow(EXPECTED_EXCEPTION);
         try {
             securityService.getAllSecurities();
@@ -62,7 +62,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllUserSecuritiesReturnCollectionTest() {
+    public void getAllUserSecuritiesReturnCollectionTest() throws DAOException, ServiceException {
         List<Security> expectedList = new ArrayList<>();
         expectedList.add(SECURITY);
 
@@ -72,7 +72,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllUserSecuritiesDAOExceptionTest() {
+    public void getAllUserSecuritiesDAOExceptionTest() throws DAOException {
         Mockito.when(securityDAO.getAllUserSecurities(USER_ID)).thenThrow(EXPECTED_EXCEPTION);
         try {
             securityService.getAllUserSecurities(USER_ID);
@@ -82,7 +82,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllPortfolioSecuritiesReturnCollectionTest() {
+    public void getAllPortfolioSecuritiesReturnCollectionTest() throws DAOException, ServiceException {
         List<Security> expectedList = new ArrayList<>();
         expectedList.add(SECURITY);
 
@@ -92,7 +92,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllPortfolioSecuritiesDAOExceptionTest() {
+    public void getAllPortfolioSecuritiesDAOExceptionTest() throws DAOException {
         Mockito.when(securityDAO.getAllPortfolioSecurities(PORTFOLIO_ID)).thenThrow(EXPECTED_EXCEPTION);
         try {
             securityService.getAllPortfolioSecurities(PORTFOLIO_ID);
@@ -102,7 +102,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllTransactionsReturnCollectionTest() {
+    public void getAllTransactionsReturnCollectionTest() throws DAOException, ServiceException {
         List<Transaction> expectedList = new ArrayList<>();
         expectedList.add(TRANSACTION);
 
@@ -112,7 +112,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllTransactionsDAOExceptionTest() {
+    public void getAllTransactionsDAOExceptionTest() throws DAOException {
         Mockito.when(securityDAO.getAllTransactions()).thenThrow(EXPECTED_EXCEPTION);
         try {
             securityService.getAllTransactions();
@@ -122,7 +122,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllPortfolioTransactionsReturnCollectionTest() {
+    public void getAllPortfolioTransactionsReturnCollectionTest() throws DAOException, ServiceException {
         List<Transaction> expectedList = new ArrayList<>();
         expectedList.add(TRANSACTION);
 
@@ -133,7 +133,7 @@ public class DefaultSecurityServiceTest {
 
 
     @Test
-    public void getAllPortfolioTransactionsDAOExceptionTest() {
+    public void getAllPortfolioTransactionsDAOExceptionTest() throws DAOException {
         Mockito.when(securityDAO.getAllPortfolioTransactions(PORTFOLIO_ID)).thenThrow(EXPECTED_EXCEPTION);
         try {
             securityService.getAllPortfolioTransactions(PORTFOLIO_ID);
@@ -143,7 +143,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllUserTransactionsReturnCollectionList() {
+    public void getAllUserTransactionsReturnCollectionList() throws DAOException, ServiceException {
         List<Transaction> expectedList = new ArrayList<>();
         expectedList.add(TRANSACTION);
 
@@ -153,7 +153,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getAllUserTransactionsDAOExceptionTest() {
+    public void getAllUserTransactionsDAOExceptionTest() throws DAOException {
         Mockito.when(securityDAO.getAllUserTransactions(USER_ID)).thenThrow(EXPECTED_EXCEPTION);
         try {
             securityService.getAllUserTransactions(USER_ID);
@@ -167,7 +167,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getTransactionReturnTransaction() {
+    public void getTransactionReturnTransaction() throws DAOException, ServiceException {
         Mockito.when(securityDAO.getTransaction(TRANSACTION_ID)).thenReturn(EXPECTED_TRANSACTION);
         Transaction actualTransaction = securityService.getTransaction(TRANSACTION_ID);
         Assert.assertEquals(EXPECTED_TRANSACTION, actualTransaction);
@@ -185,7 +185,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void getTransactionDAOExceptionTest() {
+    public void getTransactionDAOExceptionTest() throws DAOException {
         Mockito.when(securityDAO.getTransaction(TRANSACTION_ID)).thenThrow(EXPECTED_EXCEPTION);
         try {
             securityService.getTransaction(TRANSACTION_ID);
@@ -195,13 +195,13 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void saveSecurityInvocationTest() {
+    public void saveSecurityInvocationTest() throws ServiceException, DAOException {
         securityService.saveSecurity(SECURITY);
         Mockito.verify(securityDAO).saveSecurity(SECURITY);
     }
 
     @Test
-    public void saveSecurityDAOExceptionTest() {
+    public void saveSecurityDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_EXCEPTION).when(securityDAO).saveSecurity(SECURITY);
         try {
             securityService.saveSecurity(SECURITY);
@@ -211,13 +211,13 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void saveTransactionInvocationTest() {
+    public void saveTransactionInvocationTest() throws ServiceException, DAOException {
         securityService.saveTransaction(TRANSACTION);
         Mockito.verify(securityDAO).saveTransaction(TRANSACTION);
     }
 
     @Test
-    public void saveTransactionDAOExceptionTest() {
+    public void saveTransactionDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_EXCEPTION).when(securityDAO).saveTransaction(TRANSACTION);
         try {
             securityService.saveTransaction(TRANSACTION);
@@ -227,14 +227,14 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void removeSecurityInvocationTest() {
+    public void removeSecurityInvocationTest() throws ServiceException, DAOException {
         String securitySymbol = "AAA";
         securityService.removeSecurity(securitySymbol);
         Mockito.verify(securityDAO).removeSecurity(securitySymbol);
     }
 
     @Test
-    public void removeSecurityDAOExceptionTest() {
+    public void removeSecurityDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_EXCEPTION).when(securityDAO).removeSecurity(SECURITY_SYMBOL);
         try {
             securityService.removeSecurity(SECURITY_SYMBOL);
@@ -244,13 +244,13 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void removeSecurityFromPortfolioInvocationTest() {
+    public void removeSecurityFromPortfolioInvocationTest() throws ServiceException, DAOException {
         securityService.removeSecurityFromPortfolio(PORTFOLIO_ID, SECURITY_SYMBOL);
         Mockito.verify(securityDAO).removeSecurityFromPortfolio(PORTFOLIO_ID, SECURITY_SYMBOL);
     }
 
     @Test
-    public void removeSecurityFromPortfolioDAOExceptionTest() {
+    public void removeSecurityFromPortfolioDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_EXCEPTION).when(securityDAO).removeSecurityFromPortfolio(PORTFOLIO_ID, SECURITY_SYMBOL);
         try {
             securityService.removeSecurityFromPortfolio(PORTFOLIO_ID, SECURITY_SYMBOL);
@@ -264,7 +264,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void updateTransactionInvocationTest() {
+    public void updateTransactionInvocationTest() throws ServiceException, DAOException {
         String[] parameters = {"a", "b", "c"};
 
         securityService.updateTransaction(TRANSACTION, parameters);
@@ -272,7 +272,7 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void updateTransactionDAOExceptionTest() {
+    public void updateTransactionDAOExceptionTest() throws DAOException {
         String[] parameters = {"a", "b", "c"};
 
         Mockito.doThrow(EXPECTED_EXCEPTION).when(securityDAO).updateTransaction(TRANSACTION, parameters);
@@ -284,13 +284,13 @@ public class DefaultSecurityServiceTest {
     }
 
     @Test
-    public void removeTransactionInvocationTest() {
+    public void removeTransactionInvocationTest() throws ServiceException, DAOException {
         securityService.removeTransaction(TRANSACTION_ID);
         Mockito.verify(securityDAO).removeTransaction(TRANSACTION_ID);
     }
 
     @Test
-    public void removeTransactionDAOExceptionTest() {
+    public void removeTransactionDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_EXCEPTION).when(securityDAO).removeTransaction(TRANSACTION_ID);
         try {
             securityService.removeTransaction(TRANSACTION_ID);

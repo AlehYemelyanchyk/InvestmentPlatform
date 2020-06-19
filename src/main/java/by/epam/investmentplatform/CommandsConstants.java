@@ -33,4 +33,10 @@ public final class CommandsConstants {
     public static final String UPDATE_USER_ADMIN_COMMAND = "updateUserAdmin";
     public static final String USER_SETTINGS_COMMAND = "userSettings";
     public static final String WITHDRAW_COMMAND = "withdraw";
+
+    private CommandsConstants() {
+        throw new UnsupportedOperationException();
+    }
 }
+
+

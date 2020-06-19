@@ -21,7 +21,7 @@ public class AddUserAdminGetCommand extends AbstractCommandExecutor {
             countries = userService.getAllCountries();
         } catch (ServiceException e) {
             LOGGER.error("AddUserAdminGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.getSession().setAttribute(Constants.COUNTRIES_LIST, countries);
         RoutingUtils.forwardToPage(JspPageName.ADD_USER_PAGE, req, resp);

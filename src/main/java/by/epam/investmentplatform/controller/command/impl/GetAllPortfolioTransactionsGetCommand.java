@@ -24,7 +24,7 @@ public class GetAllPortfolioTransactionsGetCommand extends AbstractCommandExecut
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
         } catch (ServiceException e) {
             LOGGER.error("GetAllPortfolioTransactionsGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.setAttribute(Constants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS_PAGE, req, resp);

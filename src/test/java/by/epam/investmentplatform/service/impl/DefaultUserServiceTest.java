@@ -49,7 +49,7 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void getAllUsersReturnListTest() {
+    public void getAllUsersReturnListTest() throws DAOException {
         List<User> expectedList = new ArrayList<>();
         expectedList.add(user);
 
@@ -59,13 +59,13 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void getAllUsersReturnEmptyListTest() {
+    public void getAllUsersReturnEmptyListTest() throws DAOException {
         List<User> actualList = userDAO.getAllUsers();
         Assert.assertTrue(actualList.isEmpty());
     }
 
     @Test
-    public void getAllUsersDAOExceptionTest() {
+    public void getAllUsersDAOExceptionTest() throws DAOException {
         int userRole = 1;
         Mockito.when(userDAO.getAllUsers()).thenThrow(EXPECTED_DAO_EXCEPTION);
         try {
@@ -76,21 +76,21 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void getUserByIdReturnUserTest() {
+    public void getUserByIdReturnUserTest() throws DAOException, ServiceException {
         Mockito.when(userDAO.getUser(USER_ID)).thenReturn(expectedUser);
         User actualUser = userService.getUser(USER_ID);
         Assert.assertEquals(expectedUser, actualUser);
     }
 
     @Test
-    public void getUserByIdReturnNullUserTest() {
+    public void getUserByIdReturnNullUserTest() throws ServiceException {
         int wrongId = 45;
         User actualUser = userService.getUser(wrongId);
         Assert.assertNull(actualUser);
     }
 
     @Test
-    public void getUserByLoginDAOExceptionTest() {
+    public void getUserByLoginDAOExceptionTest() throws DAOException {
         Mockito.when(userDAO.getUser(USER_LOGIN)).thenThrow(EXPECTED_DAO_EXCEPTION);
         try {
             userService.getUser(USER_LOGIN);
@@ -100,21 +100,21 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void getUserByLoginReturnUserTest() {
+    public void getUserByLoginReturnUserTest() throws DAOException, ServiceException {
         Mockito.when(userDAO.getUser(USER_LOGIN)).thenReturn(expectedUser);
         User actualUser = userService.getUser(USER_LOGIN);
         Assert.assertEquals(expectedUser, actualUser);
     }
 
     @Test
-    public void getUserByLoginReturnNullUserTest() {
+    public void getUserByLoginReturnNullUserTest() throws ServiceException {
         String wrongLogin = "wrongLogin";
         User actualUser = userService.getUser(wrongLogin);
         Assert.assertNull(actualUser);
     }
 
     @Test
-    public void getUserByIdDAOExceptionTest() {
+    public void getUserByIdDAOExceptionTest() throws DAOException {
         Mockito.when(userDAO.getUser(USER_ID)).thenThrow(EXPECTED_DAO_EXCEPTION);
         try {
             userService.getUser(USER_ID);
@@ -124,13 +124,13 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void signUpInvocationTest() {
+    public void signUpInvocationTest() throws ServiceException, DAOException {
         userService.signUp(user);
         Mockito.verify(userDAO).saveUser(user);
     }
 
     @Test
-    public void signUpWrongUserTest() {
+    public void signUpWrongUserTest() throws DAOException {
         user = null;
 
         Mockito.doThrow(EXPECTED_SERVICE_EXCEPTION).when(userDAO).saveUser(user);
@@ -184,7 +184,7 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void singUpDAOExceptionTest() {
+    public void singUpDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_DAO_EXCEPTION).when(userDAO).saveUser(user);
         try {
             userService.signUp(user);
@@ -197,7 +197,7 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void logInReturnUserTest() {
+    public void logInReturnUserTest() throws DAOException, ServiceException {
         String login = "login";
         String password = "1234qwer";
         Mockito.when(userDAO.getUser(login)).thenReturn(expectedUser);
@@ -206,7 +206,7 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void logInDAOExceptionTest() {
+    public void logInDAOExceptionTest() throws DAOException {
         String login = "login";
         String password = "1234qwer";
         Mockito.doThrow(EXPECTED_DAO_EXCEPTION).when(userDAO).getUser(login);
@@ -249,13 +249,13 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void updateUserInvocationTest() {
+    public void updateUserInvocationTest() throws ServiceException, DAOException {
         userService.updateUser(user, PARAMS);
         Mockito.verify(userDAO).updateUser(user, PARAMS);
     }
 
     @Test
-    public void updateUserDAOExceptionTest() {
+    public void updateUserDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_DAO_EXCEPTION).when(userDAO).updateUser(user, PARAMS);
         try {
             userService.updateUser(user, PARAMS);
@@ -269,10 +269,8 @@ public class DefaultUserServiceTest {
 
     @Test
     public void updateUserWrongUserTest() {
-        user = null;
-
         try {
-            userService.updateUser(user, PARAMS);
+            userService.updateUser(null, PARAMS);
         } catch (ServiceException e) {
             actualException = e;
         } finally {
@@ -308,13 +306,13 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void deleteUserInvocationTest() {
+    public void deleteUserInvocationTest() throws ServiceException, DAOException {
         userService.deleteUser(user);
         Mockito.verify(userDAO).deleteUser(user);
     }
 
     @Test
-    public void deleteUserDAOExceptionTest() {
+    public void deleteUserDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_DAO_EXCEPTION).when(userDAO).deleteUser(user);
         try {
             userService.deleteUser(user);
@@ -328,10 +326,8 @@ public class DefaultUserServiceTest {
 
     @Test
     public void deleteUserWrongUserTest() {
-        user = null;
-
         try {
-            userService.deleteUser(user);
+            userService.deleteUser(null);
         } catch (ServiceException e) {
             actualException = e;
         } finally {
@@ -354,7 +350,7 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void getUserBalanceTransactionsReturnListTest() {
+    public void getUserBalanceTransactionsReturnListTest() throws DAOException, ServiceException {
         List<BalanceTransaction> expectedList = new ArrayList<>();
         expectedList.add(balanceTransaction);
 
@@ -364,13 +360,13 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void getUserBalanceTransactionsReturnEmptyListTest() {
+    public void getUserBalanceTransactionsReturnEmptyListTest() throws DAOException {
         List<BalanceTransaction> actualList = userDAO.getUserBalanceTransactions(USER_ID);
         Assert.assertTrue(actualList.isEmpty());
     }
 
     @Test
-    public void getUserBalanceTransactionsDAOExceptionTest() {
+    public void getUserBalanceTransactionsDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_DAO_EXCEPTION).when(userDAO).getUserBalanceTransactions(USER_ID);
         try {
             userService.getUserBalanceTransactions(USER_ID);
@@ -383,7 +379,7 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void getAllCountriesReturnListTest() {
+    public void getAllCountriesReturnListTest() throws DAOException, ServiceException {
         List<String> expectedList = new ArrayList<>();
         expectedList.add("Country");
 
@@ -393,7 +389,7 @@ public class DefaultUserServiceTest {
     }
 
     @Test
-    public void getAllCountriesDAOExceptionTest() {
+    public void getAllCountriesDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXPECTED_DAO_EXCEPTION).when(userDAO).getAllCountries();
         try {
             userService.getAllCountries();

@@ -23,7 +23,7 @@ public class GetAllUsersGetCommand extends AbstractCommandExecutor {
             req.getSession().setAttribute(Constants.USERS_LIST, allUsers);
         } catch (ServiceException e) {
             LOGGER.error("GetAllUsersGetCommand error: ", e);
-            throw new ServiceException("Access denied.");
+            throw new ServletException("Access denied.");
         }
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_USERS_PAGE, req, resp);
     }

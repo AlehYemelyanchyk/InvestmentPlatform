@@ -22,7 +22,7 @@ public class UpdatePortfolioGetCommand extends AbstractCommandExecutor {
             req.setAttribute(Constants.PORTFOLIO, portfolio);
         } catch (ServiceException e) {
             LOGGER.error("UpdatePortfolioGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.setAttribute(Constants.PORTFOLIO_ID, portfolioId);
         RoutingUtils.forwardToPage(JspPageName.UPDATE_PORTFOLIO_PAGE, req, resp);

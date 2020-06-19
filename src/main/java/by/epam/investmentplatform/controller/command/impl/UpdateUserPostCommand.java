@@ -31,7 +31,7 @@ public class UpdateUserPostCommand extends AbstractCommandExecutor {
             userService.updateUser(user, params);
         } catch (ServiceException e) {
             LOGGER.error("UpdateUserPostCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.USER_SETTINGS_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

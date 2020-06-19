@@ -34,7 +34,7 @@ public class SignUpPostCommand extends AbstractCommandExecutor {
             session.setAttribute(Constants.CURRENT_USER_ROLE, user.getRole());
         } catch (ServiceException e) {
             LOGGER.error("SignUpPostCommand error: ", e);
-            throw new ServiceException("Incorrect registration values.");
+            throw new ServletException("Incorrect registration values.");
         }
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE, req, resp);
     }

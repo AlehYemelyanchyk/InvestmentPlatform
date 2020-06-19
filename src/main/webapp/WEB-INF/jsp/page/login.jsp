@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1"><fmt:message key="label.checkMeOut"/></label>
+                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
                 </div>
                 <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
                         key="label.submit"/>

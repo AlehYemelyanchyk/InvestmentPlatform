@@ -36,7 +36,7 @@ public class GetSecurityGetCommand extends AbstractCommandExecutor {
             securityPrices = securityService.getSecurityPrices(securitySymbol);
         } catch (ServiceException e) {
             LOGGER.error("GetSecurityGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
 
         List<String> datesList = getDates(securityPrices);

@@ -23,7 +23,7 @@ public class UpdateTransactionGetCommand extends AbstractCommandExecutor {
             req.setAttribute(Constants.TRANSACTION, transaction);
         } catch (ServiceException e) {
             LOGGER.error("UpdateTransactionGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
         RoutingUtils.forwardToPage(JspPageName.UPDATE_TRANSACTION_PAGE, req, resp);

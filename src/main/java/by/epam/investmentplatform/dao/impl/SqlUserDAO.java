@@ -14,7 +14,7 @@ import java.sql.*;
 import java.util.List;
 
 class SqlUserDAO implements UserDAO {
-    private static final Logger LOGGER = LogManager.getLogger(SqlUserDAO.class);
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final DefaultConnectionPool CONNECTION_POOL = DefaultConnectionPool.getConnectionPoolInstance();
     private static final String COUNTRIES_COLUMN_NAME = "name";
 
@@ -267,7 +267,7 @@ class SqlUserDAO implements UserDAO {
     }
 
     @Override
-    public List<String> getAllCountries() {
+    public List<String> getAllCountries() throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -293,7 +293,7 @@ class SqlUserDAO implements UserDAO {
         return countries;
     }
 
-    private String getCountry(String countryName) {
+    private String getCountry(String countryName) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;

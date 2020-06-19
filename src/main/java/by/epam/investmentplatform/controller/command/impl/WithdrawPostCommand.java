@@ -29,7 +29,7 @@ public class WithdrawPostCommand extends AbstractCommandExecutor {
             userService.addBalanceTransaction(userId, balanceTransaction);
         } catch (ServiceException e) {
             LOGGER.error("WithdrawPostCommand error: ", e);
-            throw new ServiceException("Withdraw payment error.");
+            throw new ServletException("Withdraw payment error.");
         }
         req.getSession().setAttribute(Constants.AMOUNT, amount);
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_BALANCE_COMMAND);

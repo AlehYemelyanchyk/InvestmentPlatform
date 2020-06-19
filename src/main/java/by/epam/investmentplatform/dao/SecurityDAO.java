@@ -37,7 +37,7 @@ public interface SecurityDAO {
 
     void removeSecurity(String symbol) throws DAOException;
 
-    void removeSecurityFromPortfolio(int portfolioId, String symbol);
+    void removeSecurityFromPortfolio(int portfolioId, String symbol) throws DAOException;
 
     void removeTransaction(int id) throws DAOException;
 }

@@ -1,7 +1,6 @@
 package by.epam.investmentplatform.controller.exception;
 
 public class AbstractApplicationException extends RuntimeException {
-    private static final long serialVersionUID = -202417051159971577L;
     private final int code;
 
     public AbstractApplicationException(String message, int code) {

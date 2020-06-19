@@ -26,7 +26,7 @@ public class UpdateUserGetCommand extends AbstractCommandExecutor {
             req.setAttribute(Constants.CURRENT_USER, user);
         } catch (ServiceException e) {
             LOGGER.error("UpdateUserGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         RoutingUtils.forwardToPage(JspPageName.UPDATE_USER_PAGE, req, resp);
     }

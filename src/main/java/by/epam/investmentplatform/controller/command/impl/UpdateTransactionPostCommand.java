@@ -32,7 +32,7 @@ public class UpdateTransactionPostCommand extends AbstractCommandExecutor {
             securityService.updateTransaction(transaction, parameters);
         } catch (ServiceException e) {
             LOGGER.error("UpdateTransactionPostCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

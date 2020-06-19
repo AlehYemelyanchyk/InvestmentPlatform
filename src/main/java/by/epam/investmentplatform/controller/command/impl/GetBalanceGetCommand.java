@@ -25,7 +25,7 @@ public class GetBalanceGetCommand extends AbstractCommandExecutor {
             req.getSession().setAttribute(Constants.CURRENT_USER_BALANCE, balance);
         }  catch (ServiceException e) {
             LOGGER.error("GetBalanceGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         RoutingUtils.forwardToPage(JspPageName.GET_USER_BALANCE_PAGE, req, resp);
     }

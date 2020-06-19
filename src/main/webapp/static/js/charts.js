@@ -1,7 +1,3 @@
-let randomScalingFactor = function () {
-    return Math.round(Math.random() * 100);
-};
-
 let dates = document.getElementById("dates").getAttribute("value");
 let prices = document.getElementById("prices").getAttribute("value");
 let securityname = document.getElementById("securityName").getAttribute("value");

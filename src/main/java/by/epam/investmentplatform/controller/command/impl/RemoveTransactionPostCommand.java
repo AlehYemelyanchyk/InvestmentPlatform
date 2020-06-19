@@ -21,7 +21,7 @@ public class RemoveTransactionPostCommand extends AbstractCommandExecutor {
             securityService.removeTransaction(id);
         } catch (ServiceException e) {
             LOGGER.error("RemoveTransactionPostCommand error: ", e);
-            throw new ServiceException("Incorrect values");
+            throw new ServletException("Incorrect values");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

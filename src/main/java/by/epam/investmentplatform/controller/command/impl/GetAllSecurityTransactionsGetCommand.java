@@ -45,7 +45,7 @@ public class GetAllSecurityTransactionsGetCommand extends AbstractCommandExecuto
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
         } catch (ServiceException e) {
             LOGGER.error("GetAllSecurityTransactionsGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         List<Transaction> filteredTransactions = filterTransactionsBySecurity(allPortfolioTransactions, securitySymbol);
 

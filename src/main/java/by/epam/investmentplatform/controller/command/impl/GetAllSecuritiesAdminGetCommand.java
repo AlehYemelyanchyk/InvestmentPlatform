@@ -24,7 +24,7 @@ public class GetAllSecuritiesAdminGetCommand extends AbstractCommandExecutor {
             securities = securityService.getAllSecurities();
         }  catch (ServiceException e) {
             LOGGER.error("GetAllSecuritiesAdminGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         List<String> types = listOfTypes(securities);
         Map<String, List<Security>> securitiesByType = getSecuritiesByType(securities, types);

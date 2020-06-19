@@ -37,7 +37,7 @@ public class DefaultPortfolioServiceTest {
     }
 
     @Test
-    public void getAllUserPortfoliosReturnCollectionTest() {
+    public void getAllUserPortfoliosReturnCollectionTest() throws DAOException, ServiceException {
         List<Portfolio> expectedPortfolios = new ArrayList<>();
         expectedPortfolios.add(new Portfolio(USER_ID, PORTFOLIO_NAME));
 
@@ -47,7 +47,7 @@ public class DefaultPortfolioServiceTest {
     }
 
     @Test
-    public void getAllUserPortfoliosDAOExceptionTest() {
+    public void getAllUserPortfoliosDAOExceptionTest() throws DAOException {
         Mockito.when(portfolioDAO.getAllUserPortfolios(USER_ID)).thenThrow(EXCEPTION);
         try {
             portfolioService.getAllUserPortfolios(USER_ID);
@@ -57,14 +57,14 @@ public class DefaultPortfolioServiceTest {
     }
 
     @Test
-    public void getPortfolioReturnPortfolioTest() {
+    public void getPortfolioReturnPortfolioTest() throws DAOException, ServiceException {
         Mockito.when(portfolioDAO.getPortfolio(PORTFOLIO_ID)).thenReturn(PORTFOLIO_NEW);
         Portfolio actualPortfolio = portfolioService.getPortfolio(PORTFOLIO_ID);
         Assert.assertEquals(PORTFOLIO_NEW, actualPortfolio);
     }
 
     @Test
-    public void getPortfolioDAOExceptionTest() {
+    public void getPortfolioDAOExceptionTest() throws DAOException {
         Mockito.when(portfolioDAO.getPortfolio(PORTFOLIO_ID)).thenThrow(EXCEPTION);
         try {
             portfolioService.getPortfolio(PORTFOLIO_ID);
@@ -85,13 +85,13 @@ public class DefaultPortfolioServiceTest {
     }
 
     @Test
-    public void addPortfolioInvocationTest() {
+    public void addPortfolioInvocationTest() throws ServiceException, DAOException {
         portfolioService.addPortfolio(PORTFOLIO_NEW);
         Mockito.verify(portfolioDAO).savePortfolio(PORTFOLIO_NEW);
     }
 
     @Test
-    public void addPortfolioDAOExceptionTest() {
+    public void addPortfolioDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXCEPTION).when(portfolioDAO).savePortfolio(PORTFOLIO_NEW);
         try {
             portfolioService.addPortfolio(PORTFOLIO_NEW);
@@ -101,7 +101,7 @@ public class DefaultPortfolioServiceTest {
     }
 
     @Test
-    public void updatePortfolioInvocationTest() {
+    public void updatePortfolioInvocationTest() throws ServiceException, DAOException {
         String [] parameters = {"a", "b", "c"};
 
         portfolioService.updatePortfolio(PORTFOLIO_NEW, parameters);
@@ -109,7 +109,7 @@ public class DefaultPortfolioServiceTest {
     }
 
     @Test
-    public void updatePortfolioDAOExceptionTest() {
+    public void updatePortfolioDAOExceptionTest() throws DAOException {
         String [] parameters = {"a", "b", "c"};
 
         Mockito.doThrow(EXCEPTION).when(portfolioDAO).updatePortfolio(PORTFOLIO_NEW, parameters);
@@ -121,13 +121,13 @@ public class DefaultPortfolioServiceTest {
     }
 
     @Test
-    public void removePortfolioInvocationTest() {
+    public void removePortfolioInvocationTest() throws ServiceException, DAOException {
         portfolioService.removePortfolio(PORTFOLIO_ID);
         Mockito.verify(portfolioDAO).removePortfolio(PORTFOLIO_ID);
     }
 
     @Test
-    public void removePortfolioDAOExceptionTest() {
+    public void removePortfolioDAOExceptionTest() throws DAOException {
         Mockito.doThrow(EXCEPTION).when(portfolioDAO).removePortfolio(PORTFOLIO_ID);
         try {
             portfolioService.removePortfolio(PORTFOLIO_ID);

@@ -29,7 +29,7 @@ public class GetAllUserPortfoliosAdminGetCommand extends AbstractCommandExecutor
             req.setAttribute(Constants.PORTFOLIOS_LIST, allPortfolios);
         } catch (ServiceException e) {
             LOGGER.error("GetAllUserPortfoliosGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE, req, resp);
     }

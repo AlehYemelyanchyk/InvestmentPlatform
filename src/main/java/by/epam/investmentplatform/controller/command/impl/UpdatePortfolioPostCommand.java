@@ -26,7 +26,7 @@ public class UpdatePortfolioPostCommand extends AbstractCommandExecutor {
             portfolioService.updatePortfolio(portfolio, parameters);
         } catch (ServiceException e) {
             LOGGER.error("UpdatePortfolioPostCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.setAttribute(Constants.REDIRECT_LINK, JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

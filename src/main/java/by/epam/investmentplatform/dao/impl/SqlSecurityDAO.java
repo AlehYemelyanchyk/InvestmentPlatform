@@ -15,7 +15,7 @@ import java.sql.*;
 import java.util.List;
 
 class SqlSecurityDAO implements SecurityDAO {
-    private static final Logger LOGGER = LogManager.getLogger(SqlSecurityDAO.class);
+    private static final Logger LOGGER = LogManager.getLogger();
     private static final DefaultConnectionPool CONNECTION_POOL = DefaultConnectionPool.getConnectionPoolInstance();
 
     @Override
@@ -437,7 +437,7 @@ class SqlSecurityDAO implements SecurityDAO {
     }
 
     @Override
-    public void removeSecurityFromPortfolio(int portfolioId, String symbol) {
+    public void removeSecurityFromPortfolio(int portfolioId, String symbol) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
         try {

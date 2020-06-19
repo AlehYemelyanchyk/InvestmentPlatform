@@ -5,7 +5,7 @@
     <short-name>tags</short-name>
     <tag>
         <name>getCurrentDate</name>
-        <tag-class>by.epam.investmentplatform.controller.tag.getCurrentDateTag</tag-class>
+        <tag-class>by.epam.investmentplatform.controller.tag.GetCurrentDateTag</tag-class>
         <body-content>empty</body-content>
     </tag>
 </taglib>

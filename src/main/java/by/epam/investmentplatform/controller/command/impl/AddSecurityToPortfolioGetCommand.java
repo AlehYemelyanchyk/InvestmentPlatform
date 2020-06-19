@@ -35,7 +35,7 @@ public class AddSecurityToPortfolioGetCommand extends AbstractCommandExecutor {
             req.setAttribute(Constants.PORTFOLIOS_LIST, portfolios);
         } catch (ServiceException e) {
             LOGGER.error("AddSecurityToPortfolioGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
 
         req.getSession().setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);

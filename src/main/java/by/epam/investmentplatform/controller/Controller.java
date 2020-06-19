@@ -14,7 +14,6 @@ import static by.epam.investmentplatform.Constants.COMMAND_ATTRIBUTE;
 
 @WebServlet("/controllerServlet")
 public class Controller extends HttpServlet {
-    private static final long serialVersionUID = 3164262627368034557L;
     private static final CommandProvider commandProvider = CommandProvider.getInstance();
 
     @Override

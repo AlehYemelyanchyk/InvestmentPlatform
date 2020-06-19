@@ -23,7 +23,7 @@ public class RemoveUserPostCommand extends AbstractCommandExecutor {
             userService.deleteUser(user);
         } catch (ServiceException e) {
             LOGGER.error("RemoveUserPostCommand error: ", e);
-            throw new ServiceException("Incorrect values");
+            throw new ServletException("Incorrect values");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

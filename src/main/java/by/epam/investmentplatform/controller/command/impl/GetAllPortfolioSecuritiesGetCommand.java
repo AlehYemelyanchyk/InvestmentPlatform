@@ -48,7 +48,7 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommandExecutor
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
         } catch (ServiceException e){
             LOGGER.error("GetAllPortfolioSecuritiesGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
 
         fillPortfolioSecuritiesMap(securities, allPortfolioSecurities, allPortfolioTransactions);

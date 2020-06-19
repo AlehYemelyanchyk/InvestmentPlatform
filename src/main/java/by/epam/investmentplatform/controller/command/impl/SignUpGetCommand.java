@@ -21,7 +21,7 @@ public class SignUpGetCommand extends AbstractCommandExecutor {
             countries = userService.getAllCountries();
         } catch (ServiceException e) {
             LOGGER.error("SignUpGetCommand error: ", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.getSession().setAttribute(Constants.COUNTRIES_LIST, countries);
         RoutingUtils.forwardToPage(JspPageName.SIGN_UP_PAGE, req, resp);

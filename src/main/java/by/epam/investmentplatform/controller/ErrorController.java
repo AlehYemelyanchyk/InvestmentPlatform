@@ -12,7 +12,6 @@ import java.io.IOException;
 
 @WebServlet("/errorServlet")
 public class ErrorController extends HttpServlet {
-    private static final long serialVersionUID = -31640364473886345L;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {

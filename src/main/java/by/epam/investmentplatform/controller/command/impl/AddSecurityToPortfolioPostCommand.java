@@ -29,7 +29,7 @@ public class AddSecurityToPortfolioPostCommand extends AbstractCommandExecutor {
             securityService.saveTransaction(transaction);
         } catch (ServiceException e) {
             LOGGER.error("AddSecurityToPortfolioPostCommand error", e);
-            throw new ServiceException("Incorrect values.");
+            throw new ServletException("Incorrect values.");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_SECURITIES_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

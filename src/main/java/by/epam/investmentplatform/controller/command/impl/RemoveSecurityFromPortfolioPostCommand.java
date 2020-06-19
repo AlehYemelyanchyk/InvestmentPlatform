@@ -22,7 +22,7 @@ public class RemoveSecurityFromPortfolioPostCommand extends AbstractCommandExecu
             securityService.removeSecurityFromPortfolio(portfolioId, securitySymbol);
         } catch (ServiceException e) {
             LOGGER.error("RemoveSecurityFromPortfolioPostCommand error: ", e);
-            throw new ServiceException("Incorrect values");
+            throw new ServletException("Incorrect values");
         }
         req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

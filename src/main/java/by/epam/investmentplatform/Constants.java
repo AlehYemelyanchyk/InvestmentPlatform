@@ -67,7 +67,7 @@ public final class Constants {
     public static final String USER_ID = "USER_ID";
     public static final int ZERO_LIST_ELEMENT = 0;
 
-    public Constants() {
+    private Constants() {
         throw new UnsupportedOperationException();
     }
 }
