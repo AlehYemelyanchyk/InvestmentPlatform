@@ -10,6 +10,7 @@
 <head>
     <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
     <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
+    te
     <link rel="stylesheet" href="static/css/chart.min.css">
     <title>Security</title>
 </head>
@@ -73,67 +74,7 @@
         </div>
     </form>
 </div>
-<script>
-    let randomScalingFactor = function () {
-        return Math.round(Math.random() * 100);
-    };
-
-    let dates = document.getElementById("dates").getAttribute("value");
-    let prices = document.getElementById("prices").getAttribute("value");
-    let securityname = document.getElementById("securityName").getAttribute("value");
-    let datestrimmed = dates.substring(1, dates.length - 1);
-    let pricepoints = Array.from((prices.split(", ")));
-    let datelabels = Array.from((datestrimmed.split(", ")));
-
-    let config = {
-        type: 'line',
-        data: {
-            labels: datelabels,
-            datasets: [{
-                label: securityname,
-                data: pricepoints,
-                borderColor: window.chartColors.green,
-                backgroundColor: 'rgba(0, 0, 0, 0)',
-                fill: false,
-                lineTension: 0
-            }]
-        },
-        options: {
-            responsive: true,
-            title: {
-                display: true,
-                text: 'Nasdaq Delayed Price. Currency in USD'
-            },
-            tooltips: {
-                mode: 'index'
-            },
-            scales: {
-                xAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true
-                    }
-                }],
-                yAxes: [{
-                    display: true,
-                    scaleLabel: {
-                        display: true,
-                        labelString: 'Value'
-                    },
-                    ticks: {
-                        suggestedMin: 0,
-                        suggestedMax: 200,
-                    }
-                }]
-            }
-        }
-    };
-
-    window.onload = function () {
-        var ctx = document.getElementById('canvas').getContext('2d');
-        window.myLine = new Chart(ctx, config);
-    };
-</script>
+<script src="static/js/charts.js"></script>
 </body>
 
 </html>
