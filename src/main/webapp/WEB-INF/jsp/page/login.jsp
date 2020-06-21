@@ -19,18 +19,18 @@
         <div class="col-md-4">
             <form action="${pageContext.request.contextPath}/login" method="POST">
                 <div class="form-group">
-                    <label for="exampleInputEmail1"><fmt:message key="label.login2"/></label>
-                    <input type="text" name="login" class="form-control" id="exampleInputEmail1"
+                    <label for="login"><fmt:message key="label.login2"/></label>
+                    <input type="text" name="login" class="form-control" id="login"
                            placeholder=<fmt:message key="label.login2"/>>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1"><fmt:message key="label.password"/></label>
-                    <input type="password" name="password" class="form-control" id="exampleInputPassword1"
+                    <label for="password"><fmt:message key="label.password"/></label>
+                    <input type="password" name="password" class="form-control" id="password"
                            placeholder="<fmt:message key="label.password"/>">
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                    <input type="checkbox" class="form-check-input" id="checkbox">
+                    <label class="form-check-label" for="checkbox">Remember me</label>
                 </div>
                 <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
                         key="label.submit"/>
