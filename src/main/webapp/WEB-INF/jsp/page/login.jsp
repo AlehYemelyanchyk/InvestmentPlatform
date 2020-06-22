@@ -17,19 +17,29 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form action="${pageContext.request.contextPath}/login" method="POST">
+            <form id="form" class="needs-validation" novalidate action="${pageContext.request.contextPath}/login"
+                  method="POST">
                 <div class="form-group">
                     <label for="login"><fmt:message key="label.login2"/></label>
                     <input type="text" name="login" class="form-control" id="login"
-                           placeholder=<fmt:message key="label.login2"/>>
+                           placeholder="<fmt:message key="label.login2"/>"
+                           required
+                           data-value-missing="Please, enter login">
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-group">
                     <label for="password"><fmt:message key="label.password"/></label>
                     <input type="password" name="password" class="form-control" id="password"
-                           placeholder="<fmt:message key="label.password"/>">
+                           placeholder="<fmt:message key="label.password"/>"
+                           required
+                           data-value-missing="Please, enter password">
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
                 </div>
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="checkbox">
+                    <input type="checkbox" class="form-check-input" id="checkbox"
+                           data-value-missing="You must agree before submitting">
                     <label class="form-check-label" for="checkbox">Remember me</label>
                 </div>
                 <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message

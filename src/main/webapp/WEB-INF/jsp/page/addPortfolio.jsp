@@ -15,21 +15,23 @@
 <div id="container">
     <br/>
 
-        <form action="addPortfolio" method="POST">
-            <table class="login">
-                <tbody>
-                <tr>
-                    <td><label><fmt:message key="label.name"/>: </label></td>
-                    <td><input type="text" name="name"></td>
-                </tr>
-                <tr>
-                    <td><label></label></td>
-                    <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.add"/>"
-                               class="save" onclick="XSSPrevent()"></td>
-                </tr>
-                </tbody>
-            </table>
-        </form>
-</div>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form id="form" class="needs-validation" novalidate
+                  action="${pageContext.request.contextPath}/addPortfolio" method="POST">
+                <div class="form-group">
+                    <label for="name"><fmt:message key="label.name"/></label>
+                    <input type="text" name="name" class="form-control" id="name"
+                           required
+                           data-value-missing="Please, enter portfolio name">
+                    <div class="valid-feedback">Good!</div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
+                        key="label.submit"/>
+                </button>
+            </form>
+        </div>
 </body>
 </html>

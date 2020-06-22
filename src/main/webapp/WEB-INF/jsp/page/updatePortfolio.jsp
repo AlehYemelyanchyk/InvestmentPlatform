@@ -11,34 +11,38 @@
     <title>Update portfolio</title>
 </head>
 <body>
-<%--<div id="header">--%>
-<%--    <h4 align="center">--%>
-<%--        <fmt:message key="label.editPortfolio"/>--%>
-<%--    </h4>--%>
-<%--</div>--%>
-
 <div id="container">
-    <form action="${pageContext.request.contextPath}/updatePortfolio" method="POST">
-        <table class="login">
-            <tbody>
-            <tr>
-                <td><input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO.id}"></td>
-                <td><input type="hidden" name="PORTFOLIO_USER_ID" value="${PORTFOLIO.user_id}"></td>
-            </tr>
 
-            <tr>
-                <td><label><fmt:message key="label.name"/>: </label></td>
-                <td><input type="text" name="name" value="${PORTFOLIO.name}"></td>
-            </tr>
-
-            <tr>
-                <td><label></label></td>
-                <td><input type="submit" class="btn btn-primary" value="<fmt:message key="label.submit"/>"
-                           class="save" onclick="XSSPrevent()"></td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form id="form" class="needs-validation" novalidate
+                  action="${pageContext.request.contextPath}/updatePortfolio" method="POST">
+                <div>
+                    <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO.id}">
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div>
+                    <input type="hidden" name="PORTFOLIO_USER_ID" value="${PORTFOLIO.user_id}">
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                    <label for="name"><fmt:message key="label.name"/></label>
+                    <input type="text" name="name" class="form-control" id="name"
+                           value="${PORTFOLIO.name}"
+                           required
+                           data-value-missing="Please, enter portfolio name">
+                    <div class="valid-feedback">Good!</div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
+                        key="label.submit"/>
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

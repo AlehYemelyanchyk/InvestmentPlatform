@@ -55,7 +55,6 @@
                         <th><fmt:message key="label.symbol"/></th>
                         <th><fmt:message key="label.name"/></th>
                         <th>Users hold</th>
-                        <th></th>
                     </tr>
                     </thead>
                     <tbody>

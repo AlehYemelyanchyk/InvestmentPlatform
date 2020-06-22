@@ -10,7 +10,6 @@
 <head>
     <script src="https://www.chartjs.org/dist/2.9.3/Chart.min.js"></script>
     <script src="https://www.chartjs.org/samples/latest/utils.js"></script>
-    te
     <link rel="stylesheet" href="static/css/chart.min.css">
     <title>Security</title>
 </head>

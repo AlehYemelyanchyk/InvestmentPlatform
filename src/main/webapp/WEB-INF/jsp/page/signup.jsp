@@ -17,7 +17,6 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <div id="error"></div>
             <form id="form" class="needs-validation" novalidate action="${pageContext.request.contextPath}/signup"
                   method="POST">
                 <div class="form-group">

@@ -152,13 +152,14 @@ class SqlUserDAO implements UserDAO {
         String country = getCountry(user.getCountry());
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "UPDATE invest.users SET email = ?, name = ?, surname = ?, country = ? WHERE id = ?";
+            String sqlQuery = "UPDATE invest.users SET password = ?, email = ?, name = ?, surname = ?, country = ? WHERE id = ?";
             statement = connection.prepareStatement(sqlQuery);
-            statement.setString(1, user.getEmail());
-            statement.setString(2, user.getName());
-            statement.setString(3, user.getSurname());
-            statement.setString(4, country);
-            statement.setInt(5, user.getId());
+            statement.setString(1, user.getPassword());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getName());
+            statement.setString(4, user.getSurname());
+            statement.setString(5, country);
+            statement.setInt(6, user.getId());
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {

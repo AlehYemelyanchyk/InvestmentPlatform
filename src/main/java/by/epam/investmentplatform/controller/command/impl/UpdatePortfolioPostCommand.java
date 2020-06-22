@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
+import by.epam.investmentplatform.CommandsConstants;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Portfolio;
@@ -28,7 +29,7 @@ public class UpdatePortfolioPostCommand extends AbstractCommandExecutor {
             LOGGER.error("UpdatePortfolioPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(Constants.REDIRECT_LINK, JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE);
+        req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }
