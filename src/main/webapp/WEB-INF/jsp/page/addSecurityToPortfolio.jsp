@@ -23,6 +23,8 @@
             <form id="form" class="needs-validation" novalidate
                   action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="POST">
 
+                <project-tag:getCurrentDate/>
+
                 <div>
                     <input type="hidden" name="SECURITY_SYMBOL" value="${SECURITY_SYMBOL}">
                     <div class="valid-feedback"></div>
@@ -79,7 +81,7 @@
                 <div class="form-group">
                     <label for="date"><fmt:message key="label.date"/>: </label>
                     <input type="date" name="DATE" class="form-control" id="date"
-                           value="<project-tag:getCurrentDate/>"
+                           value="${DATE}"
                            min="1970-01-01" max="2099-12-31"
                            required
                            data-value-missing="Please, enter date">
@@ -91,15 +93,6 @@
                 </button>
             </form>
         </div>
-        <script>
-            $(function(){
-                $('#date').datepicker({
-                    format: 'yyyy-mm-dd',
-                    endDate: '+0d',
-                    autoclose: true
-                });
-            });
-        </script>
         <script>
             function isNumber(event) {
                 var keycode = event.keyCode;
