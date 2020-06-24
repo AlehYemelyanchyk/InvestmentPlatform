@@ -7,9 +7,6 @@
 <body>
 <div>
     <p>
-    <h2>Code: ${STATUS_CODE}</h2>
-    </p>
-    <p>
         <c:out value="${ERROR_ATTRIBUTE}"/>
     </p>
     <c:choose>

@@ -46,7 +46,7 @@
             <tbody>
             <c:forEach var="user" items="${USERS_LIST}">
 
-                <c:url var="userLink" value="getAllUserPortfoliosAdmin">
+                <c:url var="userLink" value="getUserSettingsAdmin">
                     <c:param name="PORTFOLIO_USER_ID" value="${user.id}"/>
                 </c:url>
 

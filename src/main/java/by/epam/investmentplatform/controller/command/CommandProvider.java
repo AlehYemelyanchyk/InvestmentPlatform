@@ -34,6 +34,7 @@ public final class CommandProvider {
         repository.put(CommandsConstants.GET_ALL_USERS_COMMAND + GET_METHOD, new GetAllUsersGetCommand());
         repository.put(CommandsConstants.GET_BALANCE_COMMAND + GET_METHOD, new GetBalanceGetCommand());
         repository.put(CommandsConstants.GET_SECURITY_COMMAND + GET_METHOD, new GetSecurityGetCommand());
+        repository.put(CommandsConstants.GET_USER_SETTINGS_ADMIN_COMMAND + GET_METHOD, new GetUserSettingsAdminGetCommand());
         repository.put(CommandsConstants.LOAN_COMMAND + GET_METHOD, new LoanGetCommand());
         repository.put(CommandsConstants.LOAN_COMMAND + POST_METHOD, new LoanPostCommand());
         repository.put(CommandsConstants.LOGIN_COMMAND + GET_METHOD, new LogInGetCommand());

@@ -19,16 +19,16 @@ public class GetAllUserPortfoliosAdminGetCommand extends AbstractCommandExecutor
             throws ServletException, IOException {
         int userId;
         try {
-            if (req.getParameter(Constants.PORTFOLIO_USER_ID) != null) {
-                userId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_USER_ID));
+            if (req.getParameter(Constants.USER_ID) != null) {
+                userId = Integer.parseInt(req.getParameter(Constants.USER_ID));
             } else {
-                userId = (int) (req.getSession().getAttribute(Constants.PORTFOLIO_USER_ID));
+                userId = (int) (req.getSession().getAttribute(Constants.USER_ID));
             }
             List<Portfolio> allPortfolios = portfolioService.getAllUserPortfolios(userId);
-            req.getSession().setAttribute(Constants.PORTFOLIO_USER_ID, userId);
+            req.getSession().setAttribute(Constants.USER_ID, userId);
             req.setAttribute(Constants.PORTFOLIOS_LIST, allPortfolios);
         } catch (ServiceException e) {
-            LOGGER.error("GetAllUserPortfoliosGetCommand error: ", e);
+            LOGGER.error("GetAllUserPortfoliosAdminGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE, req, resp);
