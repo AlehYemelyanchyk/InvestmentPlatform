@@ -1,5 +1,5 @@
-const tabs = document.querySelectorAll('[data-tab-target]')
-const tabContent = document.querySelectorAll('[data-tab-content]')
+let tabs = document.querySelectorAll('[data-tab-target]')
+let tabContent = document.querySelectorAll('[data-tab-content]')
 let table
 
 tabs.forEach(tab => {
