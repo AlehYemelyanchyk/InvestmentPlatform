@@ -27,14 +27,14 @@ public class GetUserSettingsAdminGetCommand extends AbstractCommandExecutor {
             userBanStatus = (String) (req.getSession().getAttribute(NamesConstants.USER_BAN_STATUS));
         }
         String transactionBanStatus;
-        if (req.getParameter(NamesConstants.TRANSACTION_BAN_STATUS) != null) {
-            transactionBanStatus = req.getParameter(NamesConstants.TRANSACTION_BAN_STATUS);
+        if (req.getParameter(NamesConstants.TRANSACTIONS_BAN_STATUS) != null) {
+            transactionBanStatus = req.getParameter(NamesConstants.TRANSACTIONS_BAN_STATUS);
         } else {
-            transactionBanStatus = (String) (req.getSession().getAttribute(NamesConstants.TRANSACTION_BAN_STATUS));
+            transactionBanStatus = (String) (req.getSession().getAttribute(NamesConstants.TRANSACTIONS_BAN_STATUS));
         }
         req.getSession().setAttribute(NamesConstants.USER_ID, userId);
         req.getSession().setAttribute(NamesConstants.USER_BAN_STATUS, userBanStatus);
-        req.getSession().setAttribute(NamesConstants.TRANSACTION_BAN_STATUS, transactionBanStatus);
+        req.getSession().setAttribute(NamesConstants.TRANSACTIONS_BAN_STATUS, transactionBanStatus);
         RoutingUtils.forwardToPage(JspPageName.USER_SETTINGS_ADMIN_PAGE, req, resp);
     }
 }

@@ -65,12 +65,12 @@
                     <div class="custom-control custom-switch">
                         <form action="${pageContext.request.contextPath}/banUserTransactions" method="POST">
                             <c:choose>
-                                <c:when test="${TRANSACTION_BAN_STATUS == 1}">
-                                    <input checked type="checkbox" name="TRANSACTION_BAN_STATUS" class="custom-control-input"
+                                <c:when test="${TRANSACTIONS_BAN_STATUS == 1}">
+                                    <input checked type="checkbox" name="TRANSACTIONS_BAN_STATUS" class="custom-control-input"
                                            id="customSwitch2">
                                 </c:when>
                                 <c:otherwise>
-                                    <input type="checkbox" name="TRANSACTION_BAN_STATUS" class="custom-control-input"
+                                    <input type="checkbox" name="TRANSACTIONS_BAN_STATUS" class="custom-control-input"
                                            id="customSwitch2">
                                 </c:otherwise>
                             </c:choose>

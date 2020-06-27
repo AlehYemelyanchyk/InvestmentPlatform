@@ -19,7 +19,7 @@ public class BanUserTransactionsPostCommand extends AbstractCommandExecutor {
         String banStatus;
         try {
             int userId = (int) req.getSession().getAttribute(NamesConstants.USER_ID);
-            banStatus = req.getParameter(NamesConstants.TRANSACTION_BAN_STATUS);
+            banStatus = req.getParameter(NamesConstants.TRANSACTIONS_BAN_STATUS);
             if (Constants.BAN_STATUS_ACTIVE.equals(banStatus)) {
                 banStatus = Constants.BAN_STATUS_ACTIVE;
             } else {
@@ -27,7 +27,7 @@ public class BanUserTransactionsPostCommand extends AbstractCommandExecutor {
             }
             String[] params = {banStatus};
             userService.updateUserTransactionBanStatus(userId, params);
-            req.getSession().setAttribute(NamesConstants.TRANSACTION_BAN_STATUS, banStatus);
+            req.getSession().setAttribute(NamesConstants.TRANSACTIONS_BAN_STATUS, banStatus);
         } catch (ServiceException e) {
             LOGGER.error("BanUserTransactionsPostCommand error: ", e);
             throw new ServletException("Incorrect values.");

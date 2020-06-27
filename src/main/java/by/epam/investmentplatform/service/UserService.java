@@ -41,11 +41,30 @@ public interface UserService {
     User getUser(String login) throws ServiceException;
 
     /**
+     * Retrieves all banned users id, registered in the system and stored in a data source.
+     *
+     * @return list of id, which can't be null, but can be empty if there is no banned users
+     * in the data source.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    List<Integer> getBannedUsersIdList() throws ServiceException;
+
+    /**
+     * Retrieves all users id with banned transactions option, registered in the system and stored in a data source.
+     *
+     * @return list of id, which can't be null, but can be empty if there is no banned users
+     * in the data source.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    List<Integer> getBannedTransactionsUsersIdList() throws ServiceException;
+
+    /**
      * Stores a new user in a data source.
      *
      * @param user is a new transaction object which should be stored in a date source.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
+
     void signUp(User user) throws ServiceException;
 
     /**

@@ -17,7 +17,29 @@
             <url-pattern>/userSettings</url-pattern>
             <url-pattern>/updateUser</url-pattern>
             <url-pattern>/getBalance</url-pattern>
+            <url-pattern>/addPortfolio</url-pattern>
+            <url-pattern>/addSecurity</url-pattern>
+            <url-pattern>/addSecurityToPortfolio</url-pattern>
+            <url-pattern>/addUserAdmin</url-pattern>
+            <url-pattern>/adminSettings</url-pattern>
         </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CheckUserBanStatusFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CheckUserTransactionsBanStatusFilter</filter-name>
+        <url-pattern>/addSecurityToPortfolio</url-pattern>
+        <url-pattern>/deposit</url-pattern>
+        <url-pattern>/loan</url-pattern>
+        <url-pattern>/removePortfolio</url-pattern>
+        <url-pattern>/removeSecurityFromPortfolio</url-pattern>
+        <url-pattern>/removeTransaction</url-pattern>
+        <url-pattern>/updateTransaction</url-pattern>
+        <url-pattern>/withdraw</url-pattern>
+    </filter-mapping>
 
     <filter-mapping>
         <filter-name>LocaleFilter</filter-name>
@@ -29,8 +51,6 @@
         <filter-name>UrlFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
-
-
 
 <!--    Session support with Cookies only.-->
     <session-config>

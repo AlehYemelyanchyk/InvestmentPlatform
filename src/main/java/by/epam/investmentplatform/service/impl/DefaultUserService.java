@@ -49,6 +49,26 @@ class DefaultUserService implements UserService {
     }
 
     @Override
+    public List<Integer> getBannedUsersIdList() throws ServiceException {
+        try {
+            return getUserDAO().getBannedUsersIdList();
+        } catch (DAOException e) {
+            LOGGER.error("getBannedUsersIdList error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public List<Integer> getBannedTransactionsUsersIdList() throws ServiceException {
+        try {
+            return getUserDAO().getBannedTransactionsUsersIdList();
+        } catch (DAOException e) {
+            LOGGER.error("getBannedTransactionsUsersIdList error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void signUp(User user) throws ServiceException {
         UserValidationUtils.userValidation(user);
         UserValidationUtils.loginValidation(user.getLogin());

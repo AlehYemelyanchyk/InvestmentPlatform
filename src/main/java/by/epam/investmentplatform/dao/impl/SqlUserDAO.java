@@ -114,6 +114,64 @@ class SqlUserDAO implements UserDAO {
     }
 
     @Override
+    public List<Integer> getBannedUsersIdList() throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Integer> bannedUsersIdList;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT id " +
+                    "FROM invest.users " +
+                    "WHERE banned = 1";
+            statement = connection.prepareStatement(sqlQuery);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            bannedUsersIdList = DAOUtils.bannedUsersResultSetHandle(resultSet);
+        } catch (Exception e) {
+            LOGGER.error("getBannedUsersIdList error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("getBannedUsersIdList close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return bannedUsersIdList;
+    }
+
+    @Override
+    public List<Integer> getBannedTransactionsUsersIdList() throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Integer> bannedUsersIdList;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT id " +
+                    "FROM invest.users " +
+                    "WHERE transactionBanned = 1";
+            statement = connection.prepareStatement(sqlQuery);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            bannedUsersIdList = DAOUtils.bannedUsersResultSetHandle(resultSet);
+        } catch (Exception e) {
+            LOGGER.error("getBannedTransactionsUsersIdList error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("getBannedTransactionsUsersIdList close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return bannedUsersIdList;
+    }
+
+    @Override
     public void saveUser(User user) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;

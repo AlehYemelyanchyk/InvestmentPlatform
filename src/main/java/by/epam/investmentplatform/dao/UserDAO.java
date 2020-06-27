@@ -14,6 +14,10 @@ public interface UserDAO {
 
     User getUser(String login) throws DAOException;
 
+    List<Integer> getBannedUsersIdList() throws DAOException;
+
+    List<Integer> getBannedTransactionsUsersIdList() throws DAOException;
+
     void saveUser(User user) throws DAOException;
 
     void updateUser(User user, String[] params) throws DAOException;

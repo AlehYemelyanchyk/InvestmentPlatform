@@ -32,6 +32,15 @@ public final class DAOUtils {
         return users;
     }
 
+    public static List<Integer> bannedUsersResultSetHandle(ResultSet resultSet) throws SQLException {
+        List<Integer> bannedUsers = new ArrayList<>();
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            bannedUsers.add(id);
+        }
+        return bannedUsers;
+    }
+
     public static List<Portfolio> portfoliosResultSetHandle(ResultSet resultSet) throws SQLException {
         List<Portfolio> portfolios = new ArrayList<>();
         while (resultSet.next()) {
