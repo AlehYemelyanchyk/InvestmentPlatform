@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.filter;
 
 import by.epam.investmentplatform.CommandsConstants;
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 
 import javax.servlet.FilterChain;
@@ -60,7 +61,7 @@ public class UrlFilter extends AbstractFilter {
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         // saving url of the initial request, because we override it on the line 29 with "/app".
         String requestStr = req.getRequestURI();
-        String[] splitRequest = requestStr.split("/");
+        String[] splitRequest = requestStr.split(Constants.URL_DELIMITER);
         String commandName = splitRequest[splitRequest.length - 1];
         req.setAttribute(NamesConstants.COMMAND_ATTRIBUTE, commandName);
         if (BUSINESS_URIS.contains(commandName)) {

@@ -11,6 +11,7 @@ public final class Constants {
     public static final String ROLE_ADMIN = "1";
     public static final String ROLE_GUEST = "3";
     public static final String ROLE_USER = "2";
+    public static final String URL_DELIMITER = "/";
     public static final int ZERO_LIST_ELEMENT = 0;
 
     private Constants() {
