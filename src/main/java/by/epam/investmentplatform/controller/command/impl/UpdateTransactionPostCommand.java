@@ -1,7 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -18,14 +18,14 @@ public class UpdateTransactionPostCommand extends AbstractCommandExecutor {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String date = req.getParameter(Constants.DATE);
+        String date = req.getParameter(NamesConstants.DATE);
         Transaction transaction = new Transaction(
-                (Integer.parseInt(req.getParameter(Constants.TRANSACTION_ID))),
-                (Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID))),
-                (req.getParameter(Constants.SECURITY_SYMBOL)),
-                (Integer.parseInt(req.getParameter(Constants.TRANSACTION_TYPE))),
-                (Integer.parseInt(req.getParameter(Constants.AMOUNT))),
-                (Double.parseDouble(req.getParameter(Constants.PRICE))),
+                (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_ID))),
+                (Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID))),
+                (req.getParameter(NamesConstants.SECURITY_SYMBOL)),
+                (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE))),
+                (Integer.parseInt(req.getParameter(NamesConstants.AMOUNT))),
+                (Double.parseDouble(req.getParameter(NamesConstants.PRICE))),
                 new Date());
         String[] parameters = {date};
         try {
@@ -34,7 +34,7 @@ public class UpdateTransactionPostCommand extends AbstractCommandExecutor {
             LOGGER.error("UpdateTransactionPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

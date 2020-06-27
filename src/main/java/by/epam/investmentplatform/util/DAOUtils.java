@@ -24,7 +24,9 @@ public final class DAOUtils {
                     resultSet.getString("email"),
                     resultSet.getString("name"),
                     resultSet.getString("surname"),
-                    resultSet.getString("country"));
+                    resultSet.getString("country"),
+                    resultSet.getString("banned"),
+                    resultSet.getString("transactionBanned"));
             users.add(tempUser);
         }
         return users;

@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.filter;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.controller.exception.AbstractApplicationException;
 import by.epam.investmentplatform.controller.exception.InternalServerErrorException;
@@ -29,9 +29,9 @@ public class ErrorHandlerFilter extends AbstractFilter {
             LOGGER.error("Request " + requestUrl + " error: " + th.getMessage(), th);
             int statusCode = getStatusCode(th);
             resp.setStatus(statusCode);
-            req.setAttribute(Constants.STATUS_CODE, statusCode);
+            req.setAttribute(NamesConstants.STATUS_CODE, statusCode);
             if (th instanceof AbstractApplicationException) {
-                req.setAttribute(Constants.ERROR_ATTRIBUTE, th.getMessage());
+                req.setAttribute(NamesConstants.ERROR_ATTRIBUTE, th.getMessage());
             }
             RoutingUtils.forwardToPage(JspPageName.ERROR_PAGE, req, resp);
         }
@@ -53,7 +53,7 @@ public class ErrorHandlerFilter extends AbstractFilter {
 
         @Override
         public void sendError(int sc) throws IOException {
-            sendError(sc, Constants.INTERNAL_ERROR);
+            sendError(sc, NamesConstants.INTERNAL_ERROR);
         }
 
         @Override

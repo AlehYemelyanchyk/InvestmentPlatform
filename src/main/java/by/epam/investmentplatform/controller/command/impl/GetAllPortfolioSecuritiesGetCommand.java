@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
@@ -25,21 +25,21 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommandExecutor
         Map<String, PortfolioSecurity> securities = new HashMap<>();
 
         int portfolioId;
-        if(req.getParameter(Constants.PORTFOLIO_ID) != null) {
-            portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
+        if(req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
+            portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
         } else {
-            portfolioId = (int) req.getSession().getAttribute(Constants.PORTFOLIO_ID);
+            portfolioId = (int) req.getSession().getAttribute(NamesConstants.PORTFOLIO_ID);
         }
 
         String portfolioName;
-        if(req.getParameter(Constants.PORTFOLIO_ID) != null) {
-            portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
+        if(req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
+            portfolioName = req.getParameter(NamesConstants.PORTFOLIO_NAME);
         } else {
-            portfolioName = (String) req.getSession().getAttribute(Constants.PORTFOLIO_NAME);
+            portfolioName = (String) req.getSession().getAttribute(NamesConstants.PORTFOLIO_NAME);
         }
 
-        req.getSession().setAttribute(Constants.PORTFOLIO_ID, portfolioId);
-        req.getSession().setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
+        req.getSession().setAttribute(NamesConstants.PORTFOLIO_ID, portfolioId);
+        req.getSession().setAttribute(NamesConstants.PORTFOLIO_NAME, portfolioName);
 
         List<Security> allPortfolioSecurities;
         List<Transaction> allPortfolioTransactions;
@@ -53,8 +53,8 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommandExecutor
 
         fillPortfolioSecuritiesMap(securities, allPortfolioSecurities, allPortfolioTransactions);
 
-        req.setAttribute(Constants.PORTFOLIO_SECURITIES, securities);
-        req.setAttribute(Constants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
+        req.setAttribute(NamesConstants.PORTFOLIO_SECURITIES, securities);
+        req.setAttribute(NamesConstants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_PORTFOLIO_SECURITIES_PAGE, req, resp);
     }
 

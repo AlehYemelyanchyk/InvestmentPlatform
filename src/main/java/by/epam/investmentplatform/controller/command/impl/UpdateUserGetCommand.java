@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -19,11 +19,11 @@ public class UpdateUserGetCommand extends AbstractCommandExecutor {
             throws ServletException, IOException {
         try {
             List<String> countries = userService.getAllCountries();
-            req.getSession().setAttribute(Constants.COUNTRIES_LIST, countries);
+            req.getSession().setAttribute(NamesConstants.COUNTRIES_LIST, countries);
 
-            int userId = (int) (req.getSession().getAttribute(Constants.CURRENT_USER_ID));
+            int userId = (int) (req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID));
             User user = userService.getUser(userId);
-            req.setAttribute(Constants.CURRENT_USER, user);
+            req.setAttribute(NamesConstants.CURRENT_USER, user);
         } catch (ServiceException e) {
             LOGGER.error("UpdateUserGetCommand error: ", e);
             throw new ServletException("Incorrect values.");

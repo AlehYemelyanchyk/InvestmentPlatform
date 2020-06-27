@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
@@ -23,7 +23,7 @@ public class AddUserAdminGetCommand extends AbstractCommandExecutor {
             LOGGER.error("AddUserAdminGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.getSession().setAttribute(Constants.COUNTRIES_LIST, countries);
+        req.getSession().setAttribute(NamesConstants.COUNTRIES_LIST, countries);
         RoutingUtils.forwardToPage(JspPageName.ADD_USER_PAGE, req, resp);
     }
 }

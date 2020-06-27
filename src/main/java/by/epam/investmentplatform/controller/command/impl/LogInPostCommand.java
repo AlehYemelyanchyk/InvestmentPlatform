@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.controller.exception.AccessDeniedException;
 import by.epam.investmentplatform.entity.User;
@@ -20,8 +21,8 @@ public class LogInPostCommand extends AbstractCommandExecutor {
             throws ServletException, IOException {
         try {
             User user = userService.logIn(
-                    req.getParameter(Constants.REQUEST_USER_PARAM_LOGIN),
-                    req.getParameter(Constants.REQUEST_USER_PARAM_PASSWORD)
+                    req.getParameter(NamesConstants.REQUEST_USER_PARAM_LOGIN),
+                    req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD)
             );
             if (user == null) {
                 RuntimeException e = new AccessDeniedException("Login or password is not correct.");
@@ -29,16 +30,16 @@ public class LogInPostCommand extends AbstractCommandExecutor {
                 throw e;
             }
             HttpSession session = req.getSession(true);
-            session.setAttribute(Constants.CURRENT_USER_ID, user.getId());
-            session.setAttribute(Constants.CURRENT_USER_LOGIN, user.getLogin());
-            session.setAttribute(Constants.CURRENT_USER_ROLE, user.getRole());
+            session.setAttribute(NamesConstants.CURRENT_USER_ID, user.getId());
+            session.setAttribute(NamesConstants.CURRENT_USER_LOGIN, user.getLogin());
+            session.setAttribute(NamesConstants.CURRENT_USER_ROLE, user.getRole());
         } catch (ServiceException e) {
             LOGGER.error("LogInPostCommand error: ", e);
             throw new AccessDeniedException("Can not login. Wrong login or password.");
         }
-        if (req.getSession().getAttribute(Constants.REDIRECT_LINK) != null) {
+        if (req.getSession().getAttribute(NamesConstants.REDIRECT_LINK) != null) {
             RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
-        } else if (Constants.ROLE_ADMIN.equals(req.getSession().getAttribute(Constants.CURRENT_USER_ROLE))) {
+        } else if (Constants.ROLE_ADMIN.equals(req.getSession().getAttribute(NamesConstants.CURRENT_USER_ROLE))) {
             RoutingUtils.forwardToPage(JspPageName.ADMIN_SETTINGS_PAGE, req, resp);
         } else {
             RoutingUtils.forwardToPage(JspPageName.NEWS_PAGE, req, resp);

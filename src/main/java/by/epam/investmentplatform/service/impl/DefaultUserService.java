@@ -98,6 +98,26 @@ class DefaultUserService implements UserService {
     }
 
     @Override
+    public void updateUserBanStatus(int userId, String[] params) throws ServiceException {
+        try {
+            getUserDAO().updateUserBanStatus(userId, params);
+        } catch (DAOException e) {
+            LOGGER.error("updateUserBanStatus error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void updateUserTransactionBanStatus(int userId, String[] params) throws ServiceException {
+        try {
+            getUserDAO().updateUserTransactionBanStatus(userId, params);
+        } catch (DAOException e) {
+            LOGGER.error("updateUserTransactionBanStatus error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void deleteUser(User user) throws ServiceException {
         UserValidationUtils.userValidation(user);
         UserValidationUtils.loginValidation(user.getLogin());

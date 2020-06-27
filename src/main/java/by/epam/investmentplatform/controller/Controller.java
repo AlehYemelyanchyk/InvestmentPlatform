@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static by.epam.investmentplatform.Constants.COMMAND_ATTRIBUTE;
+import static by.epam.investmentplatform.NamesConstants.COMMAND_ATTRIBUTE;
 
 @WebServlet("/controllerServlet")
 public class Controller extends HttpServlet {

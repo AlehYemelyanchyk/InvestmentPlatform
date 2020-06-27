@@ -10,7 +10,7 @@ body {
     font-size: 2em;
 }
 
-#langs{
+#langs {
     background-color: #343a40;
     border: none;
 }
@@ -136,4 +136,8 @@ div.col-xs-4 {
 
 .hidden {
     visibility: hidden;
+}
+
+.custom-control.custom-switch{
+    height: 39px;
 }

@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -16,16 +16,16 @@ public class UpdateTransactionGetCommand extends AbstractCommandExecutor {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter(Constants.TRANSACTION_ID));
-        String portfolioName = req.getParameter(Constants.PORTFOLIO_NAME);
+        int id = Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_ID));
+        String portfolioName = req.getParameter(NamesConstants.PORTFOLIO_NAME);
         try {
             Transaction transaction = securityService.getTransaction(id);
-            req.setAttribute(Constants.TRANSACTION, transaction);
+            req.setAttribute(NamesConstants.TRANSACTION, transaction);
         } catch (ServiceException e) {
             LOGGER.error("UpdateTransactionGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(Constants.PORTFOLIO_NAME, portfolioName);
+        req.setAttribute(NamesConstants.PORTFOLIO_NAME, portfolioName);
         RoutingUtils.forwardToPage(JspPageName.UPDATE_TRANSACTION_PAGE, req, resp);
     }
 }

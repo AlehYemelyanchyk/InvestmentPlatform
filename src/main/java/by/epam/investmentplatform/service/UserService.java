@@ -70,6 +70,24 @@ public interface UserService {
     void updateUser(User user, String[] params) throws ServiceException;
 
     /**
+     * Updates the user's ban status in a data source.
+     *
+     * @param userId is an id of user for which the status are have to be updated.
+     * @param params an array of parameters with new values for the update.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    void updateUserBanStatus(int userId, String[] params) throws ServiceException;
+
+    /**
+     * Updates the user's transaction ban status in a data source.
+     *
+     * @param userId is an id of user for which the status are have to be updated.
+     * @param params an array of parameters with new values for the update.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    void updateUserTransactionBanStatus(int userId, String[] params) throws ServiceException;
+
+    /**
      * Deletes the user from a data source.
      *
      * @param user is a user which has to be deleted from a data source.
@@ -91,7 +109,7 @@ public interface UserService {
     /**
      * Adds a new transaction for the user.
      *
-     * @param id is a user's id in a data source.
+     * @param id                 is a user's id in a data source.
      * @param balanceTransaction a new transaction.
      */
     void addBalanceTransaction(int id, BalanceTransaction balanceTransaction) throws ServiceException;

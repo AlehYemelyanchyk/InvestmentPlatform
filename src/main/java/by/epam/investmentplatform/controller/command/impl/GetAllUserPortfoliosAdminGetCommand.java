@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Portfolio;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -19,14 +19,14 @@ public class GetAllUserPortfoliosAdminGetCommand extends AbstractCommandExecutor
             throws ServletException, IOException {
         int userId;
         try {
-            if (req.getParameter(Constants.USER_ID) != null) {
-                userId = Integer.parseInt(req.getParameter(Constants.USER_ID));
+            if (req.getParameter(NamesConstants.USER_ID) != null) {
+                userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
             } else {
-                userId = (int) (req.getSession().getAttribute(Constants.USER_ID));
+                userId = (int) (req.getSession().getAttribute(NamesConstants.USER_ID));
             }
             List<Portfolio> allPortfolios = portfolioService.getAllUserPortfolios(userId);
-            req.getSession().setAttribute(Constants.USER_ID, userId);
-            req.setAttribute(Constants.PORTFOLIOS_LIST, allPortfolios);
+            req.getSession().setAttribute(NamesConstants.USER_ID, userId);
+            req.setAttribute(NamesConstants.PORTFOLIOS_LIST, allPortfolios);
         } catch (ServiceException e) {
             LOGGER.error("GetAllUserPortfoliosAdminGetCommand error: ", e);
             throw new ServletException("Incorrect values.");

@@ -1,5 +1,7 @@
 package by.epam.investmentplatform.entity;
 
+import by.epam.investmentplatform.Constants;
+
 import java.io.Serializable;
 
 public class User implements Serializable {
@@ -14,6 +16,8 @@ public class User implements Serializable {
     private String name;
     private String surname;
     private String country;
+    private String banned;
+    private String transactionBanned;
 
     protected User() {
     }
@@ -27,6 +31,8 @@ public class User implements Serializable {
         this.name = name;
         this.surname = surname;
         this.country = country;
+        this.banned = Constants.BAN_STATUS_ACTIVE;
+        this.transactionBanned = Constants.BAN_STATUS_ACTIVE;
     }
 
     public User(String role, String login, String password, String email, String name, String surname, String country) {
@@ -37,6 +43,21 @@ public class User implements Serializable {
         this.name = name;
         this.surname = surname;
         this.country = country;
+        this.banned = Constants.BAN_STATUS_ACTIVE;
+        this.transactionBanned = Constants.BAN_STATUS_INACTIVE;
+    }
+
+    public User(int id, String role, String login, String password, String email, String name, String surname, String country, String banned, String transactionBanned) {
+        this.id = id;
+        this.role = role;
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.name = name;
+        this.surname = surname;
+        this.country = country;
+        this.banned = banned;
+        this.transactionBanned = transactionBanned;
     }
 
     public int getId() {
@@ -103,6 +124,22 @@ public class User implements Serializable {
         this.country = country;
     }
 
+    public String getBanned() {
+        return banned;
+    }
+
+    public void setBanned(String banned) {
+        this.banned = banned;
+    }
+
+    public String getTransactionBanned() {
+        return transactionBanned;
+    }
+
+    public void setTransactionBanned(String transactionBanned) {
+        this.transactionBanned = transactionBanned;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -132,6 +169,8 @@ public class User implements Serializable {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", country='" + country + '\'' +
+                ", banned='" + banned + '\'' +
+                ", transactionBanned='" + transactionBanned + '\'' +
                 '}';
     }
 }

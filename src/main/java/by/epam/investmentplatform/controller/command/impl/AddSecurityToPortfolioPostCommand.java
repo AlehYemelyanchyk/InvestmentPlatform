@@ -1,7 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -19,19 +19,19 @@ public class AddSecurityToPortfolioPostCommand extends AbstractCommandExecutor {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         Transaction transaction = new Transaction(
-                Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID)),
-                req.getParameter(Constants.SECURITY_SYMBOL),
-                Integer.parseInt(req.getParameter(Constants.TRANSACTION_TYPE)),
-                Integer.parseInt(req.getParameter(Constants.AMOUNT)),
-                Double.parseDouble(req.getParameter(Constants.PRICE)),
-                Date.valueOf(req.getParameter(Constants.DATE)));
+                Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID)),
+                req.getParameter(NamesConstants.SECURITY_SYMBOL),
+                Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE)),
+                Integer.parseInt(req.getParameter(NamesConstants.AMOUNT)),
+                Double.parseDouble(req.getParameter(NamesConstants.PRICE)),
+                Date.valueOf(req.getParameter(NamesConstants.DATE)));
         try {
             securityService.saveTransaction(transaction);
         } catch (ServiceException e) {
             LOGGER.error("AddSecurityToPortfolioPostCommand error", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_SECURITIES_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_SECURITIES_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

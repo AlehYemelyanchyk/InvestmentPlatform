@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.model.SecurityPrice;
@@ -25,9 +25,9 @@ public class GetSecurityGetCommand extends AbstractCommandExecutor {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
+        String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
         if (securitySymbol == null) {
-            securitySymbol = (String) req.getSession().getAttribute(Constants.SECURITY_SYMBOL);
+            securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
         }
         Security security;
         List<SecurityPrice> securityPrices;
@@ -45,8 +45,8 @@ public class GetSecurityGetCommand extends AbstractCommandExecutor {
 
         req.getSession().setAttribute("DATES", datesList);
         req.getSession().setAttribute("PRICES", pricesList);
-        req.setAttribute(Constants.SECURITY, security);
-        req.setAttribute(Constants.SECURITY_PRICES_LIST, securityPrices);
+        req.setAttribute(NamesConstants.SECURITY, security);
+        req.setAttribute(NamesConstants.SECURITY_PRICES_LIST, securityPrices);
         RoutingUtils.forwardToPage(JspPageName.GET_SECURITY_PAGE, req, resp);
     }
 

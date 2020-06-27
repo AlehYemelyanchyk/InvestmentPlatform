@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.tag;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 
 import javax.servlet.jsp.tagext.TagSupport;
 import java.text.SimpleDateFormat;
@@ -13,7 +13,7 @@ public class GetCurrentDateTag extends TagSupport {
     @Override
     public int doStartTag() {
         String date = new SimpleDateFormat(dataPattern).format(new Date());
-        pageContext.getSession().setAttribute(Constants.DATE, date);
+        pageContext.getSession().setAttribute(NamesConstants.DATE, date);
         return SKIP_BODY;
     }
 }

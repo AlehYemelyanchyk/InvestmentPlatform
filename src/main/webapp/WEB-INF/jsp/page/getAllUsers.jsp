@@ -48,6 +48,8 @@
 
                 <c:url var="userLink" value="getUserSettingsAdmin">
                     <c:param name="PORTFOLIO_USER_ID" value="${user.id}"/>
+                    <c:param name="USER_BAN_STATUS" value="${user.banned}"/>
+                    <c:param name="TRANSACTIONS_BAN_STATUS" value="${user.transactionBanned}"/>
                 </c:url>
 
                 <tr>

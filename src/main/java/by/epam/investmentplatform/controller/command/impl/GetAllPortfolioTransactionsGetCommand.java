@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -17,7 +17,7 @@ public class GetAllPortfolioTransactionsGetCommand extends AbstractCommandExecut
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
+        int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
 
         List<Transaction> allPortfolioTransactions;
         try {
@@ -26,7 +26,7 @@ public class GetAllPortfolioTransactionsGetCommand extends AbstractCommandExecut
             LOGGER.error("GetAllPortfolioTransactionsGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(Constants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
+        req.setAttribute(NamesConstants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS_PAGE, req, resp);
     }
 }

@@ -1,6 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -20,24 +20,24 @@ public class GetAllSecurityTransactionsGetCommand extends AbstractCommandExecuto
             throws ServletException, IOException {
 
         int portfolioId;
-        if (req.getParameter(Constants.PORTFOLIO_ID) != null) {
-            portfolioId = Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID));
+        if (req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
+            portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
         } else {
-            portfolioId = (int) req.getSession().getAttribute(Constants.PORTFOLIO_ID);
+            portfolioId = (int) req.getSession().getAttribute(NamesConstants.PORTFOLIO_ID);
         }
 
         String securityName;
-        if (req.getParameter(Constants.SECURITY_NAME) != null) {
-            securityName = req.getParameter(Constants.SECURITY_NAME);
+        if (req.getParameter(NamesConstants.SECURITY_NAME) != null) {
+            securityName = req.getParameter(NamesConstants.SECURITY_NAME);
         } else {
-            securityName = (String) req.getSession().getAttribute(Constants.SECURITY_NAME);
+            securityName = (String) req.getSession().getAttribute(NamesConstants.SECURITY_NAME);
         }
 
         String securitySymbol;
-        if (req.getParameter(Constants.SECURITY_SYMBOL) != null) {
-            securitySymbol = req.getParameter(Constants.SECURITY_SYMBOL);
+        if (req.getParameter(NamesConstants.SECURITY_SYMBOL) != null) {
+            securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
         } else {
-            securitySymbol = (String) req.getSession().getAttribute(Constants.SECURITY_SYMBOL);
+            securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
         }
 
         List<Transaction> allPortfolioTransactions;
@@ -49,12 +49,12 @@ public class GetAllSecurityTransactionsGetCommand extends AbstractCommandExecuto
         }
         List<Transaction> filteredTransactions = filterTransactionsBySecurity(allPortfolioTransactions, securitySymbol);
 
-        req.setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
-        req.setAttribute(Constants.SECURITY_NAME, securityName);
-        req.setAttribute(Constants.SECURITY_TRANSACTIONS, filteredTransactions);
+        req.setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
+        req.setAttribute(NamesConstants.SECURITY_NAME, securityName);
+        req.setAttribute(NamesConstants.SECURITY_TRANSACTIONS, filteredTransactions);
 
-        req.getSession().setAttribute(Constants.SECURITY_NAME, securityName);
-        req.getSession().setAttribute(Constants.SECURITY_SYMBOL, securitySymbol);
+        req.getSession().setAttribute(NamesConstants.SECURITY_NAME, securityName);
+        req.getSession().setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
 
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS_PAGE, req, resp);
     }

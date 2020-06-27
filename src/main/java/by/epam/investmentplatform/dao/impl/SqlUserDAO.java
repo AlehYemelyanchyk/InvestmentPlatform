@@ -26,7 +26,7 @@ class SqlUserDAO implements UserDAO {
         List<User> users;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country " +
+            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country, a.banned, a.transactionBanned " +
                     "FROM invest.users as a " +
                     "JOIN invest.countries as b " +
                     "ON a.country = b.ISO_numeric " +
@@ -57,7 +57,7 @@ class SqlUserDAO implements UserDAO {
         User user;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country " +
+            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country, a.banned, a.transactionBanned " +
                     "FROM invest.users as a " +
                     "JOIN invest.countries as b " +
                     "ON a.country = b.ISO_numeric " +
@@ -89,7 +89,7 @@ class SqlUserDAO implements UserDAO {
         User user;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country " +
+            String sqlQuery = "SELECT a.id, a.role, a.login, a.password, a.email, a.name, a.surname, b.name as country, a.banned, a.transactionBanned " +
                     "FROM invest.users as a " +
                     "JOIN invest.countries as b " +
                     "ON a.country = b.ISO_numeric " +
@@ -120,8 +120,8 @@ class SqlUserDAO implements UserDAO {
         try {
             connection = CONNECTION_POOL.takeConnection();
             String country = getCountry(user.getCountry());
-            String sqlQuery = "INSERT INTO invest.users (role, login, password, email, name, surname, country) " +
-                    "VALUES (?, ?, ?, ?, ?, ?, ?)";
+            String sqlQuery = "INSERT INTO invest.users (role, login, password, email, name, surname, country, banned, transactionBanned) " +
+                    "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = connection.prepareStatement(sqlQuery);
             statement.setString(1, user.getRole());
             statement.setString(2, user.getLogin());
@@ -130,6 +130,8 @@ class SqlUserDAO implements UserDAO {
             statement.setString(5, user.getName());
             statement.setString(6, user.getSurname());
             statement.setString(7, country);
+            statement.setString(8, user.getBanned());
+            statement.setString(9, user.getTransactionBanned());
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
@@ -170,6 +172,56 @@ class SqlUserDAO implements UserDAO {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
                 LOGGER.error("updateUser close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
+    public void updateUserBanStatus(int userId, String[] params) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "UPDATE invest.users SET banned = ? WHERE id = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, params[Constants.ZERO_LIST_ELEMENT]);
+            statement.setInt(2, userId);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("updateUserBanStatus error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("updateUserBanStatus close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
+    public void updateUserTransactionBanStatus(int userId, String[] params) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "UPDATE invest.users SET transactionBanned = ? WHERE id = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, params[Constants.ZERO_LIST_ELEMENT]);
+            statement.setInt(2, userId);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("updateUserTransactionBanStatus error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("updateUserTransactionBanStatus close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }

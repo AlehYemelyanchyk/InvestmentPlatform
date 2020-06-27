@@ -6,7 +6,9 @@ public final class CommandsConstants {
     public static final String ADD_SECURITY_TO_PORTFOLIO_COMMAND = "addSecurityToPortfolio";
     public static final String ADD_USER_ADMIN_COMMAND = "addUserAdmin";
     public static final String ADMIN_SETTINGS_COMMAND = "adminSettings";
-    public static final String ARCHIVE_SECURITY = "archiveSecurity";
+    public static final String ARCHIVE_SECURITY_COMMAND = "archiveSecurity";
+    public static final String BAN_USER_COMMAND = "banUser";
+    public static final String BAN_USER_TRANSACTIONS_COMMAND = "banUserTransactions";
     public static final String DEPOSIT_COMMAND = "deposit";
     public static final String GET_ALL_PORTFOLIO_SECURITIES_COMMAND = "getAllPortfolioSecurities";
     public static final String GET_ALL_PORTFOLIO_TRANSACTIONS_COMMAND = "getAllPortfolioTransactions";

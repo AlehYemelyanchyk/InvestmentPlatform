@@ -18,11 +18,15 @@ public interface UserDAO {
 
     void updateUser(User user, String[] params) throws DAOException;
 
+    void updateUserBanStatus(int userId, String[] params) throws DAOException;
+
+    void updateUserTransactionBanStatus(int userId, String[] params) throws DAOException;
+
     void deleteUser(User user) throws DAOException;
 
-    List<BalanceTransaction> getUserBalanceTransactions (int id) throws DAOException;
+    List<BalanceTransaction> getUserBalanceTransactions(int id) throws DAOException;
 
-    void addBalanceTransaction (int id, BalanceTransaction balanceTransaction) throws DAOException;
+    void addBalanceTransaction(int id, BalanceTransaction balanceTransaction) throws DAOException;
 
     List<String> getAllCountries() throws DAOException;
 }

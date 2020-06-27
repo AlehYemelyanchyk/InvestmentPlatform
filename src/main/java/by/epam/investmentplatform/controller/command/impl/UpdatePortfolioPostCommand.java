@@ -1,7 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Portfolio;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -17,11 +17,11 @@ public class UpdatePortfolioPostCommand extends AbstractCommandExecutor {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String newName = req.getParameter(Constants.REQUEST_PORTFOLIO_PARAM_NAME);
+        String newName = req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME);
         Portfolio portfolio = new Portfolio(
-                Integer.parseInt(req.getParameter(Constants.PORTFOLIO_ID)),
-                Integer.parseInt(req.getParameter(Constants.PORTFOLIO_USER_ID)),
-                req.getParameter(Constants.PORTFOLIO_NAME));
+                Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID)),
+                Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_USER_ID)),
+                req.getParameter(NamesConstants.PORTFOLIO_NAME));
         String[] parameters = {newName};
         try {
             portfolioService.updatePortfolio(portfolio, parameters);
@@ -29,7 +29,7 @@ public class UpdatePortfolioPostCommand extends AbstractCommandExecutor {
             LOGGER.error("UpdatePortfolioPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(Constants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -33,10 +34,10 @@ public class GetAllSecuritiesAdminGetCommand extends AbstractCommandExecutor {
             List<Security> securityList = entry.getValue();
             req.setAttribute(type, securityList);
             int pagesAmount = getPagesAmount(securityList.size());
-            req.setAttribute(type + "_" + Constants.PAGES_AMOUNT, pagesAmount);
+            req.setAttribute(type + "_" + NamesConstants.PAGES_AMOUNT, pagesAmount);
         }
-        req.setAttribute(Constants.SECURITIES_LIST, securitiesByType);
-        req.setAttribute(Constants.MAX_ITEMS_PER_PAGE, Constants.ITEMS_PER_PAGE);
+        req.setAttribute(NamesConstants.SECURITIES_LIST, securitiesByType);
+        req.setAttribute(NamesConstants.MAX_ITEMS_PER_PAGE, Constants.ITEMS_PER_PAGE);
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITIES_ADMIN_PAGE, req, resp);
     }
 

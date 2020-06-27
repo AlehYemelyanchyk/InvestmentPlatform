@@ -1,7 +1,7 @@
 package by.epam.investmentplatform.controller.filter;
 
 import by.epam.investmentplatform.CommandsConstants;
-import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -25,7 +25,9 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADD_USER_ADMIN_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADMIN_SETTINGS_COMMAND);
-        BUSINESS_URIS.add(CommandsConstants.ARCHIVE_SECURITY);
+        BUSINESS_URIS.add(CommandsConstants.ARCHIVE_SECURITY_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.BAN_USER_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.BAN_USER_TRANSACTIONS_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.DEPOSIT_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.GET_ALL_SECURITIES_COMMAND);
@@ -60,9 +62,9 @@ public class UrlFilter extends AbstractFilter {
         String requestStr = req.getRequestURI();
         String[] splitRequest = requestStr.split("/");
         String commandName = splitRequest[splitRequest.length - 1];
-        req.setAttribute(Constants.COMMAND_ATTRIBUTE, commandName);
+        req.setAttribute(NamesConstants.COMMAND_ATTRIBUTE, commandName);
         if (BUSINESS_URIS.contains(commandName)) {
-            req.getRequestDispatcher(Constants.COMMON_SERVLET_PATH).forward(req, resp);
+            req.getRequestDispatcher(NamesConstants.COMMON_SERVLET_PATH).forward(req, resp);
         } else {
             LOGGER.error("Command \"" + commandName + "\" does not exist");
             filterChain.doFilter(req, resp);
