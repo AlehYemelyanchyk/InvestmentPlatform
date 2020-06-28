@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class AddSecurityToPortfolioGetCommand extends AbstractCommandExecutor {
+public class SellSecurityFromPortfolioGetCommand extends AbstractCommandExecutor {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
@@ -29,21 +29,28 @@ public class AddSecurityToPortfolioGetCommand extends AbstractCommandExecutor {
         } else {
             securityPrice = (double) req.getSession().getAttribute(NamesConstants.SECURITY_PRICE);
         }
+        double amount;
+        if (req.getParameter(NamesConstants.AMOUNT) != null) {
+            amount = Double.parseDouble(req.getParameter(NamesConstants.AMOUNT));
+        } else {
+            amount = (Double) req.getSession().getAttribute(NamesConstants.AMOUNT);
+        }
         int userId = (int) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID);
         try {
             List<Portfolio> portfolios = portfolioService.getAllUserPortfolios(userId);
             req.setAttribute(NamesConstants.PORTFOLIOS_LIST, portfolios);
         } catch (ServiceException e) {
-            LOGGER.error("AddSecurityToPortfolioGetCommand error: ", e);
+            LOGGER.error("SellSecurityFromPortfolioGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
 
-
         req.getSession().setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
         req.getSession().setAttribute(NamesConstants.SECURITY_PRICE, securityPrice);
+        req.getSession().setAttribute(NamesConstants.AMOUNT, amount);
 
         req.setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
         req.setAttribute(NamesConstants.SECURITY_PRICE, securityPrice);
-        RoutingUtils.forwardToPage(JspPageName.ADD_SECURITY_TO_PORTFOLIO_PAGE, req, resp);
+        req.setAttribute(NamesConstants.AMOUNT, amount);
+        RoutingUtils.forwardToPage(JspPageName.SELL_SECURITY_FROM_PORTFOLIO_PAGE, req, resp);
     }
 }

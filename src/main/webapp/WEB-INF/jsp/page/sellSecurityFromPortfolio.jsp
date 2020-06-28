@@ -10,7 +10,7 @@
 
 <html lang="${sessionScope.lang}">
 <head>
-    <title>Add security to portfolio</title>
+    <title>Sell security from portfolio</title>
 </head>
 
 <body>
@@ -21,12 +21,12 @@
         <div class="col-md-4"></div>
         <div class="col-md-4">
             <form id="form" class="needs-validation" novalidate
-                  action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="POST">
+                  action="${pageContext.request.contextPath}/sellSecurityFromPortfolio" method="POST">
 
                 <project-tag:getCurrentDate/>
 
                 <div class="row-header">
-                    <h3 text-align="center">Buy</h3>
+                    <h3 text-align="center">Sell</h3>
                 </div>
 
                 <div>
@@ -40,7 +40,7 @@
                     <div class="invalid-feedback"></div>
                 </div>
                 <div>
-                    <input type="hidden" name="TRANSACTION_TYPE" value="1">
+                    <input type="hidden" name="TRANSACTION_TYPE" value="2">
                     <div class="valid-feedback"></div>
                     <div class="invalid-feedback"></div>
                 </div>
@@ -67,7 +67,9 @@
                     <input type="number" name="AMOUNT" class="form-control" id="amount"
                            required
                            min="1"
+                           max="${AMOUNT}"
                            data-value-missing="Please, enter amount"
+                           data-range-overflow="It's more than you have in your portfolio"
                            onkeypress="return isNumber(event)">
                     <div class="valid-feedback">Good!</div>
                     <div class="invalid-feedback"></div>

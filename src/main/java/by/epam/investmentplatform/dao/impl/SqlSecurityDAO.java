@@ -389,14 +389,15 @@ class SqlSecurityDAO implements SecurityDAO {
         try {
             connection = CONNECTION_POOL.takeConnection();
             String sqlQuery = "UPDATE invest.transactions " +
-                    "SET transaction_type = ?, amount = ?, price = ?, date = ? " +
+                    "SET portfolio_id = ?, transaction_type = ?, amount = ?, price = ?, date = ? " +
                     "WHERE id = ?";
             statement = connection.prepareStatement(sqlQuery);
-            statement.setInt(1, transaction.getTransactionType());
-            statement.setInt(2, transaction.getAmount());
-            statement.setDouble(3, transaction.getPrice());
-            statement.setString(4, parameters[Constants.ZERO_LIST_ELEMENT]);
-            statement.setInt(5, transaction.getId());
+            statement.setInt(1, transaction.getPortfolioId());
+            statement.setInt(2, transaction.getTransactionType());
+            statement.setInt(3, transaction.getAmount());
+            statement.setDouble(4, transaction.getPrice());
+            statement.setDate(5, (Date) transaction.getDate());
+            statement.setInt(6, transaction.getId());
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {

@@ -30,6 +30,8 @@
                 <th><fmt:message key="label.amount"/></th>
                 <th><fmt:message key="label.price"/></th>
                 <th><fmt:message key="label.date"/></th>
+                <th></th>
+                <th></th>
             </tr>
 
             <c:forEach var="transaction" items="${SECURITY_TRANSACTIONS}">
@@ -52,6 +54,30 @@
 
                     <td>
                         <c:out value="${transaction.date}"></c:out>
+                    </td>
+
+                    <td>
+                        <form action="updateTransaction" method="GET">
+                            <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                            <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
+                            <button class="btn btn-dark" type="submit"
+                                    data-tooltip title="<fmt:message key="label.edit"/>">
+                                <i class="icon-edit"></i>
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="removeTransaction" method="POST">
+                            <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                            <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
+                            <button class="btn btn-dark" type="submit"
+                                    data-tooltip title="<fmt:message key="label.delete"/>"
+                                    onclick="if (!(confirm('<fmt:message
+                                            key="label.deleteTransactionWarning"/>'))) return false">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </form>
                     </td>
 
                 </tr>

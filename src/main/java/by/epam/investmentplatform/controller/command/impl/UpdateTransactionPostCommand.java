@@ -11,14 +11,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
+import java.sql.Date;
 
 public class UpdateTransactionPostCommand extends AbstractCommandExecutor {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String date = req.getParameter(NamesConstants.DATE);
         Transaction transaction = new Transaction(
                 (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_ID))),
                 (Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID))),
@@ -26,8 +25,8 @@ public class UpdateTransactionPostCommand extends AbstractCommandExecutor {
                 (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE))),
                 (Integer.parseInt(req.getParameter(NamesConstants.AMOUNT))),
                 (Double.parseDouble(req.getParameter(NamesConstants.PRICE))),
-                new Date());
-        String[] parameters = {date};
+                Date.valueOf(req.getParameter(NamesConstants.DATE)));
+        String[] parameters = {};
         try {
             securityService.updateTransaction(transaction, parameters);
         } catch (ServiceException e) {

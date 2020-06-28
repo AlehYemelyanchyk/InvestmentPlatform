@@ -19,6 +19,7 @@ public final class JspPageName {
     public static final String NEWS_PAGE = "/WEB-INF/jsp/page/news.jsp";
     public static final String PAGE_TEMPLATE_PAGE = "/WEB-INF/jsp/page-template.jsp";
     public static final String GET_SECURITY_PAGE = "/WEB-INF/jsp/page/getSecurity.jsp";
+    public static final String SELL_SECURITY_FROM_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/sellSecurityFromPortfolio.jsp";
     public static final String SIGN_UP_PAGE = "/WEB-INF/jsp/page/signup.jsp";
     public static final String REDIRECT_PAGE = "/WEB-INF/jsp/page/redirectPage.jsp";
     public static final String UPDATE_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/updatePortfolio.jsp";

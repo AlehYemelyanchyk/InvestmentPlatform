@@ -141,3 +141,7 @@ div.col-xs-4 {
 .custom-control.custom-switch{
     height: 39px;
 }
+
+.row-header {
+    text-align: center;
+}

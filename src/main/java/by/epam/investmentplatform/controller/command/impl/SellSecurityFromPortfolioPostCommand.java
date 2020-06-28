@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.Date;
 
-public class AddSecurityToPortfolioPostCommand extends AbstractCommandExecutor {
+public class SellSecurityFromPortfolioPostCommand extends AbstractCommandExecutor {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
@@ -28,7 +28,7 @@ public class AddSecurityToPortfolioPostCommand extends AbstractCommandExecutor {
         try {
             securityService.saveTransaction(transaction);
         } catch (ServiceException e) {
-            LOGGER.error("AddSecurityToPortfolioPostCommand error", e);
+            LOGGER.error("SellSecurityFromPortfolioPostCommand error", e);
             throw new ServletException("Incorrect values.");
         }
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
