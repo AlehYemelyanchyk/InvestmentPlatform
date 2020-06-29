@@ -52,6 +52,8 @@ public final class CommandProvider {
         repository.put(CommandsConstants.REMOVE_USER_ADMIN_COMMAND + POST_METHOD, new RemoveUserPostCommand());
         repository.put(CommandsConstants.UPDATE_PORTFOLIO_COMMAND + GET_METHOD, new UpdatePortfolioGetCommand());
         repository.put(CommandsConstants.UPDATE_PORTFOLIO_COMMAND + POST_METHOD, new UpdatePortfolioPostCommand());
+        repository.put(CommandsConstants.UPDATE_SECURITY_COMMAND + GET_METHOD, new UpdateSecurityGetCommand());
+        repository.put(CommandsConstants.UPDATE_SECURITY_COMMAND + POST_METHOD, new UpdateSecurityPostCommand());
         repository.put(CommandsConstants.UPDATE_TRANSACTION_COMMAND + GET_METHOD, new UpdateTransactionGetCommand());
         repository.put(CommandsConstants.UPDATE_TRANSACTION_COMMAND + POST_METHOD, new UpdateTransactionPostCommand());
         repository.put(CommandsConstants.UPDATE_USER_ADMIN_COMMAND + GET_METHOD, new UpdateUserAdminGetCommand());

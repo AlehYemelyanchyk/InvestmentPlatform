@@ -23,6 +23,7 @@ public final class JspPageName {
     public static final String SIGN_UP_PAGE = "/WEB-INF/jsp/page/signup.jsp";
     public static final String REDIRECT_PAGE = "/WEB-INF/jsp/page/redirectPage.jsp";
     public static final String UPDATE_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/updatePortfolio.jsp";
+    public static final String UPDATE_SECURITY_PAGE = "/WEB-INF/jsp/page/updateSecurity.jsp";
     public static final String UPDATE_TRANSACTION_PAGE = "/WEB-INF/jsp/page/updateTransaction.jsp";
     public static final String UPDATE_USER_ADMIN_PAGE = "/WEB-INF/jsp/page/updateUserAdmin.jsp";
     public static final String UPDATE_USER_PAGE = "/WEB-INF/jsp/page/updateUser.jsp";

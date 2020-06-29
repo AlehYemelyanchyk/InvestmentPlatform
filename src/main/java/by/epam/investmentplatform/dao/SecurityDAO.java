@@ -6,6 +6,7 @@ import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.model.SecurityPrice;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SecurityDAO {
 
@@ -26,6 +27,10 @@ public interface SecurityDAO {
     List<SecurityPrice> getSecurityPrices(String symbol) throws DAOException;
 
     Transaction getTransaction(int id) throws DAOException;
+
+    Map<Integer, String> getExchanges() throws DAOException;
+
+    Map<Integer, String> getSecurityTypes() throws DAOException;
 
     void saveSecurity(Security security) throws DAOException;
 

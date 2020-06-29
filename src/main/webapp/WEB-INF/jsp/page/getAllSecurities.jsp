@@ -85,7 +85,7 @@
                             </td>
 
                             <td>
-                                <form action="addSecurityToPortfolio" method="GET">
+                                <form action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="GET">
                                     <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
                                     <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
                                     <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">

@@ -6,6 +6,7 @@ import by.epam.investmentplatform.model.SecurityPrice;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * The interface provides methods to work with securities and transactions information in
@@ -102,6 +103,25 @@ public interface SecurityService {
      * @param security is a new transaction object which should be stored in a date source.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
+
+    /**
+     * Retrieves all exchange types stored in a data source.
+     *
+     * @return map of exchange types where key is id and value is name, which can't be null, but can be empty if there is no exchange types
+     * in the data source.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    Map<Integer, String> getExchanges() throws ServiceException;
+
+    /**
+     * Retrieves all security types stored in a data source.
+     *
+     * @return map of security types where key is id and value is type, which can't be null, but can be empty if there is no security types
+     * in the data source.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    Map<Integer, String> getSecurityTypes() throws ServiceException;
+
     void saveSecurity(Security security) throws ServiceException;
 
     /**
@@ -125,7 +145,7 @@ public interface SecurityService {
      * Updates the security's parameters in a data source.
      *
      * @param transaction is a transaction object for which the parameters are have to be updated.
-     * @param params  an array of parameters with new values for the update.
+     * @param params      an array of parameters with new values for the update.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
     void updateTransaction(Transaction transaction, String[] params) throws ServiceException;
@@ -143,8 +163,8 @@ public interface SecurityService {
      * Removes the security in a specified portfolio from a data source.
      *
      * @param portfolioId is a unique identifier of a portfolio.
-     * @param symbol is a unique identifier of a security which has to be deleted from
-     *               a data source.
+     * @param symbol      is a unique identifier of a security which has to be deleted from
+     *                    a data source.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
     void removeSecurityFromPortfolio(int portfolioId, String symbol) throws ServiceException;
@@ -153,7 +173,7 @@ public interface SecurityService {
      * Removes the transaction from a data source.
      *
      * @param id is a unique identifier of a transaction which has to be deleted from
-     *               a data source.
+     *           a data source.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
      */
     void removeTransaction(int id) throws ServiceException;

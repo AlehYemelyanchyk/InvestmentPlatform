@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
+import java.util.Map;
 
 class DefaultSecurityService implements SecurityService {
 
@@ -109,6 +110,26 @@ class DefaultSecurityService implements SecurityService {
     }
 
     @Override
+    public Map<Integer, String> getExchanges() throws ServiceException {
+        try {
+            return getSecurityDAO().getExchanges();
+        } catch (DAOException e) {
+            LOGGER.error("getExchanges error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public Map<Integer, String> getSecurityTypes() throws ServiceException {
+        try {
+            return getSecurityDAO().getSecurityTypes();
+        } catch (DAOException e) {
+            LOGGER.error("getSecurityTypes error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void saveSecurity(Security security) throws ServiceException {
         try {
             getSecurityDAO().saveSecurity(security);
@@ -130,6 +151,12 @@ class DefaultSecurityService implements SecurityService {
 
     @Override
     public void updateSecurity(Security security, String[] parameters) throws ServiceException {
+        try {
+            getSecurityDAO().updateSecurity(security, parameters);
+        } catch (DAOException e) {
+            LOGGER.error("updateSecurity error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
     }
 
     @Override

@@ -13,6 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Map;
 
 class SqlSecurityDAO implements SecurityDAO {
     private static final Logger LOGGER = LogManager.getLogger();
@@ -302,6 +303,60 @@ class SqlSecurityDAO implements SecurityDAO {
     }
 
     @Override
+    public Map<Integer, String> getExchanges() throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Map<Integer, String> exchangesList;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT * FROM invest.exchanges";
+            statement = connection.prepareStatement(sqlQuery);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            exchangesList = DAOUtils.exchangesResultSetHandle(resultSet);
+        } catch (Exception e) {
+            LOGGER.error("getExchanges error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("getExchanges close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return exchangesList;
+    }
+
+    @Override
+    public Map<Integer, String> getSecurityTypes() throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        Map<Integer, String> typesList;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT * FROM invest.security_types;";
+            statement = connection.prepareStatement(sqlQuery);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            typesList = DAOUtils.typesResultSetHandle(resultSet);
+        } catch (Exception e) {
+            LOGGER.error("getSecurityTypes error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("getSecurityTypes close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return typesList;
+    }
+
+    @Override
     public void saveSecurity(Security security) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -379,7 +434,35 @@ class SqlSecurityDAO implements SecurityDAO {
 
     @Override
     public void updateSecurity(Security security, String[] params) throws DAOException {
-
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "UPDATE invest.securities " +
+                    "SET symbol = ?, name = ?, exchange = ?, current_price = ?, year_change_percents = ?, dividends = ?, security_type = ? " +
+                    "WHERE symbol = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, security.getSymbol());
+            statement.setString(2, security.getName());
+            statement.setString(3, security.getExchange());
+            statement.setDouble(4, security.getCurrentPrice());
+            statement.setDouble(5, security.getYearChangePercents());
+            statement.setDouble(6, security.getDividends());
+            statement.setString(7, security.getSecurityType());
+            statement.setString(8, security.getSymbol());
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("updateSecurity error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("updateSecurity close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
     }
 
     @Override
@@ -401,13 +484,13 @@ class SqlSecurityDAO implements SecurityDAO {
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {
-            LOGGER.error("updateSecurity error: " + e.getMessage());
+            LOGGER.error("updateTransaction error: " + e.getMessage());
             throw new DAOException(e);
         } finally {
             try {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
-                LOGGER.error("updateSecurity close resources error: " + e.getMessage());
+                LOGGER.error("updateTransaction close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }

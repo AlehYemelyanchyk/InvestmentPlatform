@@ -7,9 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public final class DAOUtils {
 
@@ -79,6 +77,26 @@ public final class DAOUtils {
             prices.add(tempSecurity);
         }
         return prices;
+    }
+
+    public static Map<Integer, String> exchangesResultSetHandle(ResultSet resultSet) throws SQLException {
+        Map<Integer, String> exchangesList = new HashMap<>();
+        while (resultSet.next()) {
+            exchangesList.put(
+                    resultSet.getInt("id"),
+                    resultSet.getString("name"));
+        }
+        return exchangesList;
+    }
+
+    public static Map<Integer, String> typesResultSetHandle(ResultSet resultSet) throws SQLException {
+        Map<Integer, String> typesList = new HashMap<>();
+        while (resultSet.next()) {
+            typesList.put(
+                    resultSet.getInt("id"),
+                    resultSet.getString("type"));
+        }
+        return typesList;
     }
 
     public static List<Transaction> transactionsResultSetHandle(ResultSet resultSet) throws SQLException {

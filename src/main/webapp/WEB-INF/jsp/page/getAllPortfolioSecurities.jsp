@@ -185,7 +185,7 @@
                         </td>
 
                         <td>
-                            <form action="updateTransaction" method="GET">
+                            <form action="${pageContext.request.contextPath}/updateTransaction" method="GET">
                                 <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                 <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                                 <button class="btn btn-dark" type="submit"
@@ -196,7 +196,7 @@
                         </td>
 
                         <td>
-                            <form action="removeTransaction" method="POST">
+                            <form action="${pageContext.request.contextPath}/removeTransaction" method="POST">
                                 <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                 <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                                 <button class="btn btn-dark" type="submit"
