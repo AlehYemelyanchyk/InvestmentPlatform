@@ -12,18 +12,9 @@
 </head>
 
 <body>
-<div class="container">
-    <div class="form-group">
-        <select name="state" id="maxRows" class="form-control" style="width:150px;">
-            <option value="5000"><fmt:message key="label.showAll"/></option>
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="15">15</option>
-            <option value="25">25</option>
-            <option value="50">50</option>
-            <option value="100">100</option>
-        </select>
-    </div>
+<div class="container mt-2 mb-2 table-striped">
+    <br/>
+
     <div class="tabs_names">
         <li data-tab-target="#Fund" class="active tab">Funds</li>
         <li data-tab-target="#Bond" class="tab">Bonds</li>
@@ -31,8 +22,6 @@
         <li data-tab-target="#ETF" class="tab">ETFs</li>
         <li data-tab-target="#Stock" class="tab">Stocks</li>
     </div>
-
-    <div class="tabs_content table-bordered table-striped">
 
         <c:forEach var="type" items="${SECURITIES_LIST}" varStatus="loop">
 
@@ -47,18 +36,20 @@
                 </c:otherwise>
 
                 </c:choose>
-                <br/>
 
-                <table>
+                <table
+                        data-toggle="table"
+                        data-pagination="true"
+                        data-search="true">
                     <thead>
                     <tr>
-                        <th><fmt:message key="label.symbol"/></th>
-                        <th><fmt:message key="label.name"/></th>
-                        <th><fmt:message key="label.exchange"/></th>
-                        <th><fmt:message key="label.currentPrice"/></th>
-                        <th><fmt:message key="label.yearChange"/>, %</th>
-                        <th><fmt:message key="label.dividends"/></th>
-                        <th></th>
+                        <th data-field="symbol" data-sortable="true"><fmt:message key="label.symbol"/></th>
+                        <th data-field="name" data-sortable="true"><fmt:message key="label.name"/></th>
+                        <th data-field="exchange" data-sortable="true"><fmt:message key="label.exchange"/></th>
+                        <th data-field="current_price" data-sortable="true"><fmt:message key="label.currentPrice"/></th>
+                        <th data-field="year_change" data-sortable="true"><fmt:message key="label.yearChange"/>, %</th>
+                        <th data-field="dividends" data-sortable="true"><fmt:message key="label.dividends"/></th>
+                        <th data-field="" data-sortable="false"></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -119,8 +110,6 @@
                     <ul class="pagination"></ul>
                 </nav>
             </div>
-        </div>
-    </div>
 </div>
 </body>
 </html>

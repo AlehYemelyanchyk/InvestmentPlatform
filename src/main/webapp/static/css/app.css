@@ -138,10 +138,14 @@ div.col-xs-4 {
     visibility: hidden;
 }
 
-.custom-control.custom-switch{
+.custom-control.custom-switch {
     height: 39px;
 }
 
 .row-header {
     text-align: center;
+}
+
+.table td, .table th {
+    padding: 1px;
 }
