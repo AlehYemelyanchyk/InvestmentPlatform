@@ -149,3 +149,8 @@ div.col-xs-4 {
 .table td, .table th {
     padding: 1px;
 }
+
+.single-news{
+    background-color: #f2f2f2;
+    padding: 30px;
+}

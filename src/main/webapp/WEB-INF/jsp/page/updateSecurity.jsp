@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label for="exchange"><fmt:message key="label.exchange"/>:</label>
                     <select id="exchange" name="SECURITY_EXCHANGE" class="form-control">
-                        <c:forEach var="exchange" items="${EXCHANGES_LIST}">
+                        <c:forEach var="exchange" items="${EXCHANGES_LIST}" varStatus="loop">
                             <option value="${exchange.key}">${exchange.value}</option>
                         </c:forEach>
                     </select>
