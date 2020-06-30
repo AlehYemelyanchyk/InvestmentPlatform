@@ -45,7 +45,7 @@
                     <input type="email" name="email" class="form-control" id="email"
                            placeholder="<fmt:message key="label.email"/>"
                            required
-                           pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                           pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
                            data-value-missing="Please, enter email"
                            data-pattern-mismatch="The e-mail address is not correct.">
                     <div class="valid-feedback">Good!</div>

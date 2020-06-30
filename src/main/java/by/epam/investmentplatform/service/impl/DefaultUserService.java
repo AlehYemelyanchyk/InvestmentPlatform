@@ -8,14 +8,20 @@ import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.UserService;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.UserValidationUtils;
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 
+import static de.mkammerer.argon2.Argon2Factory.Argon2Types.ARGON2id;
+
 class DefaultUserService implements UserService {
     private static final Logger LOGGER = LogManager.getLogger();
     private static final DAOFactory DAO_FACTORY = DAOFactory.getInstance();
+
+    private static final Argon2 ARGON_2 = Argon2Factory.create(ARGON2id);
 
     @Override
     public List<User> getAllUsers(int userRole) throws ServiceException {
@@ -91,7 +97,7 @@ class DefaultUserService implements UserService {
         User user = null;
         try {
             User newUser = getUserDAO().getUser(login);
-            if (newUser != null && hashPassword(password).equals(newUser.getPassword())) {
+            if (newUser != null && verifyPassword(newUser.getPassword(), password)) {
                 user = newUser;
             }
         } catch (DAOException e) {
@@ -162,7 +168,7 @@ class DefaultUserService implements UserService {
     @Override
     public void addBalanceTransaction(int id, BalanceTransaction balanceTransaction) throws ServiceException {
         try {
-           getUserDAO().addBalanceTransaction(id, balanceTransaction);
+            getUserDAO().addBalanceTransaction(id, balanceTransaction);
         } catch (DAOException e) {
             LOGGER.error("addBalanceTransaction error: " + e.getMessage());
             throw new ServiceException(e);
@@ -184,6 +190,11 @@ class DefaultUserService implements UserService {
     }
 
     private String hashPassword(String password) {
-        return Integer.toString(password.hashCode());
+        String hash = ARGON_2.hash(4, 1024 * 1024, 8, password.toCharArray());
+        return hash;
+    }
+
+    private boolean verifyPassword(String hash, String password) {
+        return ARGON_2.verify(hash, password.toCharArray());
     }
 }

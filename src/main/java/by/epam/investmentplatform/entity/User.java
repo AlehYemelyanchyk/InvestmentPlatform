@@ -31,8 +31,8 @@ public class User implements Serializable {
         this.name = name;
         this.surname = surname;
         this.country = country;
-        this.banned = Constants.BAN_STATUS_ACTIVE;
-        this.transactionBanned = Constants.BAN_STATUS_ACTIVE;
+        this.banned = Constants.BAN_STATUS_INACTIVE;
+        this.transactionBanned = Constants.BAN_STATUS_INACTIVE;
     }
 
     public User(String role, String login, String password, String email, String name, String surname, String country) {
@@ -43,7 +43,7 @@ public class User implements Serializable {
         this.name = name;
         this.surname = surname;
         this.country = country;
-        this.banned = Constants.BAN_STATUS_ACTIVE;
+        this.banned = Constants.BAN_STATUS_INACTIVE;
         this.transactionBanned = Constants.BAN_STATUS_INACTIVE;
     }
 
