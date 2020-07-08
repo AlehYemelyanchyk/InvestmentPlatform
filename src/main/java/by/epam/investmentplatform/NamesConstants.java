@@ -46,6 +46,7 @@ public final class NamesConstants {
     public static final String REDIRECT_LINK = "REDIRECT_LINK";
     public static final String SECURITIES_LIST = "SECURITIES_LIST";
     public static final String SECURITY = "SECURITY";
+    public static final String SECURITY_DIVIDENDS = "SECURITY_DIVIDENDS";
     public static final String SECURITY_EXCHANGE = "SECURITY_EXCHANGE";
     public static final String SECURITY_NAME = "SECURITY_NAME";
     public static final String SECURITY_PRICE = "SECURITY_PRICE";
@@ -54,6 +55,7 @@ public final class NamesConstants {
     public static final String SECURITY_TRANSACTIONS = "SECURITY_TRANSACTIONS";
     public static final String SECURITY_TYPE = "SECURITY_TYPE";
     public static final String SECURITY_TYPES_LIST = "SECURITY_TYPES_LIST";
+    public static final String SECURITY_YEAR_CHANGE = "SECURITY_YEAR_CHANGE";
     public static final String STATUS_CODE = "STATUS_CODE";
     public static final String TRANSACTION = "TRANSACTION";
     public static final String TRANSACTION_ID = "TRANSACTION_ID";

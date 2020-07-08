@@ -16,7 +16,8 @@ public final class CommandProvider {
     private CommandProvider() {
         repository.put(CommandsConstants.ADD_PORTFOLIO_COMMAND + GET_METHOD, new AddPortfolioGetCommand());
         repository.put(CommandsConstants.ADD_PORTFOLIO_COMMAND + POST_METHOD, new AddPortfolioPostCommand());
-        repository.put(CommandsConstants.ADD_SECURITY_COMMAND + GET_METHOD, new AddSecurityGetCommand());
+        repository.put(CommandsConstants.ADD_SECURITY_ADMIN_COMMAND + GET_METHOD, new AddSecurityAdminGetCommand());
+        repository.put(CommandsConstants.ADD_SECURITY_ADMIN_COMMAND + POST_METHOD, new AddSecurityAdminPostCommand());
         repository.put(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND + GET_METHOD, new AddSecurityToPortfolioGetCommand());
         repository.put(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND + POST_METHOD, new AddSecurityToPortfolioPostCommand());
         repository.put(CommandsConstants.ADD_USER_ADMIN_COMMAND + GET_METHOD, new AddUserAdminGetCommand());

@@ -15,6 +15,11 @@
 <div class="container mt-2 mb-2 table-striped">
     <br/>
 
+    <a class="btn btn-dark" href="${pageContext.request.contextPath}/addSecurityAdmin"
+       data-tooltip title="Add Security">
+        <i class="icon-plus-sign-alt"></i>
+    </a>
+
     <div class="tabs_names">
         <li data-tab-target="#Fund" class="active tab">Funds</li>
         <li data-tab-target="#Bond" class="tab">Bonds</li>

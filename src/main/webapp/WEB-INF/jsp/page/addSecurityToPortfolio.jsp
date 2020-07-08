@@ -98,17 +98,19 @@
                 </button>
             </form>
         </div>
-        <script>
-            function isNumber(event) {
-                var keycode = event.keyCode;
-                return keycode > 47 && keycode < 58;
+    </div>
+    <script>
+        function isNumber(event) {
+            var keycode = event.keyCode;
+            return keycode > 47 && keycode < 58;
 
-            }
+        }
 
-            function isDecimalNumber(event) {
-                var keycode = event.keyCode;
-                return keycode > 47 && keycode < 58 || keycode === 46;
-            }
-        </script>
+        function isDecimalNumber(event) {
+            var keycode = event.keyCode;
+            return keycode > 47 && keycode < 58 || keycode === 46;
+        }
+    </script>
+</div>
 </body>
 </html>

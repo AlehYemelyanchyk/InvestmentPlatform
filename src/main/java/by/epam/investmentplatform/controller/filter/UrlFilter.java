@@ -22,7 +22,7 @@ public class UrlFilter extends AbstractFilter {
     @Override
     public void init(FilterConfig filterConfig) {
         BUSINESS_URIS.add(CommandsConstants.ADD_PORTFOLIO_COMMAND);
-        BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_COMMAND);
+        BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_ADMIN_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADD_USER_ADMIN_COMMAND);
         BUSINESS_URIS.add(CommandsConstants.ADMIN_SETTINGS_COMMAND);

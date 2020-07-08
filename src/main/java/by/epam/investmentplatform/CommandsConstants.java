@@ -2,7 +2,7 @@ package by.epam.investmentplatform;
 
 public final class CommandsConstants {
     public static final String ADD_PORTFOLIO_COMMAND = "addPortfolio";
-    public static final String ADD_SECURITY_COMMAND = "addSecurity";
+    public static final String ADD_SECURITY_ADMIN_COMMAND = "addSecurityAdmin";
     public static final String ADD_SECURITY_TO_PORTFOLIO_COMMAND = "addSecurityToPortfolio";
     public static final String ADD_USER_ADMIN_COMMAND = "addUserAdmin";
     public static final String ADMIN_SETTINGS_COMMAND = "adminSettings";

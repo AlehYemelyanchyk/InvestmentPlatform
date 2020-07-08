@@ -2,6 +2,7 @@ package by.epam.investmentplatform.controller.command;
 
 public final class JspPageName {
     public static final String ADD_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/addPortfolio.jsp";
+    public static final String ADD_SECURITY_ADMIN_PAGE = "/WEB-INF/jsp/page/addSecurityAdmin.jsp";
     public static final String ADD_SECURITY_TO_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/addSecurityToPortfolio.jsp";
     public static final String ADD_USER_PAGE = "/WEB-INF/jsp/page/addUser.jsp";
     public static final String ADMIN_SETTINGS_PAGE = "/WEB-INF/jsp/page/adminSettings.jsp";
