@@ -25,14 +25,14 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommandExecutor
         Map<String, PortfolioSecurity> securities = new HashMap<>();
 
         int portfolioId;
-        if(req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
+        if (req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
             portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
         } else {
             portfolioId = (int) req.getSession().getAttribute(NamesConstants.PORTFOLIO_ID);
         }
 
         String portfolioName;
-        if(req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
+        if (req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
             portfolioName = req.getParameter(NamesConstants.PORTFOLIO_NAME);
         } else {
             portfolioName = (String) req.getSession().getAttribute(NamesConstants.PORTFOLIO_NAME);
@@ -46,7 +46,7 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommandExecutor
         try {
             allPortfolioSecurities = securityService.getAllPortfolioSecurities(portfolioId);
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
-        } catch (ServiceException e){
+        } catch (ServiceException e) {
             LOGGER.error("GetAllPortfolioSecuritiesGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
@@ -69,8 +69,10 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommandExecutor
             double yearChangePercents = security.getYearChangePercents();
             double dividends = security.getDividends();
             String securityType = security.getSecurityType();
-            securities.put(security.getSymbol(),
-                    new PortfolioSecurity(symbol, name, exchange, amount, averagePrice, yearChangePercents, dividends, securityType));
+            if (amount > 0) {
+                securities.put(security.getSymbol(),
+                        new PortfolioSecurity(symbol, name, exchange, amount, averagePrice, yearChangePercents, dividends, securityType));
+            }
         }
     }
 

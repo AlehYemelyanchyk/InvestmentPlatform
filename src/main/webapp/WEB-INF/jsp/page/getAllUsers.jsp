@@ -34,7 +34,6 @@
             <thead>
             <tr>
                 <th><fmt:message key="label.login2"/></th>
-                <th><fmt:message key="label.password"/></th>
                 <th><fmt:message key="label.email"/></th>
                 <th><fmt:message key="label.name"/></th>
                 <th><fmt:message key="label.surname"/></th>
@@ -55,10 +54,6 @@
                 <tr>
                     <td>
                         <a href="${userLink}">${user.login}</a>
-                    </td>
-
-                    <td>
-                        <c:out value="${user.password}"></c:out>
                     </td>
 
                     <td>

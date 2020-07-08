@@ -56,7 +56,7 @@
                         <c:param name="SECURITY_SYMBOL" value="${security.key}"/>
                     </c:url>
 
-                    <tr>
+                    <tr id="row">
                         <td>
                             <a href="${securityLink}">${security.key}</a>
                         </td>
