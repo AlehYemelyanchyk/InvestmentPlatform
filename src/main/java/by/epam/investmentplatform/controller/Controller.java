@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static by.epam.investmentplatform.NamesConstants.COMMAND_ATTRIBUTE;
 
-@WebServlet("/controllerServlet")
+@WebServlet("/ControllerServlet")
 public class Controller extends HttpServlet {
     private static final CommandProvider commandProvider = CommandProvider.getInstance();
 

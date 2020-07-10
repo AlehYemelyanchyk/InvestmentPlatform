@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class AdminSettingsGetCommand extends AbstractCommandExecutor {
+public class AdminSettingsGetCommand extends AbstractCommand {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)

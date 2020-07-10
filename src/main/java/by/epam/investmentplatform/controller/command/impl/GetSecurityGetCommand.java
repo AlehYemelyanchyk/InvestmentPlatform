@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class GetSecurityGetCommand extends AbstractCommandExecutor {
+public class GetSecurityGetCommand extends AbstractCommand {
 
     private final static String OLD_FORMAT = "yyyy-MM-dd";
     private final static String NEW_FORMAT = "MMM-YY";

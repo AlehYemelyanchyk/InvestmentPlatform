@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetAllSecurityTransactionsGetCommand extends AbstractCommandExecutor {
+public class GetAllSecurityTransactionsGetCommand extends AbstractCommand {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)

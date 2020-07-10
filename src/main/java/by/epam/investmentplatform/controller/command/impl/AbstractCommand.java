@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public abstract class AbstractCommandExecutor implements Command {
+public abstract class AbstractCommand implements Command {
     public static final Logger LOGGER = LogManager.getLogger();
     public final UserService userService = ServiceFactory.getInstance().getUserService();
     public final PortfolioService portfolioService = ServiceFactory.getInstance().getPortfolioService();

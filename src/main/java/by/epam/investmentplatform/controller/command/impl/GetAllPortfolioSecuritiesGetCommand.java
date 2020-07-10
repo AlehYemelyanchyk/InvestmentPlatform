@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommandExecutor {
+public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommand {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
