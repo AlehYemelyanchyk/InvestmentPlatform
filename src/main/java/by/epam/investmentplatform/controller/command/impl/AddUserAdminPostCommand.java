@@ -31,7 +31,7 @@ public class AddUserAdminPostCommand extends AbstractCommand {
             LOGGER.error("AddUserAdminPostCommand error: ", e);
             throw new ServletException("Incorrect registration values.");
         }
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

@@ -23,7 +23,7 @@ public class RemoveTransactionPostCommand extends AbstractCommand {
             LOGGER.error("RemoveTransactionPostCommand error: ", e);
             throw new ServletException("Incorrect values");
         }
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

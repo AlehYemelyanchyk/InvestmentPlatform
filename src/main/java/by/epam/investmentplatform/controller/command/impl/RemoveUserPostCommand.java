@@ -25,7 +25,7 @@ public class RemoveUserPostCommand extends AbstractCommand {
             LOGGER.error("RemoveUserPostCommand error: ", e);
             throw new ServletException("Incorrect values");
         }
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

@@ -32,7 +32,7 @@ public class AddSecurityAdminPostCommand extends AbstractCommand {
             LOGGER.error("AddSecurityAdminPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_SECURITIES_ADMIN_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_SECURITIES_ADMIN);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

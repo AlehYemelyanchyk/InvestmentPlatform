@@ -31,7 +31,7 @@ public class SellSecurityFromPortfolioPostCommand extends AbstractCommand {
             LOGGER.error("SellSecurityFromPortfolioPostCommand error", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

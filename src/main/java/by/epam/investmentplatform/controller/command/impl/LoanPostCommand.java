@@ -31,7 +31,7 @@ public class LoanPostCommand extends AbstractCommand {
             throw new ServletException("Incorrect values.");
         }
         req.getSession().setAttribute(NamesConstants.AMOUNT, amount);
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_BALANCE_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_BALANCE);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

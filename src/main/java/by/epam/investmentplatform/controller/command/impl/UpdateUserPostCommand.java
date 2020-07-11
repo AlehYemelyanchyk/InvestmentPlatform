@@ -33,7 +33,7 @@ public class UpdateUserPostCommand extends AbstractCommand {
             LOGGER.error("UpdateUserPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.USER_SETTINGS_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.USER_SETTINGS);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

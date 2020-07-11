@@ -32,7 +32,7 @@ public class WithdrawPostCommand extends AbstractCommand {
             throw new ServletException("Withdraw payment error.");
         }
         req.getSession().setAttribute(NamesConstants.AMOUNT, amount);
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_BALANCE_COMMAND);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_BALANCE);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }
