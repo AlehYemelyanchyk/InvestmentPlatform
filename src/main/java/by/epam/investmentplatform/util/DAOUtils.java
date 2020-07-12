@@ -61,7 +61,8 @@ public final class DAOUtils {
                     resultSet.getDouble("current_price"),
                     resultSet.getDouble("year_change_percents"),
                     resultSet.getDouble("dividends"),
-                    resultSet.getString("security_type"));
+                    resultSet.getString("security_type"),
+                    resultSet.getString("stop_trade_date"));
             securities.add(tempSecurity);
         }
         return securities;

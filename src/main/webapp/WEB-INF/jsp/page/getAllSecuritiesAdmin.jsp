@@ -1,6 +1,7 @@
 <%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="project-tag" uri="/WEB-INF/tags.tld" %>
 <%@ page isELIgnored="false" %>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
@@ -12,6 +13,9 @@
 </head>
 
 <body>
+
+<project-tag:getCurrentDate/>
+
 <div class="container mt-2 mb-2 table-striped">
     <br/>
 
@@ -81,22 +85,55 @@
                         </td>
 
                         <td>
-                            <form action="${pageContext.request.contextPath}/archiveSecurity" method="GET">
+                            <form id="form${security.symbol}"
+                                  action="${pageContext.request.contextPath}/archiveSecurity" method="POST">
                                 <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
-                                <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
-                                <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                <button ${CURRENT_USER_ID == null?'disabled="disabled"':''}
-                                        class="btn btn-dark" type="submit"
+                                <button class="btn btn-dark" type="button"
+                                        data-toggle="modal"
+                                        data-target="#${security.symbol}"
                                         data-tooltip title="Archive">
                                     <i class="icon-archive"></i>
                                 </button>
+                                <!-- Modal -->
+                                <div class="modal fade" id="${security.symbol}" tabindex="-1" role="dialog"
+                                     aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Archive the security</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <input type="date" name="DATE" class="form-control" id="date"
+                                                       value="${DATE}"
+                                                       min="${DATE}" max="2099-01-01"
+                                                       required
+                                                       data-value-missing="Please, enter date">
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                    Close
+                                                </button>
+                                                <button id="${security.symbol}" type="submit"
+                                                        onclick="popUp(this.id)"
+                                                        data-toggle="modal"
+                                                        data-target="#successModal"
+                                                        class="btn btn-primary">
+                                                    Archive
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </form>
                         </td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
-
         </div>
 
         </c:forEach>
@@ -108,5 +145,15 @@
         </div>
     </div>
 </div>
+<script>
+    function popUp(id) {
+        event.preventDefault();
+        swal("Success!", "The security has been archived.", "success", {
+            button: "Ok",
+        }).then(() => {
+            document.getElementById("form".concat(id)).submit();
+        });
+    }
+</script>
 </body>
 </html>

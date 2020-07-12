@@ -151,6 +151,16 @@ public interface SecurityService {
     void updateTransaction(Transaction transaction, String[] params) throws ServiceException;
 
     /**
+     * Archives the security until a provided date before removing it from a data source.
+     *
+     * @param symbol is a unique identifier of a security which has to be archived and later deleted from
+     *               a data source.
+     * @param date is a date before which the security is going to stay archived.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    void archiveSecurity(String symbol, String date) throws ServiceException;
+
+    /**
      * Removes the security from a data source.
      *
      * @param symbol is a unique identifier of a security which has to be deleted from

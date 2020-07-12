@@ -27,7 +27,7 @@ class SqlSecurityDAO implements SecurityDAO {
         List<Security> securities;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.symbol, a.name, b.name as exchange, a.current_price, a.year_change_percents, a.dividends, c.type as security_type " +
+            String sqlQuery = "SELECT a.symbol, a.name, b.name as exchange, a.current_price, a.year_change_percents, a.dividends, c.type as security_type, a.stop_trade_date " +
                     "FROM invest.securities as a " +
                     "JOIN invest.exchanges as b " +
                     "ON a.exchange = b.id " +
@@ -59,7 +59,7 @@ class SqlSecurityDAO implements SecurityDAO {
         List<Security> securities;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.symbol, a.name, a.exchange, a.current_price, a.year_change_percents, a.dividends, a.security_type, b.transaction_type " +
+            String sqlQuery = "SELECT a.symbol, a.name, a.exchange, a.current_price, a.year_change_percents, a.dividends, a.security_type, b.transaction_type, a.stop_trade_date " +
                     "FROM invest.securities " +
                     "JOIN invest.transactions as b " +
                     "ON a.symbol = b.security_symbol " +
@@ -91,7 +91,7 @@ class SqlSecurityDAO implements SecurityDAO {
         List<Security> securities;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.symbol, a.name, c.name as exchange, a.current_price, a.year_change_percents, a.dividends, d.type as security_type " +
+            String sqlQuery = "SELECT a.symbol, a.name, c.name as exchange, a.current_price, a.year_change_percents, a.dividends, d.type as security_type, a.stop_trade_date " +
                     "FROM invest.securities as a " +
                     "JOIN invest.transactions as b " +
                     "ON a.symbol = b.security_symbol " +
@@ -491,6 +491,33 @@ class SqlSecurityDAO implements SecurityDAO {
                 DAOUtils.closeResources(connection, statement);
             } catch (SQLException e) {
                 LOGGER.error("updateTransaction close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
+    public void archiveSecurity(String symbol, String date) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "UPDATE invest.securities " +
+                    "SET stop_trade_date = ? " +
+                    "WHERE symbol = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setDate(1, Date.valueOf(date));
+            statement.setString(2, symbol);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("archiveSecurity error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("archiveSecurity close resources error: " + e.getMessage());
                 throw new DAOException(e);
             }
         }

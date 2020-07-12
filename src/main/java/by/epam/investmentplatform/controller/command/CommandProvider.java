@@ -23,6 +23,7 @@ public final class CommandProvider {
         repository.put(CommandsConstants.ADD_USER_ADMIN + GET_METHOD, new AddUserAdminGetCommand());
         repository.put(CommandsConstants.ADD_USER_ADMIN + POST_METHOD, new AddUserAdminPostCommand());
         repository.put(CommandsConstants.ADMIN_SETTINGS + GET_METHOD, new AdminSettingsGetCommand());
+        repository.put(CommandsConstants.ARCHIVE_SECURITY + POST_METHOD, new ArchiveSecurityPostCommand());
         repository.put(CommandsConstants.BAN_USER + POST_METHOD, new BanUserPostCommand());
         repository.put(CommandsConstants.BAN_USER_TRANSACTIONS + POST_METHOD, new BanUserTransactionsPostCommand());
         repository.put(CommandsConstants.DEPOSIT + GET_METHOD, new DepositGetCommand());

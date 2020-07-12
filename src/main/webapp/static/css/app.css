@@ -79,6 +79,10 @@ tr {
     text-align: center;
 }
 
+tr.delisted {
+    color: red;
+}
+
 table.login tr {
     border: none;
     text-align: left;

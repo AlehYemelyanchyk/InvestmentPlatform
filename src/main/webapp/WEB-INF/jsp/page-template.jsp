@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
     <link rel="stylesheet" href="static/css/app.css">
     <link rel="stylesheet" href="static/css/tabsStyle.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
 <header>
@@ -51,12 +52,13 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
-<%--    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>--%>
     <script src="static/js/app.js"></script>
     <script src="static/js/ban.js"></script>
     <script src="static/js/bootstrap-table.min.js"></script>
     <script src="static/js/formValidation.js"></script>
     <script src="static/js/hideElement.js"></script>
+    <script src="static/js/isClosed.js"></script>
+<%--    <script src="static/js/sweetalert.min.js"></script>--%>
     <script src="static/js/tabs.js"></script>
     <script src="static/js/tooltip.js"></script>
     <script src="static/js/XSSPrevent.js"></script>

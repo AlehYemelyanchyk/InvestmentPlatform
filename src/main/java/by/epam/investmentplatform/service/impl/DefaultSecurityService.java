@@ -170,6 +170,16 @@ class DefaultSecurityService implements SecurityService {
     }
 
     @Override
+    public void archiveSecurity(String symbol, String date) throws ServiceException {
+        try {
+            getSecurityDAO().archiveSecurity(symbol, date);
+        } catch (DAOException e) {
+            LOGGER.error("archiveSecurity error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void removeSecurity(String symbol) throws ServiceException {
         try {
             getSecurityDAO().removeSecurity(symbol);

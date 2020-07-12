@@ -3,7 +3,7 @@ package by.epam.investmentplatform;
 public final class NamesConstants {
     public static final String AMOUNT = "AMOUNT";
     public static final String COMMAND_ATTRIBUTE = "COMMAND_ATTRIBUTE";
-    public static final String COMMON_SERVLET_PATH = "/controllerServlet";
+    public static final String COMMON_SERVLET_PATH = "/ControllerServlet";
     public static final String COUNTRIES_LIST = "COUNTRIES_LIST";
     public static final String CURRENT_PAGE = "CURRENT_PAGE";
     public static final String CURRENT_PRICE = "CURRENT_PRICE";
@@ -52,6 +52,7 @@ public final class NamesConstants {
     public static final String SECURITY_PRICE = "SECURITY_PRICE";
     public static final String SECURITY_SYMBOL = "SECURITY_SYMBOL";
     public static final String SECURITY_PRICES_LIST = "SECURITY_PRICES_LIST";
+    public static final String SECURITY_STOP_TRADE_DATE = "SECURITY_STOP_TRADE_DATE";
     public static final String SECURITY_TRANSACTIONS = "SECURITY_TRANSACTIONS";
     public static final String SECURITY_TYPE = "SECURITY_TYPE";
     public static final String SECURITY_TYPES_LIST = "SECURITY_TYPES_LIST";

@@ -40,6 +40,8 @@ public interface SecurityDAO {
 
     void updateTransaction(Transaction transaction, String[] parameters) throws DAOException;
 
+    void archiveSecurity(String symbol, String date) throws DAOException;
+
     void removeSecurity(String symbol) throws DAOException;
 
     void removeSecurityFromPortfolio(int portfolioId, String symbol) throws DAOException;

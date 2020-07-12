@@ -29,194 +29,206 @@
         <li data-tab-target="#transactions" class="tab"><fmt:message key="label.transactions"/></li>
     </div>
 
-        <div id="holdings" data-tab-content class="active">
-            <table
-                    data-toggle="table"
-                    data-pagination="true"
-                    data-search="true">
-                <thead>
+    <div id="holdings" data-tab-content class="active">
+        <table
+                data-toggle="table"
+                data-pagination="true"
+                data-search="true">
+            <thead>
+            <tr>
+                <th data-field="symbol" data-sortable="true"><fmt:message key="label.symbol"/></th>
+                <th data-field="name" data-sortable="true"><fmt:message key="label.name"/></th>
+                <th data-field="exchange" data-sortable="true"><fmt:message key="label.exchange"/></th>
+                <th data-field="amount" data-sortable="true"><fmt:message key="label.amount"/></th>
+                <th data-field="average_price" data-sortable="true"><fmt:message key="label.averagePrice"/></th>
+                <th data-field="year_change" data-sortable="true"><fmt:message key="label.yearChange"/>, %</th>
+                <th data-field="type" data-sortable="true"><fmt:message key="label.type"/></th>
+                <th data-field="add" data-sortable="false"></th>
+                <th data-field="sell" data-sortable="false"></th>
+                <th data-field="remove" data-sortable="false"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
+                <c:url var="securityLink" value="getAllSecurityTransactions">
+                    <c:param name="PORTFOLIO_ID" value="${PORTFOLIO_ID}"/>
+                    <c:param name="SECURITY_NAME" value="${security.value.name}"/>
+                    <c:param name="SECURITY_SYMBOL" value="${security.key}"/>
+                </c:url>
+
                 <tr>
-                    <th data-field="symbol" data-sortable="true"><fmt:message key="label.symbol"/></th>
-                    <th data-field="name" data-sortable="true"><fmt:message key="label.name"/></th>
-                    <th data-field="exchange" data-sortable="true"><fmt:message key="label.exchange"/></th>
-                    <th data-field="amount" data-sortable="true"><fmt:message key="label.amount"/></th>
-                    <th data-field="average_price" data-sortable="true"><fmt:message key="label.averagePrice"/></th>
-                    <th data-field="year_change" data-sortable="true"><fmt:message key="label.yearChange"/>, %</th>
-                    <th data-field="type" data-sortable="true"><fmt:message key="label.type"/></th>
-                    <th data-field="add" data-sortable="false"></th>
-                    <th data-field="sell" data-sortable="false"></th>
-                    <th data-field="remove" data-sortable="false"></th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="security" items="${PORTFOLIO_SECURITIES}">
-                    <c:url var="securityLink" value="getAllSecurityTransactions">
-                        <c:param name="PORTFOLIO_ID" value="${PORTFOLIO_ID}"/>
-                        <c:param name="SECURITY_NAME" value="${security.value.name}"/>
-                        <c:param name="SECURITY_SYMBOL" value="${security.key}"/>
-                    </c:url>
+                    <td>
+                        <a href="${securityLink}">${security.key}</a>
+                    </td>
 
-                    <tr>
-                        <td>
-                            <a href="${securityLink}">${security.key}</a>
-                        </td>
+                    <td>
+                        <a href="${securityLink}">${security.value.name}</a>
+                    </td>
 
-                        <td>
-                            <a href="${securityLink}">${security.value.name}</a>
-                        </td>
+                    <td>
+                        <c:out value="${security.value.exchange}"></c:out>
+                    </td>
 
-                        <td>
-                            <c:out value="${security.value.exchange}"></c:out>
-                        </td>
+                    <td>
+                        <c:out value="${security.value.amount}"></c:out>
+                    </td>
 
-                        <td>
-                            <c:out value="${security.value.amount}"></c:out>
-                        </td>
+                    <td>
+                        <c:set var="averagePrice" value="${security.value.averagePrice}"/>
+                        <fmt:formatNumber type="number" minFractionDigits="2"
+                                          maxFractionDigits="2" value="${averagePrice}"/>
+                    </td>
 
-                        <td>
-                            <c:set var="averagePrice" value="${security.value.averagePrice}"/>
-                            <fmt:formatNumber type="number" minFractionDigits="2"
-                                              maxFractionDigits="2" value="${averagePrice}"/>
-                        </td>
+                    <td>
+                        <c:set var="yearChangePercents" value="${security.value.yearChangePercents}"/>
+                        <fmt:formatNumber type="number" minFractionDigits="2"
+                                          maxFractionDigits="2" value="${yearChangePercents}"/>
+                    </td>
 
-                        <td>
-                            <c:set var="yearChangePercents" value="${security.value.yearChangePercents}"/>
-                            <fmt:formatNumber type="number" minFractionDigits="2"
-                                              maxFractionDigits="2" value="${yearChangePercents}"/>
-                        </td>
+                    <td>
+                        <c:out value="${security.value.securityType}"></c:out>
+                    </td>
 
-                        <td>
-                            <c:out value="${security.value.securityType}"></c:out>
-                        </td>
-
-                        <td>
-                            <form action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="GET">
-                                <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
-                                <input type="hidden" name="SECURITY_PRICE" value="${security.value.averagePrice}">
-                                <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                <button class="btn btn-dark" type="submit"
-                                        data-tooltip title="<fmt:message key="label.buy"/>">
-                                    <i class="icon-plus"></i>
-                                </button>
-                            </form>
-                        </td>
-
-                        <td>
-                            <form action="${pageContext.request.contextPath}/sellSecurityFromPortfolio" method="GET">
-                                <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
-                                <input type="hidden" name="SECURITY_PRICE" value="${averagePrice}">
-                                <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                <input type="hidden" name="AMOUNT" value="${security.value.amount}">
-                                <button class="btn btn-dark" type="submit"
-                                        data-tooltip title="<fmt:message key="label.sell"/>">
-                                    <i class="icon-minus"></i>
-                                </button>
-                            </form>
-                        </td>
-
-                        <td>
-                            <form action="${pageContext.request.contextPath}/removeSecurityFromPortfolio" method="POST">
-                                <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
-                                <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                                <button class="btn btn-dark" type="submit"
-                                        data-tooltip title="<fmt:message key="label.delete"/>"
-                                        onclick="if (!(confirm('<fmt:message
-                                                key="label.deleteSecurityWarning"/>'))) return false">
-                                    <i class="icon-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-        <div id="transactions" data-tab-content>
-            <table
-                    data-toggle="table"
-                    data-pagination="true"
-                    data-search="true">
-                <thead>
-                <tr>
-                    <th data-field="symbol" data-sortable="true"><fmt:message key="label.symbol"/></th>
-                    <th data-field="type" data-sortable="true"><fmt:message key="label.type"/></th>
-                    <th data-field="amount" data-sortable="true"><fmt:message key="label.amount"/></th>
-                    <th data-field="price" data-sortable="true"><fmt:message key="label.price"/></th>
-                    <th data-field="date" data-sortable="true"><fmt:message key="label.date"/></th>
-                    <th data-field="edit" data-sortable="false"></th>
-                    <th data-field="remove" data-sortable="false"></th>
-                </tr>
-                </thead>
-
-                <tbody>
-                <c:forEach var="transaction" items="${PORTFOLIO_TRANSACTIONS}">
-
-                    <c:url var="securityLink" value="getSecurity">
-                        <c:param name="SECURITY_SYMBOL" value="${transaction.securitySymbol}"/>
-                    </c:url>
-
-                    <tr>
-                        <td>
-                            <a href="${securityLink}">${transaction.securitySymbol}</a>
-                        </td>
-
-                        <td>
+                    <td>
+                        <form id="form${security.value.symbol}"
+                              action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="GET">
+                            <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
+                            <input type="hidden" name="SECURITY_PRICE" value="${security.value.averagePrice}">
+                            <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
                             <c:choose>
-                                <c:when test="${transaction.transactionType == 1}">
-                                    <fmt:message key="label.buy"/>
+                                <c:when test="${security.value.stopTradeDate != null}">
+                                    <button class="btn btn-warning" type="submit"
+                                            onclick="isClosed('${security.value.symbol}','${security.value.stopTradeDate}')"
+                                            data-tooltip title="<fmt:message key="label.add"/>">
+                                        <i class="icon-plus"></i>
+                                    </button>
                                 </c:when>
-                                <c:when test="${transaction.transactionType == 2}">
-                                    <fmt:message key="label.sell"/>
-                                </c:when>
+                                <c:otherwise>
+                                    <button class="btn btn-dark" type="submit"
+                                            data-tooltip title="<fmt:message key="label.add"/>">
+                                        <i class="icon-plus"></i>
+                                    </button>
+                                </c:otherwise>
                             </c:choose>
-                        </td>
+                        </form>
+                    </td>
 
-                        <td>
-                            <c:out value="${transaction.amount}"></c:out>
-                        </td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/sellSecurityFromPortfolio" method="GET">
+                            <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
+                            <input type="hidden" name="SECURITY_PRICE" value="${averagePrice}">
+                            <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                            <input type="hidden" name="AMOUNT" value="${security.value.amount}">
+                            <button class="btn btn-dark" type="submit"
+                                    data-tooltip title="<fmt:message key="label.sell"/>">
+                                <i class="icon-minus"></i>
+                            </button>
+                        </form>
+                    </td>
 
-                        <td>
-                            <c:out value="${transaction.price}"></c:out>
-                        </td>
+                    <td>
+                        <form action="${pageContext.request.contextPath}/removeSecurityFromPortfolio" method="POST">
+                            <input type="hidden" name="SECURITY_SYMBOL" value="${security.value.symbol}">
+                            <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                            <button class="btn btn-dark" type="submit"
+                                    data-tooltip title="<fmt:message key="label.delete"/>"
+                                    onclick="if (!(confirm('<fmt:message
+                                            key="label.deleteSecurityWarning"/>'))) return false">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </form>
+                    </td>
 
-                        <td>
-                            <c:out value="${transaction.date}"></c:out>
-                        </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    <div id="transactions" data-tab-content>
+        <table
+                data-toggle="table"
+                data-pagination="true"
+                data-search="true">
+            <thead>
+            <tr>
+                <th data-field="symbol" data-sortable="true"><fmt:message key="label.symbol"/></th>
+                <th data-field="type" data-sortable="true"><fmt:message key="label.type"/></th>
+                <th data-field="amount" data-sortable="true"><fmt:message key="label.amount"/></th>
+                <th data-field="price" data-sortable="true"><fmt:message key="label.price"/></th>
+                <th data-field="date" data-sortable="true"><fmt:message key="label.date"/></th>
+                <th data-field="edit" data-sortable="false"></th>
+                <th data-field="remove" data-sortable="false"></th>
+            </tr>
+            </thead>
 
-                        <td>
-                            <form action="${pageContext.request.contextPath}/updateTransaction" method="GET">
-                                <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
-                                <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                <button class="btn btn-dark" type="submit"
-                                        data-tooltip title="<fmt:message key="label.edit"/>">
-                                    <i class="icon-edit"></i>
-                                </button>
-                            </form>
-                        </td>
+            <tbody>
+            <c:forEach var="transaction" items="${PORTFOLIO_TRANSACTIONS}">
 
-                        <td>
-                            <form action="${pageContext.request.contextPath}/removeTransaction" method="POST">
-                                <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
-                                <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                <button class="btn btn-dark" type="submit"
-                                        data-tooltip title="<fmt:message key="label.delete"/>"
-                                        onclick="if (!(confirm('<fmt:message
-                                                key="label.deleteTransactionWarning"/>'))) return false">
-                                    <i class="icon-trash"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
-        </div>
-        <div class="pagination-container">
-            <nav>
-                <ul class="pagination"></ul>
-            </nav>
-        </div>
+                <c:url var="securityLink" value="getSecurity">
+                    <c:param name="SECURITY_SYMBOL" value="${transaction.securitySymbol}"/>
+                </c:url>
+
+                <tr>
+                    <td>
+                        <a href="${securityLink}">${transaction.securitySymbol}</a>
+                    </td>
+
+                    <td>
+                        <c:choose>
+                            <c:when test="${transaction.transactionType == 1}">
+                                <fmt:message key="label.buy"/>
+                            </c:when>
+                            <c:when test="${transaction.transactionType == 2}">
+                                <fmt:message key="label.sell"/>
+                            </c:when>
+                        </c:choose>
+                    </td>
+
+                    <td>
+                        <c:out value="${transaction.amount}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${transaction.price}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${transaction.date}"></c:out>
+                    </td>
+
+                    <td>
+                        <form action="${pageContext.request.contextPath}/updateTransaction" method="GET">
+                            <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                            <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
+                            <button class="btn btn-dark" type="submit"
+                                    data-tooltip title="<fmt:message key="label.edit"/>">
+                                <i class="icon-edit"></i>
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form action="${pageContext.request.contextPath}/removeTransaction" method="POST">
+                            <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
+                            <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
+                            <button class="btn btn-dark" type="submit"
+                                    data-tooltip title="<fmt:message key="label.delete"/>"
+                                    onclick="if (!(confirm('<fmt:message
+                                            key="label.deleteTransactionWarning"/>'))) return false">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination-container">
+        <nav>
+            <ul class="pagination"></ul>
+        </nav>
+    </div>
 </div>
 <%--<script>--%>
 <%--    // search form script--%>

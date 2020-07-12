@@ -3,7 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 <%@ taglib prefix="project-tag" uri="/WEB-INF/tags.tld" %>
-<jsp:useBean id="currentDate" class="java.util.Date"/>
 
 <fmt:setLocale value="${sessionScope.lang}"/>
 <fmt:setBundle basename="content"/>

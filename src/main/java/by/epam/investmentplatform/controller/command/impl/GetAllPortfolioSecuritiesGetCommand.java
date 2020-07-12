@@ -69,9 +69,10 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommand {
             double yearChangePercents = security.getYearChangePercents();
             double dividends = security.getDividends();
             String securityType = security.getSecurityType();
+            String stopTradeDate = security.getStopTradeDate();
             if (amount > 0) {
                 securities.put(security.getSymbol(),
-                        new PortfolioSecurity(symbol, name, exchange, amount, averagePrice, yearChangePercents, dividends, securityType));
+                        new PortfolioSecurity(symbol, name, exchange, amount, averagePrice, yearChangePercents, dividends, securityType, stopTradeDate));
             }
         }
     }

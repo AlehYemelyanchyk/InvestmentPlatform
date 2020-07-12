@@ -14,11 +14,12 @@ public class PortfolioSecurity {
     private double yearChangePercents;
     private double dividends;
     private String securityType;
+    private String stopTradeDate;
 
     protected PortfolioSecurity() {
     }
 
-    public PortfolioSecurity(String symbol, String name, String exchange, int amount, double averagePrice, double yearChangePercents, double dividends, String securityType) {
+    public PortfolioSecurity(String symbol, String name, String exchange, int amount, double averagePrice, double yearChangePercents, double dividends, String securityType, String stopTradeDate) {
         this.symbol = symbol;
         this.name = name;
         this.exchange = exchange;
@@ -27,6 +28,7 @@ public class PortfolioSecurity {
         this.yearChangePercents = yearChangePercents;
         this.dividends = dividends;
         this.securityType = securityType;
+        this.stopTradeDate = stopTradeDate;
     }
 
     public String getSymbol() {
@@ -91,6 +93,14 @@ public class PortfolioSecurity {
 
     public void setSecurityType(String securityType) {
         this.securityType = securityType;
+    }
+
+    public String getStopTradeDate() {
+        return stopTradeDate;
+    }
+
+    public void setStopTradeDate(String stopTradeDate) {
+        this.stopTradeDate = stopTradeDate;
     }
 
     @Override
