@@ -53,49 +53,49 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="security" items="${type.value}">
+                <c:forEach var="transaction" items="${type.value}">
 
                     <c:url var="securityLink" value="getSecurity">
-                        <c:param name="SECURITY_SYMBOL" value="${security.symbol}"/>
+                        <c:param name="SECURITY_SYMBOL" value="${transaction.symbol}"/>
                     </c:url>
 
                     <tr>
                         <td>
-                            <a href="${securityLink}">${security.symbol}</a>
+                            <a href="${securityLink}">${transaction.symbol}</a>
                         </td>
 
                         <td>
-                            <a href="${securityLink}">${security.name}</a>
+                            <a href="${securityLink}">${transaction.name}</a>
                         </td>
 
                         <td>
-                            <c:out value="${security.exchange}"></c:out>
+                            <c:out value="${transaction.exchange}"></c:out>
                         </td>
 
                         <td>
-                            <c:out value="${security.currentPrice}"></c:out>
+                            <c:out value="${transaction.currentPrice}"></c:out>
                         </td>
 
                         <td>
-                            <c:out value="${security.yearChangePercents}"></c:out>
+                            <c:out value="${transaction.yearChangePercents}"></c:out>
                         </td>
 
                         <td>
-                            <c:out value="${security.dividends}"></c:out>
+                            <c:out value="${transaction.dividends}"></c:out>
                         </td>
 
                         <td>
-                            <form id="form${security.symbol}"
+                            <form id="form${transaction.symbol}"
                                   action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="GET">
-                                <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
-                                <input type="hidden" name="SECURITY_PRICE" value="${security.currentPrice}">
+                                <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.symbol}">
+                                <input type="hidden" name="SECURITY_PRICE" value="${transaction.currentPrice}">
                                 <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
                                     <%--                                    <button ${CURRENT_USER_ID == null?'disabled="disabled"':''}--%>
                                 <c:choose>
-                                    <c:when test="${security.stopTradeDate != null}">
+                                    <c:when test="${transaction.stopTradeDate != null}">
                                         <button
                                                 class="btn btn-warning" type="submit"
-                                                onclick="isClosed('${security.symbol}','${security.stopTradeDate}')"
+                                                onclick="isClosed('${transaction.symbol}','${transaction.stopTradeDate}')"
                                                 data-tooltip title="<fmt:message key="label.add"/>">
                                             <i class="icon-plus"></i>
                                         </button>

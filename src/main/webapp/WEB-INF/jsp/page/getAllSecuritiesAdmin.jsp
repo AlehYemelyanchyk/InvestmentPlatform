@@ -58,24 +58,24 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach var="security" items="${type.value}">
+                <c:forEach var="transaction" items="${type.value}">
 
                     <c:url var="securityLink" value="getSecurity">
-                        <c:param name="SECURITY_SYMBOL" value="${security.symbol}"/>
+                        <c:param name="SECURITY_SYMBOL" value="${transaction.symbol}"/>
                     </c:url>
 
                     <tr>
                         <td>
-                            <a href="${securityLink}">${security.symbol}</a>
+                            <a href="${securityLink}">${transaction.symbol}</a>
                         </td>
 
                         <td>
-                            <a href="${securityLink}">${security.name}</a>
+                            <a href="${securityLink}">${transaction.name}</a>
                         </td>
 
                         <td>
                             <form action="${pageContext.request.contextPath}/updateSecurity" method="GET">
-                                <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.symbol}">
                                 <button
                                         class="btn btn-dark" type="submit"
                                         data-tooltip title="Edit">
@@ -85,17 +85,17 @@
                         </td>
 
                         <td>
-                            <form id="form${security.symbol}"
+                            <form id="form${transaction.symbol}"
                                   action="${pageContext.request.contextPath}/archiveSecurity" method="POST">
-                                <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.symbol}">
                                 <button class="btn btn-dark" type="button"
                                         data-toggle="modal"
-                                        data-target="#${security.symbol}"
+                                        data-target="#${transaction.symbol}"
                                         data-tooltip title="Archive">
                                     <i class="icon-archive"></i>
                                 </button>
                                 <!-- Modal -->
-                                <div class="modal fade" id="${security.symbol}" tabindex="-1" role="dialog"
+                                <div class="modal fade" id="${transaction.symbol}" tabindex="-1" role="dialog"
                                      aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                         <div class="modal-content">
@@ -117,7 +117,7 @@
                                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                     Close
                                                 </button>
-                                                <button id="${security.symbol}" type="submit"
+                                                <button id="${transaction.symbol}" type="submit"
                                                         onclick="popUp(this.id)"
                                                         data-toggle="modal"
                                                         data-target="#successModal"
