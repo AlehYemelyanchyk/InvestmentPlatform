@@ -32,16 +32,16 @@ public class CheckUserBanStatusFilter extends AbstractFilter {
 
         if (req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID) == null) {
             filterChain.doFilter(req, resp);
-        }
-
-        int userId = (int) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID);
-        if (isBanned(bannedUsersIdList, userId)) {
-            String requestUrl = req.getRequestURI();
-            req.getSession().setAttribute(NamesConstants.REDIRECT_LINK, requestUrl);
-            req.setAttribute(NamesConstants.ERROR_ATTRIBUTE, "Sorry, but your account was banned due a suspicious activity. For further information, please, contact our support team.");
-            RoutingUtils.forwardToPage(JspPageName.ERROR_PAGE, req, resp);
         } else {
-            filterChain.doFilter(req, resp);
+            int userId = (int) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID);
+            if (isBanned(bannedUsersIdList, userId)) {
+                String requestUrl = req.getRequestURI();
+                req.getSession().setAttribute(NamesConstants.REDIRECT_LINK, requestUrl);
+                req.setAttribute(NamesConstants.ERROR_ATTRIBUTE, "Sorry, but your account was banned due a suspicious activity. For further information, please, contact our support team.");
+                RoutingUtils.forwardToPage(JspPageName.ERROR_PAGE, req, resp);
+            } else {
+                filterChain.doFilter(req, resp);
+            }
         }
     }
 

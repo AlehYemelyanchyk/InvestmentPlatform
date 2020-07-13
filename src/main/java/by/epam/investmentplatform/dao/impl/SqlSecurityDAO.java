@@ -216,7 +216,7 @@ class SqlSecurityDAO implements SecurityDAO {
         Security security;
         try {
             connection = CONNECTION_POOL.takeConnection();
-            String sqlQuery = "SELECT a.symbol, a.name, c.name as exchange, a.current_price, a.year_change_percents, a.dividends, d.type as security_type " +
+            String sqlQuery = "SELECT a.symbol, a.name, c.name as exchange, a.current_price, a.year_change_percents, a.dividends, d.type as security_type, a.stop_trade_date " +
                     "FROM invest.securities as a " +
                     "JOIN invest.exchanges as c " +
                     "ON a.exchange = c.id " +
