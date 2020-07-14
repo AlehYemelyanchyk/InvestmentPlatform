@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form id="form" class="needs-validation" novalidate action="${pageContext.request.contextPath}/signup"
+            <form id="form" class="needs-validation form-container" novalidate action="${pageContext.request.contextPath}/signup"
                   method="POST">
                 <div class="form-group">
                     <label for="login"><fmt:message key="label.login2"/></label>
@@ -84,9 +84,18 @@
                     <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
                     <div class="invalid-feedback"></div>
                 </div>
-                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
-                        key="label.submit"/>
+                <button onclick="XSSPrevent()" type="submit" class="btn btn-success btn-block"><fmt:message
+                        key="label.signup"/>
                 </button>
+
+                <div align="center">
+                    <br>
+
+                    <span>Already have an account? </span>
+                    <a href="${pageContext.request.contextPath}/login">
+                        Log in
+                    </a>
+                </div>
             </form>
         </div>
         <div class="col-md-4"></div>

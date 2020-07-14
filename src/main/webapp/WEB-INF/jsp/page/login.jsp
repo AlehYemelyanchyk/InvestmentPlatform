@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form id="form" class="needs-validation" novalidate action="${pageContext.request.contextPath}/login"
+            <form id="form" class="needs-validation form-container" novalidate action="${pageContext.request.contextPath}/login"
                   method="POST">
                 <div class="form-group">
                     <label for="login"><fmt:message key="label.login2"/></label>
@@ -42,9 +42,18 @@
                            data-value-missing="You must agree before submitting">
                     <label class="form-check-label" for="checkbox">Remember me</label>
                 </div>
-                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
-                        key="label.submit"/>
+                <button onclick="XSSPrevent()" type="submit" class="btn btn-success btn-block"><fmt:message
+                        key="label.login"/>
                 </button>
+
+                <div align="center">
+                    <br>
+
+                    <span>Don't have an account? </span>
+                    <a href="${pageContext.request.contextPath}/signup">
+                        Free Sign Up
+                    </a>
+                </div>
             </form>
         </div>
         <div class="col-md-4"></div>

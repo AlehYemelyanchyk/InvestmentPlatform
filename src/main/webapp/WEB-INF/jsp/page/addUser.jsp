@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form id="form" class="needs-validation" novalidate action="${pageContext.request.contextPath}/addUserAdmin"
+            <form id="form" class="needs-validation form-container" novalidate action="${pageContext.request.contextPath}/addUserAdmin"
                   method="POST">
                 <div class="form-group">
                     <label for="inputRole"><fmt:message key="label.role"/></label>
@@ -91,7 +91,7 @@
                     <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
                     <div class="invalid-feedback"></div>
                 </div>
-                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
+                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary btn-block"><fmt:message
                         key="label.submit"/>
                 </button>
             </form>

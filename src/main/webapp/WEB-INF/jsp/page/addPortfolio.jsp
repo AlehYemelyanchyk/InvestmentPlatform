@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <form id="form" class="needs-validation" novalidate
+            <form id="form" class="needs-validation form-container" novalidate
                   action="${pageContext.request.contextPath}/addPortfolio" method="POST">
                 <div class="form-group">
                     <label for="name"><fmt:message key="label.name"/></label>
@@ -28,7 +28,7 @@
                     <div class="valid-feedback">Good!</div>
                     <div class="invalid-feedback"></div>
                 </div>
-                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary"><fmt:message
+                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary btn-block"><fmt:message
                         key="label.submit"/>
                 </button>
             </form>

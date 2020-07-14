@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="static/css/loan.css">
 </head>
 <body>
-<div id="container">
+<div id="container" class="container-bordered">
     <br/>
 
     <div class="_3eutj">

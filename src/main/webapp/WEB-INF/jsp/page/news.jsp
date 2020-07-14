@@ -21,7 +21,7 @@
 
     <div class='row'>
         <div class='col-md-8'>
-            <div style="border-bottom: 1px solid gray" class="row single-news">
+            <div class="row single-news">
                 <div class="col-md-5">
                     <img style="width:100%" src="https://images.wsj.net/im-207787?width=300&size=1.5&pixel_ratio=1">
                 </div>
@@ -33,7 +33,7 @@
                        class="btn btn-sm btn-primary" style="float:right;">Read more >></a>
                 </div>
             </div>
-            <div style="border-bottom: 1px solid gray" class="row single-news">
+            <div class="row single-news">
                 <div class="col-md-5">
                     <img style="width:100%" src="https://images.wsj.net/im-208113?width=300&size=1.5&pixel_ratio=1">
                 </div>
@@ -45,7 +45,7 @@
                        class="btn btn-sm btn-primary" style="float:right;">Read more >></a>
                 </div>
             </div>
-            <div style="border-bottom: 1px solid gray" class="row single-news">
+            <div class="row single-news">
                 <div class="col-md-5">
                     <img style="width:100%" src="https://images.wsj.net/im-208138?width=300&size=1.5&pixel_ratio=1">
                 </div>
@@ -59,7 +59,7 @@
             </div>
         </div>
         <div class='col-md-4'>
-            <div class="container">
+            <div class="container container-bordered2">
                 <h4>Last traded:</h4>
                 <table>
                     <thead>

@@ -20,7 +20,7 @@
 <input type="hidden" id="securityName" value="${SECURITY.name}"/>
 
 
-<div id="container">
+<div id="container" class="container-bordered">
     <form action="${pageContext.request.contextPath}/signup" method="post">
         <table style="with: 50%">
             <thead>
