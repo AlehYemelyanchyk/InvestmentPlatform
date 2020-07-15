@@ -18,16 +18,16 @@ public class UpdateTransactionPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Transaction transaction = new Transaction(
-                (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_ID))),
-                (Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID))),
-                (req.getParameter(NamesConstants.SECURITY_SYMBOL)),
-                (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE))),
-                (Integer.parseInt(req.getParameter(NamesConstants.AMOUNT))),
-                (Double.parseDouble(req.getParameter(NamesConstants.PRICE))),
-                Date.valueOf(req.getParameter(NamesConstants.DATE)));
         String[] parameters = {};
         try {
+            Transaction transaction = new Transaction(
+                    (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_ID))),
+                    (Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID))),
+                    (req.getParameter(NamesConstants.SECURITY_SYMBOL)),
+                    (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE))),
+                    (Integer.parseInt(req.getParameter(NamesConstants.AMOUNT))),
+                    (Double.parseDouble(req.getParameter(NamesConstants.PRICE))),
+                    Date.valueOf(req.getParameter(NamesConstants.DATE)));
             securityService.updateTransaction(transaction, parameters);
         } catch (ServiceException e) {
             LOGGER.error("UpdateTransactionPostCommand error: ", e);

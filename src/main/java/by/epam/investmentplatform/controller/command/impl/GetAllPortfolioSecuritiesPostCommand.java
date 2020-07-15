@@ -16,12 +16,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommand {
+public class GetAllPortfolioSecuritiesPostCommand extends AbstractCommand {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
         Map<String, PortfolioSecurity> securities = new HashMap<>();
 
         int portfolioId;
@@ -47,7 +46,7 @@ public class GetAllPortfolioSecuritiesGetCommand extends AbstractCommand {
             allPortfolioSecurities = securityService.getAllPortfolioSecurities(portfolioId);
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
         } catch (ServiceException e) {
-            LOGGER.error("GetAllPortfolioSecuritiesGetCommand error: ", e);
+            LOGGER.error("GetAllPortfolioSecuritiesPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
 

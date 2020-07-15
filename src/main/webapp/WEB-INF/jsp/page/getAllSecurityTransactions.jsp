@@ -63,7 +63,7 @@
                             <form action="updateTransaction" method="GET">
                                 <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                 <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                <button class="btn btn-dark" type="submit"
+                                <button class="btn btn-link" type="submit"
                                         data-tooltip title="<fmt:message key="label.edit"/>">
                                     <i class="icon-edit"></i>
                                 </button>
@@ -74,7 +74,7 @@
                             <form action="removeTransaction" method="POST">
                                 <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                 <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                                <button class="btn btn-dark" type="submit"
+                                <button class="btn btn-link" type="submit"
                                         data-tooltip title="<fmt:message key="label.delete"/>"
                                         onclick="if (!(confirm('<fmt:message
                                                 key="label.deleteTransactionWarning"/>'))) return false">

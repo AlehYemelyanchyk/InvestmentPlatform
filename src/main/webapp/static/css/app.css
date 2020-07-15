@@ -165,6 +165,7 @@ div.col-xs-4 {
     border: 1px solid #f6f6f6;
     border-radius: 15px;
     padding: 30px 40px;
+    margin: 30px;
     -webkit-box-shadow: 0px 8px 5px -1px rgba(0,0,0,0.31);
     -moz-box-shadow: 0px 8px 5px -1px rgba(0,0,0,0.31);
     box-shadow: 0px 8px 5px -1px rgba(0,0,0,0.31);

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class RemovePortfolioGetCommand extends AbstractCommand {
+public class RemovePortfolioPostCommand extends AbstractCommand {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
@@ -20,7 +20,7 @@ public class RemovePortfolioGetCommand extends AbstractCommand {
         try {
             portfolioService.removePortfolio(portfolioId);
         } catch (ServiceException e) {
-            LOGGER.error("RemovePortfolioGetCommand error: ", e);
+            LOGGER.error("RemovePortfolioPostCommand error: ", e);
             throw new ServletException("Incorrect values");
         }
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS);

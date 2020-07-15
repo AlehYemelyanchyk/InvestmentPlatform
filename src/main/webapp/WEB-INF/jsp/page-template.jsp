@@ -54,6 +54,7 @@
     <script src="static/js/formValidation.js"></script>
     <script src="static/js/hideElement.js"></script>
     <script src="static/js/isClosed.js"></script>
+    <script src="static/js/isDeletePortfolio.js"></script>
     <script src="static/js/tabs.js"></script>
     <script src="static/js/tooltip.js"></script>
     <script src="static/js/XSSPrevent.js"></script>

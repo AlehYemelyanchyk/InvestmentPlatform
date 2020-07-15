@@ -104,7 +104,7 @@
                                     </button>
                                 </c:when>
                                 <c:otherwise>
-                                    <button class="btn btn-dark" type="submit"
+                                    <button class="btn btn-link" type="submit"
                                             data-tooltip title="<fmt:message key="label.add"/>">
                                         <i class="icon-plus"></i>
                                     </button>
@@ -119,7 +119,7 @@
                             <input type="hidden" name="SECURITY_PRICE" value="${averagePrice}">
                             <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
                             <input type="hidden" name="AMOUNT" value="${transaction.value.amount}">
-                            <button class="btn btn-dark" type="submit"
+                            <button class="btn btn-link" type="submit"
                                     data-tooltip title="<fmt:message key="label.sell"/>">
                                 <i class="icon-minus"></i>
                             </button>
@@ -130,11 +130,11 @@
                         <form action="${pageContext.request.contextPath}/removeSecurityFromPortfolio" method="POST">
                             <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.value.symbol}">
                             <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
-                            <button class="btn btn-dark" type="submit"
+                            <button class="btn btn-link" type="submit"
                                     data-tooltip title="<fmt:message key="label.delete"/>"
                                     onclick="if (!(confirm('<fmt:message
                                             key="label.deleteSecurityWarning"/>'))) return false">
-                                <i class="icon-trash"></i>
+                                <i class="icon-trash btn-link"></i>
                             </button>
                         </form>
                     </td>
@@ -197,10 +197,10 @@
                     </td>
 
                     <td>
-                        <form action="${pageContext.request.contextPath}/updateTransaction" method="GET">
+                        <form action="${pageContext.request.contextPath}/updateTransactionWindow" method="POST">
                             <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                             <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                            <button class="btn btn-dark" type="submit"
+                            <button class="btn btn-link" type="submit"
                                     data-tooltip title="<fmt:message key="label.edit"/>">
                                 <i class="icon-edit"></i>
                             </button>
@@ -211,7 +211,7 @@
                         <form action="${pageContext.request.contextPath}/removeTransaction" method="POST">
                             <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                             <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
-                            <button class="btn btn-dark" type="submit"
+                            <button class="btn btn-link" type="submit"
                                     data-tooltip title="<fmt:message key="label.delete"/>"
                                     onclick="if (!(confirm('<fmt:message
                                             key="label.deleteTransactionWarning"/>'))) return false">

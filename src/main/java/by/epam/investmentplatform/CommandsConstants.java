@@ -32,8 +32,10 @@ public final class CommandsConstants {
     public static final String SELL_SECURITY_FROM_PORTFOLIO = "sellSecurityFromPortfolio";
     public static final String SIGNUP = "signup";
     public static final String UPDATE_PORTFOLIO = "updatePortfolio";
+    public static final String UPDATE_PORTFOLIO_WINDOW = "updatePortfolioWindow";
     public static final String UPDATE_SECURITY = "updateSecurity";
     public static final String UPDATE_TRANSACTION = "updateTransaction";
+    public static final String UPDATE_TRANSACTION_WINDOW = "updateTransactionWindow";
     public static final String UPDATE_USER = "updateUser";
     public static final String UPDATE_USER_ADMIN = "updateUserAdmin";
     public static final String USER_SETTINGS = "userSettings";

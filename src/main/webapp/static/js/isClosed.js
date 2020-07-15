@@ -1,5 +1,4 @@
 function isClosed(symbol, date) {
-    console.log(date)
     if (date !== '') {
         event.preventDefault();
         swal("For your information!", "We're going to stop trading " + symbol + " on " + date + " at 00:00:00 AM. Please, contact our support team for more information.")
