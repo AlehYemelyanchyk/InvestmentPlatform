@@ -1,4 +1,4 @@
-function isDeletePortfolio(symbol) {
+function deletePortfolio(symbol) {
     event.preventDefault();
     swal({
         title: "Are you sure?",

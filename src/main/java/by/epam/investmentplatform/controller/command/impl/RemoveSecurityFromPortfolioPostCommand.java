@@ -24,7 +24,7 @@ public class RemoveSecurityFromPortfolioPostCommand extends AbstractCommand {
             LOGGER.error("RemoveSecurityFromPortfolioPostCommand error: ", e);
             throw new ServletException("Incorrect values");
         }
-        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS);
+        req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

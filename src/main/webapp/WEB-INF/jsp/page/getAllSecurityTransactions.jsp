@@ -60,7 +60,7 @@
                         </td>
 
                         <td>
-                            <form action="updateTransaction" method="GET">
+                            <form action="${pageContext.request.contextPath}/updateTransactionWindow" method="POST">
                                 <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                 <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                                 <button class="btn btn-link" type="submit"
@@ -71,23 +71,23 @@
                         </td>
 
                         <td>
-                            <form action="removeTransaction" method="POST">
+                            <form id="formRemove${transaction.id}" action="${pageContext.request.contextPath}/removeTransaction" method="POST">
                                 <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                 <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                                 <button class="btn btn-link" type="submit"
                                         data-tooltip title="<fmt:message key="label.delete"/>"
-                                        onclick="if (!(confirm('<fmt:message
-                                                key="label.deleteTransactionWarning"/>'))) return false">
+                                        onclick="deleteTransaction('${transaction.id}')">
                                     <i class="icon-trash"></i>
                                 </button>
                             </form>
                         </td>
-
                     </tr>
                 </c:forEach>
             </table>
         </div>
     </div>
 </div>
+<script src="static/js/deleteTransaction.js"></script>
+<script src="static/js/deleteSecurity.js"></script>
 </body>
 </html>

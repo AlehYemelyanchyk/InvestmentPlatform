@@ -64,7 +64,7 @@
                             <input type="hidden" name="PORTFOLIO_ID" value="${portfolio.id}">
                             <button type="submit"
                                     class="btn btn-link"
-                                    onclick="isDeletePortfolio('${portfolio.name}')"
+                                    onclick="deletePortfolio('${portfolio.name}')"
                                     data-tooltip title="<fmt:message key="label.delete"/>">
                                 <i class="icon-trash"></i>
                             </button>
@@ -78,5 +78,6 @@
         </c:forEach>
     </div>
 </div>
+<script src="static/js/deletePortfolio.js"></script>
 </body>
 </html>

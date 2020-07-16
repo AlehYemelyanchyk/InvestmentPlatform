@@ -127,13 +127,12 @@
                     </td>
 
                     <td>
-                        <form action="${pageContext.request.contextPath}/removeSecurityFromPortfolio" method="POST">
+                        <form id="formRemove${transaction.value.symbol}" action="${pageContext.request.contextPath}/removeSecurityFromPortfolio" method="POST">
                             <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.value.symbol}">
                             <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
                             <button class="btn btn-link" type="submit"
                                     data-tooltip title="<fmt:message key="label.delete"/>"
-                                    onclick="if (!(confirm('<fmt:message
-                                            key="label.deleteSecurityWarning"/>'))) return false">
+                                    onclick="deleteSecurity('${transaction.value.symbol}')">
                                 <i class="icon-trash btn-link"></i>
                             </button>
                         </form>
@@ -208,13 +207,12 @@
                     </td>
 
                     <td>
-                        <form action="${pageContext.request.contextPath}/removeTransaction" method="POST">
+                        <form id="formRemove${transaction.id}" action="${pageContext.request.contextPath}/removeTransaction" method="POST">
                             <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                             <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                             <button class="btn btn-link" type="submit"
                                     data-tooltip title="<fmt:message key="label.delete"/>"
-                                    onclick="if (!(confirm('<fmt:message
-                                            key="label.deleteTransactionWarning"/>'))) return false">
+                                    onclick="deleteTransaction('${transaction.id}')">
                                 <i class="icon-trash"></i>
                             </button>
                         </form>
@@ -230,6 +228,8 @@
         </nav>
     </div>
 </div>
+<script src="static/js/deleteTransaction.js"></script>
+<script src="static/js/deleteSecurity.js"></script>
 <%--<script>--%>
 <%--    // search form script--%>
 <%--    $(function () {--%>

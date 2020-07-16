@@ -101,7 +101,7 @@
                                         </button>
                                     </c:when>
                                     <c:otherwise>
-                                        <button class="btn btn-dark" type="submit"
+                                        <button class="btn btn-link" type="submit"
                                                 data-tooltip title="<fmt:message key="label.add"/>">
                                             <i class="icon-plus"></i>
                                         </button>
