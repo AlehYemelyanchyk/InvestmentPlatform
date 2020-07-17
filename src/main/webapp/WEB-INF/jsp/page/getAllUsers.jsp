@@ -75,7 +75,7 @@
                     <td>
                         <form action="updateUserAdmin" method="GET">
                             <input type="hidden" name="USER_ID" value="${user.id}">
-                            <button class="btn btn-dark" type="submit"
+                            <button class="btn btn-link" type="submit"
                                     data-tooltip title="<fmt:message key="label.edit"/>">
                                 <i class="icon-edit"></i>
                             </button>
@@ -83,12 +83,12 @@
                     </td>
 
                     <td>
-                        <form action="removeUserAdmin" method="POST">
+                        <form id="formRemove${user.login}"
+                              action="${pageContext.request.contextPath}/removeUserAdmin" method="POST">
                             <input type="hidden" name="USER_ID" value="${user.id}">
-                            <button class="btn btn-dark" type="submit"
+                            <button class="btn btn-link" type="submit"
                                     data-tooltip title="<fmt:message key="label.delete"/>"
-                                    onclick="if (!(confirm('<fmt:message
-                                            key="label.deleteUserWarning"/>'))) return false">
+                                    onclick="deleteUser('${user.login}')">
                                 <i class="icon-trash"></i>
                             </button>
                         </form>
@@ -99,5 +99,6 @@
         </table>
     </div>
 </div>
+<script src="static/js/deleteUser.js"></script>
 </body>
 </html>

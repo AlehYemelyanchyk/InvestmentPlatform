@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class GetSecurityGetCommand extends AbstractCommand {
+public class GetSecurityPostCommand extends AbstractCommand {
 
     private final static String OLD_FORMAT = "yyyy-MM-dd";
     private final static String NEW_FORMAT = "MMM-YY";
@@ -35,7 +35,7 @@ public class GetSecurityGetCommand extends AbstractCommand {
             security = securityService.getSecurity(securitySymbol);
             securityPrices = securityService.getSecurityPrices(securitySymbol);
         } catch (ServiceException e) {
-            LOGGER.error("GetSecurityGetCommand error: ", e);
+            LOGGER.error("GetSecurityPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
 
@@ -59,7 +59,7 @@ public class GetSecurityGetCommand extends AbstractCommand {
             try {
                 date = simpleDateFormat.parse(oldDateString);
             } catch (ParseException e) {
-                LOGGER.error("GetSecurityGetCommand error: Convert date problem.");
+                LOGGER.error("GetSecurityPostCommand error: Convert date problem.");
             }
             simpleDateFormat.applyPattern(NEW_FORMAT);
             dates.add(simpleDateFormat.format(date));

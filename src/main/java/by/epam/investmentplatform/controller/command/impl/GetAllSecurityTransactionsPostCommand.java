@@ -13,38 +13,35 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GetAllSecurityTransactionsGetCommand extends AbstractCommand {
+public class GetAllSecurityTransactionsPostCommand extends AbstractCommand {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         int portfolioId;
-        if (req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
-            portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
-        } else {
-            portfolioId = (int) req.getSession().getAttribute(NamesConstants.PORTFOLIO_ID);
-        }
-
         String securityName;
-        if (req.getParameter(NamesConstants.SECURITY_NAME) != null) {
-            securityName = req.getParameter(NamesConstants.SECURITY_NAME);
-        } else {
-            securityName = (String) req.getSession().getAttribute(NamesConstants.SECURITY_NAME);
-        }
-
         String securitySymbol;
-        if (req.getParameter(NamesConstants.SECURITY_SYMBOL) != null) {
-            securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
-        } else {
-            securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
-        }
-
         List<Transaction> allPortfolioTransactions;
         try {
+            if (req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
+                portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
+            } else {
+                portfolioId = (int) req.getSession().getAttribute(NamesConstants.PORTFOLIO_ID);
+            }
+            if (req.getParameter(NamesConstants.SECURITY_NAME) != null) {
+                securityName = req.getParameter(NamesConstants.SECURITY_NAME);
+            } else {
+                securityName = (String) req.getSession().getAttribute(NamesConstants.SECURITY_NAME);
+            }
+            if (req.getParameter(NamesConstants.SECURITY_SYMBOL) != null) {
+                securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
+            } else {
+                securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
+            }
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
         } catch (ServiceException e) {
-            LOGGER.error("GetAllSecurityTransactionsGetCommand error: ", e);
+            LOGGER.error("GetAllSecurityTransactionsPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
         List<Transaction> filteredTransactions = filterTransactionsBySecurity(allPortfolioTransactions, securitySymbol);

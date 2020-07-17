@@ -71,7 +71,8 @@
                         </td>
 
                         <td>
-                            <form id="formRemove${transaction.id}" action="${pageContext.request.contextPath}/removeTransaction" method="POST">
+                            <form id="formRemove${transaction.id}"
+                                  action="${pageContext.request.contextPath}/removeTransaction" method="POST">
                                 <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                                 <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                                 <button class="btn btn-link" type="submit"

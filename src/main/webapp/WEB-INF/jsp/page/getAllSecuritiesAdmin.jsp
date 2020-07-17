@@ -77,7 +77,7 @@
                             <form action="${pageContext.request.contextPath}/updateSecurity" method="GET">
                                 <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.symbol}">
                                 <button
-                                        class="btn btn-dark" type="submit"
+                                        class="btn btn-link" type="submit"
                                         data-tooltip title="Edit">
                                     <i class="icon-edit"></i>
                                 </button>
@@ -88,7 +88,7 @@
                             <form id="form${transaction.symbol}"
                                   action="${pageContext.request.contextPath}/archiveSecurity" method="POST">
                                 <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.symbol}">
-                                <button class="btn btn-dark" type="button"
+                                <button class="btn btn-link" type="button"
                                         data-toggle="modal"
                                         data-target="#${transaction.symbol}"
                                         data-tooltip title="Archive">

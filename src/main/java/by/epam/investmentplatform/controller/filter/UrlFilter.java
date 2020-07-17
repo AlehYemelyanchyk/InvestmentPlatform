@@ -24,6 +24,7 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.ADD_PORTFOLIO);
         BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_ADMIN);
         BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO);
+        BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_WINDOW);
         BUSINESS_URIS.add(CommandsConstants.ADD_USER_ADMIN);
         BUSINESS_URIS.add(CommandsConstants.ADMIN_SETTINGS);
         BUSINESS_URIS.add(CommandsConstants.ARCHIVE_SECURITY);
@@ -50,6 +51,7 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.REMOVE_USER_ADMIN);
         BUSINESS_URIS.add(CommandsConstants.SIGNUP);
         BUSINESS_URIS.add(CommandsConstants.SELL_SECURITY_FROM_PORTFOLIO);
+        BUSINESS_URIS.add(CommandsConstants.SELL_SECURITY_FROM_PORTFOLIO_WINDOW);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_PORTFOLIO);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_PORTFOLIO_WINDOW);
         BUSINESS_URIS.add(CommandsConstants.UPDATE_SECURITY);

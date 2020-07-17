@@ -50,19 +50,29 @@
             </thead>
             <tbody>
             <c:forEach var="transaction" items="${PORTFOLIO_SECURITIES}">
-                <c:url var="securityLink" value="getAllSecurityTransactions">
-                    <c:param name="PORTFOLIO_ID" value="${PORTFOLIO_ID}"/>
-                    <c:param name="SECURITY_NAME" value="${transaction.value.name}"/>
-                    <c:param name="SECURITY_SYMBOL" value="${transaction.key}"/>
-                </c:url>
-
                 <tr>
                     <td>
-                        <a href="${securityLink}">${transaction.key}</a>
+                        <form id="formSymbol" action="${pageContext.request.contextPath}/getAllSecurityTransactions"
+                              method="POST">
+                            <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                            <input type="hidden" name="SECURITY_NAME" value="${transaction.value.name}">
+                            <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.key}">
+                            <button type="submit" class="btn btn-link">
+                                <h6>${transaction.key}</h6>
+                            </button>
+                        </form>
                     </td>
 
                     <td>
-                        <a href="${securityLink}">${transaction.value.name}</a>
+                        <form id="formName" action="${pageContext.request.contextPath}/getAllSecurityTransactions"
+                              method="POST">
+                            <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
+                            <input type="hidden" name="SECURITY_NAME" value="${transaction.value.name}">
+                            <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.key}">
+                            <button type="submit" class="btn btn-link">
+                                <h6>${transaction.value.name}</h6>
+                            </button>
+                        </form>
                     </td>
 
                     <td>
@@ -91,7 +101,7 @@
 
                     <td>
                         <form id="form${transaction.value.symbol}"
-                              action="${pageContext.request.contextPath}/addSecurityToPortfolio" method="GET">
+                              action="${pageContext.request.contextPath}/addSecurityToPortfolioWindow" method="POST">
                             <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.value.symbol}">
                             <input type="hidden" name="SECURITY_PRICE" value="${transaction.value.averagePrice}">
                             <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
@@ -114,7 +124,7 @@
                     </td>
 
                     <td>
-                        <form action="${pageContext.request.contextPath}/sellSecurityFromPortfolio" method="GET">
+                        <form action="${pageContext.request.contextPath}/sellSecurityFromPortfolioWindow" method="POST">
                             <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.value.symbol}">
                             <input type="hidden" name="SECURITY_PRICE" value="${averagePrice}">
                             <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
@@ -127,7 +137,8 @@
                     </td>
 
                     <td>
-                        <form id="formRemove${transaction.value.symbol}" action="${pageContext.request.contextPath}/removeSecurityFromPortfolio" method="POST">
+                        <form id="formRemove${transaction.value.symbol}"
+                              action="${pageContext.request.contextPath}/removeSecurityFromPortfolio" method="POST">
                             <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.value.symbol}">
                             <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO_ID}">
                             <button class="btn btn-link" type="submit"
@@ -207,7 +218,8 @@
                     </td>
 
                     <td>
-                        <form id="formRemove${transaction.id}" action="${pageContext.request.contextPath}/removeTransaction" method="POST">
+                        <form id="formRemove${transaction.id}"
+                              action="${pageContext.request.contextPath}/removeTransaction" method="POST">
                             <input type="hidden" name="TRANSACTION_ID" value="${transaction.id}">
                             <input type="hidden" name="PORTFOLIO_NAME" value="${PORTFOLIO_NAME}">
                             <button class="btn btn-link" type="submit"
