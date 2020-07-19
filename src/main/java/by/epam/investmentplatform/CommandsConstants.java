@@ -10,6 +10,7 @@ public final class CommandsConstants {
     public static final String ARCHIVE_SECURITY = "archiveSecurity";
     public static final String BAN_USER = "banUser";
     public static final String BAN_USER_TRANSACTIONS = "banUserTransactions";
+    public static final String CONTACT_US = "contactUs";
     public static final String DEPOSIT = "deposit";
     public static final String GET_ALL_PORTFOLIO_SECURITIES = "getAllPortfolioSecurities";
     public static final String GET_ALL_PORTFOLIO_TRANSACTIONS = "getAllPortfolioTransactions";

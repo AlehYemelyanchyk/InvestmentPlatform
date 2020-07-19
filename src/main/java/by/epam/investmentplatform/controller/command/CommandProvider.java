@@ -26,6 +26,7 @@ public final class CommandProvider {
         repository.put(CommandsConstants.ARCHIVE_SECURITY + POST_METHOD, new ArchiveSecurityPostCommand());
         repository.put(CommandsConstants.BAN_USER + POST_METHOD, new BanUserPostCommand());
         repository.put(CommandsConstants.BAN_USER_TRANSACTIONS + POST_METHOD, new BanUserTransactionsPostCommand());
+        repository.put(CommandsConstants.CONTACT_US + POST_METHOD, new ContactUsPostCommand());
         repository.put(CommandsConstants.DEPOSIT + GET_METHOD, new DepositGetCommand());
         repository.put(CommandsConstants.DEPOSIT + POST_METHOD, new DepositPostCommand());
         repository.put(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES + GET_METHOD, new GetAllPortfolioSecuritiesPostCommand());

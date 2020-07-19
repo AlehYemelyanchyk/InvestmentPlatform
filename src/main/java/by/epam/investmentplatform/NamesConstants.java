@@ -38,6 +38,7 @@ public final class NamesConstants {
     public static final String REQUEST_USER_PARAM_ID = "id";
     public static final String REQUEST_USER_PARAM_LOGIN = "login";
     public static final String REQUEST_USER_PARAM_PASSWORD = "password";
+    public static final String REQUEST_USER_PARAM_REMEMBER_ME = "rememberMe";
     public static final String REQUEST_USER_PARAM_EMAIL = "email";
     public static final String REQUEST_USER_PARAM_NAME = "name";
     public static final String REQUEST_USER_PARAM_SURNAME = "surname";

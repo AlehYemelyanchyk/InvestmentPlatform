@@ -4,25 +4,25 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<display-name>Archetype Created Web Application</display-name>
+    <display-name>Archetype Created Web Application</display-name>
 
     <filter-mapping>
         <filter-name>ErrorHandlerFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-        <filter-mapping>
-            <filter-name>CheckIdentificationFilter</filter-name>
-            <url-pattern>/getAllUserPortfolios</url-pattern>
-            <url-pattern>/userSettings</url-pattern>
-            <url-pattern>/updateUser</url-pattern>
-            <url-pattern>/getBalance</url-pattern>
-            <url-pattern>/addPortfolio</url-pattern>
-            <url-pattern>/addSecurity</url-pattern>
-            <url-pattern>/addSecurityToPortfolio</url-pattern>
-            <url-pattern>/addUserAdmin</url-pattern>
-            <url-pattern>/adminSettings</url-pattern>
-        </filter-mapping>
+    <filter-mapping>
+        <filter-name>CheckIdentificationFilter</filter-name>
+        <url-pattern>/getAllUserPortfolios</url-pattern>
+        <url-pattern>/userSettings</url-pattern>
+        <url-pattern>/updateUser</url-pattern>
+        <url-pattern>/getBalance</url-pattern>
+        <url-pattern>/addPortfolio</url-pattern>
+        <url-pattern>/addSecurity</url-pattern>
+        <url-pattern>/addSecurityToPortfolio</url-pattern>
+        <url-pattern>/addUserAdmin</url-pattern>
+        <url-pattern>/adminSettings</url-pattern>
+    </filter-mapping>
 
     <filter-mapping>
         <filter-name>CheckUserBanStatusFilter</filter-name>
@@ -56,9 +56,10 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-<!--    Session support with Cookies only.-->
     <session-config>
-        <tracking-mode>COOKIE</tracking-mode>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
     </session-config>
 
     <error-page>

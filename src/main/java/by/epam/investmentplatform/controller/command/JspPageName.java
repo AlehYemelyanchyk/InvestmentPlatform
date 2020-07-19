@@ -6,6 +6,7 @@ public final class JspPageName {
     public static final String ADD_SECURITY_TO_PORTFOLIO_PAGE = "/WEB-INF/jsp/page/addSecurityToPortfolio.jsp";
     public static final String ADD_USER_PAGE = "/WEB-INF/jsp/page/addUser.jsp";
     public static final String ADMIN_SETTINGS_PAGE = "/WEB-INF/jsp/page/adminSettings.jsp";
+    public static final String CONTACT_US_PAGE = "/WEB-INF/jsp/page/contactUs.jsp";
     public static final String DEPOSIT_PAYMENT_PAGE = "/WEB-INF/jsp/page/depositPayment.jsp";
     public static final String GET_ALL_PORTFOLIO_SECURITIES_PAGE = "/WEB-INF/jsp/page/getAllPortfolioSecurities.jsp";
     public static final String GET_ALL_SECURITIES_PAGE = "/WEB-INF/jsp/page/getAllSecurities.jsp";

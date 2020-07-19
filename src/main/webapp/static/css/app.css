@@ -35,10 +35,19 @@ footer {
     text-align: center;
     overflow: hidden;
     padding-top: 7px;
+    padding-bottom: 7px;
 }
 
 .footer-text {
     color: #ffffff;
+}
+
+.footer-text button {
+    color: #ffffff;
+}
+
+button#contactUs\".btn.btn-link {
+    padding: 0px;
 }
 
 aside {
@@ -166,19 +175,19 @@ div.col-xs-4 {
     border-radius: 15px;
     padding: 30px 40px;
     margin: 30px;
-    -webkit-box-shadow: 0px 8px 5px -1px rgba(0,0,0,0.31);
-    -moz-box-shadow: 0px 8px 5px -1px rgba(0,0,0,0.31);
-    box-shadow: 0px 8px 5px -1px rgba(0,0,0,0.31);
+    -webkit-box-shadow: 0px 8px 5px -1px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 0px 8px 5px -1px rgba(0, 0, 0, 0.31);
+    box-shadow: 0px 8px 5px -1px rgba(0, 0, 0, 0.31);
 }
 
-.container-bordered{
+.container-bordered {
     border: 1px solid #f6f6f6;
     border-radius: 15px;
-    -webkit-box-shadow: 0px 5px 3px -1px rgba(0,0,0,0.31);
+    -webkit-box-shadow: 0px 5px 3px -1px rgba(0, 0, 0, 0.31);
     padding: 30px 40px;
 }
 
-.container-bordered2{
+.container-bordered2 {
     border: 1px solid #e5e5e5;
     border-radius: 5px;
     padding: 10px;

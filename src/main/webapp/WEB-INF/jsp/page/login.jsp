@@ -37,6 +37,7 @@
                 </div>
                 <div class="form-check">
                     <input type="checkbox" class="form-check-input" id="checkbox"
+                           name="rememberMe"
                            data-value-missing="You must agree before submitting">
                     <label class="form-check-label" for="checkbox">Remember me</label>
                 </div>
