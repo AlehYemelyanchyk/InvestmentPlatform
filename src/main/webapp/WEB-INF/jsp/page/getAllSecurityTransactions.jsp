@@ -13,12 +13,12 @@
 <body>
 <div class="container-bordered">
     <div id="header">
-
-        <c:url var="securityLink" value="getSecurity">
-            <c:param name="SECURITY_SYMBOL" value="${SECURITY_SYMBOL}"/>
-        </c:url>
-
-        <h4 align="center"><a href="${securityLink}">${SECURITY_NAME}</a></h4>
+        <form action="${pageContext.request.contextPath}/getSecurity" method="POST">
+            <input type="hidden" name="SECURITY_SYMBOL" value="${SECURITY_SYMBOL}">
+            <button class="btn btn-link" type="submit">
+                <h4 align="center">${SECURITY_NAME}</h4>
+            </button>
+        </form>
     </div>
 
     <div id="container">

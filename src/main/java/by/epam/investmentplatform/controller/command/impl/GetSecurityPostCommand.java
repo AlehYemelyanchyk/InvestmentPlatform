@@ -25,13 +25,13 @@ public class GetSecurityPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
-        if (securitySymbol == null) {
-            securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
-        }
         Security security;
         List<SecurityPrice> securityPrices;
         try {
+            String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
+            if (securitySymbol == null) {
+                securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
+            }
             security = securityService.getSecurity(securitySymbol);
             securityPrices = securityService.getSecurityPrices(securitySymbol);
         } catch (ServiceException e) {
@@ -50,7 +50,7 @@ public class GetSecurityPostCommand extends AbstractCommand {
         RoutingUtils.forwardToPage(JspPageName.GET_SECURITY_PAGE, req, resp);
     }
 
-    private List<String> getDates(List<SecurityPrice> prices){
+    private List<String> getDates(List<SecurityPrice> prices) {
         List<String> dates = new ArrayList<>();
         for (SecurityPrice securityPrice : prices) {
             String oldDateString = securityPrice.getDate().toString();

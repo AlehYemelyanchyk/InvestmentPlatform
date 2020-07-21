@@ -173,14 +173,14 @@
 
             <tbody>
             <c:forEach var="transaction" items="${PORTFOLIO_TRANSACTIONS}">
-
-                <c:url var="securityLink" value="getSecurity">
-                    <c:param name="SECURITY_SYMBOL" value="${transaction.securitySymbol}"/>
-                </c:url>
-
                 <tr>
                     <td>
-                        <a href="${securityLink}">${transaction.securitySymbol}</a>
+                        <form action="${pageContext.request.contextPath}/getSecurity" method="POST">
+                            <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.securitySymbol}">
+                            <button class="btn btn-link" type="submit">
+                                    ${transaction.securitySymbol}
+                            </button>
+                        </form>
                     </td>
 
                     <td>

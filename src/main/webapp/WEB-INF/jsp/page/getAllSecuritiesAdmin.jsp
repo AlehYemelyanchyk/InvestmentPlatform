@@ -59,18 +59,23 @@
                 </thead>
                 <tbody>
                 <c:forEach var="transaction" items="${type.value}">
-
-                    <c:url var="securityLink" value="getSecurity">
-                        <c:param name="SECURITY_SYMBOL" value="${transaction.symbol}"/>
-                    </c:url>
-
                     <tr>
                         <td>
-                            <a href="${securityLink}">${transaction.symbol}</a>
+                            <form action="${pageContext.request.contextPath}/getSecurity" method="POST">
+                                <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.symbol}">
+                                <button class="btn btn-link" type="submit">
+                                        ${transaction.symbol}
+                                </button>
+                            </form>
                         </td>
 
                         <td>
-                            <a href="${securityLink}">${transaction.name}</a>
+                            <form action="${pageContext.request.contextPath}/getSecurity" method="POST">
+                                <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.symbol}">
+                                <button class="btn btn-link" type="submit">
+                                        ${transaction.name}
+                                </button>
+                            </form>
                         </td>
 
                         <td>
