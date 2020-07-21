@@ -26,6 +26,15 @@ public interface SecurityService {
     List<Security> getAllSecurities() throws ServiceException;
 
     /**
+     * Retrieves all delisted securities stored in a data source.
+     *
+     * @return list of securities, which can't be null, but can be empty if there is no securities
+     * in the data source.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    List<Security> getAllDelistedSecurities() throws ServiceException;
+
+    /**
      * Retrieves all user's securities stored in a data source based on the provided user's id.
      *
      * @return list of securities, which can't be null, but can be empty if there is no securities

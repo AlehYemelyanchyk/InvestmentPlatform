@@ -30,6 +30,16 @@ class DefaultSecurityService implements SecurityService {
     }
 
     @Override
+    public List<Security> getAllDelistedSecurities() throws ServiceException {
+        try {
+            return getSecurityDAO().getAllDelistedSecurities();
+        } catch (DAOException e) {
+            LOGGER.error("getAllDelistedSecurities error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public List<Security> getAllUserSecurities(int userId) throws ServiceException {
         try {
             return getSecurityDAO().getAllUserSecurities(userId);

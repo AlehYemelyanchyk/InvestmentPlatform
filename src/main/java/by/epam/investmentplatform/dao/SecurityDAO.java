@@ -12,6 +12,8 @@ public interface SecurityDAO {
 
     List<Security> getAllSecurities() throws DAOException;
 
+    List<Security> getAllDelistedSecurities() throws DAOException;
+
     List<Security> getAllUserSecurities(int userId) throws DAOException;
 
     List<Security> getAllPortfolioSecurities(int portfolioId) throws DAOException;

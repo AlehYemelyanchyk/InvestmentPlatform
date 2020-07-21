@@ -52,6 +52,35 @@ class SqlSecurityDAO implements SecurityDAO {
     }
 
     @Override
+    public List<Security> getAllDelistedSecurities() throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+        List<Security> securities;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "SELECT * FROM invest.securities " +
+                    "WHERE stop_trade_date IS NOT NULL " +
+                    "ORDER BY stop_trade_date";
+            statement = connection.prepareStatement(sqlQuery);
+            resultSet = statement.executeQuery();
+            connection.commit();
+            securities = DAOUtils.securitiesResultSetHandle(resultSet);
+        } catch (Exception e) {
+            LOGGER.error("getAllDelistedSecurities error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement, resultSet);
+            } catch (SQLException e) {
+                LOGGER.error("getAllDelistedSecurities close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+        return securities;
+    }
+
+    @Override
     public List<Security> getAllUserSecurities(int userId) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;

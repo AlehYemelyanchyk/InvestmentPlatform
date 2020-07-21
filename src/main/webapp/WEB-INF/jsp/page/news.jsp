@@ -65,6 +65,35 @@
     </div>
     <div class='col-md-3'>
         <div class="container container-bordered2">
+            <h4>Delisting soon:</h4>
+            <table>
+                <thead>
+                <tr>
+                    <th><fmt:message key="label.symbol"/></th>
+                    <th><fmt:message key="label.date"/></th>
+                </tr>
+                </thead>
+                <tbody>
+                <c:forEach var="security" items="${SECURITIES_LIST}">
+
+                    <c:url var="securityLink" value="getSecurity">
+                        <c:param name="SECURITY_SYMBOL" value="${security.symbol}"/>
+                    </c:url>
+
+                    <tr>
+                        <td>
+                            <a href="${securityLink}">${security.symbol}</a>
+                        </td>
+
+                        <td>
+                            <c:out value="${security.stopTradeDate}"></c:out>
+                        </td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </div>
+        <div class="container container-bordered2">
             <h4>Last traded:</h4>
             <table>
                 <thead>

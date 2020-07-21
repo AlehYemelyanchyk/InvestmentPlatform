@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.filter;
 
 import by.epam.investmentplatform.NamesConstants;
+import by.epam.investmentplatform.entity.Security;
 import by.epam.investmentplatform.entity.Transaction;
 import by.epam.investmentplatform.service.SecurityService;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -23,17 +24,21 @@ public class UpdateTransactionsFilter extends AbstractFilter {
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         List<Transaction> transactionsLastTenList = new ArrayList<>();
+        List<Security> lastTenDelistedSecurities = new ArrayList<>();
         try {
             List<Transaction> transactionsList = securityService.getAllTransactions();
-            transactionsLastTenList = getLastTenStockTraded(transactionsList);
+            List<Security> delistedSecuritiesList = securityService.getAllDelistedSecurities();
+            lastTenDelistedSecurities = delistedSecuritiesList.subList(0, Math.min(delistedSecuritiesList.size(), 9));
+            transactionsLastTenList = getLastTenSecurities(transactionsList);
         } catch (ServiceException e) {
             LOGGER.error("UpdateTransactionsFilter error: ", e);
         }
         req.setAttribute(NamesConstants.TRANSACTIONS_LIST, transactionsLastTenList);
+        req.setAttribute(NamesConstants.SECURITIES_LIST, lastTenDelistedSecurities);
         filterChain.doFilter(req, resp);
     }
 
-    private List<Transaction> getLastTenStockTraded(List<Transaction> transactionsList) {
+    private List<Transaction> getLastTenSecurities(List<Transaction> transactionsList) {
         List<Transaction> transactionsLastTenList = new ArrayList<>();
         for (Transaction transaction : transactionsList) {
             if (!hasSecurity(transactionsLastTenList, transaction)) {
@@ -48,7 +53,7 @@ public class UpdateTransactionsFilter extends AbstractFilter {
 
     private boolean hasSecurity(List<Transaction> transactions, Transaction transaction) {
         for (Transaction listedTransaction : transactions) {
-            if(transaction.getSecuritySymbol().equals(listedTransaction.getSecuritySymbol())){
+            if (transaction.getSecuritySymbol().equals(listedTransaction.getSecuritySymbol())) {
                 return true;
             }
         }

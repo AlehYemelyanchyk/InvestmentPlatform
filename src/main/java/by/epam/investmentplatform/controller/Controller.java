@@ -30,9 +30,4 @@ public class Controller extends HttpServlet {
         Command command = commandProvider.getCommand(commandName);
         command.execute(req, resp);
     }
-
-    @Override
-    public void destroy() {
-        super.destroy();
-    }
 }
