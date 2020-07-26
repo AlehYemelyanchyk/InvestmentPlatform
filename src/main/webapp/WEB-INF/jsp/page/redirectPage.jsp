@@ -17,7 +17,6 @@
         <form id="formRedirect" action="${pageContext.request.contextPath}/news" method="POST"></form>
     </c:when>
     <c:otherwise>
-<%--        ${REQUEST_METHOD}--%>
         <form id="formRedirect" action="${REDIRECT_LINK}" method="${REQUEST_METHOD}"></form>
     </c:otherwise>
 </c:choose>

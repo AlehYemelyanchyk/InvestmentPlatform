@@ -17,6 +17,12 @@
             <c:when test="${STATUS_CODE == 404}">Requested resource not found.</c:when>
             <c:otherwise>Can't process this request. Please, try later...</c:otherwise>
         </c:choose>
+        <br/>
+        <br/>
+        <p>
+            <a class="nav-link" href="http://localhost:8080/investmentplatform/">
+                Go home</a>
+        </p>
     </div>
 </div>
 </body>
