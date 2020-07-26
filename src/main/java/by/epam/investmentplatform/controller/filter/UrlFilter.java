@@ -46,6 +46,7 @@ public class UrlFilter extends AbstractFilter {
         BUSINESS_URIS.add(CommandsConstants.LOGIN);
         BUSINESS_URIS.add(CommandsConstants.LOGOUT);
         BUSINESS_URIS.add(CommandsConstants.MAIN);
+        BUSINESS_URIS.add(CommandsConstants.NEWS);
         BUSINESS_URIS.add(CommandsConstants.REMOVE_PORTFOLIO);
         BUSINESS_URIS.add(CommandsConstants.REMOVE_SECURITY_FROM_PORTFOLIO);
         BUSINESS_URIS.add(CommandsConstants.REMOVE_TRANSACTION);

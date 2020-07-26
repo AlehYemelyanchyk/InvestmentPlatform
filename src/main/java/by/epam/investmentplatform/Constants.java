@@ -8,6 +8,8 @@ public final class Constants {
     public static final int DATE_SPLIT_ARRAY_MONTH = 1;
     public static final int DATE_SPLIT_ARRAY_DAY = 2;
     public static final int ITEMS_PER_PAGE = 20;
+    public static final String GET_METHOD = "GET";
+    public static final String POST_METHOD = "POST";
     public static final String ROLE_ADMIN = "1";
     public static final String ROLE_GUEST = "3";
     public static final String ROLE_USER = "2";

@@ -20,6 +20,7 @@
         <url-pattern>/addPortfolio</url-pattern>
         <url-pattern>/addSecurity</url-pattern>
         <url-pattern>/addSecurityToPortfolio</url-pattern>
+        <url-pattern>/addSecurityToPortfolioWindow</url-pattern>
         <url-pattern>/addUserAdmin</url-pattern>
         <url-pattern>/adminSettings</url-pattern>
     </filter-mapping>

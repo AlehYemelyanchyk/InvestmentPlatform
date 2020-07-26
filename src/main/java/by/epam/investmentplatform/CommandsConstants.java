@@ -26,6 +26,7 @@ public final class CommandsConstants {
     public static final String LOAN = "loan";
     public static final String LOGIN = "login";
     public static final String LOGOUT = "logout";
+    public static final String NEWS = "news";
     public static final String MAIN = "main";
     public static final String REMOVE_PORTFOLIO = "removePortfolio";
     public static final String REMOVE_SECURITY_FROM_PORTFOLIO = "removeSecurityFromPortfolio";

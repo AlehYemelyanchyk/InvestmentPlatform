@@ -3,6 +3,7 @@ package by.epam.investmentplatform.controller.command.impl;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
+import by.epam.investmentplatform.entity.Portfolio;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
@@ -37,6 +38,13 @@ public class SignUpPostCommand extends AbstractCommand {
             LOGGER.error("SignUpPostCommand error: ", e);
             throw new ServletException("Incorrect registration values.");
         }
-        RoutingUtils.forwardToPage(JspPageName.GET_ALL_USER_PORTFOLIOS_PAGE, req, resp);
+        try {
+            portfolioService.addPortfolio(new Portfolio(user.getId(), "First Portfolio"));
+        } catch (ServiceException e) {
+            LOGGER.error("SignUpPostCommand error: ", e);
+            throw new ServletException("Portfolio creation problems.");
+        }
+        req.getSession().setAttribute(NamesConstants.REDIRECT_LINK, JspPageName.NEWS_PAGE);
+        RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

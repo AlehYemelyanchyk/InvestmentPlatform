@@ -34,6 +34,7 @@ public final class NamesConstants {
     public static final String PORTFOLIO_TRANSACTIONS = "PORTFOLIO_TRANSACTIONS";
     public static final String PORTFOLIO_USER_ID = "PORTFOLIO_USER_ID";
     public static final String PRICE = "PRICE";
+    public static final String REQUEST_METHOD = "REQUEST_METHOD";
     public static final String REQUEST_USER_PARAM_ROLE = "role";
     public static final String REQUEST_USER_PARAM_ID = "id";
     public static final String REQUEST_USER_PARAM_LOGIN = "login";

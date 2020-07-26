@@ -28,7 +28,7 @@ public class AddSecurityToPortfolioWindowPostCommand extends AbstractCommand {
             if (req.getParameter(NamesConstants.SECURITY_PRICE) != null) {
                 securityPrice = Double.parseDouble(req.getParameter(NamesConstants.SECURITY_PRICE));
             } else {
-                securityPrice = (double) req.getSession().getAttribute(NamesConstants.SECURITY_PRICE);
+                securityPrice = Double.parseDouble(req.getSession().getAttribute(NamesConstants.SECURITY_PRICE).toString());
             }
             int userId = (int) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID);
             List<Portfolio> portfolios = portfolioService.getAllUserPortfolios(userId);

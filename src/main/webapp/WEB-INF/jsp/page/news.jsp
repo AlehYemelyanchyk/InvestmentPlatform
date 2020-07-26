@@ -76,13 +76,14 @@
                 <tbody>
                 <c:forEach var="security" items="${SECURITIES_LIST}">
 
-                    <c:url var="securityLink" value="getSecurity">
-                        <c:param name="SECURITY_SYMBOL" value="${security.symbol}"/>
-                    </c:url>
-
                     <tr>
                         <td>
-                            <a href="${securityLink}">${security.symbol}</a>
+                            <form action="${pageContext.request.contextPath}/getSecurity" method="POST">
+                                <input type="hidden" name="SECURITY_SYMBOL" value="${security.symbol}">
+                                <button class="btn btn-link" type="submit">
+                                        ${security.symbol}
+                                </button>
+                            </form>
                         </td>
 
                         <td>
@@ -105,13 +106,14 @@
                 <tbody>
                 <c:forEach var="transaction" items="${TRANSACTIONS_LIST}">
 
-                    <c:url var="securityLink" value="getSecurity">
-                        <c:param name="SECURITY_SYMBOL" value="${transaction.securitySymbol}"/>
-                    </c:url>
-
                     <tr>
                         <td>
-                            <a href="${securityLink}">${transaction.securitySymbol}</a>
+                            <form action="${pageContext.request.contextPath}/getSecurity" method="POST">
+                                <input type="hidden" name="SECURITY_SYMBOL" value="${transaction.securitySymbol}">
+                                <button class="btn btn-link" type="submit">
+                                        ${transaction.securitySymbol}
+                                </button>
+                            </form>
                         </td>
 
                         <td>
@@ -124,6 +126,5 @@
         </div>
     </div>
 </div>
-<script src="static/js/news.js"></script>
 </body>
 </html>
