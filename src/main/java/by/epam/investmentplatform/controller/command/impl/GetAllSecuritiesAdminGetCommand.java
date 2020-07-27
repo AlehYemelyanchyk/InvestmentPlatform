@@ -23,7 +23,7 @@ public class GetAllSecuritiesAdminGetCommand extends AbstractCommand {
 
         try {
             securities = securityService.getAllSecurities();
-        }  catch (ServiceException e) {
+        } catch (ServiceException e) {
             LOGGER.error("GetAllSecuritiesAdminGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
@@ -43,23 +43,21 @@ public class GetAllSecuritiesAdminGetCommand extends AbstractCommand {
 
     private List<String> listOfTypes(List<Security> securities) {
         Set<String> types = new HashSet<>();
-        for (Security security : securities) {
-            types.add(security.getSecurityType());
-        }
+        securities.forEach(security -> types.add(security.getSecurityType()));
         return new ArrayList<>(types);
     }
 
     private Map<String, List<Security>> getSecuritiesByType(List<Security> securities, List<String> types) {
         Map<String, List<Security>> securitiesByType = new HashMap<>();
-        for (String type : types) {
+        types.forEach(type -> {
             List<Security> newSecurityList = new ArrayList<>();
-            for (Security security : securities) {
+            securities.forEach(security -> {
                 if (security.getSecurityType().equals(type)) {
                     newSecurityList.add(security);
                 }
-            }
+            });
             securitiesByType.put(type, newSecurityList);
-        }
+        });
         return securitiesByType;
     }
 }

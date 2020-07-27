@@ -16,8 +16,11 @@
     <c:when test="${fn:contains(redirectLink, substring)}">
         <form id="formRedirect" action="${pageContext.request.contextPath}/news" method="POST"></form>
     </c:when>
+    <c:when test="${REQUEST_METHOD eq 'GET'}">
+        <meta http-equiv="Refresh" content="0;url=${REDIRECT_LINK}">
+    </c:when>
     <c:otherwise>
-        <form id="formRedirect" action="${REDIRECT_LINK}" method="${REQUEST_METHOD}"></form>
+        <form id="formRedirect" action="${REDIRECT_LINK}" method="POST"></form>
     </c:otherwise>
 </c:choose>
 <script>

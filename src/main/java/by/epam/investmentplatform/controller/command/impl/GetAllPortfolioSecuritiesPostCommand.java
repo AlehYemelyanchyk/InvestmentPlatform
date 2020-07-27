@@ -58,7 +58,7 @@ public class GetAllPortfolioSecuritiesPostCommand extends AbstractCommand {
     }
 
     private void fillPortfolioSecuritiesMap(Map<String, PortfolioSecurity> securities, List<Security> allPortfolioSecurities, List<Transaction> allPortfolioTransactions) {
-        for (Security security : allPortfolioSecurities) {
+        allPortfolioSecurities.forEach(security -> {
             String symbol = security.getSymbol();
             String name = security.getName();
             String exchange = security.getExchange();
@@ -73,7 +73,7 @@ public class GetAllPortfolioSecuritiesPostCommand extends AbstractCommand {
                 securities.put(security.getSymbol(),
                         new PortfolioSecurity(symbol, name, exchange, amount, averagePrice, yearChangePercents, dividends, securityType, stopTradeDate));
             }
-        }
+        });
     }
 
     private double countFullPrice(List<Transaction> allPortfolioTransactions, String symbol) {

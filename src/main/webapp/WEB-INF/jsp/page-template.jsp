@@ -48,7 +48,6 @@
     <script src="static/js/jquery-3.5.1.min.js"></script>
     <script src="static/js/popper.min.js"></script>
     <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/app.js"></script>
     <script src="static/js/ban.js"></script>
     <script src="static/js/bootstrap-table.min.js"></script>
     <script src="static/js/formValidation.js"></script>

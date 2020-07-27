@@ -37,10 +37,10 @@ public class LogInPostCommand extends AbstractCommand {
             LOGGER.error("LogInPostCommand error: ", e);
             throw new AccessDeniedException("Can not login. Wrong login or password.");
         }
-        if (req.getSession().getAttribute(NamesConstants.REDIRECT_LINK) != null) {
-            RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
-        } else if (Constants.ROLE_ADMIN.equals(req.getSession().getAttribute(NamesConstants.CURRENT_USER_ROLE))) {
+        if (Constants.ROLE_ADMIN.equals(req.getSession().getAttribute(NamesConstants.CURRENT_USER_ROLE))) {
             RoutingUtils.forwardToPage(JspPageName.ADMIN_SETTINGS_PAGE, req, resp);
+        } else if (req.getSession().getAttribute(NamesConstants.REDIRECT_LINK) != null) {
+            RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
         } else {
             req.getSession().setAttribute(NamesConstants.REDIRECT_LINK, JspPageName.NEWS_PAGE);
             RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

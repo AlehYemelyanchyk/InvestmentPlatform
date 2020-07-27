@@ -18,7 +18,7 @@
             <li class="nav-item active">
                 <a class="navbar-brand" href="http://localhost:8080/investmentplatform/"><h4>iUj</h4></a>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="http://localhost:8080/investmentplatform/">
                     <fmt:message key="label.news"/></a>
             </li>

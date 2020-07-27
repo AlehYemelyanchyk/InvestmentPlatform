@@ -3,6 +3,7 @@ package by.epam.investmentplatform.controller.command.impl;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
+import by.epam.investmentplatform.controller.exception.ValidationException;
 import by.epam.investmentplatform.entity.Portfolio;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -34,9 +35,12 @@ public class SignUpPostCommand extends AbstractCommand {
             session.setAttribute(NamesConstants.CURRENT_USER_ID, user.getId());
             session.setAttribute(NamesConstants.CURRENT_USER_LOGIN, user.getLogin());
             session.setAttribute(NamesConstants.CURRENT_USER_ROLE, user.getRole());
-        } catch (ServiceException e) {
+        } catch (NullPointerException e) {
             LOGGER.error("SignUpPostCommand error: ", e);
             throw new ServletException("Incorrect registration values.");
+        } catch (ServiceException e) {
+            LOGGER.error("SignUpPostCommand error: ", e);
+            throw new ValidationException("Such user already exists.");
         }
         try {
             portfolioService.addPortfolio(new Portfolio(user.getId(), "First Portfolio"));
