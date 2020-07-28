@@ -1,33 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Aleh
-  Date: 3/23/2020
-  Time: 8:52 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core_1_1" %>
 <html>
 <head>
     <title>Error</title>
-
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/login.css">
 </head>
 <body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
-<div id="wrapper">
-    <div id="header">
-        <h2>Error</h2>
-    </div>
-</div>
-
 <div id="container">
-    <table>
-            <c:out value="${error}"/>
-        </table>
-    </form>
+    <br/>
+
+    <div>
+        <p>
+        <h4><c:out value="${ERROR_ATTRIBUTE}"/></h4>
+        </p>
+        <c:choose>
+            <c:when test="${STATUS_CODE == 403}">You don't have permission to view this resource.</c:when>
+            <c:when test="${STATUS_CODE == 404}">Requested resource not found.</c:when>
+            <c:otherwise>Can't process this request. Please, try later...</c:otherwise>
+        </c:choose>
+        <br/>
+        <br/>
+        <p>
+            <a class="nav-link" href="http://localhost:8080/investmentplatform/">
+                Go home</a>
+        </p>
+    </div>
 </div>
 </body>
 </html>

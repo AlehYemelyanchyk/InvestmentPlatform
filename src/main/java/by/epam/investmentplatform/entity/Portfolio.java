@@ -1,10 +1,7 @@
 package by.epam.investmentplatform.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Portfolio implements Serializable {
     private static final long serialVersionUID = -186095461441034514L;
@@ -12,7 +9,6 @@ public class Portfolio implements Serializable {
     private int id;
     private int user_id;
     private String name;
-    List<Security> securities;
 
     protected Portfolio() {
     }
@@ -20,14 +16,12 @@ public class Portfolio implements Serializable {
     public Portfolio(int user_id, String name) {
         this.user_id = user_id;
         this.name = name;
-        this.securities = new ArrayList<>();
     }
 
     public Portfolio(int id, int user_id, String name) {
         this.id = id;
         this.user_id = user_id;
         this.name = name;
-        this.securities = new ArrayList<>();
     }
 
     public int getId() {
@@ -52,10 +46,6 @@ public class Portfolio implements Serializable {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public List<Security> getSecurities() {
-        return Collections.unmodifiableList(securities);
     }
 
     @Override

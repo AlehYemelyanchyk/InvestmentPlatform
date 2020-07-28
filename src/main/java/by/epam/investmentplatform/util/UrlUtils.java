@@ -5,22 +5,22 @@ public final class UrlUtils {
     }
 
     public static boolean isAjaxUrl(String url) {
-        return url.startsWith("/ajax/");
+        return url.contains("/ajax/");
     }
 
     public static boolean isAjaxJsonUrl(String url) {
-        return url.startsWith("/ajax/json/");
+        return url.contains("/ajax/json/");
     }
 
     public static boolean isAjaxHtmlUrl(String url) {
-        return url.startsWith("/ajax/html/");
+        return url.contains("/ajax/html/");
     }
 
     public static boolean isStaticUrl(String url) {
-        return url.startsWith("/static/");
+        return url.contains("/static/");
     }
 
     public static boolean isMediaUrl(String url) {
-        return url.startsWith("/media/");
+        return url.contains("/media/");
     }
 }

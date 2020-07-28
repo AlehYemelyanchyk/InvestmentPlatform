@@ -1,47 +1,47 @@
-<jsp:useBean id="THE_PORTFOLIO" scope="request" type="by.epam.investmentplatform.entity.Portfolio"/>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
-    <title>UpdatePortfolio</title>
-
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/addFormStyle.css">
-
+    <title>Update portfolio</title>
 </head>
-
 <body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center">Update portfolio</h2>
-    </div>
-</div>
-
 <div id="container">
-    <form action="updatePortfolio" method="POST">
-        <table>
-            <tbody>
-
-            <tr>
-                <td><input type="hidden" name="THE_PORTFOLIO_ID" value="${THE_PORTFOLIO.id}"></td>
-                <td><input type="hidden" name="THE_PORTFOLIO_USER_ID" value="${THE_PORTFOLIO.user_id}"></td>
-                <td><input type="hidden" name="THE_PORTFOLIO_NAME" value="${THE_PORTFOLIO.name}"></td>
-            </tr>
-
-            <tr>
-                <td><label>Name: </label></td>
-                <td><input type="text" name="name" value="${THE_PORTFOLIO.name}"></td>
-            </tr>
-
-            <tr>
-                <td><label></label></td>
-                <td><input type="submit" value="Update"
-                           class="save"></td>
-            </tr>
-            </tbody>
-        </table>
-    </form>
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <form id="form" class="needs-validation form-container" novalidate
+                  action="${pageContext.request.contextPath}/updatePortfolio" method="POST">
+                <div>
+                    <input type="hidden" name="PORTFOLIO_ID" value="${PORTFOLIO.id}">
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div>
+                    <input type="hidden" name="PORTFOLIO_USER_ID" value="${PORTFOLIO.user_id}">
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="form-group">
+                    <label for="name"><fmt:message key="label.name"/></label>
+                    <input type="text" name="name" class="form-control" id="name"
+                           value="${PORTFOLIO.name}"
+                           required
+                           data-value-missing="Please, enter portfolio name">
+                    <div class="valid-feedback">Good!</div>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <button onclick="XSSPrevent()" type="submit" class="btn btn-primary btn-block"><fmt:message
+                        key="label.submit"/>
+                </button>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

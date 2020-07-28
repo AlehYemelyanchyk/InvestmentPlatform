@@ -1,6 +1,8 @@
 package by.epam.investmentplatform.controller.filter;
 
+import by.epam.investmentplatform.CommandsConstants;
 import by.epam.investmentplatform.Constants;
+import by.epam.investmentplatform.NamesConstants;
 
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -12,40 +14,68 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 
-import static by.epam.investmentplatform.Constants.COMMAND_ATTRIBUTE;
-import static by.epam.investmentplatform.Constants.COMMON_SERVLET_PATH;
-
 @WebFilter(filterName = "UrlFilter")
 public class UrlFilter extends AbstractFilter {
 
-    // need to protect this collection from modifications somehow
     private static final Set<String> BUSINESS_URIS = new HashSet<>();
 
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
-        BUSINESS_URIS.add("signup");
-        BUSINESS_URIS.add("login");
-        BUSINESS_URIS.add("main");
-        BUSINESS_URIS.add("getAllUsers");
-        BUSINESS_URIS.add("getAllUserPortfolios");
-        BUSINESS_URIS.add("addPortfolio");
-        BUSINESS_URIS.add("updatePortfolio.jsp");
-        BUSINESS_URIS.add("updatePortfolio");
-        BUSINESS_URIS.add("removePortfolio.jsp");
-        BUSINESS_URIS.add("logout");
+    public void init(FilterConfig filterConfig) {
+        BUSINESS_URIS.add(CommandsConstants.ADD_PORTFOLIO);
+        BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_ADMIN);
+        BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO);
+        BUSINESS_URIS.add(CommandsConstants.ADD_SECURITY_TO_PORTFOLIO_WINDOW);
+        BUSINESS_URIS.add(CommandsConstants.ADD_USER_ADMIN);
+        BUSINESS_URIS.add(CommandsConstants.ADMIN_SETTINGS);
+        BUSINESS_URIS.add(CommandsConstants.ARCHIVE_SECURITY);
+        BUSINESS_URIS.add(CommandsConstants.BAN_USER);
+        BUSINESS_URIS.add(CommandsConstants.BAN_USER_TRANSACTIONS);
+        BUSINESS_URIS.add(CommandsConstants.CONTACT_US);
+        BUSINESS_URIS.add(CommandsConstants.DEPOSIT);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_PORTFOLIO_SECURITIES);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_SECURITIES);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_SECURITIES_ADMIN);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_SECURITY_TRANSACTIONS);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_USER_PORTFOLIOS);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_USER_PORTFOLIOS_ADMIN);
+        BUSINESS_URIS.add(CommandsConstants.GET_ALL_USERS);
+        BUSINESS_URIS.add(CommandsConstants.GET_BALANCE);
+        BUSINESS_URIS.add(CommandsConstants.GET_SECURITY);
+        BUSINESS_URIS.add(CommandsConstants.GET_USER_SETTINGS_ADMIN);
+        BUSINESS_URIS.add(CommandsConstants.LOAN);
+        BUSINESS_URIS.add(CommandsConstants.LOGIN);
+        BUSINESS_URIS.add(CommandsConstants.LOGOUT);
+        BUSINESS_URIS.add(CommandsConstants.MAIN);
+        BUSINESS_URIS.add(CommandsConstants.NEWS);
+        BUSINESS_URIS.add(CommandsConstants.REMOVE_PORTFOLIO);
+        BUSINESS_URIS.add(CommandsConstants.REMOVE_SECURITY_FROM_PORTFOLIO);
+        BUSINESS_URIS.add(CommandsConstants.REMOVE_TRANSACTION);
+        BUSINESS_URIS.add(CommandsConstants.REMOVE_USER_ADMIN);
+        BUSINESS_URIS.add(CommandsConstants.SIGNUP);
+        BUSINESS_URIS.add(CommandsConstants.SELL_SECURITY_FROM_PORTFOLIO);
+        BUSINESS_URIS.add(CommandsConstants.SELL_SECURITY_FROM_PORTFOLIO_WINDOW);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_PORTFOLIO);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_PORTFOLIO_WINDOW);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_SECURITY);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_TRANSACTION);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_TRANSACTION_WINDOW);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_USER);
+        BUSINESS_URIS.add(CommandsConstants.UPDATE_USER_ADMIN);
+        BUSINESS_URIS.add(CommandsConstants.USER_SETTINGS);
+        BUSINESS_URIS.add(CommandsConstants.WITHDRAW);
     }
 
     @Override
     public void doFilter(HttpServletRequest req, HttpServletResponse resp, FilterChain filterChain) throws IOException, ServletException {
         // saving url of the initial request, because we override it on the line 29 with "/app".
         String requestStr = req.getRequestURI();
-        String[] splitRequest = requestStr.split("/");
+        String[] splitRequest = requestStr.split(Constants.URL_DELIMITER);
         String commandName = splitRequest[splitRequest.length - 1];
-        req.setAttribute(COMMAND_ATTRIBUTE, commandName);
+        req.setAttribute(NamesConstants.COMMAND_ATTRIBUTE, commandName);
         if (BUSINESS_URIS.contains(commandName)) {
-            req.getRequestDispatcher(COMMON_SERVLET_PATH).forward(req, resp);
+            req.getRequestDispatcher(NamesConstants.COMMON_SERVLET_PATH).forward(req, resp);
         } else {
-            req.setAttribute(Constants.ERROR_ATTRIBUTE, "Such command does not exist.");
+            LOGGER.error("Command \"" + commandName + "\" does not exist");
             filterChain.doFilter(req, resp);
         }
     }

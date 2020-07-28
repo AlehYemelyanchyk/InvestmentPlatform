@@ -1,64 +1,83 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Aleh
-  Date: 3/15/2020
-  Time: 6:55 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
-    <title>Users List</title>
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/login.css">
+    <title>Portfolios</title>
 </head>
 <body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center">All portfolios</h2>
-    </div>
-</div>
-
 <div id="container">
-    <div id="content">
-        <input type="button" value="Create a New Portfolio"
-               onclick="window.location.href='addPortfolio'; return false;"
-               class="add-button"
-        />
-        <table>
+    <br/>
 
-            <tr>
-                <th>Name</th>
-                <th>Action</th>
-            </tr>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <a class="btn btn-dark" href="${pageContext.request.contextPath}/addPortfolio"
+               data-tooltip title="<fmt:message key="label.createNewPortfolio"/>">
+                <i class="icon-plus-sign-alt"></i>
+            </a>
+        </div>
+        <div class="col-md-3"></div>
+        <div class="col-md-3"></div>
+    </div>
+    <br/>
 
-            <c:forEach var="tempPortfolio" items="${PORTFOLIOS_LIST}">
+    <div class="row">
+        <c:forEach var="portfolio" items="${PORTFOLIOS_LIST}">
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
 
-                <c:url var="updateLink" value="updatePortfolio.jsp">
-                    <c:param name="portfolioId" value="${tempPortfolio.id}"/>
-                </c:url>
+                <form id="form" action="${pageContext.request.contextPath}/getAllPortfolioSecurities" method="POST">
+                    <input type="hidden" name="PORTFOLIO_NAME" value="${portfolio.name}">
+                    <input type="hidden" name="PORTFOLIO_ID" value="${portfolio.id}">
+                    <button type="submit" class="btn btn-link">
+                        <h4>${portfolio.name}</h4>
+                    </button>
+                </form>
 
-                <c:url var="removeLink" value="removePortfolio.jsp" >
-                    <c:param name="portfolioId" value="${tempPortfolio.id}"/>
-                </c:url>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3">
+                <div class="row">
+                    <div class="col-md-3">
 
-                <tr>
-                    <td>${tempPortfolio.name}</td>
-                    <td>
-                        <a href="${updateLink}">Update</a>
-                        |
-                        <a href="${removeLink}"
-                           onclick="if (!(confirm('Are you sure you want to delete this portfolio?'))) return false">
-                            Delete</a>
-                    </td>
-                </tr>
+                        <form id="formUpdate" action="${pageContext.request.contextPath}/updatePortfolioWindow"
+                              method="POST">
+                            <input type="hidden" name="PORTFOLIO_ID" value="${portfolio.id}">
+                            <button type="submit"
+                                    class="btn btn-link"
+                                    data-tooltip title="<fmt:message key="label.edit"/>">
+                                <i class="icon-edit"></i>
+                            </button>
+                        </form>
 
-            </c:forEach>>
-        </table>
+                    </div>
+                    <div class="col-md-3">
+
+                        <form id="formRemove${portfolio.name}"
+                              action="${pageContext.request.contextPath}/removePortfolio" method="POST">
+                            <input type="hidden" name="PORTFOLIO_ID" value="${portfolio.id}">
+                            <button type="submit"
+                                    class="btn btn-link"
+                                    onclick="deletePortfolio('${portfolio.name}')"
+                                    data-tooltip title="<fmt:message key="label.delete"/>">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </form>
+
+                    </div>
+                    <div class="col-md-3"></div>
+                    <div class="col-md-3"></div>
+                </div>
+            </div>
+        </c:forEach>
     </div>
 </div>
+<script src="static/js/deletePortfolio.js"></script>
 </body>
 </html>

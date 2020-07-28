@@ -4,10 +4,51 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<display-name>Archetype Created Web Application</display-name>
+    <display-name>Archetype Created Web Application</display-name>
 
     <filter-mapping>
         <filter-name>ErrorHandlerFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CheckIdentificationFilter</filter-name>
+        <url-pattern>/getAllUserPortfolios</url-pattern>
+        <url-pattern>/userSettings</url-pattern>
+        <url-pattern>/updateUser</url-pattern>
+        <url-pattern>/getBalance</url-pattern>
+        <url-pattern>/addPortfolio</url-pattern>
+        <url-pattern>/addSecurity</url-pattern>
+        <url-pattern>/addSecurityToPortfolio</url-pattern>
+        <url-pattern>/addSecurityToPortfolioWindow</url-pattern>
+        <url-pattern>/addUserAdmin</url-pattern>
+        <url-pattern>/adminSettings</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CheckUserBanStatusFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>CheckUserTransactionsBanStatusFilter</filter-name>
+        <url-pattern>/addSecurityToPortfolio</url-pattern>
+        <url-pattern>/deposit</url-pattern>
+        <url-pattern>/loan</url-pattern>
+        <url-pattern>/removePortfolio</url-pattern>
+        <url-pattern>/removeSecurityFromPortfolio</url-pattern>
+        <url-pattern>/removeTransaction</url-pattern>
+        <url-pattern>/updateTransaction</url-pattern>
+        <url-pattern>/withdraw</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <filter-mapping>
+        <filter-name>UpdateTransactionsFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
@@ -16,18 +57,15 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-<!--    <filter-mapping>-->
-<!--        <filter-name>CheckIdentificationFilter</filter-name>-->
-<!--        <url-pattern>/*</url-pattern>-->
-<!--    </filter-mapping>-->
-
-<!--    Session support with Cookies only.-->
     <session-config>
-        <tracking-mode>COOKIE</tracking-mode>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
     </session-config>
 
     <error-page>
         <error-code>404</error-code>
         <location>/WEB-INF/jsp/page/error.jsp</location>
     </error-page>
+
 </web-app>

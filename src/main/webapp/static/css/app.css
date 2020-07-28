@@ -1,0 +1,194 @@
+body {
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+.navbar-brand {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+#langs {
+    background-color: #343a40;
+    border: none;
+}
+
+#header-link {
+    color: #ffffff;
+    text-decoration-line: none;
+}
+
+#header-link:hover {
+    color: #e8e8e8;
+    text-decoration-line: none;
+}
+
+footer {
+    background-color: #616b7e;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 40px;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.footer-text {
+    color: #ffffff;
+}
+
+.footer-text button {
+    color: #ffffff;
+}
+
+button#contactUs\".btn.btn-link {
+    padding: 0px;
+}
+
+aside {
+    background-color: #fffeff;
+}
+
+main {
+    background-color: #fffefc;
+}
+
+p {
+    padding-right: 10px;
+}
+
+.fa-user-alt {
+    padding-right: 10px;
+}
+
+ul {
+    padding-inline-start: 20px
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    border-bottom: 1px solid gray;
+    background: none repeat scroll 0 0 #26425b;
+    padding: 10px;
+    color: #FFFFFF;
+}
+
+tr {
+    border-top: 1px solid gray;
+    text-align: center;
+}
+
+tr.delisted {
+    color: red;
+}
+
+table.login tr {
+    border: none;
+    text-align: left;
+}
+
+input.short-button {
+    width: 50px;
+}
+
+td label {
+    width: 150px;
+    text-align: left;
+    margin-left: 70%;
+}
+
+td input {
+    width: 200px;
+}
+
+td select {
+    width: 200px;
+}
+
+.lang_icons {
+    /*background-color: #bed3e6;*/
+}
+
+div.col-xs-12 {
+    width: 380px;
+}
+
+div.col-xs-4 {
+    width: 120px;
+}
+
+.card {
+    border: none;
+}
+
+.submit-button {
+    margin-top: 10px;
+}
+
+.panel-header {
+    padding-inline-start: 10px;
+}
+
+.col-lg-2 {
+    background-color: #eceff1;
+}
+
+.list-group-item {
+    background-color: #89909d;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.custom-control.custom-switch {
+    height: 39px;
+}
+
+.row-header {
+    text-align: center;
+}
+
+.table td, .table th {
+    padding: 1px;
+}
+
+.single-news {
+    background-color: #f2f2f2;
+    padding: 30px;
+    border-bottom: 1px solid #e5e5e5;
+    border-radius: 5px;
+}
+
+.form-container {
+    border: 1px solid #f6f6f6;
+    border-radius: 15px;
+    padding: 30px 40px;
+    margin: 30px;
+    -webkit-box-shadow: 0px 8px 5px -1px rgba(0, 0, 0, 0.31);
+    -moz-box-shadow: 0px 8px 5px -1px rgba(0, 0, 0, 0.31);
+    box-shadow: 0px 8px 5px -1px rgba(0, 0, 0, 0.31);
+}
+
+.container-bordered {
+    border: 1px solid #f6f6f6;
+    border-radius: 15px;
+    -webkit-box-shadow: 0px 5px 3px -1px rgba(0, 0, 0, 0.31);
+    padding: 30px 40px;
+}
+
+.container-bordered2 {
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    padding: 10px;
+}

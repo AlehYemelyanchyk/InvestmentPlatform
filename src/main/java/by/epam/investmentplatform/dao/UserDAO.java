@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.dao;
 
 import by.epam.investmentplatform.dao.exceptions.DAOException;
+import by.epam.investmentplatform.entity.BalanceTransaction;
 import by.epam.investmentplatform.entity.User;
 
 import java.util.List;
@@ -13,11 +14,23 @@ public interface UserDAO {
 
     User getUser(String login) throws DAOException;
 
+    List<Integer> getBannedUsersIdList() throws DAOException;
+
+    List<Integer> getBannedTransactionsUsersIdList() throws DAOException;
+
     void saveUser(User user) throws DAOException;
 
     void updateUser(User user, String[] params) throws DAOException;
 
+    void updateUserBanStatus(int userId, String[] params) throws DAOException;
+
+    void updateUserTransactionBanStatus(int userId, String[] params) throws DAOException;
+
     void deleteUser(User user) throws DAOException;
 
-    public List<String> getAllCountries() throws DAOException;
+    List<BalanceTransaction> getUserBalanceTransactions(int id) throws DAOException;
+
+    void addBalanceTransaction(int id, BalanceTransaction balanceTransaction) throws DAOException;
+
+    List<String> getAllCountries() throws DAOException;
 }

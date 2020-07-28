@@ -13,6 +13,7 @@ public class Security implements Serializable {
     private double yearChangePercents;
     private double dividends;
     private String securityType;
+    private String stopTradeDate;
 
     protected Security() {
     }
@@ -25,6 +26,17 @@ public class Security implements Serializable {
         this.yearChangePercents = yearChangePercents;
         this.dividends = dividends;
         this.securityType = securityType;
+    }
+
+    public Security(String symbol, String name, String exchange, double currentPrice, double yearChangePercents, double dividends, String securityType, String stopTradeDate) {
+        this.symbol = symbol;
+        this.name = name;
+        this.exchange = exchange;
+        this.currentPrice = currentPrice;
+        this.yearChangePercents = yearChangePercents;
+        this.dividends = dividends;
+        this.securityType = securityType;
+        this.stopTradeDate = stopTradeDate;
     }
 
     public String getSymbol() {
@@ -83,6 +95,14 @@ public class Security implements Serializable {
         this.securityType = securityType;
     }
 
+    public String getStopTradeDate() {
+        return stopTradeDate;
+    }
+
+    public void setStopTradeDate(String stopTradeDate) {
+        this.stopTradeDate = stopTradeDate;
+    }
+
     @Override
     public boolean equals(Object object) {
         if (this == object) {
@@ -92,11 +112,25 @@ public class Security implements Serializable {
             return false;
         }
         Security security = (Security) object;
-        return Objects.equals(symbol, security.symbol);
+        return Objects.equals(getSymbol(), security.getSymbol());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(symbol);
+        return Objects.hash(getSymbol());
+    }
+
+    @Override
+    public String toString() {
+        return getClass().getName() +
+                " symbol='" + symbol + '\'' +
+                ", name='" + name + '\'' +
+                ", exchange='" + exchange + '\'' +
+                ", currentPrice='" + currentPrice + '\'' +
+                ", yearChangePercents='" + yearChangePercents + '\'' +
+                ", dividends='" + dividends + '\'' +
+                ", securityType='" + securityType + '\'' +
+                ", stopTradeDate='" + stopTradeDate + '\'' +
+                '}';
     }
 }

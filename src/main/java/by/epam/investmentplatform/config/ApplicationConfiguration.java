@@ -3,14 +3,13 @@ package by.epam.investmentplatform.config;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
 public final class ApplicationConfiguration {
     private static final ApplicationConfiguration INSTANCE = new ApplicationConfiguration();
-    private static final Logger LOGGER = LogManager.getLogger(ApplicationConfiguration.class);
+    private static final Logger LOGGER = LogManager.getLogger();
 
     private String dbUrl;
     private String dbUser;
@@ -48,18 +47,30 @@ public final class ApplicationConfiguration {
         return maxPoolSize;
     }
 
+    public int getPoolIncreaseStep() {
+        return poolIncreaseStep;
+    }
+
+    public int getMaxWaitTime() {
+        return maxWaitTime;
+    }
+
     @Override
     public String toString() {
         return getClass().getName() +
                 "dbUrl='" + dbUrl + '\'' +
                 ", dbUser='" + dbUser + '\'' +
                 ", dbPassword='" + dbPassword + '\'' +
-                ", initPoolSize=" + initPoolSize +
+                ", dbPassword='" + initPoolSize + '\'' +
+                ", dbPassword='" + maxPoolSize + '\'' +
+                ", dbPassword='" + poolIncreaseStep + '\'' +
+                ", initPoolSize=" + maxWaitTime +
                 '}';
     }
 
     private void initProperties() {
-        try (InputStream inputStream = new FileInputStream("C:/Java/_workspace/_projects/InvestmentPlatform/src/main/resources/application.properties")) {
+        try (InputStream inputStream =
+                     getClass().getClassLoader().getResourceAsStream("application.properties")) {
             Properties properties = new Properties();
             properties.load(inputStream);
             dbUrl = properties.getProperty("dbUrl");
@@ -70,7 +81,7 @@ public final class ApplicationConfiguration {
             poolIncreaseStep = Integer.parseInt(properties.getProperty("poolIncreaseStep"));
             maxWaitTime = Integer.parseInt(properties.getProperty("maxWaitTime"));
         } catch (IOException e) {
-            LOGGER.error("Properties has not been loaded: " + e.getMessage());
+            LOGGER.error("initProperties error: " + e);
             throw new Error("Properties has not been loaded", e);
         }
     }

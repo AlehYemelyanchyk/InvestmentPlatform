@@ -1,38 +1,22 @@
 package by.epam.investmentplatform;
 
 public final class Constants {
-    public static final String USERS_LIST = "USERS_LIST";
-    public static final String PORTFOLIOS_LIST = "PORTFOLIOS_LIST";
-    public static final String THE_PORTFOLIO = "THE_PORTFOLIO";
-    public static final String COUNTRIES_LIST = "COUNTRIES_LIST";
-    public static final String COMMON_SERVLET_PATH = "/controller";
-    public static final String COMMAND_ATTRIBUTE = "command";
-    public static final String ERROR_ATTRIBUTE = "error";
-    public static final String REDIRECT_URL_AFTER_LOGIN = "redirectUrlAfterLogin";
-    public static final String CURRENT_PAGE = "currentPage";
-    public static final String CURRENT_USER_ID = "id";
-    public static final String CURRENT_USER_LOGIN = "login";
-    public static final String CURRENT_USER_ROLE = "role";
+    public static final String BAN_STATUS_ACTIVE = "1";
+    public static final String BAN_STATUS_INACTIVE = "0";
+    public static final String DATE_DELIMITER = "-";
+    public static final int DATE_SPLIT_ARRAY_YEAR = 0;
+    public static final int DATE_SPLIT_ARRAY_MONTH = 1;
+    public static final int DATE_SPLIT_ARRAY_DAY = 2;
+    public static final int ITEMS_PER_PAGE = 20;
+    public static final String GET_METHOD = "GET";
+    public static final String POST_METHOD = "POST";
+    public static final String ROLE_ADMIN = "1";
+    public static final String ROLE_GUEST = "3";
+    public static final String ROLE_USER = "2";
+    public static final String URL_DELIMITER = "/";
     public static final int ZERO_LIST_ELEMENT = 0;
 
-    public enum Cookie {
-
-        SHOPPING_CART("iSCC", 60 * 60 * 24 * 365);
-
-        private final String name;
-        private final int lifeTime;
-
-        private Cookie(String name, int lifeTime) {
-            this.name = name;
-            this.lifeTime = lifeTime;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public int getLifeTime() {
-            return lifeTime;
-        }
+    private Constants() {
+        throw new UnsupportedOperationException();
     }
 }

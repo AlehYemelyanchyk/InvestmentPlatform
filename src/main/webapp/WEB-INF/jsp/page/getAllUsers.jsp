@@ -1,45 +1,104 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Aleh
-  Date: 3/15/2020
-  Time: 6:55 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page isELIgnored="false" %>
+
+<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setBundle basename="content"/>
+
+<html lang="${sessionScope.lang}">
 <head>
-    <title>Users List</title>
-    <link type="text/css" rel="stylesheet" href="css/style.css">
-    <link type="text/css" rel="stylesheet" href="css/login.css">
+    <title>Users</title>
 </head>
 <body>
-<button type="button" name="back" onclick="history.back()">back</button>
-<br/><br/>
-<div id="wrapper">
-    <div id="header">
-        <h2 align="center">All users list</h2>
-    </div>
-</div>
-
 <div id="container">
-    <div id="content">
-        <table>
-            <tr>
-                <th>Login</th>
-                <th>Email</th>
-            </tr>
+    <br/>
 
-            <c:forEach var="tempUsers" items="${USERS_LIST}">
+    <div class="row">
+        <div class="col-md-2">
+            <a class="btn btn-dark" href="${pageContext.request.contextPath}/addUserAdmin"
+               data-tooltip title="Add User">
+                <i class="icon-plus-sign-alt"></i>
+            </a>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+        <div class="col-md-2"></div>
+    </div>
+    <div>
+        <br/>
+
+        <table>
+            <thead>
+            <tr>
+                <th><fmt:message key="label.login2"/></th>
+                <th><fmt:message key="label.email"/></th>
+                <th><fmt:message key="label.name"/></th>
+                <th><fmt:message key="label.surname"/></th>
+                <th><fmt:message key="label.country"/></th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="user" items="${USERS_LIST}">
+
+                <c:url var="userLink" value="getUserSettingsAdmin">
+                    <c:param name="PORTFOLIO_USER_ID" value="${user.id}"/>
+                    <c:param name="USER_BAN_STATUS" value="${user.banned}"/>
+                    <c:param name="TRANSACTIONS_BAN_STATUS" value="${user.transactionBanned}"/>
+                </c:url>
 
                 <tr>
-                    <td>${tempUsers.login}</td>
-                    <td>${tempUsers.email} </td>
-                </tr>
+                    <td>
+                        <a href="${userLink}">${user.login}</a>
+                    </td>
 
-            </c:forEach>>
+                    <td>
+                        <c:out value="${user.email}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${user.name}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${user.surname}"></c:out>
+                    </td>
+
+                    <td>
+                        <c:out value="${user.country}"></c:out>
+                    </td>
+
+                    <td>
+                        <form action="updateUserAdmin" method="GET">
+                            <input type="hidden" name="USER_ID" value="${user.id}">
+                            <button class="btn btn-link" type="submit"
+                                    data-tooltip title="<fmt:message key="label.edit"/>">
+                                <i class="icon-edit"></i>
+                            </button>
+                        </form>
+                    </td>
+
+                    <td>
+                        <form id="formRemove${user.login}"
+                              action="${pageContext.request.contextPath}/removeUserAdmin" method="POST">
+                            <input type="hidden" name="USER_ID" value="${user.id}">
+                            <button class="btn btn-link" type="submit"
+                                    data-tooltip title="<fmt:message key="label.delete"/>"
+                                    onclick="deleteUser('${user.login}')">
+                                <i class="icon-trash"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
         </table>
     </div>
 </div>
+<script src="static/js/deleteUser.js"></script>
 </body>
 </html>
