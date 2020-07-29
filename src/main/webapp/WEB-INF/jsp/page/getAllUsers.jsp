@@ -16,9 +16,8 @@
 
     <div class="row">
         <div class="col-md-2">
-            <a class="btn btn-dark" href="${pageContext.request.contextPath}/addUserAdmin"
-               data-tooltip title="Add User">
-                <i class="icon-plus-sign-alt"></i>
+            <a class="btn btn-info" href="${pageContext.request.contextPath}/addUserAdmin">
+                Add User
             </a>
         </div>
         <div class="col-md-2"></div>

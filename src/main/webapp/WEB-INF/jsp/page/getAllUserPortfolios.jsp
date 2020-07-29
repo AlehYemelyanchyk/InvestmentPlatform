@@ -17,9 +17,8 @@
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-3">
-            <a class="btn btn-dark" href="${pageContext.request.contextPath}/addPortfolio"
-               data-tooltip title="<fmt:message key="label.createNewPortfolio"/>">
-                <i class="icon-plus-sign-alt"></i>
+            <a class="btn btn-info" href="${pageContext.request.contextPath}/addPortfolio">
+                New Portfolio
             </a>
         </div>
         <div class="col-md-3"></div>
