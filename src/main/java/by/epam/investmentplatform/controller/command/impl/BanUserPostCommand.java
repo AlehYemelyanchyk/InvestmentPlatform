@@ -32,6 +32,7 @@ public class BanUserPostCommand extends AbstractCommand {
             LOGGER.error("BanUserPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.USER_SETTINGS_ADMIN_PAGE, req, resp);
     }
 }

@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.BalanceTransaction;
@@ -32,6 +33,7 @@ public class DepositPostCommand extends AbstractCommand {
             throw new ServletException("Deposit payment error.");
         }
         req.getSession().setAttribute(NamesConstants.AMOUNT, amount);
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_BALANCE);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }

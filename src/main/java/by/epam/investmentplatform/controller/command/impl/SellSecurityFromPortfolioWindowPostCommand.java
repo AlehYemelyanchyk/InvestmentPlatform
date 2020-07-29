@@ -1,5 +1,6 @@
 package by.epam.investmentplatform.controller.command.impl;
 
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.Portfolio;
@@ -51,6 +52,7 @@ public class SellSecurityFromPortfolioWindowPostCommand extends AbstractCommand 
         req.setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
         req.setAttribute(NamesConstants.SECURITY_PRICE, securityPrice);
         req.setAttribute(NamesConstants.AMOUNT, amount);
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.SELL_SECURITY_FROM_PORTFOLIO_PAGE, req, resp);
     }
 }

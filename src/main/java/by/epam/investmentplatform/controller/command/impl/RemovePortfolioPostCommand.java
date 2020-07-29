@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -24,6 +25,7 @@ public class RemovePortfolioPostCommand extends AbstractCommand {
             throw new ServletException("Incorrect values");
         }
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USER_PORTFOLIOS);
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

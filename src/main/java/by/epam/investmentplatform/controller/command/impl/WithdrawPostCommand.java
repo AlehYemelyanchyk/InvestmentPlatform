@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.BalanceTransaction;
@@ -33,6 +34,7 @@ public class WithdrawPostCommand extends AbstractCommand {
         }
         req.getSession().setAttribute(NamesConstants.AMOUNT, amount);
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_BALANCE);
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }
