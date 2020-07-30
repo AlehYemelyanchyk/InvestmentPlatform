@@ -48,9 +48,9 @@
                 <div align="center">
                     <br>
 
-                    <span>Don't have an account? </span>
+                    <span><fmt:message key="label.dontHaveAccount"/> </span>
                     <a href="${pageContext.request.contextPath}/signup">
-                        Free Sign Up
+                        <fmt:message key="label.freeSignUp"/>
                     </a>
                 </div>
             </form>

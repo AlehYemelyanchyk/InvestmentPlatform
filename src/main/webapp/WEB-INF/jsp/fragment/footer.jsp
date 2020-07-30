@@ -16,7 +16,7 @@
         <div class="col-md-2">
             <form id="form" action="${pageContext.request.contextPath}/contactUs" method="POST">
                 <button id=contactUs" type="submit" class="btn btn-link">
-                    <h5>Contact us</h5>
+                    <h5><fmt:message key="label.contactUs"/></h5>
                 </button>
             </form>
         </div>

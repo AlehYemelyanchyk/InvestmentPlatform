@@ -79,7 +79,7 @@
                     <input type="checkbox" class="form-check-input" id="invalidCheck"
                            required
                            data-value-missing="You must agree before submitting">
-                    <label class="form-check-label" for="invalidCheck">Agree to terms and conditions</label>
+                    <label class="form-check-label" for="invalidCheck"><fmt:message key="label.agreeTerms"/></label>
                     <div class="invalid-feedback"></div>
                 </div>
                 <button onclick="XSSPrevent()" type="submit" class="btn btn-success btn-block"><fmt:message
@@ -89,9 +89,9 @@
                 <div align="center">
                     <br>
 
-                    <span>Already have an account? </span>
+                    <span><fmt:message key="label.alreadyHaveAccount"/> </span>
                     <a href="${pageContext.request.contextPath}/login">
-                        Log in
+                        <fmt:message key="label.login"/>
                     </a>
                 </div>
             </form>
