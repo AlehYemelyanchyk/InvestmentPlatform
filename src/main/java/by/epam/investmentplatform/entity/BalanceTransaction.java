@@ -1,7 +1,7 @@
 package by.epam.investmentplatform.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class BalanceTransaction implements Serializable {
@@ -11,19 +11,19 @@ public class BalanceTransaction implements Serializable {
     private int userId;
     private int type;
     private double amount;
-    private Date date;
+    private LocalDate date;
 
     public BalanceTransaction() {
     }
 
-    public BalanceTransaction(int userId, int type, double amount, Date date) {
+    public BalanceTransaction(int userId, int type, double amount, LocalDate date) {
         this.userId = userId;
         this.type = type;
         this.amount = amount;
         this.date = date;
     }
 
-    public BalanceTransaction(int id, int userId, int type, double amount, Date date) {
+    public BalanceTransaction(int id, int userId, int type, double amount, LocalDate date) {
         this.id = id;
         this.userId = userId;
         this.type = type;
@@ -63,11 +63,11 @@ public class BalanceTransaction implements Serializable {
         this.amount = amount;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

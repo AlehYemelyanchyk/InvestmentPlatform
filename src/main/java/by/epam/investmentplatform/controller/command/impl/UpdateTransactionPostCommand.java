@@ -12,7 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class UpdateTransactionPostCommand extends AbstractCommand {
 
@@ -28,7 +28,7 @@ public class UpdateTransactionPostCommand extends AbstractCommand {
                     (Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE))),
                     (Integer.parseInt(req.getParameter(NamesConstants.AMOUNT))),
                     (Double.parseDouble(req.getParameter(NamesConstants.PRICE))),
-                    Date.valueOf(req.getParameter(NamesConstants.DATE)));
+                    LocalDate.parse(req.getParameter(NamesConstants.DATE)));
             securityService.updateTransaction(transaction, parameters);
         } catch (ServiceException e) {
             LOGGER.error("UpdateTransactionPostCommand error: ", e);

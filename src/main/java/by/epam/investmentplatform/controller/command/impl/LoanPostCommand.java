@@ -11,7 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class LoanPostCommand extends AbstractCommand {
 
@@ -21,12 +21,12 @@ public class LoanPostCommand extends AbstractCommand {
         int userId = (int) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID);
         int type = Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE));
         double amount = Double.parseDouble(req.getParameter(NamesConstants.AMOUNT));
-        Date date = Date.valueOf(String.valueOf(req.getSession().getAttribute(NamesConstants.DATE)));
+        LocalDate date = (LocalDate) req.getSession().getAttribute(NamesConstants.DATE);
 
         BalanceTransaction balanceTransaction = new BalanceTransaction(userId, type, amount, date);
         try {
             userService.addBalanceTransaction(userId, balanceTransaction);
-        }  catch (ServiceException e) {
+        } catch (ServiceException e) {
             LOGGER.error("LoanPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }

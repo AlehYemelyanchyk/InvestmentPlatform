@@ -12,6 +12,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -444,7 +445,7 @@ class SqlSecurityDAO implements SecurityDAO {
             statement.setInt(3, transaction.getTransactionType());
             statement.setDouble(4, transaction.getAmount());
             statement.setDouble(5, transaction.getPrice());
-            statement.setDate(6, (Date) transaction.getDate());
+            statement.setObject(6, (LocalDate) transaction.getDate());
             statement.executeUpdate();
             connection.commit();
 
@@ -508,7 +509,7 @@ class SqlSecurityDAO implements SecurityDAO {
             statement.setInt(2, transaction.getTransactionType());
             statement.setInt(3, transaction.getAmount());
             statement.setDouble(4, transaction.getPrice());
-            statement.setDate(5, (Date) transaction.getDate());
+            statement.setObject(5, transaction.getDate());
             statement.setInt(6, transaction.getId());
             statement.executeUpdate();
             connection.commit();

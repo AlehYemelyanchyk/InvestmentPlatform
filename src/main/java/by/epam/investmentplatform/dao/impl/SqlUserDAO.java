@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.List;
 
 class SqlUserDAO implements UserDAO {
@@ -361,7 +362,7 @@ class SqlUserDAO implements UserDAO {
             statement.setInt(1, id);
             statement.setInt(2, balanceTransaction.getType());
             statement.setDouble(3, balanceTransaction.getAmount());
-            statement.setDate(4, new Date(balanceTransaction.getDate().getTime()));
+            statement.setObject(4, LocalDate.now());
             statement.executeUpdate();
             connection.commit();
         } catch (Exception e) {

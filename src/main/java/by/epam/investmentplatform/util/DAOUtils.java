@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.*;
 
 public final class DAOUtils {
@@ -72,7 +73,7 @@ public final class DAOUtils {
         List<SecurityPrice> prices = new ArrayList<>();
         while (resultSet.next()) {
             SecurityPrice tempSecurity = new SecurityPrice(
-                    resultSet.getDate("date"),
+                    LocalDate.parse(resultSet.getString("date")),
                     resultSet.getString("symbol"),
                     resultSet.getDouble("price"));
             prices.add(tempSecurity);
@@ -110,7 +111,7 @@ public final class DAOUtils {
                     resultSet.getInt("transaction_type"),
                     resultSet.getInt("amount"),
                     resultSet.getDouble("price"),
-                    resultSet.getDate("date"));
+                    LocalDate.parse(resultSet.getString("date")));
             transactions.add(tempTransaction);
         }
         return transactions;
@@ -133,7 +134,7 @@ public final class DAOUtils {
                     resultSet.getInt("user_id"),
                     resultSet.getInt("type"),
                     resultSet.getDouble("amount"),
-                    resultSet.getDate("date"));
+                    LocalDate.parse(resultSet.getString("date")));
             balanceTransactions.add(tempTransaction);
         }
         return balanceTransactions;

@@ -14,16 +14,16 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DefaultSecurityServiceTest {
 
     private static final Security SECURITY = new Security("AAA", "Triple A", "2", 5.55, 2.34, 0.18, "1");
-    private static final Transaction TRANSACTION = new Transaction(1, "AAA", 1, 20, 10.5, new Date(12, 12, 2020));
-    private static final Transaction EXPECTED_TRANSACTION = new Transaction(1, "AAA", 1, 20, 10.5, new Date(12, 12, 2020));
+    private static final Transaction TRANSACTION = new Transaction(1, "AAA", 1, 20, 10.5, LocalDate.of(2020, 12, 12));
+    private static final Transaction EXPECTED_TRANSACTION = new Transaction(1, "AAA", 1, 20, 10.5, LocalDate.of(20, 12, 12));
     private static final DAOException EXPECTED_EXCEPTION = new DAOException("Test message", new Exception());
     private static final String SECURITY_SYMBOL = "AAA";
     private static final int USER_ID = 1;
