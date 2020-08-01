@@ -4,10 +4,10 @@
 <%@ taglib prefix="project-tag" uri="/WEB-INF/tags.tld" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html lang="${cookie['lang'].value}">
 <head>
     <title>Payment</title>
 </head>

@@ -4,10 +4,10 @@
 <%@ taglib prefix="project-tag" uri="/WEB-INF/tags.tld" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html>
 <body>
 
 <input type="hidden" id="userRole" value="${CURRENT_USER_ROLE}"/>
@@ -29,7 +29,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}/getAllSecurities">
-                <fmt:message key="label.securities"/></a>
+                    <fmt:message key="label.securities"/></a>
             </li>
         </ul>
     </div>
@@ -45,28 +45,43 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="dropdown">
-                    <select class="btn btn-secondary" name="lang" id="langs" onchange="location = this.value;">
+                    <select class="btn btn-secondary" name="lang" id="langs" onchange="changeLang();">
                         <c:choose>
-                            <c:when test="${sessionScope.lang == null || sessionScope.lang == 'en'}">
-                                <option class="dropdown-item" value="?sessionLocale=en"><fmt:message
-                                        key="label.lang.en"/></option>
-                                <option class="dropdown-item" value="?sessionLocale=ru"><fmt:message
-                                        key="label.lang.ru"/></option>
-                                <option class="dropdown-item" value="?sessionLocale=by"><fmt:message
-                                        key="label.lang.by"/></option>
+                            <c:when test="${cookie['lang'].value == null || cookie['lang'].value == 'en'}">
+                                <option class="dropdown-item" value="en">
+                                    <fmt:message key="label.lang.en"/>
+                                </option>
+                                <option class="dropdown-item" value="ru">
+                                    <fmt:message key="label.lang.ru"/>
+                                </option>
+                                <option class="dropdown-item" value="by">
+                                    <fmt:message key="label.lang.by"/>
+                                </option>
                             </c:when>
 
-                            <c:when test="${sessionScope.lang == 'ru'}">
-                                <option value="?sessionLocale=ru"><fmt:message key="label.lang.ru"/></option>
-                                <option value="?sessionLocale=en"><fmt:message key="label.lang.en"/></option>
-                                <option value="?sessionLocale=by"><fmt:message key="label.lang.by"/></option>
+                            <c:when test="${cookie['lang'].value == 'ru'}">
+                                <option class="dropdown-item" value="ru">
+                                    <fmt:message key="label.lang.ru"/>
+                                </option>
+                                <option class="dropdown-item" value="en">
+                                    <fmt:message key="label.lang.en"/>
+                                </option>
+                                <option class="dropdown-item" value="by">
+                                    <fmt:message key="label.lang.by"/>
+                                </option>
                             </c:when>
 
-                            <c:otherwise>
-                                <option value="?sessionLocale=by"><fmt:message key="label.lang.by"/></option>
-                                <option value="?sessionLocale=en"><fmt:message key="label.lang.en"/></option>
-                                <option value="?sessionLocale=ru"><fmt:message key="label.lang.ru"/></option>
-                            </c:otherwise>
+                            <c:when test="${cookie['lang'].value == 'by'}">
+                                <option class="dropdown-item" value="by">
+                                    <fmt:message key="label.lang.by"/>
+                                </option>
+                                <option class="dropdown-item" value="en">
+                                    <fmt:message key="label.lang.en"/>
+                                </option>
+                                <option class="dropdown-item" value="ru">
+                                    <fmt:message key="label.lang.ru"/>
+                                </option>
+                            </c:when>
                         </c:choose>
                     </select>
                 </a>
@@ -93,6 +108,7 @@
         </ul>
     </div>
 </nav>
+<script src="static/js/changeLang.js"></script>
 </body>
 </html>
 

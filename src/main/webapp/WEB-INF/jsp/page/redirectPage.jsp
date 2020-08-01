@@ -4,10 +4,10 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html lang="${cookie['lang'].value}">
 <body>
 <c:set var="REQUEST_METHOD" value="${REQUEST_METHOD}"/>
 <c:set var="redirectLink" value="${REDIRECT_LINK}"/>
