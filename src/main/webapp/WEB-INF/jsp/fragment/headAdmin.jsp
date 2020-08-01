@@ -29,45 +29,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="dropdown">
-                    <select class="btn btn-secondary" name="lang" id="langs" onchange="changeLang();">
-                        <c:choose>
-                            <c:when test="${cookie['lang'].value == null || cookie['lang'].value == 'en'}">
-                                <option class="dropdown-item" value="en">
-                                    <fmt:message key="label.lang.en"/>
-                                </option>
-                                <option class="dropdown-item" value="ru">
-                                    <fmt:message key="label.lang.ru"/>
-                                </option>
-                                <option class="dropdown-item" value="by">
-                                    <fmt:message key="label.lang.by"/>
-                                </option>
-                            </c:when>
-
-                            <c:when test="${cookie['lang'].value == 'ru'}">
-                                <option class="dropdown-item" value="ru">
-                                    <fmt:message key="label.lang.ru"/>
-                                </option>
-                                <option class="dropdown-item" value="en">
-                                    <fmt:message key="label.lang.en"/>
-                                </option>
-                                <option class="dropdown-item" value="by">
-                                    <fmt:message key="label.lang.by"/>
-                                </option>
-                            </c:when>
-
-                            <c:when test="${cookie['lang'].value == 'by'}">
-                                <option class="dropdown-item" value="by">
-                                    <fmt:message key="label.lang.by"/>
-                                </option>
-                                <option class="dropdown-item" value="en">
-                                    <fmt:message key="label.lang.en"/>
-                                </option>
-                                <option class="dropdown-item" value="ru">
-                                    <fmt:message key="label.lang.ru"/>
-                                </option>
-                            </c:when>
-                        </c:choose>
-                    </select>
+                    <select class="btn btn-secondary" name="lang" id="langs" onchange="changeLang();"></select>
                 </a>
             </li>
             <c:choose>
@@ -92,6 +54,8 @@
         </ul>
     </div>
 </nav>
+<script src="static/js/fillDropdownLang.js"></script>
+<script src="static/js/changeLang.js"></script>
 </body>
 </html>
 
