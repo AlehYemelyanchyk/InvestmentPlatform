@@ -17,9 +17,11 @@ public class RemoveTransactionPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_ID));
         try {
+            int id = Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_ID));
             securityService.removeTransaction(id);
+        } catch (NullPointerException e) {
+            LOGGER.error("RemoveTransactionPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("RemoveTransactionPostCommand error: ", e);
             throw new ServletException("Incorrect values");

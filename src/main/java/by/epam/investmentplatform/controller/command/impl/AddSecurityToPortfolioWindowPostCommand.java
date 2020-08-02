@@ -17,34 +17,21 @@ public class AddSecurityToPortfolioWindowPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String securitySymbol;
-        double securityPrice;
         try {
-            if (req.getParameter(NamesConstants.SECURITY_SYMBOL) != null) {
-                securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
-            } else {
-                securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
-            }
-            if (req.getParameter(NamesConstants.SECURITY_PRICE) != null) {
-                securityPrice = Double.parseDouble(req.getParameter(NamesConstants.SECURITY_PRICE));
-            } else {
-                securityPrice = Double.parseDouble(req.getSession().getAttribute(NamesConstants.SECURITY_PRICE).toString());
-            }
+            String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
+            double securityPrice = Double.parseDouble(req.getParameter(NamesConstants.SECURITY_PRICE));
             int userId = (int) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID);
+
             List<Portfolio> portfolios = portfolioService.getAllUserPortfolios(userId);
             req.setAttribute(NamesConstants.PORTFOLIOS_LIST, portfolios);
+            req.setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
+            req.setAttribute(NamesConstants.SECURITY_PRICE, securityPrice);
         } catch (NullPointerException e) {
-            LOGGER.error("AddSecurityToPortfolioWindowPostCommand error: ", e);
-            throw new ServletException("Missing values.");
+            LOGGER.error("AddSecurityToPortfolioWindowPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("AddSecurityToPortfolioWindowPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.getSession().setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
-        req.getSession().setAttribute(NamesConstants.SECURITY_PRICE, securityPrice);
-
-        req.setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
-        req.setAttribute(NamesConstants.SECURITY_PRICE, securityPrice);
         RoutingUtils.forwardToPage(JspPageName.ADD_SECURITY_TO_PORTFOLIO_PAGE, req, resp);
     }
 }

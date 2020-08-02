@@ -13,13 +13,13 @@
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="navbar-brand" href="http://localhost:8080/investmentplatform/"><h4>iUj</h4></a>
+                <a class="navbar-brand" href="http://localhost:8080/investmentplatform/adminSettings"><h4>iUj</h4></a>
             </li>
         </ul>
     </div>
 
     <div class="mx-auto order-0">
-        <a class="navbar-brand mx-auto" href="http://localhost:8080/investmentplatform/">InvestUj</a>
+        <a class="navbar-brand mx-auto" href="http://localhost:8080/investmentplatform/adminSettings">InvestUj</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>

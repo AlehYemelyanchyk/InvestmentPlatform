@@ -27,7 +27,7 @@ public class CheckIdentificationFilter extends AbstractFilter {
                 req.getSession().setAttribute(parameterName, parameterValue);
             }
             String requestUrl = req.getRequestURI();
-            req.getSession().setAttribute(NamesConstants.REDIRECT_LINK, requestUrl);
+            req.setAttribute(NamesConstants.REDIRECT_LINK, requestUrl);
             req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, req.getMethod());
             RoutingUtils.forwardToPage(JspPageName.LOG_IN_PAGE, req, resp);
         }

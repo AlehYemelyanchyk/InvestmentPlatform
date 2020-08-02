@@ -17,9 +17,11 @@ public class RemovePortfolioPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
         try {
+            int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
             portfolioService.removePortfolio(portfolioId);
+        } catch (NullPointerException e) {
+            LOGGER.error("RemovePortfolioPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("RemovePortfolioPostCommand error: ", e);
             throw new ServletException("Incorrect values");

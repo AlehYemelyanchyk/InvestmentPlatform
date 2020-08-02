@@ -17,16 +17,15 @@ public class GetAllPortfolioTransactionsGetCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
-
-        List<Transaction> allPortfolioTransactions;
         try {
-            allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
+            int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
+
+            List<Transaction> allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
+            req.setAttribute(NamesConstants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         } catch (ServiceException e) {
             LOGGER.error("GetAllPortfolioTransactionsGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(NamesConstants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS_PAGE, req, resp);
     }
 }

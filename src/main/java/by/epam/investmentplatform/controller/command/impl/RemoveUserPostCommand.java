@@ -18,10 +18,12 @@ public class RemoveUserPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
         try {
+            int userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
             User user = userService.getUser(userId);
             userService.deleteUser(user);
+        } catch (NullPointerException e) {
+            LOGGER.error("RemoveUserPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("RemoveUserPostCommand error: ", e);
             throw new ServletException("Incorrect values");

@@ -20,7 +20,10 @@ public class ArchiveSecurityPostCommand extends AbstractCommand {
         try {
             String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
             String date = req.getParameter(NamesConstants.DATE);
+
             securityService.archiveSecurity(securitySymbol, date);
+        } catch (NullPointerException e) {
+            LOGGER.error("ArchiveSecurityPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("ArchiveSecurityPostCommand error: ", e);
             throw new ServletException("Incorrect values");

@@ -18,18 +18,21 @@ public class UpdateUserPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        User user = new User(
-                Integer.parseInt(req.getParameter(NamesConstants.CURRENT_USER_ID)),
-                req.getParameter(NamesConstants.CURRENT_USER_ROLE),
-                req.getParameter(NamesConstants.CURRENT_USER_LOGIN),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_EMAIL),
-                req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_SURNAME),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_COUNTRY));
-        String[] params = {};
         try {
+            int id = Integer.parseInt(req.getParameter(NamesConstants.CURRENT_USER_ID));
+            String role = req.getParameter(NamesConstants.CURRENT_USER_ROLE);
+            String login = req.getParameter(NamesConstants.CURRENT_USER_LOGIN);
+            String password = req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD);
+            String email = req.getParameter(NamesConstants.REQUEST_USER_PARAM_EMAIL);
+            String name = req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME);
+            String surname = req.getParameter(NamesConstants.REQUEST_USER_PARAM_SURNAME);
+            String country = req.getParameter(NamesConstants.REQUEST_USER_PARAM_COUNTRY);
+            User user = new User(id, role, login, password, email, name, surname, country);
+            String[] params = {};
+
             userService.updateUser(user, params);
+        } catch (NullPointerException e) {
+            LOGGER.error("UpdateUserPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("UpdateUserPostCommand error: ", e);
             throw new ServletException("Incorrect values.");

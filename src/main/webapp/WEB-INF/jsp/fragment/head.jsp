@@ -7,7 +7,7 @@
 <fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html>
+<html lang="${cookie['lang'].value}">
 <body>
 
 <input type="hidden" id="userRole" value="${CURRENT_USER_ROLE}"/>

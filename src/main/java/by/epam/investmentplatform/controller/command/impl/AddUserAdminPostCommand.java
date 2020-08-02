@@ -18,16 +18,19 @@ public class AddUserAdminPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        User user = new User(
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_ROLE),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_LOGIN),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_EMAIL),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_NAME),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_SURNAME),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_COUNTRY));
         try {
+            String role = req.getParameter(NamesConstants.REQUEST_USER_PARAM_ROLE);
+            String login = req.getParameter(NamesConstants.REQUEST_USER_PARAM_LOGIN);
+            String password = req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD);
+            String email = req.getParameter(NamesConstants.REQUEST_USER_PARAM_EMAIL);
+            String name = req.getParameter(NamesConstants.REQUEST_USER_PARAM_NAME);
+            String surname = req.getParameter(NamesConstants.REQUEST_USER_PARAM_SURNAME);
+            String country = req.getParameter(NamesConstants.REQUEST_USER_PARAM_COUNTRY);
+            User user = new User(role, login, password, email, name, surname, country);
+
             userService.signUp(user);
+        } catch (NullPointerException e) {
+            LOGGER.error("AddUserAdminPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("AddUserAdminPostCommand error: ", e);
             throw new ServletException("Incorrect registration values.");

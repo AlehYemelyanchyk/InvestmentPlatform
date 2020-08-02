@@ -19,7 +19,6 @@ public class WithdrawPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
         double amount;
         try {
             int userId = (int) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID);
@@ -32,7 +31,7 @@ public class WithdrawPostCommand extends AbstractCommand {
             LOGGER.error("WithdrawPostCommand error: ", e);
             throw new ServletException("Withdraw payment error.");
         }
-        req.getSession().setAttribute(NamesConstants.AMOUNT, amount);
+        req.setAttribute(NamesConstants.AMOUNT, amount);
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_BALANCE);
         req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);

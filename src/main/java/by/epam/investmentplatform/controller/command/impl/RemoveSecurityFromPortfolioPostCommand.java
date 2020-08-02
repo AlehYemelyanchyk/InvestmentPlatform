@@ -17,10 +17,13 @@ public class RemoveSecurityFromPortfolioPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
-        int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
         try {
+            String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
+            int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
+
             securityService.removeSecurityFromPortfolio(portfolioId, securitySymbol);
+        } catch (NullPointerException e) {
+            LOGGER.error("RemoveSecurityFromPortfolioPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("RemoveSecurityFromPortfolioPostCommand error: ", e);
             throw new ServletException("Incorrect values");

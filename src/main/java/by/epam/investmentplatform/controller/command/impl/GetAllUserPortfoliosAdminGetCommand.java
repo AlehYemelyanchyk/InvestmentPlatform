@@ -17,16 +17,14 @@ public class GetAllUserPortfoliosAdminGetCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int userId;
         try {
-            if (req.getParameter(NamesConstants.USER_ID) != null) {
-                userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
-            } else {
-                userId = (int) (req.getSession().getAttribute(NamesConstants.USER_ID));
-            }
+            int userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
+
             List<Portfolio> allPortfolios = portfolioService.getAllUserPortfolios(userId);
             req.getSession().setAttribute(NamesConstants.USER_ID, userId);
             req.setAttribute(NamesConstants.PORTFOLIOS_LIST, allPortfolios);
+        } catch (NullPointerException e) {
+            LOGGER.error("GetAllUserPortfoliosAdminGetCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("GetAllUserPortfoliosAdminGetCommand error: ", e);
             throw new ServletException("Incorrect values.");

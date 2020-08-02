@@ -25,28 +25,24 @@ public class GetSecurityPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Security security;
-        List<SecurityPrice> securityPrices;
         try {
             String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
-            if (securitySymbol == null) {
-                securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
-            }
-            security = securityService.getSecurity(securitySymbol);
-            securityPrices = securityService.getSecurityPrices(securitySymbol);
+            Security security = securityService.getSecurity(securitySymbol);
+            List<SecurityPrice> securityPrices = securityService.getSecurityPrices(securitySymbol);
+            List<String> datesList = getDates(securityPrices);
+            List<Double> pricesList = getPrices(securityPrices);
+            pricesList.add(security.getCurrentPrice());
+
+            req.setAttribute("DATES", datesList);
+            req.setAttribute("PRICES", pricesList);
+            req.setAttribute(NamesConstants.SECURITY, security);
+            req.setAttribute(NamesConstants.SECURITY_PRICES_LIST, securityPrices);
+        } catch (NullPointerException e) {
+            LOGGER.error("GetSecurityPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("GetSecurityPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-
-        List<String> datesList = getDates(securityPrices);
-        List<Double> pricesList = getPrices(securityPrices);
-        pricesList.add(security.getCurrentPrice());
-
-        req.getSession().setAttribute("DATES", datesList);
-        req.getSession().setAttribute("PRICES", pricesList);
-        req.setAttribute(NamesConstants.SECURITY, security);
-        req.setAttribute(NamesConstants.SECURITY_PRICES_LIST, securityPrices);
         RoutingUtils.forwardToPage(JspPageName.GET_SECURITY_PAGE, req, resp);
     }
 

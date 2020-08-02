@@ -16,14 +16,13 @@ public class AddUserAdminGetCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        List<String> countries;
         try {
-            countries = userService.getAllCountries();
+            List<String> countries = userService.getAllCountries();
+            req.getSession().setAttribute(NamesConstants.COUNTRIES_LIST, countries);
         } catch (ServiceException e) {
             LOGGER.error("AddUserAdminGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.getSession().setAttribute(NamesConstants.COUNTRIES_LIST, countries);
         RoutingUtils.forwardToPage(JspPageName.ADD_USER_PAGE, req, resp);
     }
 }

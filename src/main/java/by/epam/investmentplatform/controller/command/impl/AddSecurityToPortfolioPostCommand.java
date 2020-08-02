@@ -19,15 +19,18 @@ public class AddSecurityToPortfolioPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Transaction transaction = new Transaction(
-                Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID)),
-                req.getParameter(NamesConstants.SECURITY_SYMBOL),
-                Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE)),
-                Integer.parseInt(req.getParameter(NamesConstants.AMOUNT)),
-                Double.parseDouble(req.getParameter(NamesConstants.PRICE)),
-                LocalDate.parse(req.getParameter(NamesConstants.DATE)));
         try {
+            int id = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
+            String symbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
+            int type = Integer.parseInt(req.getParameter(NamesConstants.TRANSACTION_TYPE));
+            int amount = Integer.parseInt(req.getParameter(NamesConstants.AMOUNT));
+            double price = Double.parseDouble(req.getParameter(NamesConstants.PRICE));
+            LocalDate date = LocalDate.parse(req.getParameter(NamesConstants.DATE));
+            Transaction transaction = new Transaction(id, symbol, type, amount, price, date);
+
             securityService.saveTransaction(transaction);
+        } catch (NullPointerException e) {
+            LOGGER.error("AddSecurityToPortfolioPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("AddSecurityToPortfolioPostCommand error", e);
             throw new ServletException("Incorrect values.");

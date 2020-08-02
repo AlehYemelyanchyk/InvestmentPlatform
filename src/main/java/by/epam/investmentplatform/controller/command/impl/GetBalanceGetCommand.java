@@ -19,11 +19,14 @@ public class GetBalanceGetCommand extends AbstractCommand {
             throws ServletException, IOException {
         try {
             int userId = (int) (req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID));
+
             List<BalanceTransaction> userBalanceTransactions = userService.getUserBalanceTransactions(userId);
             double balance = countBalance(userBalanceTransactions);
             req.setAttribute(NamesConstants.CURRENT_USER_BALANCE_TRANSACTIONS, userBalanceTransactions);
             req.getSession().setAttribute(NamesConstants.CURRENT_USER_BALANCE, balance);
-        }  catch (ServiceException e) {
+        } catch (NullPointerException e) {
+            LOGGER.error("GetBalanceGetCommand missing value error: ", e);
+        } catch (ServiceException e) {
             LOGGER.error("GetBalanceGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }

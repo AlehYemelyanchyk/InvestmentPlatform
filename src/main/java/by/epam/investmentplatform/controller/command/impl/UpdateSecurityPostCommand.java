@@ -18,17 +18,19 @@ public class UpdateSecurityPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        Security security = new Security(
-                req.getParameter(NamesConstants.SECURITY_SYMBOL),
-                req.getParameter(NamesConstants.SECURITY_NAME),
-                req.getParameter(NamesConstants.SECURITY_EXCHANGE),
-                Double.parseDouble(req.getParameter(NamesConstants.CURRENT_PRICE)),
-                Double.parseDouble(req.getParameter(NamesConstants.YEAR_CHANGE)),
-                Double.parseDouble(req.getParameter(NamesConstants.DIVIDENDS)),
-                req.getParameter(NamesConstants.SECURITY_TYPE));
-        String[] params = {};
         try {
+            String symbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
+            String name = req.getParameter(NamesConstants.SECURITY_NAME);
+            String exchange = req.getParameter(NamesConstants.SECURITY_EXCHANGE);
+            double price = Double.parseDouble(req.getParameter(NamesConstants.CURRENT_PRICE));
+            double yearChange = Double.parseDouble(req.getParameter(NamesConstants.YEAR_CHANGE));
+            double dividends = Double.parseDouble(req.getParameter(NamesConstants.DIVIDENDS));
+            String type = req.getParameter(NamesConstants.SECURITY_TYPE);
+            Security security = new Security(symbol, name, exchange, price, yearChange, dividends, type);
+            String[] params = {};
             securityService.updateSecurity(security, params);
+        } catch (NullPointerException e) {
+            LOGGER.error("UpdateSecurityPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("UpdateSecurityPostCommand error: ", e);
             throw new ServletException("Incorrect values.");

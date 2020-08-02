@@ -17,6 +17,11 @@
         <div class="col-md-4">
             <form id="form" class="needs-validation form-container" novalidate action="${pageContext.request.contextPath}/login"
                   method="POST">
+                <div>
+                    <input type="hidden" name="REDIRECT_LINK" value="${REDIRECT_LINK}">
+                    <div class="valid-feedback"></div>
+                    <div class="invalid-feedback"></div>
+                </div>
                 <div class="form-group">
                     <label for="login"><fmt:message key="label.login2"/></label>
                     <input type="text" name="login" class="form-control" id="login"

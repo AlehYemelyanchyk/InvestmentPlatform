@@ -18,14 +18,17 @@ public class UpdatePortfolioPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String newName = req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME);
-        Portfolio portfolio = new Portfolio(
-                Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID)),
-                Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_USER_ID)),
-                req.getParameter(NamesConstants.PORTFOLIO_NAME));
-        String[] parameters = {newName};
         try {
+            String newName = req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME);
+            int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
+            int userId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_USER_ID));
+            String portfolioName = req.getParameter(NamesConstants.PORTFOLIO_NAME);
+            Portfolio portfolio = new Portfolio(portfolioId, userId, portfolioName);
+            String[] parameters = {newName};
+
             portfolioService.updatePortfolio(portfolio, parameters);
+        } catch (NullPointerException e) {
+            LOGGER.error("UpdatePortfolioPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("UpdatePortfolioPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
