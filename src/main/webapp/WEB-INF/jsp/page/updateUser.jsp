@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html lang="${cookie['lang'].value}">
 <head>
     <title>Update user</title>
 </head>
@@ -62,7 +62,7 @@
                            value="${CURRENT_USER.email}"
                            placeholder="<fmt:message key="label.email"/>"
                            required
-                           pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$"
+                           pattern="(?:[a-z0-9!#$%&amp;'*+/=?^_&#x60;{|}~-]+(?:\.[a-z0-9!#$%&amp;'*+/=?^_&#x60;{|}~-]+)*|&quot;(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*&quot;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"
                            data-value-missing="Please, enter email"
                            data-pattern-mismatch="The e-mail address is not correct.">
                     <div class="valid-feedback">Good!</div>

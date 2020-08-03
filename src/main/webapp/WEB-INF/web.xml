@@ -33,6 +33,8 @@
     <filter-mapping>
         <filter-name>CheckUserTransactionsBanStatusFilter</filter-name>
         <url-pattern>/addSecurityToPortfolio</url-pattern>
+        <url-pattern>/addSecurityToPortfolioWindow</url-pattern>
+        <url-pattern>/sellSecurityFromPortfolioWindow</url-pattern>
         <url-pattern>/deposit</url-pattern>
         <url-pattern>/loan</url-pattern>
         <url-pattern>/removePortfolio</url-pattern>
@@ -40,11 +42,6 @@
         <url-pattern>/removeTransaction</url-pattern>
         <url-pattern>/updateTransaction</url-pattern>
         <url-pattern>/withdraw</url-pattern>
-    </filter-mapping>
-
-    <filter-mapping>
-        <filter-name>LocaleFilter</filter-name>
-        <url-pattern>/*</url-pattern>
     </filter-mapping>
 
     <filter-mapping>

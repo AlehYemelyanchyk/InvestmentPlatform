@@ -25,7 +25,9 @@ public final class NamesConstants {
     public static final String EXCHANGES_LIST = "EXCHANGES_LIST";
     public static final String INTERNAL_ERROR = "INTERNAL_ERROR";
     public static final String MAX_ITEMS_PER_PAGE = "MAX_ITEMS_PER_PAGE";
+    public static final String LANG = "lang";
     public static final String PAGES_AMOUNT = "PAGES_AMOUNT";
+    public static final String PARAMETERS_MAP = "PARAMETERS_MAP";
     public static final String PORTFOLIO = "PORTFOLIO";
     public static final String PORTFOLIO_ID = "PORTFOLIO_ID";
     public static final String PORTFOLIOS_LIST = "PORTFOLIOS_LIST";
@@ -46,6 +48,7 @@ public final class NamesConstants {
     public static final String REQUEST_USER_PARAM_COUNTRY = "country";
     public static final String REQUEST_PORTFOLIO_PARAM_NAME = "name";
     public static final String REDIRECT_LINK = "REDIRECT_LINK";
+    public static final String REQUEST_URI = "REQUEST_URI";
     public static final String SECURITIES_LIST = "SECURITIES_LIST";
     public static final String SECURITY = "SECURITY";
     public static final String SECURITY_DIVIDENDS = "SECURITY_DIVIDENDS";

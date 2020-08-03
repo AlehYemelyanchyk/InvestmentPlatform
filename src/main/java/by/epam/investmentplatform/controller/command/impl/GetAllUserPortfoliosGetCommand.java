@@ -21,7 +21,9 @@ public class GetAllUserPortfoliosGetCommand extends AbstractCommand {
             int userId = (int) (req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID));
             List<Portfolio> allPortfolios = portfolioService.getAllUserPortfolios(userId);
             req.getSession().setAttribute(NamesConstants.PORTFOLIOS_LIST, allPortfolios);
-        }  catch (ServiceException e) {
+        } catch (NullPointerException e) {
+            LOGGER.error("GetAllUserPortfoliosGetCommand missing value error: ", e);
+        } catch (ServiceException e) {
             LOGGER.error("GetAllUserPortfoliosGetCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }

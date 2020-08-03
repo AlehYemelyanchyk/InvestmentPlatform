@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html lang="${cookie['lang'].value}">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -16,7 +16,7 @@
         <div class="col-md-2">
             <form id="form" action="${pageContext.request.contextPath}/contactUs" method="POST">
                 <button id=contactUs" type="submit" class="btn btn-link">
-                    <h5>Contact us</h5>
+                    <h5><fmt:message key="label.contactUs"/></h5>
                 </button>
             </form>
         </div>

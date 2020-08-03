@@ -24,6 +24,8 @@ public class UpdateUserAdminGetCommand extends AbstractCommand {
             int userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
             User user = userService.getUser(userId);
             req.setAttribute(NamesConstants.USER, user);
+        } catch (NullPointerException e) {
+            LOGGER.error("UpdateUserAdminGetCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("UpdateUserAdminGetCommand error: ", e);
             throw new ServletException("Incorrect values.");

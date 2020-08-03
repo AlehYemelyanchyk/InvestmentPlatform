@@ -3,17 +3,13 @@ package by.epam.investmentplatform.controller.tag;
 import by.epam.investmentplatform.NamesConstants;
 
 import javax.servlet.jsp.tagext.TagSupport;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 public class GetCurrentDateTag extends TagSupport {
 
-    private static final String dataPattern = "yyyy-MM-dd";
-
     @Override
     public int doStartTag() {
-        String date = new SimpleDateFormat(dataPattern).format(new Date());
-        pageContext.getSession().setAttribute(NamesConstants.DATE, date);
+        pageContext.getSession().setAttribute(NamesConstants.DATE, LocalDate.now());
         return SKIP_BODY;
     }
 }

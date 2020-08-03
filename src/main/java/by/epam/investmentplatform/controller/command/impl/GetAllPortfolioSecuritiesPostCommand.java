@@ -23,28 +23,21 @@ public class GetAllPortfolioSecuritiesPostCommand extends AbstractCommand {
             throws ServletException, IOException {
         Map<String, PortfolioSecurity> securities = new HashMap<>();
 
-        int portfolioId;
-        if (req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
-            portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
-        } else {
-            portfolioId = (int) req.getSession().getAttribute(NamesConstants.PORTFOLIO_ID);
-        }
-
-        String portfolioName;
-        if (req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
-            portfolioName = req.getParameter(NamesConstants.PORTFOLIO_NAME);
-        } else {
-            portfolioName = (String) req.getSession().getAttribute(NamesConstants.PORTFOLIO_NAME);
-        }
-
-        req.getSession().setAttribute(NamesConstants.PORTFOLIO_ID, portfolioId);
-        req.getSession().setAttribute(NamesConstants.PORTFOLIO_NAME, portfolioName);
-
         List<Security> allPortfolioSecurities;
         List<Transaction> allPortfolioTransactions;
+        int portfolioId;
         try {
+            if(req.getParameter(NamesConstants.PORTFOLIO_ID) != null){
+                portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
+            } else {
+               portfolioId = (int) req.getSession().getAttribute(NamesConstants.PORTFOLIO_ID);
+            }
+
             allPortfolioSecurities = securityService.getAllPortfolioSecurities(portfolioId);
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
+            req.setAttribute(NamesConstants.PORTFOLIO_ID, portfolioId);
+            req.setAttribute(NamesConstants.PORTFOLIO_SECURITIES, securities);
+            req.setAttribute(NamesConstants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         } catch (ServiceException e) {
             LOGGER.error("GetAllPortfolioSecuritiesPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
@@ -52,8 +45,6 @@ public class GetAllPortfolioSecuritiesPostCommand extends AbstractCommand {
 
         fillPortfolioSecuritiesMap(securities, allPortfolioSecurities, allPortfolioTransactions);
 
-        req.setAttribute(NamesConstants.PORTFOLIO_SECURITIES, securities);
-        req.setAttribute(NamesConstants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_PORTFOLIO_SECURITIES_PAGE, req, resp);
     }
 

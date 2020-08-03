@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html lang="${cookie['lang'].value}">
 <head>
     <title>Users</title>
 </head>
@@ -16,9 +16,8 @@
 
     <div class="row">
         <div class="col-md-2">
-            <a class="btn btn-dark" href="${pageContext.request.contextPath}/addUserAdmin"
-               data-tooltip title="Add User">
-                <i class="icon-plus-sign-alt"></i>
+            <a class="btn btn-info" href="${pageContext.request.contextPath}/addUserAdmin">
+                Add User
             </a>
         </div>
         <div class="col-md-2"></div>

@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.User;
@@ -17,23 +18,27 @@ public class UpdateUserAdminPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        User user = new User(
-                Integer.parseInt(req.getParameter(NamesConstants.REQUEST_USER_PARAM_ID)),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_ROLE),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_LOGIN),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_EMAIL),
-                req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_SURNAME),
-                req.getParameter(NamesConstants.REQUEST_USER_PARAM_COUNTRY));
-        String[] params = {};
         try {
+            int id = Integer.parseInt(req.getParameter(NamesConstants.REQUEST_USER_PARAM_ID));
+            String role = req.getParameter(NamesConstants.REQUEST_USER_PARAM_ROLE);
+            String login = req.getParameter(NamesConstants.REQUEST_USER_PARAM_LOGIN);
+            String password = req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD);
+            String email = req.getParameter(NamesConstants.REQUEST_USER_PARAM_EMAIL);
+            String name = req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME);
+            String surname = req.getParameter(NamesConstants.REQUEST_USER_PARAM_SURNAME);
+            String country = req.getParameter(NamesConstants.REQUEST_USER_PARAM_COUNTRY);
+            User user = new User(id, role, login, password, email, name, surname, country);
+            String[] params = {};
+
             userService.updateUser(user, params);
+        } catch (NullPointerException e) {
+            LOGGER.error("UpdateUserAdminPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("UpdateUserAdminPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS);
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

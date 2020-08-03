@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
-<html>
-<head>
+
+<html lang="${cookie['lang'].value}">
     <title>News API</title>
     <style>
         img {
@@ -31,7 +31,8 @@
                     in big cities. Officials now hope to capitalize on interest from New Yorkers looking for more space
                     in the midst of Covid-19.</p>
                 <a href="https://www.wsj.com/articles/connecticut-suburbs-coronavirus-new-york-real-estate-houses-for-sale-weston-fairfield-11594558882"
-                   class="btn btn-sm btn-primary" style="float:right;">Read more >></a>
+                   class="btn btn-sm btn-primary" style="float:right;">
+                    <fmt:message key="label.readMore"/> >></a>
             </div>
         </div>
         <div class="row single-news">
@@ -45,7 +46,8 @@
                     pandemic appears to have run its course, with the Fed reporting its repurchase agreements with major
                     financial institutions had fallen to zero for the first time since early September.</p>
                 <a href="https://www.wsj.com/articles/derbys-take-after-latest-data-a-requiem-for-fed-repos-11594632600"
-                   class="btn btn-sm btn-primary" style="float:right;">Read more >></a>
+                   class="btn btn-sm btn-primary" style="float:right;">
+                    <fmt:message key="label.readMore"/> >></a>
             </div>
         </div>
         <div class="row single-news">
@@ -59,13 +61,14 @@
                     poised to help as much now, as the country shows restraint on stimulus spending and takes advantage
                     of increased self sufficiency.</p>
                 <a href="https://www.wsj.com/articles/why-china-isnt-expected-to-power-a-global-recovery-11594555200"
-                   class="btn btn-sm btn-primary" style="float:right;">Read more >></a>
+                   class="btn btn-sm btn-primary" style="float:right;">
+                    <fmt:message key="label.readMore"/> >></a>
             </div>
         </div>
     </div>
     <div class='col-md-3'>
         <div class="container container-bordered2">
-            <h4>Delisting soon:</h4>
+            <h4><fmt:message key="label.delistSoon"/>:</h4>
             <table>
                 <thead>
                 <tr>
@@ -95,7 +98,7 @@
             </table>
         </div>
         <div class="container container-bordered2">
-            <h4>Last traded:</h4>
+            <h4><fmt:message key="label.lastTraded"/>:</h4>
             <table>
                 <thead>
                 <tr>

@@ -16,8 +16,8 @@ public class BanUserPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String banStatus;
         try {
+            String banStatus;
             int userId = (int) req.getSession().getAttribute(NamesConstants.USER_ID);
             banStatus = req.getParameter(NamesConstants.USER_BAN_STATUS);
             if (Constants.BAN_STATUS_ACTIVE.equals(banStatus)) {
@@ -26,12 +26,14 @@ public class BanUserPostCommand extends AbstractCommand {
                 banStatus = Constants.BAN_STATUS_INACTIVE;
             }
             String[] params = {banStatus};
+
             userService.updateUserBanStatus(userId, params);
             req.getSession().setAttribute(NamesConstants.USER_BAN_STATUS, banStatus);
         } catch (ServiceException e) {
             LOGGER.error("BanUserPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.USER_SETTINGS_ADMIN_PAGE, req, resp);
     }
 }

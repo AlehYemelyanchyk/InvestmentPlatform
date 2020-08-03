@@ -115,8 +115,8 @@ td select {
     width: 200px;
 }
 
-.lang_icons {
-    /*background-color: #bed3e6;*/
+li.nav-item{
+    color: #fff;
 }
 
 div.col-xs-12 {

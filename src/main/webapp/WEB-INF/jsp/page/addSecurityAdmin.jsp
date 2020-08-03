@@ -3,10 +3,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html lang="${cookie['lang'].value}">
 <head>
     <title>Add Security</title>
 </head>
@@ -72,10 +72,11 @@
 
                 <div class="form-group">
                     <label for="dividends"><fmt:message key="label.dividends"/>: </label>
-                    <input type="number" name="SECURITY_DIVIDENDS" min="0" step="0.01" class="form-control"
+                    <input type="number" name="SECURITY_DIVIDENDS" min="0" max="99.99" step="0.01" class="form-control"
                            id="dividends"
                            required
                            data-value-missing="Please, enter amount"
+                           data-range-overflow="Dividend can't be more than 99.99"
                            onkeypress="return isNumber(event)">
                     <div class="valid-feedback">Good!</div>
                     <div class="invalid-feedback"></div>

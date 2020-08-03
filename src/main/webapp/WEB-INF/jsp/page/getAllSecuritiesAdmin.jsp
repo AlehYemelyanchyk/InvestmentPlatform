@@ -4,10 +4,10 @@
 <%@ taglib prefix="project-tag" uri="/WEB-INF/tags.tld" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html lang="${cookie['lang'].value}">
 <head>
     <title>All securities</title>
 </head>
@@ -19,9 +19,8 @@
 <div class="container mt-2 mb-2 table-striped">
     <br/>
 
-    <a class="btn btn-dark" href="${pageContext.request.contextPath}/addSecurityAdmin"
-       data-tooltip title="Add Security">
-        <i class="icon-plus-sign-alt"></i>
+    <a class="btn btn-info" href="${pageContext.request.contextPath}/addSecurityAdmin">
+        Add Security
     </a>
 
     <div class="tabs_names">

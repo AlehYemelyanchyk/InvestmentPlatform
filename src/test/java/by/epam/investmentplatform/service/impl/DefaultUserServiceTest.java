@@ -14,8 +14,8 @@ import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -44,7 +44,7 @@ public class DefaultUserServiceTest {
         user = new User("1", "user", Integer.toString("1234qwer".hashCode()), "email@mail", "name", "surname", "5");
         expectedUser = new User("1", "user", Integer.toString("1234qwer".hashCode()), "email@mail", "name", "surname", "5");
         user = new User("1", "user", Integer.toString("1234qwer".hashCode()), "email@mail", "name", "surname", "5");
-        balanceTransaction = new BalanceTransaction(1,3,20.2,new Date(12, 12, 2020));
+        balanceTransaction = new BalanceTransaction(1,3,20.2,LocalDate.of(2020, 12, 12));
         actualException = null;
     }
 

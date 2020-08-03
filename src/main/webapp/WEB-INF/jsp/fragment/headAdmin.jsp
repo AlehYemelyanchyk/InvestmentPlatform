@@ -4,22 +4,22 @@
 <%@ taglib prefix="project-tag" uri="/WEB-INF/tags.tld" %>
 <%@ page isELIgnored="false" %>
 
-<fmt:setLocale value="${sessionScope.lang}"/>
+<fmt:setLocale value="${cookie['lang'].value}"/>
 <fmt:setBundle basename="content"/>
 
-<html lang="${sessionScope.lang}">
+<html lang="${cookie['lang'].value}">
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="navbar-brand" href="http://localhost:8080/investmentplatform/"><h4>iUj</h4></a>
+                <a class="navbar-brand" href="http://localhost:8080/investmentplatform/adminSettings"><h4>iUj</h4></a>
             </li>
         </ul>
     </div>
 
     <div class="mx-auto order-0">
-        <a class="navbar-brand mx-auto" href="http://localhost:8080/investmentplatform/">InvestUj</a>
+        <a class="navbar-brand mx-auto" href="http://localhost:8080/investmentplatform/adminSettings">InvestUj</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -29,30 +29,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
                 <a class="dropdown">
-                    <select class="btn btn-secondary" name="lang" id="langs" onchange="location = this.value;">
-                        <c:choose>
-                            <c:when test="${sessionScope.lang == null || sessionScope.lang == 'en'}">
-                                <option class="dropdown-item" value="?sessionLocale=en"><fmt:message
-                                        key="label.lang.en"/></option>
-                                <option class="dropdown-item" value="?sessionLocale=ru"><fmt:message
-                                        key="label.lang.ru"/></option>
-                                <option class="dropdown-item" value="?sessionLocale=by"><fmt:message
-                                        key="label.lang.by"/></option>
-                            </c:when>
-
-                            <c:when test="${sessionScope.lang == 'ru'}">
-                                <option value="?sessionLocale=ru"><fmt:message key="label.lang.ru"/></option>
-                                <option value="?sessionLocale=en"><fmt:message key="label.lang.en"/></option>
-                                <option value="?sessionLocale=by"><fmt:message key="label.lang.by"/></option>
-                            </c:when>
-
-                            <c:otherwise>
-                                <option value="?sessionLocale=by"><fmt:message key="label.lang.by"/></option>
-                                <option value="?sessionLocale=en"><fmt:message key="label.lang.en"/></option>
-                                <option value="?sessionLocale=ru"><fmt:message key="label.lang.ru"/></option>
-                            </c:otherwise>
-                        </c:choose>
-                    </select>
+                    <select class="btn btn-secondary" name="lang" id="langs" onchange="changeLang();"></select>
                 </a>
             </li>
             <c:choose>
@@ -77,6 +54,8 @@
         </ul>
     </div>
 </nav>
+<script src="static/js/fillDropdownLang.js"></script>
+<script src="static/js/changeLang.js"></script>
 </body>
 </html>
 

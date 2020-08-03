@@ -19,11 +19,13 @@ public class UpdateUserGetCommand extends AbstractCommand {
             throws ServletException, IOException {
         try {
             List<String> countries = userService.getAllCountries();
-            req.getSession().setAttribute(NamesConstants.COUNTRIES_LIST, countries);
-
             int userId = (int) (req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID));
+
             User user = userService.getUser(userId);
+            req.getSession().setAttribute(NamesConstants.COUNTRIES_LIST, countries);
             req.setAttribute(NamesConstants.CURRENT_USER, user);
+        } catch (NullPointerException e) {
+            LOGGER.error("UpdateUserGetCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("UpdateUserGetCommand error: ", e);
             throw new ServletException("Incorrect values.");

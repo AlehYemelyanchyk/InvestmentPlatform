@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
@@ -19,12 +20,16 @@ public class ArchiveSecurityPostCommand extends AbstractCommand {
         try {
             String securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
             String date = req.getParameter(NamesConstants.DATE);
+
             securityService.archiveSecurity(securitySymbol, date);
+        } catch (NullPointerException e) {
+            LOGGER.error("ArchiveSecurityPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("ArchiveSecurityPostCommand error: ", e);
             throw new ServletException("Incorrect values");
         }
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_SECURITIES_ADMIN);
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

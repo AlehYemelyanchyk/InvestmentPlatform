@@ -2,29 +2,29 @@ package by.epam.investmentplatform.model;
 
 import by.epam.investmentplatform.entity.Security;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 
 public class SecurityPrice {
 
-    private Date date;
+    private LocalDate date;
     private String symbol;
     private double price;
 
     protected SecurityPrice() {
     }
 
-    public SecurityPrice(Date date, String symbol, double price) {
+    public SecurityPrice(LocalDate date, String symbol, double price) {
         this.date = date;
         this.symbol = symbol;
         this.price = price;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

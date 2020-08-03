@@ -20,10 +20,10 @@ public class LogInPostCommand extends AbstractCommand {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            User user = userService.logIn(
-                    req.getParameter(NamesConstants.REQUEST_USER_PARAM_LOGIN),
-                    req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD)
-            );
+            String login = req.getParameter(NamesConstants.REQUEST_USER_PARAM_LOGIN);
+            String password = req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD);
+            User user = userService.logIn(login, password);
+
             if (user == null) {
                 RuntimeException e = new AccessDeniedException("Login or password is not correct.");
                 LOGGER.error(e.getMessage());
@@ -33,13 +33,16 @@ public class LogInPostCommand extends AbstractCommand {
             session.setAttribute(NamesConstants.CURRENT_USER_ID, user.getId());
             session.setAttribute(NamesConstants.CURRENT_USER_LOGIN, user.getLogin());
             session.setAttribute(NamesConstants.CURRENT_USER_ROLE, user.getRole());
+        } catch (NullPointerException e) {
+            LOGGER.error("LogInPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("LogInPostCommand error: ", e);
             throw new AccessDeniedException("Can not login. Wrong login or password.");
         }
         if (Constants.ROLE_ADMIN.equals(req.getSession().getAttribute(NamesConstants.CURRENT_USER_ROLE))) {
             RoutingUtils.forwardToPage(JspPageName.ADMIN_SETTINGS_PAGE, req, resp);
-        } else if (req.getSession().getAttribute(NamesConstants.REDIRECT_LINK) != null) {
+        } else if (req.getParameter(NamesConstants.REDIRECT_LINK) != null && !req.getParameter(NamesConstants.REDIRECT_LINK).equals("")) {
+            req.setAttribute(NamesConstants.REDIRECT_LINK, req.getParameter("REDIRECT_LINK"));
             RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
         } else {
             req.getSession().setAttribute(NamesConstants.REDIRECT_LINK, JspPageName.NEWS_PAGE);

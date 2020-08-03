@@ -20,7 +20,6 @@ public class GetAllSecuritiesAdminGetCommand extends AbstractCommand {
             throws ServletException, IOException {
 
         List<Security> securities;
-
         try {
             securities = securityService.getAllSecurities();
         } catch (ServiceException e) {

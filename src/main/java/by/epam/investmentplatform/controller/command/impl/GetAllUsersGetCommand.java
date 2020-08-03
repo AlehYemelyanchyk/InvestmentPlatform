@@ -17,10 +17,13 @@ public class GetAllUsersGetCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int userRole = Integer.parseInt((String) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ROLE));
         try {
+            int userRole = Integer.parseInt((String) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ROLE));
+
             List<User> allUsers = userService.getAllUsers(userRole);
             req.getSession().setAttribute(NamesConstants.USERS_LIST, allUsers);
+        } catch (NullPointerException e) {
+            LOGGER.error("GetAllUsersGetCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("GetAllUsersGetCommand error: ", e);
             throw new ServletException("Access denied.");

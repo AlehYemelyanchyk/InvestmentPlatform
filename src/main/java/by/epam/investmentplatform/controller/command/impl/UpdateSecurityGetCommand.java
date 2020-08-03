@@ -17,14 +17,16 @@ public class UpdateSecurityGetCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        String symbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
         try {
+            String symbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
             Security security = securityService.getSecurity(symbol);
             Map<Integer, String> exchangesList = securityService.getExchanges();
             Map<Integer, String> securityTypesList = securityService.getSecurityTypes();
             req.setAttribute(NamesConstants.SECURITY, security);
             req.setAttribute(NamesConstants.EXCHANGES_LIST, exchangesList);
             req.setAttribute(NamesConstants.SECURITY_TYPES_LIST, securityTypesList);
+        } catch (NullPointerException e) {
+            LOGGER.error("UpdateSecurityGetCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("UpdateSecurityGetCommand error: ", e);
             throw new ServletException("Incorrect values.");

@@ -1,6 +1,7 @@
 package by.epam.investmentplatform.controller.command.impl;
 
 import by.epam.investmentplatform.CommandsConstants;
+import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
 import by.epam.investmentplatform.entity.User;
@@ -17,15 +18,18 @@ public class RemoveUserPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
         try {
+            int userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
             User user = userService.getUser(userId);
             userService.deleteUser(user);
+        } catch (NullPointerException e) {
+            LOGGER.error("RemoveUserPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("RemoveUserPostCommand error: ", e);
             throw new ServletException("Incorrect values");
         }
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS);
+        req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
         RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
     }
 }

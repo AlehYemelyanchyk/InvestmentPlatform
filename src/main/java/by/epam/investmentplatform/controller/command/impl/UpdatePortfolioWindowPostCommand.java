@@ -16,15 +16,18 @@ public class UpdatePortfolioWindowPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
         try {
+            int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
+
             Portfolio portfolio = portfolioService.getPortfolio(portfolioId);
             req.setAttribute(NamesConstants.PORTFOLIO, portfolio);
+            req.setAttribute(NamesConstants.PORTFOLIO_ID, portfolioId);
+        } catch (NullPointerException e) {
+            LOGGER.error("UpdatePortfolioWindowPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("UpdatePortfolioWindowPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
-        req.setAttribute(NamesConstants.PORTFOLIO_ID, portfolioId);
         RoutingUtils.forwardToPage(JspPageName.UPDATE_PORTFOLIO_PAGE, req, resp);
     }
 }

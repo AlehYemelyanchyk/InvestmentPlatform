@@ -18,41 +18,23 @@ public class GetAllSecurityTransactionsPostCommand extends AbstractCommand {
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
-        int portfolioId;
-        String securityName;
-        String securitySymbol;
-        List<Transaction> allPortfolioTransactions;
+        List<Transaction> allPortfolioTransactions = null;
+        String securitySymbol = null;
         try {
-            if (req.getParameter(NamesConstants.PORTFOLIO_ID) != null) {
-                portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
-            } else {
-                portfolioId = (int) req.getSession().getAttribute(NamesConstants.PORTFOLIO_ID);
-            }
-            if (req.getParameter(NamesConstants.SECURITY_NAME) != null) {
-                securityName = req.getParameter(NamesConstants.SECURITY_NAME);
-            } else {
-                securityName = (String) req.getSession().getAttribute(NamesConstants.SECURITY_NAME);
-            }
-            if (req.getParameter(NamesConstants.SECURITY_SYMBOL) != null) {
-                securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
-            } else {
-                securitySymbol = (String) req.getSession().getAttribute(NamesConstants.SECURITY_SYMBOL);
-            }
+            int portfolioId = Integer.parseInt(req.getParameter(NamesConstants.PORTFOLIO_ID));
+            String securityName = req.getParameter(NamesConstants.SECURITY_NAME);
+            securitySymbol = req.getParameter(NamesConstants.SECURITY_SYMBOL);
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
+            req.getSession().setAttribute(NamesConstants.SECURITY_NAME, securityName);
+            req.getSession().setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
+        } catch (NullPointerException e) {
+            LOGGER.error("GetAllSecurityTransactionsPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("GetAllSecurityTransactionsPostCommand error: ", e);
             throw new ServletException("Incorrect values.");
         }
         List<Transaction> filteredTransactions = filterTransactionsBySecurity(allPortfolioTransactions, securitySymbol);
-
-        req.setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
-        req.setAttribute(NamesConstants.SECURITY_NAME, securityName);
         req.setAttribute(NamesConstants.SECURITY_TRANSACTIONS, filteredTransactions);
-
-        req.getSession().setAttribute(NamesConstants.SECURITY_NAME, securityName);
-        req.getSession().setAttribute(NamesConstants.SECURITY_SYMBOL, securitySymbol);
-
         RoutingUtils.forwardToPage(JspPageName.GET_ALL_SECURITY_TRANSACTIONS_PAGE, req, resp);
     }
 
