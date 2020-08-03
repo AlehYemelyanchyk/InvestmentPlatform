@@ -41,7 +41,7 @@ public class LogInPostCommand extends AbstractCommand {
         }
         if (Constants.ROLE_ADMIN.equals(req.getSession().getAttribute(NamesConstants.CURRENT_USER_ROLE))) {
             RoutingUtils.forwardToPage(JspPageName.ADMIN_SETTINGS_PAGE, req, resp);
-        } else if (req.getParameter(NamesConstants.REDIRECT_LINK) != null) {
+        } else if (req.getParameter(NamesConstants.REDIRECT_LINK) != null && !req.getParameter(NamesConstants.REDIRECT_LINK).equals("")) {
             req.setAttribute(NamesConstants.REDIRECT_LINK, req.getParameter("REDIRECT_LINK"));
             RoutingUtils.forwardToPage(JspPageName.REDIRECT_PAGE, req, resp);
         } else {
