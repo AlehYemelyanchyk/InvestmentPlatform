@@ -18,7 +18,12 @@ public class BanUserTransactionsPostCommand extends AbstractCommand {
             throws ServletException, IOException {
         try {
             String banStatus;
-            int userId = (int) req.getSession().getAttribute(NamesConstants.USER_ID);
+            int userId;
+            if (req.getParameter(NamesConstants.USER_ID) != null) {
+                userId = Integer.parseInt(req.getParameter(NamesConstants.USER_ID));
+            } else {
+                userId = (int) req.getSession().getAttribute(NamesConstants.USER_ID);
+            }
             banStatus = req.getParameter(NamesConstants.TRANSACTIONS_BAN_STATUS);
             if (Constants.BAN_STATUS_ACTIVE.equals(banStatus)) {
                 banStatus = Constants.BAN_STATUS_ACTIVE;
@@ -28,6 +33,7 @@ public class BanUserTransactionsPostCommand extends AbstractCommand {
             String[] params = {banStatus};
             
             userService.updateUserTransactionBanStatus(userId, params);
+            req.getSession().setAttribute(NamesConstants.USER_ID, userId);
             req.getSession().setAttribute(NamesConstants.TRANSACTIONS_BAN_STATUS, banStatus);
         } catch (ServiceException e) {
             LOGGER.error("BanUserTransactionsPostCommand error: ", e);

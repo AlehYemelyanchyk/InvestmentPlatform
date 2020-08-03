@@ -32,6 +32,8 @@ public class CheckUserBanStatusFilter extends AbstractFilter {
 
         if (req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID) == null) {
             filterChain.doFilter(req, resp);
+        } else if(req.getRequestURI().contains("contactUs")){
+            filterChain.doFilter(req, resp);
         } else {
             int userId = (int) req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID);
             if (isBanned(bannedUsersIdList, userId)) {
