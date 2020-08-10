@@ -18,7 +18,7 @@
         <div class="col-md-3"></div>
         <div class="col-md-3">
             <a class="btn btn-info" href="${pageContext.request.contextPath}/addPortfolio">
-                New Portfolio
+                <fmt:message key="label.createNewPortfolio"/>
             </a>
         </div>
         <div class="col-md-3"></div>

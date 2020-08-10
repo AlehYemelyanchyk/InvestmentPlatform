@@ -19,7 +19,7 @@
         <div class="col-md-4">
             <div>
                 <h4><a href="${pageContext.request.contextPath}/updateUser"><fmt:message
-                        key="label.editPersonalDetails"/></a></h4>
+                        key="label.personalDetails"/></a></h4>
             </div>
             <div>
                 <h4><a href="${pageContext.request.contextPath}/getBalance"><fmt:message
