@@ -66,6 +66,8 @@ public final class CommandProvider {
         repository.put(CommandsConstants.UPDATE_USER_ADMIN + POST_METHOD, new UpdateUserAdminPostCommand());
         repository.put(CommandsConstants.UPDATE_USER + GET_METHOD, new UpdateUserGetCommand());
         repository.put(CommandsConstants.UPDATE_USER + POST_METHOD, new UpdateUserPostCommand());
+        repository.put(CommandsConstants.UPDATE_USER_PASSWORD + GET_METHOD, new UpdateUserPasswordGetCommand());
+        repository.put(CommandsConstants.UPDATE_USER_PASSWORD + POST_METHOD, new UpdateUserPasswordPostCommand());
         repository.put(CommandsConstants.USER_SETTINGS + GET_METHOD, new UserSettingsGetCommand());
         repository.put(CommandsConstants.WITHDRAW + GET_METHOD, new WithdrawGetCommand());
         repository.put(CommandsConstants.WITHDRAW + POST_METHOD, new WithdrawPostCommand());

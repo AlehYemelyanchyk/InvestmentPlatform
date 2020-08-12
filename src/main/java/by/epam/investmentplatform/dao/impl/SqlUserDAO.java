@@ -207,6 +207,61 @@ class SqlUserDAO implements UserDAO {
     }
 
     @Override
+    public void updateUserPassword(int id, String password) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "UPDATE invest.users SET password = ? WHERE id = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, password);
+            statement.setInt(2, id);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("updateUser error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("updateUser close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
+    public void updateUser(String[] params) throws DAOException {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        String countryCode = params[6];
+        String country = getCountry(countryCode);
+        try {
+            connection = CONNECTION_POOL.takeConnection();
+            String sqlQuery = "UPDATE invest.users SET email = ?, name = ?, surname = ?, country = ? WHERE id = ?";
+            statement = connection.prepareStatement(sqlQuery);
+            statement.setString(1, params[3]);
+            statement.setString(2, params[4]);
+            statement.setString(3, params[5]);
+            statement.setString(4, country);
+            statement.setString(5, params[0]);
+            statement.executeUpdate();
+            connection.commit();
+        } catch (Exception e) {
+            LOGGER.error("updateUser error: " + e.getMessage());
+            throw new DAOException(e);
+        } finally {
+            try {
+                DAOUtils.closeResources(connection, statement);
+            } catch (SQLException e) {
+                LOGGER.error("updateUser close resources error: " + e.getMessage());
+                throw new DAOException(e);
+            }
+        }
+    }
+
+    @Override
     public void updateUser(User user, String[] params) throws DAOException {
         Connection connection = null;
         PreparedStatement statement = null;

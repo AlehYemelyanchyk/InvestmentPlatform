@@ -20,6 +20,10 @@ public interface UserDAO {
 
     void saveUser(User user) throws DAOException;
 
+    void updateUserPassword(int id, String password) throws DAOException;
+
+    void updateUser(String[] params) throws DAOException;
+
     void updateUser(User user, String[] params) throws DAOException;
 
     void updateUserBanStatus(int userId, String[] params) throws DAOException;

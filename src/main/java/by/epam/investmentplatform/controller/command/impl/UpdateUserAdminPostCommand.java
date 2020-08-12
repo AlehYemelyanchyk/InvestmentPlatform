@@ -4,7 +4,6 @@ import by.epam.investmentplatform.CommandsConstants;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
-import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
 
@@ -19,18 +18,16 @@ public class UpdateUserAdminPostCommand extends AbstractCommand {
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            int id = Integer.parseInt(req.getParameter(NamesConstants.REQUEST_USER_PARAM_ID));
+            String id = req.getParameter(NamesConstants.REQUEST_USER_PARAM_ID);
             String role = req.getParameter(NamesConstants.REQUEST_USER_PARAM_ROLE);
             String login = req.getParameter(NamesConstants.REQUEST_USER_PARAM_LOGIN);
-            String password = req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD);
             String email = req.getParameter(NamesConstants.REQUEST_USER_PARAM_EMAIL);
             String name = req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME);
             String surname = req.getParameter(NamesConstants.REQUEST_USER_PARAM_SURNAME);
             String country = req.getParameter(NamesConstants.REQUEST_USER_PARAM_COUNTRY);
-            User user = new User(id, role, login, password, email, name, surname, country);
-            String[] params = {};
+            String[] params = {id, role, login, email, name, surname, country};
 
-            userService.updateUser(user, params);
+            userService.updateUser(params);
         } catch (NullPointerException e) {
             LOGGER.error("UpdateUserAdminPostCommand missing value error: ", e);
         } catch (ServiceException e) {

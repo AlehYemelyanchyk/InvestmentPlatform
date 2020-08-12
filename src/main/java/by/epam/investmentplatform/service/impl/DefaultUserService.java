@@ -108,6 +108,29 @@ class DefaultUserService implements UserService {
     }
 
     @Override
+    public void updateUserPassword(int id, String password) throws ServiceException {
+            String hashedPassword = hashPassword(password);
+        try {
+            getUserDAO().updateUserPassword(id, hashedPassword);
+        } catch (DAOException e) {
+            LOGGER.error("updateUserPassword error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
+    public void updateUser(String[] params) throws ServiceException {
+            String login = params[2];
+            UserValidationUtils.loginValidation(login);
+        try {
+            getUserDAO().updateUser(params);
+        } catch (DAOException e) {
+            LOGGER.error("updateUser error: " + e.getMessage());
+            throw new ServiceException(e);
+        }
+    }
+
+    @Override
     public void updateUser(User user, String[] params) throws ServiceException {
         UserValidationUtils.userValidation(user);
         UserValidationUtils.loginValidation(user.getLogin());

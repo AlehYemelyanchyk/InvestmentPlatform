@@ -25,11 +25,12 @@
                 </div>
                 <div class="form-group">
                     <input type="hidden" name="login" value="${USER.login}">
-                    <label for="password"><fmt:message key="label.login2"/></label>
+                    <label><fmt:message key="label.login2"/></label>
                     <input disabled type="text" name="login" class="form-control" value="${USER.login}">
                     <div class="valid-feedback"></div>
                     <div class="invalid-feedback"></div>
                 </div>
+
                 <div class="form-group">
                     <label for="role"><fmt:message key="label.role"/></label>
                     <select id="role" name="role" class="form-control">
@@ -46,18 +47,14 @@
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label for="password"><fmt:message key="label.newPassword"/></label>
-                    <input type="password" name="password" class="form-control" id="password"
-                           placeholder="<fmt:message key="label.newPassword"/>"
-                           required minlength="8"
-                           pattern="^(?=.*[A-Za-z])(?=.*\d)[a-zA-Z\d]{8,}$"
-                           data-value-missing="Please, enter new password"
-                           data-pattern-length-mismatch="Password must be at least 8 characters long"
-                           data-pattern-mismatch="A password must contain at least 1 alphabetical character and at least 1 numeric character">
-                    <div class="valid-feedback">Good!</div>
-                    <div class="invalid-feedback"></div>
+                <div>
+                    <button type="button" class="btn btn-light btn-block">
+                        <a href="${pageContext.request.contextPath}/updateUserPassword">
+                            <h4><fmt:message key="label.password"/></h4>
+                        </a>
+                    </button>
                 </div>
+
                 <div class="form-group">
                     <label for="email"><fmt:message key="label.email"/></label>
                     <input type="email" name="email" class="form-control" id="email"
@@ -70,6 +67,7 @@
                     <div class="valid-feedback">Good!</div>
                     <div class="invalid-feedback"></div>
                 </div>
+
                 <div class="form-group">
                     <label for="name"><fmt:message key="label.name"/></label>
                     <input type="text" name="name" class="form-control" id="name"
@@ -80,6 +78,7 @@
                     <div class="valid-feedback">Good!</div>
                     <div class="invalid-feedback"></div>
                 </div>
+
                 <div class="form-group">
                     <label for="surname"><fmt:message key="label.surname"/></label>
                     <input type="text" name="surname" class="form-control" id="surname"
@@ -90,6 +89,7 @@
                     <div class="valid-feedback">Good!</div>
                     <div class="invalid-feedback"></div>
                 </div>
+
                 <div class="form-group">
                     <label for="inputCountry"><fmt:message key="label.country"/></label>
                     <select id="inputCountry" name="country" class="form-control">

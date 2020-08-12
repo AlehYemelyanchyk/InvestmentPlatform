@@ -41,6 +41,7 @@ public final class CommandsConstants {
     public static final String UPDATE_TRANSACTION = "updateTransaction";
     public static final String UPDATE_TRANSACTION_WINDOW = "updateTransactionWindow";
     public static final String UPDATE_USER = "updateUser";
+    public static final String UPDATE_USER_PASSWORD = "updateUserPassword";
     public static final String UPDATE_USER_ADMIN = "updateUserAdmin";
     public static final String USER_SETTINGS = "userSettings";
     public static final String WITHDRAW = "withdraw";
