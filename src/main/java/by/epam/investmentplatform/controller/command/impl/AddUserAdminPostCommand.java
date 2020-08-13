@@ -4,6 +4,7 @@ import by.epam.investmentplatform.CommandsConstants;
 import by.epam.investmentplatform.Constants;
 import by.epam.investmentplatform.NamesConstants;
 import by.epam.investmentplatform.controller.command.JspPageName;
+import by.epam.investmentplatform.controller.exception.ValidationException;
 import by.epam.investmentplatform.entity.User;
 import by.epam.investmentplatform.service.exceptions.ServiceException;
 import by.epam.investmentplatform.util.RoutingUtils;
@@ -33,7 +34,7 @@ public class AddUserAdminPostCommand extends AbstractCommand {
             LOGGER.error("AddUserAdminPostCommand missing value error: ", e);
         } catch (ServiceException e) {
             LOGGER.error("AddUserAdminPostCommand error: ", e);
-            throw new ServletException("Incorrect registration values.");
+            throw new ValidationException("Such user already exists.");
         }
         req.setAttribute(NamesConstants.REDIRECT_LINK, CommandsConstants.GET_ALL_USERS);
         req.getSession().setAttribute(NamesConstants.REQUEST_METHOD, Constants.GET_METHOD);
