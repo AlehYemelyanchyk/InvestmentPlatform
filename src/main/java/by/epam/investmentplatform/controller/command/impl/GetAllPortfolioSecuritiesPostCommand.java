@@ -36,6 +36,7 @@ public class GetAllPortfolioSecuritiesPostCommand extends AbstractCommand {
             allPortfolioSecurities = securityService.getAllPortfolioSecurities(portfolioId);
             allPortfolioTransactions = securityService.getAllPortfolioTransactions(portfolioId);
             req.setAttribute(NamesConstants.PORTFOLIO_ID, portfolioId);
+            req.getSession().setAttribute(NamesConstants.PORTFOLIO_ID, portfolioId);
             req.setAttribute(NamesConstants.PORTFOLIO_SECURITIES, securities);
             req.setAttribute(NamesConstants.PORTFOLIO_TRANSACTIONS, allPortfolioTransactions);
         } catch (ServiceException e) {
