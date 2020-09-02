@@ -82,6 +82,23 @@ public interface UserService {
     /**
      * Updates the user's parameters in a data source.
      *
+     * @param id is an id of user for which the password is have to be updated.
+     * @param password is the value of the new password.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    void updateUserPassword(int id, String password) throws ServiceException;
+
+    /**
+     * Updates the user's parameters in a data source.
+     *
+     * @param params an array of parameters with new values for the update.
+     * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.
+     */
+    void updateUser(String[] params) throws ServiceException;
+
+    /**
+     * Updates the user's parameters in a data source.
+     *
      * @param user   is a user object for which the parameters are have to be updated.
      * @param params an array of parameters with new values for the update.
      * @throws ServiceException if a DAOException is thrown from its invoked DAO level method.

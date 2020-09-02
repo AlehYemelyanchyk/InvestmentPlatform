@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-md-2">
             <a class="btn btn-info" href="${pageContext.request.contextPath}/addUserAdmin">
-                Add User
+                <fmt:message key="label.addUser"/>
             </a>
         </div>
         <div class="col-md-2"></div>

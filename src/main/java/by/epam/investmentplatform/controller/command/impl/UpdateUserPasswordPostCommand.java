@@ -12,22 +12,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class UpdateUserPostCommand extends AbstractCommand {
+public class UpdateUserPasswordPostCommand extends AbstractCommand {
 
     @Override
     protected void forwardToPage(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            String id = req.getParameter(NamesConstants.CURRENT_USER_ID);
-            String role = req.getParameter(NamesConstants.CURRENT_USER_ROLE);
-            String login = req.getParameter(NamesConstants.CURRENT_USER_LOGIN);
-            String email = req.getParameter(NamesConstants.REQUEST_USER_PARAM_EMAIL);
-            String name = req.getParameter(NamesConstants.REQUEST_PORTFOLIO_PARAM_NAME);
-            String surname = req.getParameter(NamesConstants.REQUEST_USER_PARAM_SURNAME);
-            String country = req.getParameter(NamesConstants.REQUEST_USER_PARAM_COUNTRY);
-            String[] params = {id, role, login, email, name, surname, country};
+            int id = (int) (req.getSession().getAttribute(NamesConstants.CURRENT_USER_ID));
+            String password = req.getParameter(NamesConstants.REQUEST_USER_PARAM_PASSWORD);
 
-            userService.updateUser(params);
+            userService.updateUserPassword(id, password);
         } catch (NullPointerException e) {
             LOGGER.error("UpdateUserPostCommand missing value error: ", e);
         } catch (ServiceException e) {

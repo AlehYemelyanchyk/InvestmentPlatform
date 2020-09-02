@@ -121,9 +121,7 @@
                 </c:forEach>
                 </tbody>
             </table>
-
         </div>
-
         </c:forEach>
 
         <div class="pagination-container">

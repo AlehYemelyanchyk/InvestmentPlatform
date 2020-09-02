@@ -49,6 +49,7 @@
                     </div>
                     <div class="custom-control custom-switch">
                         <form action="${pageContext.request.contextPath}/banUser" method="POST">
+                            <input type="hidden" name="USER_ID" value="${USER_ID}">
                             <c:choose>
                                 <c:when test="${USER_BAN_STATUS == 1}">
                                     <input checked type="checkbox" name="USER_BAN_STATUS" class="custom-control-input"
@@ -64,6 +65,7 @@
                     </div>
                     <div class="custom-control custom-switch">
                         <form action="${pageContext.request.contextPath}/banUserTransactions" method="POST">
+                            <input type="hidden" name="USER_ID" value="${USER_ID}">
                             <c:choose>
                                 <c:when test="${TRANSACTIONS_BAN_STATUS == 1}">
                                     <input checked type="checkbox" name="TRANSACTIONS_BAN_STATUS" class="custom-control-input"
